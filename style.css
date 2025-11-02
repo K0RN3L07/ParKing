@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
 }
 
 body {
@@ -10,131 +11,87 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("bg.png");
-    background-position: center;
+    background-image: url(bg.png);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-/* Register  */
-.container { 
-    max-width: 800px;
-    width: 80%;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 400px;
     height: 500px;
-    background-color: #dedede67;
+    border: 1px solid white;
     backdrop-filter: blur(10px);
-    border: 2px solid whitesmoke;
-    border-radius: 50px;
-    padding-right: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    transition: .2s;
+    background-color: rgba(0, 0, 0, 0.356);
+    border-radius: 25px;
+    font-size: 16px;
+    padding: 30px;
 }
 
-/* Login */
-
-.mirroredCont {
-    flex-direction: row-reverse;
-    padding-left: 20px;
-    padding-right: 0px;
+.container h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
-.log {
-    width: 35%;
-    background-color: whitesmoke;
-    height: 100%;
-    padding: 25px;
-    border-radius: 42px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    text-align: center;
-}
-
-.log button {
-    width: 80%;
-    font-weight: bold;
-    background: linear-gradient(90deg, #00BFFF 0%, #FF6EC7 100%);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    box-shadow: 0px 3px 5px 1px rgba(51, 51, 51, 0.288);
-    transition: .15s;
-}
-
-.log button:hover {
-    scale: 1.05;
-    box-shadow: 0px 3px 5px 3px rgba(51, 51, 51, 0.158);
-}
-
-.reg {
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.reg div {
+.container .row {
     width: 100%;
-    margin: 10px 0px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
 }
 
-.reg div label,
-.reg div input {
-    width: 100%;
-}
-
-.reg button {
-    width: 50%;
-    margin-top: 20px;
-    font-weight: bold;
-    background: linear-gradient(90deg, #00BFFF 0%, #FF6EC7 100%);
-    color: white;
+.container .row input {
+    background-color: rgba(0,0,0,0);
     border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    box-shadow: 0px 3px 5px 3px rgba(51, 51, 51, 0.288);
-    transition: .15s;
+    border-bottom: 2px solid white;
+    padding: 5px 0;
 }
 
-.reg button:hover {
-    scale: 1.05;
-    box-shadow: 0px 3px 5px 5px rgba(51, 51, 51, 0.301);
-}
-
-input {
-    padding: 10px;
-    border: 0px;
-    border-radius: 10px;
-    box-shadow: 3px 3px 0px 0px #64646448;
-    margin-top: 5px;
-}
-
-#save {
-    padding: none;
-    border: default;
-    border-radius: default;
-    box-shadow: none;
-    margin-top: 5px;
-}
-
-input:focus {
-    border: none;
+.container .row input:focus {
     outline: none;
 }
 
-.hide {
-    display: none;
+.container .row label {
+    transform: translateY(-150%);
+    transition: .3s;
+    width: fit-content;
+}
+
+.container .row input:focus ~ label {
+    transform: translateY(-250%);
+}
+
+.container .row svg {
+    position: absolute;
+    right: 30px;
+    margin-top: -4px;
+}
+
+.container button {
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    padding: 15px 0;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.container button:hover {
+    scale: 1.03;
+}
+
+@media (max-width:400px) {
+    .container {
+        height: 100vh;
+        width: 100vw;
+        border: none;
+        border-radius: 0;
+    }
 }
