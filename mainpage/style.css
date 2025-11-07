@@ -1,7 +1,19 @@
+@font-face {
+    font-family: "Lato Regular";
+    src: url(../fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family: "LSB";
+    src: url(../fonts/LeagueSpartan-Bold.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "LSB";
+    font-size: 1rem;
 }
 
 :root {
@@ -9,7 +21,7 @@
     --primary-text-color: #111111;
     --secondary-text-color: #333333;
     --primary-color: #274c77ff; /* inmn-blue */
-    --secondary-color: #6096baff; /* air-superiority-blue */
+    --secondary-color: #0870bd; /* air-superiority-blue */
     /* --battleship-gray: #8b8c89ff;  */
     /* --uranian-blue: #a3cef1ff; */
 }
@@ -19,7 +31,7 @@
     --primary-text-color: #ffffff;
     --secondary-text-color: #dddddd;
     --primary-color: #274c77ff; 
-    --secondary-color: #6096baff; 
+    --secondary-color: #0870bd; 
 }
 
 nav {
@@ -28,12 +40,16 @@ nav {
     width: 100vw;
     padding: 20px;
     justify-content: space-between;
+    align-items: center;
     text-align: center;
     gap: min(30px);
+    border-bottom: 5px solid var(--secondary-color);
 }
 
-/* .logo {
-} */
+.logo img {
+    width: 80px;
+    height: 80px;
+}
 
 .items {
     display: flex;
@@ -42,8 +58,19 @@ nav {
     gap: 30px;
 }
 
-/* .profile {
-} */
+.items a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+    font-size: 1.2em;
+}
+
+.profile {
+    background-color: var(--secondary-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 5px;
+}
 
 @media (max-width:530px) {
     nav {
