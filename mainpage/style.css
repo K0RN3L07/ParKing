@@ -8,6 +8,7 @@
     font-family: "LSB";
     src: url(../fonts/LeagueSpartan-Bold.otf);
 }
+
 /* #endregion */
 
 /* #region Setting Basic Properties */
@@ -18,27 +19,32 @@
     font-family: "Lato Regular";
     font-size: 1rem;
 }
+
 /* #endregion */
 
 /* #region Defining Colours */
 :root {
-    --base-color: #e7ecefff; /* antiflash-white */
+    --base-color: #e7ecefff;
+    /* antiflash-white */
     --primary-text-color: #111111;
     --secondary-text-color: #333333;
     --accent-text-color: #f0f0f0;
-    --primary-color: #274c77ff; /* inmn-blue */
-    --secondary-color: #0870bd; /* air-superiority-blue */
+    --primary-color: #274c77ff;
+    /* inmn-blue */
+    --secondary-color: #0870bd;
+    /* air-superiority-blue */
     /* --battleship-gray: #8b8c89ff;  */
     /* --uranian-blue: #a3cef1ff; */
 }
 
 .darkmode {
-    --base-color: #070b1d; 
+    --base-color: #070b1d;
     --primary-text-color: #ffffff;
     --secondary-text-color: #dddddd;
-    --primary-color: #274c77ff; 
+    --primary-color: #274c77ff;
     --secondary-color: #0870bd;
 }
+
 /* #endregion */
 
 /* #region Dark Mode Toggling Button */
@@ -59,6 +65,7 @@
 #dark-mode-switch svg {
     fill: var(--primary-text-color);
 }
+
 /* #endregion */
 
 /* #region Navigation Bar Parts */
@@ -84,7 +91,7 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    gap: 30px;
+    gap: 50px;
 }
 
 .items a {
@@ -92,15 +99,105 @@ nav {
     text-decoration: none;
     color: var(--primary-text-color);
     font-size: 1.2em;
+    position: relative;
+    padding: 10px 5px 5px;
+    transition: .3s;
+}
+
+.items a::after {
+    position: absolute;
+    content: '';
+    width: 0px;
+    height: 2px;
+    background-color: var(--primary-text-color);
+    left: 50%;
+    top: 0px;
+    transform: translateX(-50%);
+    transition: .3s;
+}
+
+.items a::before {
+    position: absolute;
+    content: '';
+    width: 0px;
+    height: 2px;
+    background-color: var(--primary-text-color);
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
+    transition: .3s;
+}
+
+.items a:hover::after,
+.items a:hover::before {
+    width: 100%;
+    transition: .3s;
+}
+
+.items a:hover {
+    letter-spacing: 4px;
+    background-color: var(--secondary-color);
+    transition: .3s;
 }
 
 .profile {
+    position: relative;
     background-color: var(--secondary-color);
     width: 45px;
     height: 45px;
     border-radius: 50%;
     padding: 5px;
 }
+
+.profile .dropdown-container {
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 100%;
+    width: 300px;
+    height: 0px;
+    border-radius: 20px;
+    background-color: #b5b9bb44;
+    backdrop-filter: blur(5px);
+    flex-direction: column;
+    transition: .3s;
+}
+
+.profile:hover .dropdown-container {
+    height: 200px;
+    transition: .3s ;
+}
+
+.profile .dropdown-container a {
+    display: none;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+
+.profile:hover .dropdown-container a{
+    display: flex;
+}
+
+.profile:hover .dropdown-container a:hover{
+    background-color: #e7ecef96;
+}
+
+#first-item {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#last-item {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
 /* #endregion */
 
 /* #region Main Container*/
@@ -109,6 +206,7 @@ nav {
     display: flex;
     width: 100vw;
     font-size: 1rem;
+    background-color: var(--base-color);
 }
 
 /* #region Banner Section */
@@ -137,7 +235,7 @@ nav {
 }
 
 .banner h1 {
-    color:  var(--accent-text-color);
+    color: var(--accent-text-color);
     font-size: 2.5em;
     font-family: "LSB";
     padding: 15px;
@@ -176,6 +274,7 @@ button {
     color: var(--primary-text-color);
     background-color: var(--base-color);
 }
+
 /* #endregion */
 
 /* #endregion */
@@ -185,7 +284,7 @@ button {
     nav {
         flex-direction: column;
     }
-    
+
     .items {
         flex-direction: column;
     }
@@ -196,4 +295,5 @@ button {
         flex-direction: column;
     }
 }
+
 /* #endregion */
