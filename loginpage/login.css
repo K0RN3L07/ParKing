@@ -1,3 +1,4 @@
+/* #region Setting Basic Properties */
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +6,9 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
 }
+/* #endregion */
 
+/* #region Setting Background */
 body {
     height: 100vh;
     display: flex;
@@ -17,7 +20,9 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+/* #endregion */
 
+/* #region Main Container */
 .container {
     display: flex;
     flex-direction: column;
@@ -44,31 +49,38 @@ body {
     flex-direction: column;
 }
 
-.container .row input {
-    background-color: rgba(0,0,0,0);
+.container .row .input-field {
+    display: flex;
+    flex-direction: column;
     border: none;
     border-bottom: 2px solid white;
-    padding: 5px 0;
+    height: 30px;
 }
 
-.container .row input:focus {
+.container .row .input-field input {
+    border: none;
+    background-color: rgba(0,0,0,0);
+    padding: 5px 0;
+    width: 92%;
+}
+
+.container .row .input-field input:focus {
     outline: none;
 }
 
-.container .row label {
-    transform: translateY(-150%);
+.container .row .input-field label {
+    transform: translateY(-110%);
     transition: .3s;
     width: fit-content;
 }
 
-.container .row input:focus ~ label {
+.container .row .input-field input:focus ~ label {
     transform: translateY(-250%);
 }
 
 .container .row svg {
     position: absolute;
     right: 30px;
-    margin-top: -4px;
 }
 
 .container button {
@@ -86,7 +98,9 @@ body {
 .container button:hover {
     scale: 1.03;
 }
+/* #endregion */
 
+/* #region Responsivity */
 @media (max-width:400px) {
     .container {
         height: 100vh;
@@ -94,4 +108,9 @@ body {
         border: none;
         border-radius: 0;
     }
+
+    .container .row .input-field input {
+        width: 90%;
+    }
 }
+/* #endregion */
