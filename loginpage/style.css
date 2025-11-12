@@ -29,7 +29,8 @@ body {
     align-items: center;
     justify-content: space-evenly;
     width: 400px;
-    height: 500px;
+    height: fit-content;
+    gap: min(30px);
     border: 1px solid white;
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.356);
@@ -74,10 +75,6 @@ body {
     width: fit-content;
 }
 
-.container .row .input-field input:focus ~ label {
-    transform: translateY(-250%);
-}
-
 .container .row svg {
     position: absolute;
     right: 30px;
@@ -97,6 +94,19 @@ body {
 
 .container button:hover {
     scale: 1.03;
+}
+
+.container .hint {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.container .hint .column {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
 }
 /* #endregion */
 
