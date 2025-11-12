@@ -1,12 +1,12 @@
-let name = document.getElementById("name");
+let fullname = document.getElementById("name");
 let nameLabel = document.getElementById("nameLabel");
 
-name.addEventListener("focusin", () => {
+fullname.addEventListener("focusin", () => {
     nameLabel.style.transform = "translateY(-250%)";
 })
 
-name.addEventListener("focusout", () => {
-    if (name.value != "") {
+fullname.addEventListener("focusout", () => {
+    if (fullname.value != "") {
         nameLabel.style.transform = "translateY(-250%)";
     }
 

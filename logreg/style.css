@@ -6,6 +6,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
 }
+
 /* #endregion */
 
 /* #region Setting Background */
@@ -20,6 +21,7 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+
 /* #endregion */
 
 /* #region Main Container */
@@ -60,7 +62,7 @@ body {
 
 .container .row .input-field input {
     border: none;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     padding: 5px 0;
     width: 92%;
 }
@@ -108,10 +110,12 @@ body {
     flex-direction: row;
     gap: 5px;
 }
+
 /* #endregion */
 
 /* #region Responsivity */
 @media (max-width:400px) {
+    
     .container {
         height: 100vh;
         width: 100vw;
@@ -123,4 +127,5 @@ body {
         width: 90%;
     }
 }
+
 /* #endregion */
