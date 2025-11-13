@@ -78,7 +78,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    gap: min(30px);
+    gap: 30px;
     border-bottom: 5px solid var(--secondary-color);
 }
 
@@ -280,6 +280,23 @@ button {
 /* #endregion */
 
 /* #region Responsivity */
+@media (max-width:725px) {
+    nav .items {
+        gap: 15px;
+    }
+
+    .banner {
+        height: 500px;
+    }
+
+    .banner-content {
+        width: 100%;
+        max-width: none;
+        border-right: none;
+        border-bottom: 3px solid var(--base-color);
+    }
+}
+
 @media (max-width:650px) {
     nav {
         flex-direction: column;
