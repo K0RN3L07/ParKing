@@ -198,6 +198,20 @@ nav {
     border-bottom-right-radius: 20px;
 }
 
+.hamburger-menu {
+    display: none;
+
+}
+
+.hamburger-menu svg {
+    fill: var(--secondary-color);
+}
+
+.items-vertical {
+    display: none;
+    flex-direction: column;
+}
+
 /* #endregion */
 
 /* #region Main Container*/
@@ -297,13 +311,16 @@ button {
     }
 }
 
+/* Mobile View */
 @media (max-width:650px) {
-    nav {
-        flex-direction: column;
+
+    .items, .profile {
+        /* flex-direction: column; */
+        display: none;
     }
 
-    .items {
-        flex-direction: column;
+    .hamburger-menu {
+        display: block;
     }
 }
 

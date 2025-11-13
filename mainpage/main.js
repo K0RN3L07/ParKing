@@ -1,3 +1,5 @@
+//#region Dark Mode Toggle
+
 function toggleDarkMode() {
     let button = document.getElementById("dark-mode-switch");
     // Enabling Dark Mode
@@ -12,3 +14,26 @@ function toggleDarkMode() {
         button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>'
     }
 }
+
+//#endregion
+
+//#region Hamburger Menu
+
+let hamburgerBtn = document.querySelector(".hamburger-menu");
+let hamburgerToggled = false;
+let itemsVertical = document.getElementsByClassName("items-vertical");
+console.log(itemsVertical[0].style.display)
+
+function toggleHamburgerMenu() {
+    hamburgerToggled = !hamburgerToggled;
+    if (hamburgerToggled) {
+        hamburgerBtn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 -960 960 960' width='48px' fill='var(--base-color)'><path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z'/></svg>";
+        itemsVertical[0].style.display = "flex"
+    }
+    
+    else {
+        hamburgerBtn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 -960 960 960' width='48px' fill='var(--base-color)'><path d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/></svg>";
+    }
+}
+
+//#endregion
