@@ -58,8 +58,9 @@
     justify-content: center;
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    left: 10px;
     background-color: var(--base-color);
+    z-index: 1;
 }
 
 #dark-mode-switch svg {
@@ -234,14 +235,47 @@ nav {
     font-family: LSB;
     padding: 20px 0px;
     padding-left: 15px;
-    transition: .3s;
+    transition: .3s padding;
     width: 100%;
     text-align: left;
 }
 
 .items-vertical a:hover {
     padding-left: 25px;
-    backdrop-filter: brightness(1.05);
+    backdrop-filter: brightness(2);
+}
+
+.my-profile {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.my-profile:hover {
+    backdrop-filter: brightness(2);
+}
+
+.my-profile p {
+    font-family: LSB;
+    color: var(--primary-text-color);
+}
+
+.profile-dropdown-conatiner {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+}
+
+.profile-dropdown-conatiner a {
+    padding-left: 25px;
+    width: 100%;
+}
+
+.profile-dropdown-conatiner a:hover {
+    padding-left: 35px;
 }
 
 /* #endregion */
@@ -346,7 +380,7 @@ button {
 /* Mobile View */
 @media (max-width:650px) {
 
-    .items, .profile {
+    .items, nav > .profile {
         /* flex-direction: column; */
         display: none;
     }

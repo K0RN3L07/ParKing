@@ -10,7 +10,7 @@
     <title>ParKing | Főoldal</title>
 </head>
 
-<body>
+<body class="darkmode">
 
     <!-- #region Dark Mode Toggling Button -->
     <button id="dark-mode-switch" onclick="toggleDarkMode()">
@@ -60,9 +60,26 @@
             <a href="#">Rólunk</a>
             <a href="#">Kapcsolat</a>
             <a href="#">Foglalás</a>
+
+            <div class="my-profile" onclick="toggleDropdown()">
+                <p>Profil</p>
+
+                <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px"
+                    fill="var(--primary-text-color)">
+                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                </svg>
+            </div>
+
+            <div class="profile-dropdown-conatiner">
+                <a href="">Fiókom szerkesztése</a>
+                <a href="">Foglalásaim</a>
+                <a href="">Sötét mód</a>
+                <a href="">Kijelentkezés</a>
+            </div>
+
         </div>
     </nav>
-    
+
     <!-- #endregion -->
 
     <!-- #region Main Container -->
