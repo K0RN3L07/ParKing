@@ -70,6 +70,7 @@
 
 /* #region Navigation Bar Parts */
 nav {
+    position: relative;
     background-color: var(--base-color);
     display: flex;
     flex-direction: row;
@@ -200,7 +201,7 @@ nav {
 
 .hamburger-menu {
     display: none;
-
+    cursor: pointer;
 }
 
 .hamburger-menu svg {
@@ -208,8 +209,39 @@ nav {
 }
 
 .items-vertical {
-    display: none;
+    display: flex;
     flex-direction: column;
+    position: fixed;
+    right: 0;
+    top: 123px;
+    z-index: 1;
+    background-color: var(--base-color);
+    transform: translateX(100%);
+    border: 5px solid var(--secondary-color);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    transition: .3s transform;
+    justify-content: start;
+    align-items: flex-start;
+    height: calc(100vh - 123px);
+    width: 70%;
+}
+
+.items-vertical a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+    font-family: LSB;
+    padding: 20px 0px;
+    padding-left: 15px;
+    transition: .3s;
+    width: 100%;
+    text-align: left;
+}
+
+.items-vertical a:hover {
+    padding-left: 25px;
+    backdrop-filter: brightness(1.05);
 }
 
 /* #endregion */

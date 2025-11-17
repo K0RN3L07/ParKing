@@ -28,12 +28,20 @@ function toggleHamburgerMenu() {
     hamburgerToggled = !hamburgerToggled;
     if (hamburgerToggled) {
         hamburgerBtn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 -960 960 960' width='48px' fill='var(--base-color)'><path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z'/></svg>";
-        itemsVertical[0].style.display = "flex"
+        itemsVertical[0].style.transform = "translateX(0%)";
     }
     
     else {
         hamburgerBtn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 -960 960 960' width='48px' fill='var(--base-color)'><path d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/></svg>";
+        itemsVertical[0].style.transform = "translateX(100%)";
     }
 }
+
+document.body.addEventListener("resize", () => {
+    console.log("resize")
+    if (window.innerWidth > 650) {
+        toggleHamburgerMenu();
+    }
+});
 
 //#endregion
