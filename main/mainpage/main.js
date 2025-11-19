@@ -1,5 +1,7 @@
 //#region Dark Mode Toggle
 
+let darkModeSwitch = document.getElementById("dark-mode-switch");
+darkModeSwitch.addEventListener("click", toggleDarkMode);
 function toggleDarkMode() {
     let button = document.getElementById("dark-mode-switch");
     // Enabling Dark Mode
@@ -23,6 +25,8 @@ let hamburgerBtn = document.querySelector(".hamburger-menu");
 let hamburgerToggled = false;
 let itemsVertical = document.getElementsByClassName("items-vertical");
 
+let hamburgerMenu = document.querySelector(".hamburger-menu");
+hamburgerMenu.addEventListener("click", toggleHamburgerMenu);
 function toggleHamburgerMenu() {
     hamburgerToggled = !hamburgerToggled;
     if (hamburgerToggled) {
@@ -59,6 +63,9 @@ window.addEventListener("resize", () => {
 let dropdownToggled = false;
 let dropdownIcon = document.getElementById("dropdown-icon");
 let dropdownContainer = document.querySelector(".profile-dropdown-conatiner");
+
+let myProfileBtn = document.querySelector(".my-profile");
+myProfileBtn.addEventListener("click", toggleDropdown);
 function toggleDropdown() {
     dropdownToggled = !dropdownToggled;
     if (dropdownToggled) {
