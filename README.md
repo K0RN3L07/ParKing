@@ -18,10 +18,15 @@ Before pushing any changes, **delete the `node_modules` folder**.
 ## 🔧 Setting Up (After Pulling From GitHub)  
 After pulling the latest changes, install dependencies:
 
+📁 **Make sure your root folder is `ParKing/main`**
+
 ```bash
+cd backend
 npm update
 npm run dependencies
 ```
+
+---
 
 ## 🚀 Starting the Server
 After installing dependencies, start the server with:
