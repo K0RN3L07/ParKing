@@ -1,7 +1,3 @@
-"https://coolors.co/palette/e7ecef-274c77-6096ba-a3cef1-8b8c89"
-node v18.20.5
-npm 10.8.2
-
 # 🌟 Project Setup & Workflow Guide
 
 A clean and simple guide for preparing, updating, and running this project.
@@ -14,6 +10,11 @@ Before pushing any changes, **delete the `node_modules` folder**.
 ⚠️ **Do NOT delete:**
 - `package.json`
 - `package-lock.json`
+
+---
+
+## ✅ Required Node / npm Versions
+Use Node.js v18.20.5 and npm 10.8.2 when running the commands.
 
 ---
 
