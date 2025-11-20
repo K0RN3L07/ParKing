@@ -21,9 +21,8 @@ After pulling the latest changes, install dependencies:
 📁 **Make sure your root folder is `ParKing/main`**
 
 ```bash
-cd backend
 npm update
-npm run dependencies
+npm run setup
 ```
 
 ---
