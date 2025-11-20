@@ -1,4 +1,6 @@
 "https://coolors.co/palette/e7ecef-274c77-6096ba-a3cef1-8b8c89"
+node v18.20.5
+npm 10.8.2
 
 # 🌟 Project Setup & Workflow Guide
 
