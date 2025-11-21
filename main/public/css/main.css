@@ -60,7 +60,7 @@
     bottom: 10px;
     left: 10px;
     background-color: var(--base-color);
-    z-index: 1;
+    z-index: 5;
 }
 
 #dark-mode-switch svg {
@@ -149,56 +149,46 @@ nav {
     height: 45px;
     border-radius: 50%;
     padding: 5px;
+    cursor: pointer;
 }
 
-.profile-icon .dropdown-container {
-    position: absolute;
+.profile-icon-dropdown-container {
     display: flex;
+    flex-direction: column;
+    position: absolute;
     right: 0;
-    top: 100%;
-    width: 300px;
-    height: 0px;
-    border-radius: 20px;
-    background-color: #b5b9bb44;
-    backdrop-filter: blur(5px);
-    flex-direction: column;
-    transition: .3s;
+    top: calc(100% + 12px);
+    background-color: var(--base-color);
+    border: 2px solid var(--secondary-color);
+    width: 250px;
+    padding: 10px 0;
+    transform-origin: top right;
+    transform: translateY(-8px) scale(0.97);
+    opacity: 0;
+    border-radius: 8px;
+    transition: opacity .2s ease, transform .3s cubic-bezier(.2, .9, .2, 1);
+    z-index: 3;
 }
 
-.profile-icon:hover .dropdown-container {
-    height: 200px;
-    transition: .3s ;
-}
-
-.profile-icon .dropdown-container a {
-    display: none;
-    position: relative;
-    height: 50px;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.profile-icon-dropdown-container a {
+    padding: 10px 15px;
+    text-align: left;
     text-decoration: none;
     color: var(--primary-text-color);
+    font-family: LSB;
+    width: 100%;
+    display: block;
+    transform: translateY(6px);
+    opacity: 1;
+    transition: transform .3s ease, opacity .2s ease;
 }
 
-.profile-icon:hover .dropdown-container a{
-    display: flex;
+.profile-icon-dropdown-container a:hover {
+    backdrop-filter: brightness(2);
+    color: var(--accent-text-color);
 }
 
-.profile-icon:hover .dropdown-container a:hover{
-    background-color: #e7ecef96;
-}
 
-#first-item {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-#last-item {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
 
 .hamburger-menu {
     display: none;
@@ -278,6 +268,10 @@ nav {
     padding-left: 35px;
 }
 
+#dropdown-icon {
+    transition: .3s rotate;
+}
+
 /* #endregion */
 
 /* #region Main Container*/
@@ -298,6 +292,7 @@ nav {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    z-index: 1;
 }
 
 .banner-content {
@@ -380,7 +375,8 @@ button {
 /* Mobile View */
 @media (max-width:650px) {
 
-    .items, nav > .profile-icon {
+    .items,
+    nav>.profile-icon {
         /* flex-direction: column; */
         display: none;
     }
