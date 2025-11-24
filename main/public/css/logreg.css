@@ -101,11 +101,19 @@ body {
 .container .hint {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.container .policies {
+    display: flex;
+    flex-direction: row;
     width: 100%;
     gap: 10px;
 }
 
-.container .hint .column {
+.container .policies .column {
     display: flex;
     flex-direction: row;
     gap: 5px;
