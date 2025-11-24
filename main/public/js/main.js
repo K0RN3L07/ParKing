@@ -23,22 +23,38 @@ let profileIconDropdownToggled = false;
 let profileIcon = document.querySelector(".profile-icon");
 let profileIconDropdownContainer = document.querySelector(".profile-icon-dropdown-container");
 
-function toggleProfileIconDropdown() {
-    profileIconDropdownToggled = !profileIconDropdownToggled;
-
-    // profileIcon.classList.toggle('open', profileIconDropdownToggled);
-    // profileIconDropdownContainer.classList.toggle('open', profileIconDropdownToggled);
-
-    if (profileIconDropdownToggled) {
-        profileIconDropdownContainer.style.transform = "translateY(0)";
-        profileIconDropdownContainer.style.opacity = "1";
-    }
-
-    else {
-        profileIconDropdownContainer.style.transform = "translateY(-10px)";
-        profileIconDropdownContainer.style.opacity = "0";
-    }
+//Adding class to the dropdown to open and close it
+function openProfileIconDropdown() {
+    profileIconDropdownToggled = true;
+    profileIcon?.classList.add('open');
+    profileIconDropdownContainer?.classList.add('open');
 }
+
+function closeProfileIconDropdown() {
+    profileIconDropdownToggled = false;
+    profileIcon?.classList.remove('open');
+    profileIconDropdownContainer?.classList.remove('open');
+}
+
+// Main toggling function
+function toggleProfileIconDropdown(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    profileIconDropdownToggled ? closeProfileIconDropdown() : openProfileIconDropdown();
+}
+
+profileIcon?.addEventListener('click', toggleProfileIconDropdown);
+
+// Clicking inside the dropdown prevents it from closing
+profileIconDropdownContainer?.addEventListener('click', (e) => e.stopPropagation());
+
+// Clicking outside the dropdown closes it
+document.addEventListener('click', () => {
+    if (profileIconDropdownToggled) closeProfileIconDropdown();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && profileIconDropdownToggled) closeProfileIconDropdown();
+});
 
 //#endregion
 
@@ -91,7 +107,7 @@ function toggleProfileDropdown() {
         dropdownIcon.style.rotate = "180deg";
         dropdownContainer.style.display = "flex";
     }
-    
+
     else {
         dropdownIcon.style.rotate = "0deg";
         dropdownContainer.style.display = "none";
