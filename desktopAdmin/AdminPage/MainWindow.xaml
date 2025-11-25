@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminPage"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CRUD Műveletek" Height="450" Width="800">
     <Grid>
+        <TabControl x:Name="tabControl" Height="414" Width="780">
+            <TabItem Header="Users Tábla">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Bookings Tábla">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

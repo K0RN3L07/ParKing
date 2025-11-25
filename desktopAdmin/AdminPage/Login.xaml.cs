@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace AdminPage
 {
@@ -22,6 +23,29 @@ namespace AdminPage
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbName.Text != "admin" && pbPassword.Password != "admin")
+            {
+                lblError.Foreground = new SolidColorBrush(Colors.Red);
+                lblError.Content = $"Helytelen felhasználónév vagy{Environment.NewLine}jelszó!";
+            }
+
+            else
+            {
+                lblError.Foreground = new SolidColorBrush(Colors.Green);
+                lblError.Content = "Sikeres belépés!";
+
+                // Open MainWindow and make it the application's main window, then close the Login window.
+                var main = new MainWindow();
+                Application.Current.MainWindow = main;
+                main.Show();
+
+                // Close the login window so the user only sees MainWindow.
+                this.Close();
+            }
         }
     }
 }

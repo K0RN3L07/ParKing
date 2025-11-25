@@ -5,17 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminPage"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="600" ResizeMode="NoResize">
+        Title="ParKing - Admin Bejelentkezés" Height="450" Width="600" ResizeMode="NoResize">
     <Grid>
         <Image HorizontalAlignment="Left" Height="83" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="83" Source="/full_logo-Picsart-AiImageEnhancer.png"/>
         <Label Content="ParKing - Admin Bejelentkezés" HorizontalAlignment="Center" Height="67" Margin="0,20,0,0" VerticalAlignment="Top" Width="584" FontSize="36" FontWeight="UltraBold" HorizontalContentAlignment="Center"/>
 
-        <Label Content="Felhasználónév:" HorizontalAlignment="Center" Margin="0,118,0,0" VerticalAlignment="Top" Height="30px" Width="134" FontSize="16" FontWeight="SemiBold" Padding="0,5,5,5"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30px" Width="132" VerticalContentAlignment="Center"/>
+        <Label Content="Felhasználónév:" HorizontalAlignment="Center" Margin="0,118,0,0" VerticalAlignment="Top" Height="30px" Width="194" FontSize="16" FontWeight="SemiBold" Padding="0,5,5,5"/>
+        <TextBox x:Name="tbName" HorizontalAlignment="Center" Margin="0,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30px" Width="192" VerticalContentAlignment="Center" TabIndex="1"/>
 
-        <Label Content="Jelszó:" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30px" Width="132" FontSize="16" FontWeight="SemiBold" Padding="0,5,5,5" Margin="0,183,0,0"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30px" Width="134" VerticalContentAlignment="Center"/>
+        <Label Content="Jelszó:" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30px" Width="192" FontSize="16" FontWeight="SemiBold" Padding="0,5,5,5" Margin="0,183,0,0"/>
+        <PasswordBox x:Name="pbPassword" PasswordChar="*" HorizontalAlignment="Center" Margin="0,214,0,0" VerticalAlignment="Top" Height="30px" Width="194" VerticalContentAlignment="Center" TabIndex="2"/>
 
-        <Button Content="Belépés" HorizontalAlignment="Center" Margin="0,291,0,0" VerticalAlignment="Top" Width="134" Height="30px" FontSize="16px"/>
+        <Label Name="lblError" Content="" HorizontalAlignment="Center" Margin="0,244,0,0" VerticalAlignment="Top" Width="192" Padding="0,5,5,5" Height="47" VerticalContentAlignment="Center"/>
+
+        <Button Content="Belépés" HorizontalAlignment="Center" Margin="0,291,0,0" VerticalAlignment="Top" Width="194" Height="30px" FontSize="16px" Click="Button_Click" TabIndex="3"/>
     </Grid>
 </Window>
