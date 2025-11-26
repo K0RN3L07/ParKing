@@ -46,7 +46,7 @@ namespace AdminPage
                 {
                     // Egyéb hibák
                     //Console.WriteLine("Hiba: " + ex.Message);
-                    MessageBox.Show("Hibaa:\n\n" + ex.Message);
+                    MessageBox.Show("Hiba:\n\n" + ex.Message);
 
                 }
 
