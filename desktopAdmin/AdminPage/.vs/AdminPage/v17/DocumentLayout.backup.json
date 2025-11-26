@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\",
+  "WorkspaceRootPath": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\desktopadmin\\adminpage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\desktopadmin\\adminpage\\db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\tapolcs\u00E1nyi d\u00E1vid\\parking\\desktopadmin\\adminpage\\db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\desktopadmin\\adminpage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\desktopadmin\\adminpage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\desktopadmin\\adminpage\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\tapolcs\u00E1nyi d\u00E1vid\\parking\\desktopadmin\\adminpage\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\desktopadmin\\adminpage\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\tapolcs\u00E1nyi d\u00E1vid\\parking\\desktopadmin\\adminpage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\tapolcs\u00E1nyi d\u00E1vid\\parking\\desktopadmin\\adminpage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\tapolcs\u00E1nyi d\u00E1vid\\parking\\desktopadmin\\adminpage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\tapolcs\u00E1nyi d\u00E1vid\\parking\\desktopadmin\\adminpage\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -34,15 +34,15 @@
       "DocumentGroups": [
         {
           "DockedHeight": 126,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\App.xaml",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\App.xaml",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-26T06:34:46.952Z",
@@ -52,61 +52,58 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Login.xaml",
-              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\Login.xaml",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\Login.xaml",
               "RelativeDocumentMoniker": "Login.xaml",
-              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\Login.xaml",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\Login.xaml",
               "RelativeToolTip": "Login.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-24T09:41:31.945Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-24T09:41:31.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "Login.xaml.cs",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\Login.xaml.cs",
+              "RelativeToolTip": "Login.xaml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAowC4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T09:44:14.651Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Login.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\Login.xaml.cs",
-              "RelativeDocumentMoniker": "Login.xaml.cs",
-              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\Login.xaml.cs",
-              "RelativeToolTip": "Login.xaml.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAowC4AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T09:44:14.651Z",
-              "EditorCaption": ""
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-24T09:40:52.558Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-24T09:40:52.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\MainWindow.xaml.cs*",
-              "RelativeToolTip": "MainWindow.xaml.cs*",
-              "ViewState": "AgIAAMAAAAAAAAAAAIAywNIAAAAvAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAMwAAAAAAAAAAAD4v9IAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-24T09:43:48.245Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "db_config.cs",
-              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\db_config.cs",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\db_config.cs",
               "RelativeDocumentMoniker": "db_config.cs",
-              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\desktopAdmin\\AdminPage\\db_config.cs",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\desktopAdmin\\AdminPage\\db_config.cs",
               "RelativeToolTip": "db_config.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAIA+wD0AAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAEwD0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-26T08:41:11.443Z",
               "EditorCaption": ""

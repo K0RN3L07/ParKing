@@ -1,3 +1,5 @@
+const User = require('../models/mainModel');
+
 function getIndex(req, res) {
     res.render('index', "");
 }
@@ -10,7 +12,6 @@ function getRegister(req, res) {
     res.render('register', "");
 }
 
-const User = require('../models/mainModel');
 
 async function getUsers(req, res) {
     try {
@@ -22,10 +23,11 @@ async function getUsers(req, res) {
     }
 };
 
-async function addUser (req, res) {
+async function registerUser (req, res) {
     try{
         const {name, email, phone_num, password} = req.body;
-        const id = await User.addUser(name, email, phone_num, password);
+        const id = await User.registerUser(name, email, phone_num, password);
+        res.redirect('/login');
         res.status(200).json({message: "Felhasználó hozzáadva!", id});
     }
     catch (err){
@@ -34,4 +36,4 @@ async function addUser (req, res) {
 }
 
 
-module.exports = { getIndex, getLogin, getRegister, getUsers, addUser};
+module.exports = { getIndex, getLogin, getRegister, getUsers, registerUser};

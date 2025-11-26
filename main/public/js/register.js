@@ -32,6 +32,23 @@ email.addEventListener("focusout", () => {
     }
 })
 
+let phoneNum = document.getElementById("phoneNum");
+let phoneNumLabel = document.getElementById("phoneNumLabel");
+
+phoneNum.addEventListener("focusin", () => {
+    phoneNumLabel.style.transform = "translateY(-250%)";
+})
+
+phoneNum.addEventListener("focusout", () => {
+    if (phoneNum.value != "") {
+        phoneNumLabel.style.transform = "translateY(-250%)";
+    }
+
+    else {
+        phoneNumLabel.style.transform = "translateY(-110%)";
+    }
+})
+
 let password = document.getElementById("password");
 let passwordLabel = document.getElementById("passwordLabel");
 

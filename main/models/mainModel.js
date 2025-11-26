@@ -9,7 +9,7 @@ exports.getAllUsers = () => {
     });
 };
 
-exports.addUser = (name, email, phone_num, password) => {
+exports.registerUser = (name, email, phone_num, password) => {
     return new Promise((resolve, reject) => {
         db.query(
             "INSERT INTO users (name, email, phone_num, password) VALUES (?, ?, ?, ?)",
@@ -22,10 +22,10 @@ exports.addUser = (name, email, phone_num, password) => {
     })
 }
 
-exports.modifyUser = (name, email, phone_num, password) => {
-    return new Promise((resolve, reject) => {
-        db.query(
-            "UPDATE users SET name=?, email=?, phone_num=?, password=? WHERE 1"
-        )
-    })
-}
+// exports.modifyUser = (name, email, phone_num, password) => {
+//     return new Promise((resolve, reject) => {
+//         db.query(
+//             "UPDATE users SET name=?, email=?, phone_num=?, password=? WHERE 1"
+//         )
+//     })
+// }
