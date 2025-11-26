@@ -5,11 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminPage"
         mc:Ignorable="d"
-        Title="CRUD Műveletek" Height="450" Width="800">
-    <Grid>
-        <TabControl x:Name="tabControl" Height="414" Width="780">
+        Title="CRUD Műveletek" Height="543" Width="1100">
+    <Grid Margin="0,0,0,1">
+        <TabControl x:Name="tabControl" Margin="10,10,10,10">
             <TabItem Header="Users Tábla">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel VerticalAlignment="Top" Height="35" Orientation="Horizontal">
+                        <Label Content="Név:" Width="41" Height="30" FontSize="14"/>
+                        <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="Email:" Width="45" Height="30" FontSize="14"/>
+                        <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="Telefonszám:" Width="92" Height="30" FontSize="14"/>
+                        <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="Jelszó:" Width="49" Height="30" FontSize="14"/>
+                        <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Button Content="Hozzáad" Width="85" Margin="10,0,0,0"/>
+                        <Button Content="Módosítás" Width="85" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Bookings Tábla">
                 <Grid Background="#FFE5E5E5"/>
