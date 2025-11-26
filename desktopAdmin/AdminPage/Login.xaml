@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="ParKing - Admin Bejelentkezés" Height="450" Width="600" ResizeMode="NoResize">
     <Grid>
-        <Image HorizontalAlignment="Left" Height="83" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="83" Source="/full_logo-Picsart-AiImageEnhancer.png"/>
         <Label Content="ParKing - Admin Bejelentkezés" HorizontalAlignment="Center" Height="67" Margin="0,20,0,0" VerticalAlignment="Top" Width="584" FontSize="36" FontWeight="UltraBold" HorizontalContentAlignment="Center"/>
 
         <Label Content="Felhasználónév:" HorizontalAlignment="Center" Margin="0,118,0,0" VerticalAlignment="Top" Height="30px" Width="194" FontSize="16" FontWeight="SemiBold" Padding="0,5,5,5"/>
@@ -19,5 +18,7 @@
         <Label Name="lblError" Content="" HorizontalAlignment="Center" Margin="0,244,0,0" VerticalAlignment="Top" Width="192" Padding="0,5,5,5" Height="47" VerticalContentAlignment="Center"/>
 
         <Button Content="Belépés" HorizontalAlignment="Center" Margin="0,291,0,0" VerticalAlignment="Top" Width="194" Height="30px" FontSize="16px" Click="Button_Click" TabIndex="3"/>
+
+        <Image Margin="10,324,490,10" Source="/full_logo.png"/>
     </Grid>
 </Window>

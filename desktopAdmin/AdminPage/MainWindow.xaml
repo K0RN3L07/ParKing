@@ -5,28 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminPage"
         mc:Ignorable="d"
-        Title="CRUD Műveletek" Height="543" Width="1100">
+        Title="CRUD Műveletek" Height="606" Width="1281">
     <Grid Margin="0,0,0,1">
+
         <TabControl x:Name="tabControl" Margin="10,10,10,10">
+            
             <TabItem Header="Users Tábla">
                 <Grid Background="#FFE5E5E5">
-                    <StackPanel VerticalAlignment="Top" Height="35" Orientation="Horizontal">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" VerticalAlignment="Top" Height="35" Orientation="Horizontal">
+                        <Label Content="Id:" Width="27" Height="30" FontSize="14"/>
+                        <TextBox x:Name="tbId" IsReadOnly="True" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        
                         <Label Content="Név:" Width="41" Height="30" FontSize="14"/>
-                        <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="tbName" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        
                         <Label Content="Email:" Width="45" Height="30" FontSize="14"/>
-                        <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="tbEmail" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        
                         <Label Content="Telefonszám:" Width="92" Height="30" FontSize="14"/>
-                        <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="tbPhoneNum" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        
                         <Label Content="Jelszó:" Width="49" Height="30" FontSize="14"/>
-                        <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
-                        <Button Content="Hozzáad" Width="85" Margin="10,0,0,0"/>
-                        <Button Content="Módosítás" Width="85" Margin="10,0,0,0"/>
+                        <TextBox x:Name="tbPassword" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        
+                        <Label Content="Regisztráció ideje:" Width="49" Height="30" FontSize="14"/>
+                        <TextBox x:Name="tbRegistered" IsReadOnly="True"  TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        
+                        <Button Content="Hozzáad" Click="Add_Click" Width="85" Margin="10,0,0,0"/>
+                        <Button Content="Módosítás" Click="Update_Click" Width="85" Margin="10,0,0,0"/>
                     </StackPanel>
+                    
+                    <DataGrid x:Name="userTable" 
+                              Grid.Row="1"
+                              AutoGenerateColumns="True"
+                              SelectionChanged="UsersGrid_SelectionChanged"
+                    />
+                    
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Button Content="Úratöltés" Click="LoadData_Click" Width="75" Margin="10,0,0,0"/>
+                        <Button Content="Töröl" Click="Delete_Click" Width="75" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+
                 </Grid>
             </TabItem>
+            
             <TabItem Header="Bookings Tábla">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
+            
         </TabControl>
 
     </Grid>

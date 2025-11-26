@@ -9,12 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="full_logo-Picsart-AiImageEnhancer.png" />
     <None Remove="full_logo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="img\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,14 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="full_logo-Picsart-AiImageEnhancer.png" />
     <Resource Include="full_logo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="img\full_logo.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
