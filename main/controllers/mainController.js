@@ -10,7 +10,7 @@ function getRegister(req, res) {
     res.render('register', "");
 }
 
-const User = require('../models/mainModel')
+const User = require('../models/mainModel');
 
 async function getUsers(req, res) {
     try {
@@ -20,7 +20,18 @@ async function getUsers(req, res) {
     catch (err) {
         res.status(500).json({ error: err });
     }
+};
+
+async function addUser (req, res) {
+    try{
+        const {name, email, phone_num, password} = req.body;
+        const id = await User.addUser(name, email, phone_num, password);
+        res.status(200).json({message: "Felhasználó hozzáadva!", id});
+    }
+    catch (err){
+        res.status(500).json({error: err});
+    }
 }
 
 
-module.exports = { getIndex, getLogin, getRegister, getUsers };
+module.exports = { getIndex, getLogin, getRegister, getUsers, addUser};

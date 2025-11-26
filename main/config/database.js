@@ -12,7 +12,7 @@ db.connect(err => {
     console.error("Hiba a csatlakozással:", err);
     return;
   }
-  console.log("Sikeres csatlakozás!");
+  console.log("Sikeres csatlakozás a MySql2-höz!");
 });
 
 module.exports = db;
