@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
     color: white;
 }
 
@@ -37,7 +38,7 @@ body {
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.356);
     border-radius: 25px;
-    font-size: 16px;
+    font-size: 1em;
     padding: 30px;
 }
 
