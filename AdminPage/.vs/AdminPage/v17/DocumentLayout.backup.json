@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 126,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -73,25 +73,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml*",
-              "RelativeToolTip": "MainWindow.xaml*",
+              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-24T09:40:52.558Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAIAwwNIAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAA4BAAAAAAAAAAAYwEEBAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-24T09:43:48.245Z",
               "EditorCaption": ""

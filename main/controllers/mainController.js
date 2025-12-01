@@ -1,7 +1,7 @@
 const User = require('../models/mainModel');
 
 function getIndex(req, res) {
-    res.render('index', "");
+    res.render('mainpage', "");
 }
 
 function getLogin(req, res) {
