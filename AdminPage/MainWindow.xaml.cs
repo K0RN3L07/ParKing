@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static AdminPage.db_config;
+using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
 
 namespace AdminPage
 {
@@ -72,6 +73,13 @@ namespace AdminPage
             if (bookingsTable.ItemsSource != null) { return true; } else { return false; }
         }
 
+        private bool LoadParkingSpacesData()
+        {
+            parkingTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM parking_spaces").DefaultView;
+
+            if (parkingTable.ItemsSource != null) { return true; } else { return false; }
+        }
+
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(tbName.Text) && !string.IsNullOrWhiteSpace(tbEmail.Text) && !string.IsNullOrWhiteSpace(tbPhoneNum.Text) && !string.IsNullOrWhiteSpace(tbPassword.Text))
@@ -95,6 +103,22 @@ namespace AdminPage
                 DatabaseHelper.ExecuteQuery(query);
                 LoadBookingsData();
                 ClearBookingsFields();
+            }
+            else
+            {
+                MessageBox.Show("Kérlek, töltsd ki az összes mezőt!");
+            }
+        }
+
+        private void AddParking_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(tbSpotNumber.Text) && !string.IsNullOrWhiteSpace(tbLocation.Text) && !string.IsNullOrWhiteSpace(tbIsOccupied.Text))
+            {
+                // Adjust column names if your DB schema differs
+                string query = $"INSERT INTO parking_spaces (spot_number, location, is_occupied) VALUES ('{tbSpotNumber.Text}', '{tbLocation.Text}', '{tbIsOccupied.Text}')";
+                DatabaseHelper.ExecuteQuery(query);
+                LoadParkingSpacesData();
+                ClearParkingFields();
             }
             else
             {
@@ -132,6 +156,21 @@ namespace AdminPage
             }
         }
 
+        private void DeleteParking_Click(object sender, RoutedEventArgs e)
+        {
+            if (parkingTable.SelectedItem is DataRowView row)
+            {
+                int id = Convert.ToInt32(row["id"]);
+                string query = $"DELETE FROM parking_spaces WHERE id = {id}";
+                DatabaseHelper.ExecuteQuery(query);
+                LoadParkingSpacesData();
+            }
+            else
+            {
+                MessageBox.Show("Válassz ki egy sort a törléshez!");
+            }
+        }
+
         private void UsersGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (userTable.SelectedItem is DataRowView row)
@@ -155,6 +194,19 @@ namespace AdminPage
                 dpStartTime.Text = row["start_time"].ToString();
                 dpEndTime.Text = row["end_time"].ToString();
                 tbPlateNum.Text = row["plate_num"].ToString();
+            }
+        }
+
+        private void ParkingGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (parkingTable.SelectedItem is DataRowView row)
+            {
+                tbParkingId.Text = row["id"].ToString();
+                // use safe column names - adjust if your schema differs
+                if (row.Row.Table.Columns.Contains("spot_number")) tbSpotNumber.Text = row["spot_number"].ToString();
+                if (row.Row.Table.Columns.Contains("location")) tbLocation.Text = row["location"].ToString();
+                if (row.Row.Table.Columns.Contains("is_occupied")) tbIsOccupied.Text = row["is_occupied"].ToString();
+                if (row.Row.Table.Columns.Contains("created_at")) tbParkingCreated.Text = row["created_at"].ToString();
             }
         }
 
@@ -214,6 +266,32 @@ namespace AdminPage
             MessageBox.Show("Sikeres módosítás!");
         }
 
+        private void UpdateParking_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbParkingId.Text))
+            {
+                MessageBox.Show("Válassz ki egy sort a módosításhoz!");
+                return;
+            }
+
+            int id = int.Parse(tbParkingId.Text);
+            string spotNumber = tbSpotNumber.Text;
+            string location = tbLocation.Text;
+            string isOccupied = tbIsOccupied.Text;
+
+            if (string.IsNullOrWhiteSpace(spotNumber) || string.IsNullOrWhiteSpace(location) || string.IsNullOrWhiteSpace(isOccupied))
+            {
+                MessageBox.Show("Egyik mező sem lehet üres!");
+                return;
+            }
+
+            string query = $"UPDATE parking_spaces SET spot_number = '{spotNumber}', location = '{location}', is_occupied = '{isOccupied}' WHERE id = {id}";
+            DatabaseHelper.ExecuteQuery(query);
+            LoadParkingSpacesData();
+            ClearParkingFields();
+            MessageBox.Show("Sikeres módosítás!");
+        }
+
         private void ClearUsersFields()
         {
             tbUsersId.Clear();
@@ -232,6 +310,16 @@ namespace AdminPage
             dpStartTime.Text = "";
             dpEndTime.Text = "";
             tbPlateNum.Clear();
+        }
+
+        private void ClearParkingFields()
+        {
+            tbParkingId.Clear();
+            tbFloorNum.Clear();
+            tbParkingNumber.Clear();
+            //cbType.Clear();
+            tbPricePerHour.Clear();
+            //cbIsAvailable.;
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
