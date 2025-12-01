@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "WorkspaceRootPath": "C:\\Users\\Technikus\\Documents\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\AdminPage\\",
   "Documents": [
     {
@@ -27,12 +28,17 @@
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
+=======
+  "WorkspaceRootPath": "D:\\Munka\\Tapolcs\u00E1nyi D\u00E1vid\\ParKing\\AdminPage\\",
+  "Documents": [],
+>>>>>>> Stashed changes
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
+<<<<<<< Updated upstream
           "DockedHeight": 126,
           "SelectedChildIndex": 4,
           "Children": [
@@ -105,6 +111,14 @@
               "ViewState": "AgIAACMAAAAAAAAAAAAEwDwAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-26T08:41:11.443Z"
+=======
+          "DockedHeight": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+>>>>>>> Stashed changes
             }
           ]
         }

@@ -16,23 +16,25 @@ function getRegister(req, res) {
 async function getUsers(req, res) {
     try {
         const users = await User.getAllUsers();
-        res.status(200).json(users);
+        return res.status(200).json(users);
     }
     catch (err) {
-        res.status(500).json({ error: err });
+        return res.status(500).json({ error: err });
     }
 };
 
 async function registerUser (req, res) {
-    try{
-        const {name, email, phone_num, password} = req.body;
-        const id = await User.registerUser(name, email, phone_num, password);
+    const {name, email, phone_num, password} = req.body;
+    const id = await User.registerUser(name, email, phone_num, password);
+
+    if (!name || !email || !phone_num || !password){
+        return res.status(400).json({msg: 'error'})    
+    }
+    else{
         res.redirect('/login');
-        res.status(200).json({message: "Felhasználó hozzáadva!", id});
+        //return res.status(200).json({message: "Felhasználó hozzáadva!", id});
     }
-    catch (err){
-        res.status(500).json({error: err});
-    }
+
 }
 
 

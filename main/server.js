@@ -3,9 +3,11 @@ const express = require('express');
 const app = express();
 const mainRoute = require('./routes/mainRoute');
 const path = require('path');
+const cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 app.use(express.static(__dirname + '/public'));
 
