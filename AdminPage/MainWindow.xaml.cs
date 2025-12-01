@@ -27,6 +27,7 @@ namespace AdminPage
                 InitializeComponent();
                 LoadUsersData();
                 LoadBookingsData();
+                LoadParkingSpacesData();
             }
             else
             {
@@ -57,6 +58,7 @@ namespace AdminPage
         {
             LoadUsersData();
             LoadBookingsData();
+            LoadParkingSpacesData();
         }
 
         private bool LoadUsersData()
@@ -112,10 +114,11 @@ namespace AdminPage
 
         private void AddParking_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(tbSpotNumber.Text) && !string.IsNullOrWhiteSpace(tbLocation.Text) && !string.IsNullOrWhiteSpace(tbIsOccupied.Text))
+            if (!string.IsNullOrWhiteSpace(tbFloorNum.Text) && !string.IsNullOrWhiteSpace(tbParkingNumber.Text) && !string.IsNullOrWhiteSpace(cbType.Text) && !string.IsNullOrWhiteSpace(tbPricePerHour.Text))
             {
                 // Adjust column names if your DB schema differs
-                string query = $"INSERT INTO parking_spaces (spot_number, location, is_occupied) VALUES ('{tbSpotNumber.Text}', '{tbLocation.Text}', '{tbIsOccupied.Text}')";
+                string isAvaliable = cbIsAvailable.IsChecked == true ? "1" : "0";
+                string query = $"INSERT INTO parking_spaces (floor_num, parking_space_num, type, price_per_hour, is_available) VALUES ('{tbFloorNum.Text}', '{tbParkingNumber.Text}', '{cbType.Text}', '{tbPricePerHour.Text}', '{isAvaliable}')";
                 DatabaseHelper.ExecuteQuery(query);
                 LoadParkingSpacesData();
                 ClearParkingFields();
@@ -203,10 +206,11 @@ namespace AdminPage
             {
                 tbParkingId.Text = row["id"].ToString();
                 // use safe column names - adjust if your schema differs
-                if (row.Row.Table.Columns.Contains("spot_number")) tbSpotNumber.Text = row["spot_number"].ToString();
-                if (row.Row.Table.Columns.Contains("location")) tbLocation.Text = row["location"].ToString();
-                if (row.Row.Table.Columns.Contains("is_occupied")) tbIsOccupied.Text = row["is_occupied"].ToString();
-                if (row.Row.Table.Columns.Contains("created_at")) tbParkingCreated.Text = row["created_at"].ToString();
+                if (row.Row.Table.Columns.Contains("floor_num")) tbFloorNum.Text = row["floor_num"].ToString();
+                if (row.Row.Table.Columns.Contains("parking_space_num")) tbParkingNumber.Text = row["parking_space_num"].ToString();
+                if (row.Row.Table.Columns.Contains("type")) cbType.Text = row["type"].ToString();
+                if (row.Row.Table.Columns.Contains("price_per_hour")) tbPricePerHour.Text = row["price_per_hour"].ToString();
+                if (row.Row.Table.Columns.Contains("is_available")) cbIsAvailable.IsChecked = Convert.ToBoolean(row["is_available"].ToString());
             }
         }
 
@@ -274,18 +278,27 @@ namespace AdminPage
                 return;
             }
 
-            int id = int.Parse(tbParkingId.Text);
-            string spotNumber = tbSpotNumber.Text;
-            string location = tbLocation.Text;
-            string isOccupied = tbIsOccupied.Text;
+            if (cbType.SelectedItem is not ComboBoxItem comboBoxItem)
+            {
+                MessageBox.Show("Válassz ki egy típust!");
+                return;
+            }
 
-            if (string.IsNullOrWhiteSpace(spotNumber) || string.IsNullOrWhiteSpace(location) || string.IsNullOrWhiteSpace(isOccupied))
+
+            int id = int.Parse(tbParkingId.Text);
+            string floorNum = tbFloorNum.Text;
+            string parkingNum = tbParkingNumber.Text;
+            string type = comboBoxItem.Content.ToString() ?? string.Empty;
+            string pricePerHour = tbPricePerHour.Text;
+            string isAvaliable = cbIsAvailable.IsChecked == true ? "1" : "0";
+
+            if (string.IsNullOrWhiteSpace(floorNum) || string.IsNullOrWhiteSpace(parkingNum) || string.IsNullOrWhiteSpace(type) || string.IsNullOrWhiteSpace(pricePerHour))
             {
                 MessageBox.Show("Egyik mező sem lehet üres!");
                 return;
             }
 
-            string query = $"UPDATE parking_spaces SET spot_number = '{spotNumber}', location = '{location}', is_occupied = '{isOccupied}' WHERE id = {id}";
+            string query = $"UPDATE parking_spaces SET floor_num = '{floorNum}', parking_space_num = '{parkingNum}', type = '{type}', is_available = '{isAvaliable}' WHERE id = {id}";
             DatabaseHelper.ExecuteQuery(query);
             LoadParkingSpacesData();
             ClearParkingFields();
@@ -317,15 +330,16 @@ namespace AdminPage
             tbParkingId.Clear();
             tbFloorNum.Clear();
             tbParkingNumber.Clear();
-            //cbType.Clear();
+            cbType.SelectedValue = "";
             tbPricePerHour.Clear();
-            //cbIsAvailable.;
+            cbIsAvailable.IsChecked = false;
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             ClearUsersFields();
             ClearBookingsFields();
+            ClearParkingFields();
         }
     }
 }

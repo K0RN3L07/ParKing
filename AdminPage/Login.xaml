@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminPage"
         mc:Ignorable="d"
-        Title="ParKing - Admin Bejelentkezés" Height="450" Width="600" ResizeMode="NoResize">
+        Title="ParKing - Admin Bejelentkezés" Height="450" Width="600" ResizeMode="NoResize" Icon="/logo.ico">
     <Grid>
         <Label Content="ParKing - Admin Bejelentkezés" HorizontalAlignment="Center" Height="67" Margin="0,20,0,0" VerticalAlignment="Top" Width="584" FontSize="36" FontWeight="UltraBold" HorizontalContentAlignment="Center"/>
 

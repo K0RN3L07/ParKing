@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminPage"
         mc:Ignorable="d"
-        Title="CRUD Műveletek" Height="606" Width="1478">
+        Title="CRUD Műveletek" Height="606" Width="1478" Icon="/logo.ico">
     <Grid Margin="0,0,0,1">
 
         <TabControl x:Name="tabControl" Margin="10,10,10,10">
@@ -124,24 +124,21 @@
                         <TextBox x:Name="tbParkingNumber" TextWrapping="Wrap" Text="" Width="150" Height="30" VerticalContentAlignment="Center"/>
 
                         <Label Content="Típus:" Width="46" Height="30" FontSize="14"/>
-                        <ComboBox Width="120" x:Name="cbType">
+                        <ComboBox Width="120" x:Name="cbType" VerticalContentAlignment="Center"              >
                             <ComboBoxItem Content="Normál"/>
                             <ComboBoxItem Content="Elektromos"/>
                             <ComboBoxItem Content="Mozgássérült"/>
                         </ComboBox>
 
                         <Label Content="Óránkénti ár:" Width="89" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbPricePerHour" IsEnabled="False" TextWrapping="Wrap" Text="" Width="140" Height="30" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="tbPricePerHour" TextWrapping="Wrap" Text="" Width="140" Height="30" VerticalContentAlignment="Center"/>
 
                         <Label Content="Elérhető-e:" Width="77" Height="30" FontSize="14"/>
-                        <CheckBox x:Name="cbIsAvailable" Width="20" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                        <CheckBox x:Name="cbIsAvailable" IsChecked="True" Width="20" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
 
                         <Button Content="X" Width="35" Margin="10,0,0,0" Click="ClearButton_Click"/>
                         <Button Content="Hozzáad" Click="AddParking_Click" Width="85" Margin="10,0,0,0"/>
                         <Button Content="Módosítás" Click="UpdateParking_Click" Width="85" Margin="10,0,0,0"/>
-                        <ComboBox Width="120" >
-                            <ComboBoxItem/>
-                        </ComboBox>
                     </StackPanel>
 
                     <DataGrid x:Name="parkingTable"
