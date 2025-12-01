@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="hu">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="icon" href="/img/img_logo.png">
-    <script src="/js/main.js" defer></script>
-    <title>ParKing | Főoldal</title>
-</head>
-
-<body class="darkmode">
+<link rel="stylesheet" href="/css/main.css">
+<script src="/js/main.js" defer></script>
+<%- include('layout', {body: '' }) %>
 
     <!-- #region Dark Mode Toggling Button -->
     <button id="dark-mode-switch" onclick="toggleDarkMode()">
@@ -80,9 +70,6 @@
 
         </div>
     </nav>
-
-    <!-- #endregion -->
-
     <!-- #region Main Container -->
     <div class="main-container">
 
@@ -94,8 +81,8 @@
                 <h2>A foglalások megkezdéséhez jelentkezz be! Ha még nincs fiókod regisztálj!</h2>
 
                 <div class="get-started">
-                    <a href="/login" target="_blank"><button id="primary-button">Bejelentkezés</button></a>
-                    <a href="/register" target="_blank"><button id="secondary-color">Regisztráció</button></a>
+                    <a href="/login"><button id="primary-button">Bejelentkezés</button></a>
+                    <a href="/register"><button id="secondary-color">Regisztráció</button></a>
                 </div>
             </div>
         </div>
@@ -103,7 +90,3 @@
 
     </div>
     <!-- #endregion -->
-
-</body>
-
-</html>
