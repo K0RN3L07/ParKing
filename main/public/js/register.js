@@ -60,7 +60,7 @@ password.addEventListener("focusout", () => {
     if (password.value != "") {
         passwordLabel.style.transform = "translateY(-250%)";
     }
-    
+
     else {
         passwordLabel.style.transform = "translateY(-110%)";
     }
@@ -77,8 +77,39 @@ passwordAgain.addEventListener("focusout", () => {
     if (passwordAgain.value != "") {
         passwordAgainLabel.style.transform = "translateY(-250%)";
     }
-    
+
     else {
         passwordAgainLabel.style.transform = "translateY(-110%)";
     }
 })
+
+
+let passwordError = document.getElementById("passwordError");
+let registerBtn = document.getElementById("registerBtn");
+
+function checkPasswords() {
+    if (passwordAgain.value === "") {
+        pwError.textContent = " ";
+        registerBtn.disabled = true;
+        registerBtn.style.opacity = "0.5";
+        return;
+    }
+
+    if (password.value !== passwordAgain.value) {
+        pwError.style.color = "red";
+        pwError.textContent = "A két jelszó nem egyezik meg!";
+        registerBtn.disabled = true;
+        registerBtn.style.opacity = "0.5";
+    }
+    else {
+        pwError.textContent = " ";
+        registerBtn.style.opacity = "1";
+        registerBtn.disabled = false;
+    }
+}
+
+registerBtn.disabled = true;
+registerBtn.style.opacity = "0.5";
+
+password.addEventListener("input", checkPasswords);
+passwordAgain.addEventListener("input", checkPasswords);

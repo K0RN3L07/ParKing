@@ -83,6 +83,12 @@ body {
     right: 30px;
 }
 
+.container #pwError {
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
 .container button {
     width: 100%;
     border: none;
@@ -124,7 +130,7 @@ body {
 
 /* #region Responsivity */
 @media (max-width:400px) {
-    
+
     .container {
         height: 100vh;
         width: 100vw;
