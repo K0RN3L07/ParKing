@@ -1,11 +1,53 @@
 /* #region Setting Basic Properties */
+
+@font-face {
+    font-family: "Lato Regular";
+    src: url(/fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family: "LSB";
+    src: url(/fonts/LeagueSpartan-Bold.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
-    color: white;
+    font-family: Lato Regular;
+    font-size: 1rem;
+    color: var(--primary-text-color);
+}
+
+/* #endregion */
+
+/* #region Defining Colours */
+
+:root {
+    --base-color: #e7ecefff;
+    --secondary-base-color: #cfd8df;
+    --primary-text-color: #111111;
+    --secondary-text-color: #333333;
+    --accent-text-color: #f0f0f0;
+    --primary-color: #274c77ff;
+    --secondary-color: #0870bd;
+    --container-shadow: 0 8px 24px rgba(39, 76, 119, 0.12);
+
+    /* antiflash-white */
+    /* inmn-blue */
+    /* air-superiority-blue */
+    /* --battleship-gray: #8b8c89ff;  */
+    /* --uranian-blue: #a3cef1ff; */
+}
+
+.darkmode {
+    --base-color: #070b1d;
+    --secondary-base-color: #0d132e;
+    --primary-text-color: #ffffff;
+    --secondary-text-color: #dddddd;
+    --primary-color: #274c77ff;
+    --secondary-color: #0870bd;
+    --container-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
 }
 
 /* #endregion */
@@ -16,11 +58,38 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/bg.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: var(--base-color);
+    background: url(../img/caleb-rogers-SGLh5-clL4E-unsplash.jpg);
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(5px) brightness(0.8);
+}
+
+/* #endregion */
+
+/* #region Dark Mode Toggling Button */
+
+#dark-mode-switch {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border: none;
+    bottom: 10px;
+    left: 10px;
+    background-color: var(--secondary-base-color);
+    z-index: 5;
+    box-shadow: var(--container-shadow);
+    cursor: pointer;
+}
+
+#dark-mode-switch svg {
+    fill: var(--primary-text-color);
 }
 
 /* #endregion */
@@ -34,30 +103,33 @@ body {
     width: 400px;
     height: fit-content;
     gap: min(30px);
-    border: 1px solid white;
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.356);
+    background-color: var(--secondary-base-color);
+    /* background-color: #cfd8df67; */
+    box-shadow: var(--container-shadow);
+    padding: 20px;
+    border: var(--primary-color) 4px solid;
     border-radius: 25px;
-    font-size: 1em;
-    padding: 30px;
+    backdrop-filter: blur(10px);
 }
 
 .container h2 {
     font-size: 2em;
     margin-bottom: 20px;
+    font-family: LSB;
 }
 
 .container .row {
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .container .row .input-field {
     display: flex;
     flex-direction: column;
     border: none;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid var(--primary-text-color);
     height: 30px;
 }
 
@@ -76,41 +148,41 @@ body {
     transform: translateY(-110%);
     transition: .3s;
     width: fit-content;
+    cursor: text;
 }
 
 .container .row svg {
     position: absolute;
-    right: 30px;
+    right: 0px;
+    fill: var(--primary-text-color);
 }
 
-.container #pwError {
-    font-size: 14px;
-    margin-top: 5px;
-    display: block;
+.container #errorMessage {
+    font-size: 0.8em;
+    display: none;
+    color: red;
 }
 
 .container button {
     width: 100%;
     border: none;
     border-radius: 30px;
-    color: rgb(0, 0, 0);
+    background-color: var(--primary-color);
+    color: var(--accent-text-color);
     font-weight: bolder;
     padding: 15px 0;
     font-size: 1.1em;
     cursor: pointer;
     transition: .2s;
+    font-family: LSB;
 }
 
 .container button:hover {
     scale: 1.03;
 }
 
-.container .hint {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    width: 100%;
+.container .forget {
+    align-self: flex-start;
 }
 
 .container .policies {
