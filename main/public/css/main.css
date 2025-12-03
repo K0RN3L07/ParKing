@@ -69,7 +69,6 @@ body {
     left: 10px;
     background-color: var(--secondary-base-color);
     z-index: 5;
-    s
 }
 
 #dark-mode-switch svg {
