@@ -1,9 +1,21 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
+const session = require('express-session');
+const cors = require('cors');
 const mainRoute = require('./routes/mainRoute');
 const path = require('path');
-const cors = require('cors');
+
+const app = express();
+
+app.use(
+    session({
+        secret: 'supersecret123',   // use env variable in production
+        resave: false,
+        saveUninitialized: false,
+        cookie: { maxAge: 1000 * 60 * 60 } // 1 hour
+    })
+);
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

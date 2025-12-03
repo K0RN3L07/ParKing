@@ -20,12 +20,13 @@ exports.registerUser = (name, email, phone_num, password) => {
             }
         )
     })
-}
+};
 
-// exports.modifyUser = (name, email, phone_num, password) => {
-//     return new Promise((resolve, reject) => {
-//         db.query(
-//             "UPDATE users SET name=?, email=?, phone_num=?, password=? WHERE 1"
-//         )
-//     })
-// }
+exports.getUserByEmail = (email) => {
+    return new Promise((resolve, reject) => {
+        db.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
+            if (err) return reject(err);
+            resolve(results[0]); // returns user or undefined
+        });
+    });
+}
