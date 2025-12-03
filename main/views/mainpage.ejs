@@ -24,25 +24,30 @@
             <a href="#">Foglalás</a>
         </div>
 
-        <div class="profile-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
+        <div class="profile-container">
+
+            <% if (user) {%>
+                <h2><%= user.name %></h2>
+            <%}%>
+            
+            <div class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
                 stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="32" cy="20" r="12" />
                 <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
             </svg>
-
+            
             <div class="profile-icon-dropdown-container" tabindex="0">
                 <a href="">Fiókom szerkesztése</a>
-                <a href="">Foglalásaim</a>
-                <a>Sötét mód</a>
-                <% if (user) { %>
-                    <h2>Welcome, <%= user.name %>!</h2>
-                    <a href="/logout">Kijelentkezés</a>
-                    <% } else { %>
-                        <a href="/login">Bejelentkezés</a>
-                        <% } %>
+            <a href="">Foglalásaim</a>
+            <a>Sötét mód</a>
+            <% if (user) { %>
+                <a href="/logout">Kijelentkezés</a>
+            <% } else { %>
+                <a href="/login">Bejelentkezés</a>
+                <% } %>
+                </div>
             </div>
-
         </div>
 
         <div class="hamburger-menu" onclick="toggleHamburgerMenu()">

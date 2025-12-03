@@ -151,6 +151,22 @@ nav {
     transition: .3s;
 }
 
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.profile-container h2{
+    font-weight: bolder;
+    color: var(--primary-text-color);
+    transition: .3s;
+}
+
+
+
 .profile-icon {
     position: relative;
     background-color: var(--secondary-color);
@@ -178,6 +194,7 @@ nav {
     transform: translateY(-10px);
     scale: 0.95;
     opacity: 0;
+    pointer-events: none;
 }
 
 .open {
@@ -185,6 +202,7 @@ nav {
     opacity: 1;
     scale: 1;
     z-index: 3;
+    pointer-events: all;
 }
 
 .profile-icon-dropdown-container a {
