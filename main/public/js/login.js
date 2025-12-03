@@ -30,4 +30,4 @@ password.addEventListener("focusout", () => {
     else {
         passwordLabel.style.transform = "translateY(-110%)";
     }
-})
+});

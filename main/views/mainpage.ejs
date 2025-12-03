@@ -35,7 +35,12 @@
                 <a href="">Fiókom szerkesztése</a>
                 <a href="">Foglalásaim</a>
                 <a>Sötét mód</a>
-                <a href="">Kijelentkezés</a>
+                <% if (user) { %>
+                    <h2>Welcome, <%= user.name %>!</h2>
+                    <a href="/logout">Kijelentkezés</a>
+                    <% } else { %>
+                        <a href="/login">Bejelentkezés</a>
+                        <% } %>
             </div>
 
         </div>

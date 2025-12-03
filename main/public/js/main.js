@@ -1,4 +1,4 @@
-//#region Dark Mode Toggle
+// #region Dark Mode Toggle
 
 function toggleDarkMode() {
     let button = document.getElementById("dark-mode-switch");
