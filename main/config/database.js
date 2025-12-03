@@ -9,10 +9,10 @@ const db = mysql.createConnection({
 
 db.connect(err => {
   if (err) {
-    console.error("Hiba a csatlakozással:", err);
+    console.error("Hiba az adatbázishoz való csatlakozással:", err);
     return;
   }
-  console.log("Sikeres csatlakozás a MySql2-höz!");
+  console.log("Sikeres csatlakozás az adatbázishoz!");
 });
 
 module.exports = db;
