@@ -3,92 +3,101 @@
 
 <%- include('layout', {body: '' }) %>
 
-<!-- #region Main Container -->
-<form class="container" action="/users/register" method="POST">
-    <h2>Regisztráció</h2>
-
-    <!-- #region Name Field -->
-    <div class="row">
-        <div class="input-field">
-            <input type="text" id="name" name="name">
-            <label for="name" id="nameLabel">Név</label>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+    <!-- #region Dark Mode Toggling Button -->
+    <button id="dark-mode-switch" onclick="toggleDarkMode()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#1f1f1f">
             <path
-                d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z" />
+                d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z" />
         </svg>
-    </div>
+    </button>
     <!-- #endregion -->
 
-    <!-- #region Email Field -->
-    <div class="row">
-        <div class="input-field">
-            <input type="email" id="email" name="email">
-            <label for="email" id="emailLabel">Email cím</label>
+    <!-- #region Main Container -->
+    <form class="container" action="/users/register" method="POST">
+        <h2>Regisztráció</h2>
+
+        <!-- #region Name Field -->
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="name" name="name">
+                <label for="name" id="nameLabel">Név</label>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                <path
+                    d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z" />
+            </svg>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-            <path
-                d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
-        </svg>
-    </div>
-    <!-- #endregion -->
+        <!-- #endregion -->
 
-    <!-- #region Phone Number Field -->
-    <div class="row">
-        <div class="input-field">
-            <input type="tel" id="phoneNum" name="phone_num">
-            <label for="phoneNum" id="phoneNumLabel">Telefonszám</label>
+        <!-- #region Email Field -->
+        <div class="row">
+            <div class="input-field">
+                <input type="email" id="email" name="email">
+                <label for="email" id="emailLabel">Email cím</label>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                <path
+                    d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
+            </svg>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-            <path
-                d="M162-120q-18 0-30-12t-12-30v-162q0-13 9-23.5t23-14.5l138-28q14-2 28.5 2.5T342-374l94 94q38-22 72-48.5t65-57.5q33-32 60.5-66.5T681-524l-97-98q-8-8-11-19t-1-27l26-140q2-13 13-22.5t25-9.5h162q18 0 30 12t12 30q0 125-54.5 247T631-329Q531-229 409-174.5T162-120Zm556-480q17-39 26-79t14-81h-88l-18 94 66 66ZM360-244l-66-66-94 20v88q41-3 81-14t79-28Zm358-356ZM360-244Z" />
-        </svg>
-    </div>
-    <!-- #endregion -->
+        <!-- #endregion -->
 
-    <!-- #region Password Field -->
-    <div class="row">
-        <div class="input-field">
-            <input type="password" id="password" name="password">
-            <label for="password" id="passwordLabel">Jelszó</label>
+        <!-- #region Phone Number Field -->
+        <div class="row">
+            <div class="input-field">
+                <input type="tel" id="phoneNum" name="phone_num">
+                <label for="phoneNum" id="phoneNumLabel">Telefonszám</label>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                <path
+                    d="M162-120q-18 0-30-12t-12-30v-162q0-13 9-23.5t23-14.5l138-28q14-2 28.5 2.5T342-374l94 94q38-22 72-48.5t65-57.5q33-32 60.5-66.5T681-524l-97-98q-8-8-11-19t-1-27l26-140q2-13 13-22.5t25-9.5h162q18 0 30 12t12 30q0 125-54.5 247T631-329Q531-229 409-174.5T162-120Zm556-480q17-39 26-79t14-81h-88l-18 94 66 66ZM360-244l-66-66-94 20v88q41-3 81-14t79-28Zm358-356ZM360-244Z" />
+            </svg>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-            <path
-                d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
-        </svg>
-    </div>
-    <!-- #endregion -->
+        <!-- #endregion -->
 
-    <!-- #region Password Again Field -->
-    <div class="row">
-        <div class="input-field">
-            <input type="password" id="passwordAgain">
-            <label for="passwordAgain" id="passwordAgainLabel">Jelszó újra</label>
+        <!-- #region Password Field -->
+        <div class="row">
+            <div class="input-field">
+                <input type="password" id="password" name="password">
+                <label for="password" id="passwordLabel">Jelszó</label>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                <path
+                    d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
+            </svg>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-            <path
-                d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
-        </svg>
-    </div>
-    <span id="pwError"></span>
+        <!-- #endregion -->
+
+        <!-- #region Password Again Field -->
+        <div class="row">
+            <div class="input-field">
+                <input type="password" id="passwordAgain">
+                <label for="passwordAgain" id="passwordAgainLabel">Jelszó újra</label>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                <path
+                    d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
+            </svg>
+        </div>
+        <span id="pwError"></span>
+        <!-- #endregion -->
+
+        <!-- #region Policies Field -->
+        <div class="policies">
+            <input type="checkbox" id="aszf">
+            <label for="aszf">Elfogadom az <a href="/aszf.html" target="_blank">ÁSZF</a>-et<br> és az <a
+                    href="/adatkezelesi.html" target="_blank">Adatkezelési Szabályzatot</a></label>
+        </div>
+        <!-- #endregion -->
+
+        <!-- Register Button -->
+        <button id="registerBtn" type="submit">Regisztráció</button>
+
+        <!-- Login link -->
+        <span class="no-account">Van már fiókja? <a href="/login">Jelentkezzen be!</a></span>
+
+        <!-- Mainpage link -->
+        <span class="back-to-homepage"><a href="/">Vissza a főoldalra</a></span>
+
+    </form>
     <!-- #endregion -->
-
-    <!-- #region Policies Field -->
-    <div class="policies">
-        <input type="checkbox" id="aszf">
-        <label for="aszf">Elfogadom az <a href="/aszf.html" target="_blank">ÁSZF</a>-et<br> és az <a
-                href="/adatkezelesi.html" target="_blank">Adatkezelési Szabályzatot</a></label>
-    </div>
-    <!-- #endregion -->
-
-    <!-- Register Button -->
-    <button id="registerBtn" type="submit">Regisztráció</button>
-
-    <!-- Login link -->
-    <span class="no-account">Van már fiókja? <a href="/login">Jelentkezzen be!</a></span>
-
-    <!-- Mainpage link -->
-    <span class="back-to-homepage"><a href="/">Vissza a főoldalra</a></span>
-
-</form>
-<!-- #endregion -->

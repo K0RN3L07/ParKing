@@ -1,57 +1,3 @@
-/* #region Setting Basic Properties */
-
-@font-face {
-    font-family: "Lato Regular";
-    src: url(/fonts/Lato-Regular.ttf);
-}
-
-@font-face {
-    font-family: "LSB";
-    src: url(/fonts/LeagueSpartan-Bold.otf);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Lato Regular;
-    font-size: 1rem;
-    color: var(--primary-text-color);
-}
-
-/* #endregion */
-
-/* #region Defining Colours */
-
-:root {
-    --base-color: #e7ecefff;
-    --secondary-base-color: #cfd8df;
-    --primary-text-color: #111111;
-    --secondary-text-color: #333333;
-    --accent-text-color: #f0f0f0;
-    --primary-color: #274c77ff;
-    --secondary-color: #0870bd;
-    --container-shadow: 0 8px 24px rgba(39, 76, 119, 0.12);
-
-    /* antiflash-white */
-    /* inmn-blue */
-    /* air-superiority-blue */
-    /* --battleship-gray: #8b8c89ff;  */
-    /* --uranian-blue: #a3cef1ff; */
-}
-
-.darkmode {
-    --base-color: #070b1d;
-    --secondary-base-color: #0d132e;
-    --primary-text-color: #ffffff;
-    --secondary-text-color: #dddddd;
-    --primary-color: #274c77ff;
-    --secondary-color: #0870bd;
-    --container-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
-}
-
-/* #endregion */
-
 /* #region Setting Background */
 body {
     height: 100vh;
@@ -64,32 +10,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     backdrop-filter: blur(5px) brightness(0.8);
-}
+    color: var(--primary-text-color);
 
-/* #endregion */
-
-/* #region Dark Mode Toggling Button */
-
-#dark-mode-switch {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    border: none;
-    bottom: 10px;
-    left: 10px;
-    background-color: var(--secondary-base-color);
-    z-index: 5;
-    box-shadow: var(--container-shadow);
-    cursor: pointer;
-}
-
-#dark-mode-switch svg {
-    fill: var(--primary-text-color);
 }
 
 /* #endregion */
@@ -193,10 +115,24 @@ body {
     gap: 10px;
 }
 
+.container .policies a {
+    color: var(--secondary-color);
+}
+
 .container .policies .column {
     display: flex;
     flex-direction: row;
     gap: 5px;
+}
+
+.container a {
+    color: var(--primary-text-color);
+    transition: .15s;
+}
+
+.container a:hover {
+    color: var(--secondary-color);
+    transition: .15s;
 }
 
 /* #endregion */

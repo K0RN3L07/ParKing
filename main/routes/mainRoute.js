@@ -6,6 +6,8 @@ router.get('/', controller.getIndex);
 router.get('/login', controller.getLogin);
 router.get('/register', controller.getRegister);
 
+router.get('/booking', controller.getBooking);
+
 router.get('/users', controller.getUsers);
 
 router.post('/users/register', controller.registerUser);

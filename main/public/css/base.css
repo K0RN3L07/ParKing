@@ -1,0 +1,80 @@
+/* #region Adding Custom Fonts */
+@font-face {
+    font-family: "Lato Regular";
+    src: url(/fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family: "LSB";
+    src: url(/fonts/LeagueSpartan-Bold.otf);
+}
+
+/* #endregion */
+
+/* #region Setting Basic Properties */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato Regular";
+    font-size: 1rem;
+}
+
+body {
+    background-color: var(--base-color);
+}
+
+/* #endregion */
+
+/* #region Defining Colours */
+:root {
+    --base-color: #e7ecefff;
+    --secondary-base-color: #cfd8df;
+    --primary-text-color: #111111;
+    --secondary-text-color: #333333;
+    --accent-text-color: #f0f0f0;
+    --primary-color: #274c77ff;
+    --secondary-color: #0870bd;
+    --container-shadow: 0 8px 24px rgba(39, 76, 119, 0.12);
+
+    /* antiflash-white */
+    /* inmn-blue */
+    /* air-superiority-blue */
+    /* --battleship-gray: #8b8c89ff;  */
+    /* --uranian-blue: #a3cef1ff; */
+}
+
+.darkmode {
+    --base-color: #070b1d;
+    --secondary-base-color: #0d132e;
+    --primary-text-color: #ebebeb;
+    --secondary-text-color: #d6d6d6;
+    --primary-color: #274c77ff;
+    --secondary-color: #0870bd;
+}
+
+/* #endregion */
+
+/* #region Dark Mode Toggling Button */
+#dark-mode-switch {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: var(--secondary-base-color);
+    z-index: 5;
+    border: none;
+    cursor: pointer;
+}
+
+#dark-mode-switch svg {
+    fill: var(--primary-text-color);
+}
+
+/* #endregion */

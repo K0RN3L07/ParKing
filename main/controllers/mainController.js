@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/mainModel');
+const { futimesSync } = require('fs');
 
 function getIndex(req, res) {
     res.render('mainpage', { user: req.session.user || null });
@@ -11,6 +12,10 @@ function getLogin(req, res) {
 
 function getRegister(req, res) {
     res.render('register', "");
+}
+
+function getBooking(req, res) {
+    res.render('booking', "");
 }
 
 
@@ -79,4 +84,4 @@ async function logoutUser(req, res) {
     });
 }
 
-module.exports = { getIndex, getLogin, getRegister, getUsers, registerUser, loginUser, logoutUser };
+module.exports = { getIndex, getLogin, getRegister, getUsers, registerUser, loginUser, logoutUser, getBooking };

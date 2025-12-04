@@ -18,10 +18,10 @@
         </div>
 
         <div class="items">
-            <a href="#">Főoldal</a>
+            <a href="/">Főoldal</a>
             <a href="#">Rólunk</a>
             <a href="#">Kapcsolat</a>
-            <a href="#">Foglalás</a>
+            <a href="/booking">Foglalás</a>
         </div>
 
         <div class="profile-container">
@@ -41,7 +41,6 @@
 
                         <div class="profile-icon-dropdown-container" tabindex="0">
                             <a href="">Fiókom szerkesztése</a>
-                            <a href="">Foglalásaim</a>
                             <a>Sötét mód</a>
                             <% if (user) { %>
                                 <a href="/logout">Kijelentkezés</a>
@@ -59,9 +58,10 @@
         </div>
 
         <div class="items-vertical">
-            <a href="#">Főoldal</a>
+            <a href="/">Főoldal</a>
             <a href="#">Rólunk</a>
             <a href="#">Kapcsolat</a>
+            <a href="/booking">Foglalás</a>
 
             <div class="my-profile" onclick="toggleProfileDropdown()">
                 <p>Profil</p>
@@ -74,7 +74,6 @@
 
             <div class="profile-dropdown-conatiner">
                 <a href="">Fiókom szerkesztése</a>
-                <a href="">Foglalásaim</a>
                 <a href="">Sötét mód</a>
                 <% if (user) { %>
                     <a href="/logout">Kijelentkezés</a>
@@ -96,13 +95,13 @@
                 <% if (user) {%>
                     <h1>Üdvözlünk a ParKing weboldalán <%= user.name %>!</h1>
                 <%}else{%>
-                    <h1>Üdvözöljük a ParKing weboldalán!</h1>
+                    <h1>Üdvözlünk a ParKing weboldalán!</h1>
                 <%}%>
 
                 <% if (user) {%>
-                    <h2>Kezdd meg a foglalást!</h2>
+                    <h2>Kezdd meg a foglalást most!</h2>
                     <div class="get-started">
-                        <a href="/foglalas"><button id="primary-button">Foglalás</button></a>
+                        <a href="/booking"><button id="primary-button">Foglalás</button></a>
                     </div>
                 <%}else{%>
                     <h2>A foglalások megkezdéséhez jelentkezz be! Ha még nincs fiókod regisztálj!</h2>
