@@ -27,27 +27,29 @@
         <div class="profile-container">
 
             <% if (user) {%>
-                <h2><%= user.name %></h2>
-            <%}%>
-            
-            <div class="profile-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
-                stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="32" cy="20" r="12" />
-                <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
-            </svg>
-            
-            <div class="profile-icon-dropdown-container" tabindex="0">
-                <a href="">Fiókom szerkesztése</a>
-            <a href="">Foglalásaim</a>
-            <a>Sötét mód</a>
-            <% if (user) { %>
-                <a href="/logout">Kijelentkezés</a>
-            <% } else { %>
-                <a href="/login">Bejelentkezés</a>
-                <% } %>
-                </div>
-            </div>
+                <h2>
+                    <%= user.name %>
+                </h2>
+                <%}%>
+
+                    <div class="profile-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
+                            stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="32" cy="20" r="12" />
+                            <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
+                        </svg>
+
+                        <div class="profile-icon-dropdown-container" tabindex="0">
+                            <a href="">Fiókom szerkesztése</a>
+                            <a href="">Foglalásaim</a>
+                            <a>Sötét mód</a>
+                            <% if (user) { %>
+                                <a href="/logout">Kijelentkezés</a>
+                                <% } else { %>
+                                    <a href="/login">Bejelentkezés</a>
+                                    <% } %>
+                        </div>
+                    </div>
         </div>
 
         <div class="hamburger-menu" onclick="toggleHamburgerMenu()">
@@ -60,7 +62,6 @@
             <a href="#">Főoldal</a>
             <a href="#">Rólunk</a>
             <a href="#">Kapcsolat</a>
-            <a href="#">Foglalás</a>
 
             <div class="my-profile" onclick="toggleProfileDropdown()">
                 <p>Profil</p>
@@ -75,7 +76,11 @@
                 <a href="">Fiókom szerkesztése</a>
                 <a href="">Foglalásaim</a>
                 <a href="">Sötét mód</a>
-                <a href="">Kijelentkezés</a>
+                <% if (user) { %>
+                    <a href="/logout">Kijelentkezés</a>
+                <% } else { %>
+                    <a href="/login">Bejelentkezés</a>
+                <% } %>
             </div>
 
         </div>
@@ -86,14 +91,28 @@
         <!-- #region Banner Section -->
         <div class="banner">
             <div class="banner-content">
-                <h1>Üdvözöljük a ParKing weboldalán!</h1>
 
-                <h2>A foglalások megkezdéséhez jelentkezz be! Ha még nincs fiókod regisztálj!</h2>
 
-                <div class="get-started">
-                    <a href="/login"><button id="primary-button">Bejelentkezés</button></a>
-                    <a href="/register"><button id="secondary-color">Regisztráció</button></a>
-                </div>
+                <% if (user) {%>
+                    <h1>Üdvözlünk a ParKing weboldalán <%= user.name %>!</h1>
+                <%}else{%>
+                    <h1>Üdvözöljük a ParKing weboldalán!</h1>
+                <%}%>
+
+                <% if (user) {%>
+                    <h2>Kezdd meg a foglalást!</h2>
+                    <div class="get-started">
+                        <a href="/foglalas"><button id="primary-button">Foglalás</button></a>
+                    </div>
+                <%}else{%>
+                    <h2>A foglalások megkezdéséhez jelentkezz be! Ha még nincs fiókod regisztálj!</h2>
+                    <div class="get-started">
+                        <a href="/login"><button id="primary-button">Bejelentkezés</button></a>
+                        <a href="/register"><button id="secondary-color">Regisztráció</button></a>
+                    </div>
+                <%}%>
+                
+
             </div>
         </div>
         <!-- #endregion -->

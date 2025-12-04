@@ -371,6 +371,7 @@ button {
     border-radius: 10px;
     font-family: "LSB";
     cursor: pointer;
+    width: 150px;
 }
 
 #primary-button {
@@ -388,6 +389,7 @@ button {
 /* #endregion */
 
 /* #region Responsivity */
+
 @media (max-width:725px) {
     nav .items {
         gap: 15px;
@@ -409,7 +411,7 @@ button {
 @media (max-width:650px) {
 
     .items,
-    nav>.profile-icon {
+    nav>.profile-container {
         /* flex-direction: column; */
         display: none;
     }
