@@ -14,7 +14,7 @@ exports.registerUser = (name, email, phone_num, password) => {
         db.query(
             "INSERT INTO users (name, email, phone_num, password) VALUES (?, ?, ?, ?)",
             [name, email, phone_num, password],
-            (err, result) =>{
+            (err, result) => {
                 if (err) return reject(err);
                 resolve(result.insertId)
             }
@@ -30,3 +30,22 @@ exports.getUserByEmail = (email) => {
         });
     });
 }
+
+exports.addBooking = (
+    user_id,
+    parking_space_id,
+    start_time,
+    end_time,
+    payment_status,
+    plate_num) => {
+        return new Promise((resolve, reject) => {
+            db.query(
+                "INSERT INTO bookings (user_id, parking_space_id, start_time, end_time, payment_status, plate_num) VALUES (?, ?, ?, ?, ?, ?)", 
+                [user_id, parking_space_id, start_time, end_time, payment_status, plate_num],
+                (err, result) => {
+                    if (err) return reject(err);
+                    resolve(result.insertId);
+                }
+            )
+        })
+    }
