@@ -1,3 +1,202 @@
-h2 {
+:root {
+    --asplaht-gray: #8C8A84;
+    --parking-zone: #efefef;
+}
+
+.main-container {
+    width: 100%;
+    background-color: var(--base-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-text-color);
+}
+
+form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--base-color);
+    padding: 20px 0px;
+}
+
+h1 {
     font-family: LSB;
+    font-size: 1.8em;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 70px;
+}
+
+.parking-container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.parking-map {
+    display: grid;
+    grid-template-areas: "vertical-container horizontal-container";
+    grid-template-columns: 2fr 3fr;
+
+    width: 90%;
+    height: fit-content;
+    background-color: var(--asplaht-gray);
+    /* border: 1px solid black; */
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.vertical-container {
+    grid-area: "vertical-container";
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+}
+
+.vertical-container .horizontal-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: calc(100% / 10);
+    width: 50%;
+    border-top: 2px solid var(--parking-zone);
+    border-right: 0px solid var(--parking-zone);
+    border-bottom: 2px solid var(--parking-zone);
+    border-left: 4px solid var(--parking-zone);
+}
+
+.vertical-container .horizontal-slot input {
+    display: none;
+}
+
+.vertical-container .horizontal-slot label {
+    font-size: 1.5em;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.vertical-container .horizontal-slot label::after {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    content: '✅';
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.vertical-container .horizontal-slot input:checked+label::after {
+    display: block;
+}
+
+.horizontal-container {
+    grid-area: "horizontal-container";
+
+    display: grid;
+    grid-template-areas: 
+        "row1"
+        "row2"
+        "row3";
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* Horizontal container row - top */
+.horizontal-container .row {
+    grid-area: "row1";
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+/* Horizontal container row - middle */
+.horizontal-container .col {
+    grid-area: "row2";
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+}
+
+.horizontal-container .col svg {
+    width: 50px;
+    height: 50px;
+    fill: var(--parking-zone);
+}
+
+.horizontal-container .col svg:nth-child(1) {
+    rotate: 180deg;
+}
+
+/* Horizontal container row - bottom */
+.horizontal-container .bottom-row {
+    grid-area: "row3";
+    align-items: flex-end;
+}
+
+/* Horizontal slots - top row */
+.horizontal-container .row .vertical-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100% / 5);
+    height: 50%;
+    border-left: 2px solid var(--parking-zone);
+    border-top: 4px solid var(--parking-zone);
+    border-right: 2px solid var(--parking-zone);
+    border-bottom: 0px solid var(--parking-zone);
+}
+
+/* Horizontal slots - bottom row */
+.horizontal-container .bottom-row .vertical-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100% / 5);
+    height: 50%;
+    border-left: 2px solid var(--parking-zone);
+    border-top: 0px solid var(--parking-zone);
+    border-right: 2px solid var(--parking-zone);
+    border-bottom: 4px solid var(--parking-zone);
+}
+
+.horizontal-container .vertical-slot input {
+    display: none;
+}
+
+.horizontal-container .vertical-slot label {
+    font-size: 1.5em;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.horizontal-container .vertical-slot label::after {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    content: '✅';
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.horizontal-container .vertical-slot input:checked+label::after {
+    display: block;
 }

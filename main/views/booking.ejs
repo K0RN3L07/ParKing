@@ -1,13 +1,159 @@
 <link rel="stylesheet" href="/css/booking.css">
 <script src="/js/booking.js" defer></script>
+<title>Parking | Foglalás</title>
+
 <%- include('layout', {body: '' }) %>
 
     <!-- #region Main Container -->
-    <div class="container">
-        <h2>Hello World!</h2>
-        <form action="/booking" method="POST" class="booking-form">
+    <div class="main-container">
 
+        <form action="/bookSlot" method="POST">
+            <h1>ParKing - Parkolóhely foglalás</h1>
 
+            <div class="container">
+
+                <div class="parking-container">
+
+                    <div class="parking-map">
+                        <div class="vertical-container">
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot1" id="vertical1">
+                                <label for="vertical1"></label>
+                            </div>
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot2" id="vertical2">
+                                <label for="vertical2"></label>
+                            </div>
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot3" id="vertical3">
+                                <label for="vertical3"></label>
+                            </div>
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot4" id="vertical4">
+                                <label for="vertical4"></label>
+                            </div>
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot5" id="vertical5">
+                                <label for="vertical5"></label>
+                            </div>
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot6" id="vertical6">
+                                <label for="vertical6"></label>
+                            </div>
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot7" id="vertical7">
+                                <label for="vertical7"></label>
+                            </div>
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot8" id="vertical8">
+                                <label for="vertical8"></label>
+                            </div>
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot9" id="vertical9">
+                                <label for="vertical9"></label>
+                            </div>
+
+                            <div class="horizontal-slot">
+                                <input type="checkbox" name="slot10" id="vertical10">
+                                <label for="vertical10"></label>
+                            </div>
+
+                        </div>
+
+                        <div class="horizontal-container">
+
+                            <div class="row">
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot11" id="horizontal11">
+                                    <label for="horizontal11"></label>
+                                </div>
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot12" id="horizontal12">
+                                    <label for="horizontal12"></label>
+                                </div>
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot13" id="horizontal13">
+                                    <label for="horizontal13"></label>
+                                </div>
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot14" id="horizontal14">
+                                    <label for="horizontal14"></label>
+                                </div>
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot15" id="horizontal15">
+                                    <label for="horizontal15"></label>
+                                </div>
+
+                            </div>
+
+                            <div class="col">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#e3e3e3">
+                                    <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#e3e3e3">
+                                    <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
+                                </svg>
+                            </div>
+
+                            <div class="row bottom-row">
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot16" id="horizontal16">
+                                    <label for="horizontal16"></label>
+                                </div>
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot17" id="horizontal17">
+                                    <label for="horizontal17"></label>
+                                </div>
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot18" id="horizontal18">
+                                    <label for="horizontal18"></label>
+                                </div>
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot19" id="horizontal19">
+                                    <label for="horizontal19"></label>
+                                </div>
+
+                                <div class="vertical-slot">
+                                    <input type="checkbox" name="slot20" id="horizontal20">
+                                    <label for="horizontal20"></label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="level-select">
+
+                    </div>
+
+                </div>
+
+                <div class="form-items-container">
+
+                </div>
+
+            </div>
 
         </form>
     </div>
