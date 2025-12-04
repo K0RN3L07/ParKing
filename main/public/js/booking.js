@@ -1,6 +1,5 @@
 let radioArray = document.querySelectorAll('input[type="radio"]');
 let deleteSelection = document.getElementById('deleteSelection');
-console.log("asd");
 
 radioArray.forEach(radio => {
     radio.addEventListener('change', () => {
