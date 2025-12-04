@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/mainModel');
-const { futimesSync } = require('fs');
 
 function getIndex(req, res) {
     res.render('mainpage', { user: req.session.user || null });
@@ -84,4 +83,54 @@ async function logoutUser(req, res) {
     });
 }
 
-module.exports = { getIndex, getLogin, getRegister, getUsers, registerUser, loginUser, logoutUser, getBooking };
+async function bookSlot(req, res) {
+    const user_id = req.session.user?.id;
+
+    if (!user_id) {
+        return res.status(401).json({ error: "Nincs bejelentkezve!" });
+    }
+
+    const {
+        parking_space_id,
+        start_time,
+        end_time,
+        payment_status,
+        plate_num
+    } = req.body;
+
+    if (
+        !user_id ||
+        !parking_space_id ||
+        !start_time ||
+        !end_time ||
+        !payment_status ||
+        !plate_num
+    ) {
+        res.status(400).json({ error: "Hiányos adatok!" });
+    }
+    else {
+        await User.addBooking(
+            user_id,
+            parking_space_id,
+            start_time,
+            end_time,
+            payment_status,
+            plate_num)
+
+        res.json({ msg: "Sikeres foglalás!" })
+    }
+}
+
+
+
+module.exports = {
+    getIndex,
+    getLogin,
+    getRegister,
+    getUsers,
+    registerUser,
+    loginUser,
+    logoutUser,
+    getBooking,
+    bookSlot
+};
