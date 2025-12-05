@@ -1,8 +1,12 @@
+/* #region Color Palette */
+
 :root {
     --asplaht-gray: #8C8A84;
     --parking-zone: #efefef;
     --selected-color: #a1c349;
 }
+
+/* #endregion */
 
 .main-container {
     width: 100%;
@@ -34,6 +38,8 @@ h1 {
     margin-top: 70px;
 }
 
+/* #region Parking Space Selector */
+
 .parking-container {
     display: flex;
     flex-direction: row;
@@ -57,6 +63,7 @@ h1 {
 
 id {
     pointer-events: none;
+    user-select: none;
 }
 
 .vertical-container {
@@ -225,3 +232,41 @@ id {
 .visible {
     display: block !important;
 }
+
+/* Level Selector */
+
+.level-select {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 10%;
+    padding: 30px 0px;
+    color: var(--primary-text-color);
+}
+
+.level-select .circle {
+    width: 70%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: var(--secondary-base-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.level-select .line {
+    width: 4px;
+    height: calc(100% / 11);
+    background-color: var(--secondary-base-color);
+}
+
+.selected-level {
+    background-color: var(--secondary-color) !important;
+    color: var(--accent-text-color) !important;
+}
+
+/* #endregion */
