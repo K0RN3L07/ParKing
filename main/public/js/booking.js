@@ -3,6 +3,12 @@
 let radioArray = document.querySelectorAll('input[type="radio"]');
 let deleteSelection = document.getElementById('deleteSelection');
 
+let slotArray = document.querySelectorAll('input[type="radio"]');
+let parkingSlotInput = document.getElementsByName('parking-slot');
+let parkingSlotInputForBackend = document.getElementsByName('parking_slot');
+let selectedSlot;
+let selectedLevel = 1;
+
 radioArray.forEach(radio => {
     radio.addEventListener('change', () => {
         if (radio.checked) {
@@ -14,6 +20,14 @@ radioArray.forEach(radio => {
                 deleteSelection.classList.remove("visible");
             }
         }
+
+
+        // Update placeholder
+        if (radio.checked) {
+            selectedSlot = radio.id;
+            parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, ${selectedSlot}. parkolóhely`);
+            parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${selectedSlot}`);
+        }
     });
 });
 
@@ -21,6 +35,10 @@ deleteSelection.addEventListener('click', () => {
     radioArray.forEach(radio => {
         radio.checked = false;
     });
+
+    // Update placeholder
+    parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
+    parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
     deleteSelection.classList.remove("visible");
 });
 
@@ -33,12 +51,24 @@ let selectedIdx;
 
 levels.forEach(level => {
     level.addEventListener("click", () => {
+        radioArray.forEach(radio => {
+            radio.checked = false;
+        });
+
         selectedIdx = parseInt(level.innerHTML) - 1;
         levels.forEach(lvl => lvl.classList.remove("selected-level"));
-            
+
         levels[selectedIdx].classList.add("selected-level");
+
+
+        // Update placeholder
+        if (level.classList.contains("selected-level")) {
+            selectedLevel = selectedIdx + 1;
+        }
+
+        parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
+        parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
     });
 });
-
 
 //#endregion
