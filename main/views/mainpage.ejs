@@ -21,34 +21,36 @@
             <a href="/">Főoldal</a>
             <a href="#">Rólunk</a>
             <a href="#">Kapcsolat</a>
-            <a href="/booking">Foglalás</a>
+            <% if (user) {%>
+                <a href="/booking">Foglalás</a>
+            <%} else {%>
+                <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+            <%}%>
         </div>
 
         <div class="profile-container">
 
             <% if (user) {%>
-                <h2>
-                    <%= user.name %>
-                </h2>
-                <%}%>
+                <h2><%= user.name %></h2>
+            <%}%>
 
-                    <div class="profile-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
-                            stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="32" cy="20" r="12" />
-                            <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
-                        </svg>
+            <div class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
+                    stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="32" cy="20" r="12" />
+                    <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
+                </svg>
 
-                        <div class="profile-icon-dropdown-container" tabindex="0">
-                            <a href="">Fiókom szerkesztése</a>
-                            <a>Sötét mód</a>
-                            <% if (user) { %>
-                                <a href="/logout">Kijelentkezés</a>
-                                <% } else { %>
-                                    <a href="/login">Bejelentkezés</a>
-                                    <% } %>
-                        </div>
-                    </div>
+                <div class="profile-icon-dropdown-container" tabindex="0">
+                    <a href="">Fiókom szerkesztése</a>
+                    <a>Sötét mód</a>
+                    <% if (user) { %>
+                        <a href="/logout">Kijelentkezés</a>
+                    <% } else { %>
+                        <a href="/login">Bejelentkezés</a>
+                    <% } %>
+                </div>
+            </div>
         </div>
 
         <div class="hamburger-menu" onclick="toggleHamburgerMenu()">
@@ -61,7 +63,11 @@
             <a href="/">Főoldal</a>
             <a href="#">Rólunk</a>
             <a href="#">Kapcsolat</a>
+            <% if (user) { %>
             <a href="/booking">Foglalás</a>
+            <% } else { %>
+            <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+            <% } %>
 
             <div class="my-profile" onclick="toggleProfileDropdown()">
                 <p>Profil</p>
