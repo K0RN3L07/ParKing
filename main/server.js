@@ -9,10 +9,10 @@ const app = express();
 
 app.use(
     session({
-        secret: 'supersecret123',   // use env variable in production
+        secret: 'supersecret123',
         resave: false,
         saveUninitialized: false,
-        cookie: { maxAge: 1000 * 60 * 60 } // 1 hour
+        cookie: { maxAge: 1000 * 60 * 60 }
     })
 );
 

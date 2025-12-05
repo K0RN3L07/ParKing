@@ -59,8 +59,6 @@ async function loginUser(req, res) {
             return res.status(401).json({ msg: "Invalid email or password" });
         }
 
-        console.log("User logged in:", user.email);
-
         req.session.user = {
             id: user.id,
             name: user.name,
