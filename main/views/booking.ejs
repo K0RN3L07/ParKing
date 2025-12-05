@@ -193,12 +193,12 @@
                         <div class="form-field-row">
                             <div class="form-field">
                                 <label for="start-date">Dátum:</label>
-                                <input type="date" name="" id="start-date">
+                                <input type="date" name="start_date" id="start-date">
                             </div>
                             
                             <div class="form-field">
                                 <label for="start-time">Időpont:</label>
-                                <input type="time" name="" id="start-time">
+                                <input type="time" name="start_time" id="start-time">
                             </div>
                         </div>
                     </div>
@@ -209,12 +209,12 @@
                         <div class="form-field-row">
                             <div class="form-field">
                                 <label for="end-date">Dátum:</label>
-                                <input type="date" name="" id="end-date">
+                                <input type="date" name="end_date" id="end-date">
                             </div>
                             
                             <div class="form-field">
                                 <label for="end-time">Időpont:</label>
-                                <input type="time" name="" id="end-time">
+                                <input type="time" name="end_time" id="end-time">
                             </div>
                         </div>
                     </div>
@@ -225,12 +225,13 @@
                         <div class="form-field-row">
                             <div class="form-field">
                                 <label for="license">Rendszám</label>
-                                <input type="text" name="" id="license" placeholder="ABC123 / ABCD123">
+                                <input type="text" name="plate_num" id="license" placeholder="ABC123 / ABCD123">
                             </div>
                             
                             <div class="form-field">
                                 <label for="slot">Parkoló hely</label>
-                                <input type="text" disabled name="" id="slot" placeholder="Válassz az ábrán!">
+                                <input type="text" name="parking-slot" id="slot" placeholder="Válassz az ábrán!">
+                                <input type="hidden" name="parking_slot">
                             </div>
                         </div>
                     </div>

@@ -13,11 +13,6 @@ function getRegister(req, res) {
     res.render('register', "");
 }
 
-function getBooking(req, res) {
-    res.render('booking', "");
-}
-
-
 async function getUsers(req, res) {
     try {
         const users = await User.getAllUsers();
@@ -81,43 +76,6 @@ async function logoutUser(req, res) {
     });
 }
 
-async function bookSlot(req, res) {
-    const user_id = req.session.user?.id;
-
-    if (!user_id) {
-        return res.status(401).json({ error: "Nincs bejelentkezve!" });
-    }
-
-    const {
-        parking_space_id,
-        start_time,
-        end_time,
-        payment_status,
-        plate_num
-    } = req.body;
-
-    if (
-        !user_id ||
-        !parking_space_id ||
-        !start_time ||
-        !end_time ||
-        !payment_status ||
-        !plate_num
-    ) {
-        res.status(400).json({ error: "Hiányos adatok!" });
-    }
-    else {
-        await User.addBooking(
-            user_id,
-            parking_space_id,
-            start_time,
-            end_time,
-            payment_status,
-            plate_num)
-
-        res.json({ msg: "Sikeres foglalás!" })
-    }
-}
 
 
 
@@ -129,6 +87,4 @@ module.exports = {
     registerUser,
     loginUser,
     logoutUser,
-    getBooking,
-    bookSlot
 };
