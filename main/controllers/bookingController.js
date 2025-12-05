@@ -20,7 +20,8 @@ async function bookSlot(req, res) {
         plate_num
     } = req.body;
 
-    let parking_space_id = await User.getParkingSpaceId(parking_slot.split(';')[0], parking_slot.split(';')[1])
+    let parking_space_id = await User.getParkingSpaceId(parking_slot.split(';')[0], parking_slot.split(';')[1]);
+    parking_space_id = parking_space_id[0].id;
 
     let start = start_date + " " + start_time;
     let end = end_date + " " + end_time;
