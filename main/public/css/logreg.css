@@ -57,7 +57,7 @@ body {
 
 .container .row .input-field input {
     border: none;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--secondary-base-color);
     padding: 5px 0;
     width: 92%;
 }

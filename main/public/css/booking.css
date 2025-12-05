@@ -31,11 +31,15 @@ h1 {
     font-size: 1.8em;
 }
 
+h4 {
+    margin-top: 40px;
+}
+
 .container {
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-top: 70px;
+    margin-top: 10px;
 }
 
 /* #region Parking Space Selector */
@@ -267,6 +271,82 @@ id {
 .selected-level {
     background-color: var(--secondary-color) !important;
     color: var(--accent-text-color) !important;
+}
+
+/* #endregion */
+
+/* #region Form */
+
+.form-items-container {
+    display: grid;
+    grid-template-areas: 
+        "row1"
+        "row2"
+        "row3"
+        "row4";
+    grid-template-rows: 3fr 3fr 3fr 1fr;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 10px;
+}
+
+.form-items-container .row {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-items-container .row h3 {
+    margin-left: 5px;
+}
+
+.form-items-container .row button {
+    width: 80%;
+    background-color: var(--secondary-color);
+    color: var(--accent-text-color);
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    align-self: center;
+    box-shadow: var(--container-shadow);
+}
+
+.form-items-container .row .form-field-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 10px;
+    gap: 5px;
+}
+
+.form-items-container .row .form-field-row .form-field {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.form-items-container .row .form-field-row .form-field input {
+    padding: 10px 5px;
+    margin-top: 5px;
+    border: none;
+    background-color: var(--secondary-base-color);
+    box-shadow: var(--container-shadow);
+    border-radius: 20px;
+    cursor: text;
+
+}
+
+.form-items-container .row .form-field-row .form-field input::placeholder {
+    color: var(--primary-text-color);
+    opacity: 0.5;
+}
+
+.form-items-container .row .form-field-row .form-field input:focus {
+    outline: 2px solid var(--secondary-color);
+}
+
+.form-items-container .row .form-field-row .form-field label {
+    margin-left: 5px;
 }
 
 /* #endregion */
