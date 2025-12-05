@@ -333,6 +333,7 @@ id {
     box-shadow: var(--container-shadow);
     border-radius: 20px;
     cursor: text;
+    color: var(--primary-text-color);
 
 }
 
