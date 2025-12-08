@@ -1,7 +1,9 @@
 const User = require('../models/bookingModel');
 
 function getBooking(req, res) {
-    res.render('booking', "");
+    res.render('booking', {
+        user: req.session.user || null
+    });
 }
 
 async function bookSlot(req, res) {
