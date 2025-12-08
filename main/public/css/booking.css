@@ -4,6 +4,7 @@
     --asplaht-gray: #8C8A84;
     --parking-zone: #efefef;
     --selected-color: #a1c349;
+    --reserved-color: #d9534f;
 }
 
 /* #endregion */
@@ -39,7 +40,6 @@ h4 {
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-top: 10px;
 }
 
 /* #region Parking Space Selector */
@@ -230,16 +230,26 @@ id {
     background-color: var(--selected-color);
 }
 
+.reserved {
+    background-color: var(--reserved-color);
+} 
+
 #deleteSelection {
-    margin-top: 20px;
+    margin-top: 10px;
     color: var(--primary-text-color);
-    text-decoration: underline;
     cursor: pointer;
-    display: none;
+    display: block;
+    opacity: 0.5;
+
+    padding: 7px 10px;
+    color: var(--accent-text-color);
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    width: fit-content;
 }
 
 .visible {
-    display: block !important;
+    opacity: 1 !important;
 }
 
 /* Level Selector */
@@ -315,6 +325,7 @@ id {
     border-radius: 20px;
     align-self: center;
     box-shadow: var(--container-shadow);
+    cursor: pointer;
 }
 
 .form-items-container .row .form-field-row {
