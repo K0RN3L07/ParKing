@@ -46,11 +46,23 @@ async function bookSlot(req, res) {
             end,
             plate_num)
 
-        res.json({ msg: "Sikeres foglalás!" })
+        res.status(200).json({ msg: "Sikeres foglalás!" })
     }
+}
+
+async function getAllReservedOnFloor(req, res) {
+    console.log("ROUTE HIT");
+    console.log(req.body)
+    let { parking_slot } = req.body;
+    let floor = parking_slot.split(';')[0]
+
+    let reservedSpots = await User.getAllReservedOnFloor(floor)
+
+    res.status(200).json({reservedSpots: reservedSpots})
 }
 
 module.exports = {
     getBooking,
-    bookSlot
+    bookSlot,
+    getAllReservedOnFloor
 }

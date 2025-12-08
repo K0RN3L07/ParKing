@@ -30,3 +30,16 @@ exports.getParkingSpaceId = (floor, slot) => {
         );
     });
 };
+
+exports.getAllReservedOnFloor = (floor) => {
+    return new Promise((resolve, reject) => {
+        db.query(
+            "SELECT parking_spaces.parking_space_num FROM parking_spaces INNER JOIN bookings ON parking_spaces.id = bookings.parking_space_id WHERE parking_spaces.floor_num = ?",
+            [floor],
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result)
+            }
+        )
+    })
+}

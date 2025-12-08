@@ -17,5 +17,7 @@ router.get('/logout', mainController.logoutUser);
 
 router.post('/bookSlot', bookingController.bookSlot);
 
+router.get('/getAllReservedByFloor', bookingController.getAllReservedOnFloor)
+
 
 module.exports = {router};

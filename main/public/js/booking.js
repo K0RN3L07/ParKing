@@ -93,4 +93,28 @@ levels.forEach(level => {
     });
 });
 
+document.querySelectorAll('.circle').forEach(circle => {
+    circle.addEventListener('click', async () => {
+        const floor = circle.textContent.trim();
+
+        console.log("Clicked floor:", floor);
+
+        try {
+            const response = await fetch('/getAllReservedOnFloor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ parking_slot: floor })
+            });
+
+            const data = await response.json();
+            console.log("Response:", data);
+
+        } catch (err) {
+            console.error("Fetch error:", err);
+        }
+    });
+});
+
 //#endregion
