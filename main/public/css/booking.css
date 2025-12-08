@@ -269,7 +269,7 @@ id {
 }
 
 .level-select .circle {
-    color: black;
+    color: var(--primary-text-color);
     text-decoration: none;
     width: 50px;
     aspect-ratio: 1 / 1;

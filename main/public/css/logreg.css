@@ -58,8 +58,18 @@ body {
 .container .row .input-field input {
     border: none;
     background-color: var(--secondary-base-color);
-    padding: 5px 0;
+    color: var(--primary-text-color) !important;
+    padding-top: 5px;
     width: 92%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    background-color: var(--secondary-base-color) !important;
+    -webkit-box-shadow: 0 0 0 1000px var(--secondary-base-color) inset !important;
+    -webkit-text-fill-color: var(--primary-text-color) !important;
 }
 
 .container .row .input-field input:focus {
