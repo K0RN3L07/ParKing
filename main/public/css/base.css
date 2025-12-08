@@ -22,6 +22,7 @@
 
 body {
     background-color: var(--base-color);
+    position: relative;
 }
 
 /* #endregion */
@@ -64,7 +65,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     left: 10px;
     background-color: var(--secondary-base-color);
