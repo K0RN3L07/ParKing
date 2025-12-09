@@ -1,7 +1,6 @@
 const express = require('express');
 const mainController = require('../controllers/mainController');
-const bookingController = require('../controllers/bookingController');
-const router = express.Router();
+const mainRouter = express.Router();
 
 router.get('/', mainController.getIndex);
 router.get('/login', mainController.getLogin);
@@ -10,15 +9,11 @@ router.get('/errorpage', mainController.getError);
 
 router.get('/booking', bookingController.getBooking);
 
-router.get('/users', mainController.getUsers);
-router.post('/users/register', mainController.registerUser);
-router.post('/users/login', mainController.loginUser);
+mainRouter.get('/users', mainController.getUsers);
+mainRouter.post('/users/register', mainController.registerUser);
+mainRouter.post('/users/login', mainController.loginUser);
 
-router.get('/logout', mainController.logoutUser);
-
-router.post('/bookSlot', bookingController.bookSlot);
-
-router.get('/getAllReservedByFloor', bookingController.getAllReservedOnFloor)
+mainRouter.get('/logout', mainController.logoutUser);
 
 
-module.exports = {router};
+module.exports = {mainRouter};

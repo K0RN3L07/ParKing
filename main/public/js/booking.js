@@ -95,9 +95,12 @@ levels.forEach(level => {
 
 document.querySelectorAll('.circle').forEach(circle => {
     circle.addEventListener('click', async () => {
-        const floor = circle.textContent.trim();
+        let slots = document.querySelectorAll(".slot");
+        slots.forEach(item => {
+            item.classList.remove("reserved")
+        });
 
-        console.log("Clicked floor:", floor);
+        const floor = circle.textContent.trim();
 
         try {
             const response = await fetch('/getAllReservedOnFloor', {
@@ -109,7 +112,13 @@ document.querySelectorAll('.circle').forEach(circle => {
             });
 
             const data = await response.json();
-            console.log("Response:", data);
+            console.log(data.reservedSpots)
+
+            for (let i = 0; i < data.reservedSpots.length; i++) {
+                console.log(slots[data.reservedSpots[i]["parking_space_num"]-1])
+                slots[data.reservedSpots[i]["parking_space_num"]-1].classList.add("reserved")
+            }
+            
 
         } catch (err) {
             console.error("Fetch error:", err);

@@ -51,8 +51,6 @@ async function bookSlot(req, res) {
 }
 
 async function getAllReservedOnFloor(req, res) {
-    console.log("ROUTE HIT");
-    console.log(req.body)
     let { parking_slot } = req.body;
     let floor = parking_slot.split(';')[0]
 
