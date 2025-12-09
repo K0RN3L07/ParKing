@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/', mainController.getIndex);
 router.get('/login', mainController.getLogin);
 router.get('/register', mainController.getRegister);
+router.get('/errorpage', mainController.getError);
 
 router.get('/booking', bookingController.getBooking);
 

@@ -13,13 +13,17 @@ function getRegister(req, res) {
     res.render('register', "");
 }
 
+function getError(req, res) {
+    res.render('errorpage', { user: req.session.user || null, code: null, error: null});
+}
+
 async function getUsers(req, res) {
     try {
         const users = await User.getAllUsers();
         return res.status(200).json(users);
     }
     catch (err) {
-        return res.status(500).json({ error: err });
+        return res.status(500).render('errorpage', {code: 500, error: err});
     }
 };
 
@@ -66,7 +70,7 @@ async function loginUser(req, res) {
     }
     catch (err) {
         console.error(err);
-        return res.status(500).json({ error: "Server error" });
+        return res.status(500).render('errorpage', {code: 500, error: err});;
     }
 }
 
@@ -83,6 +87,7 @@ module.exports = {
     getIndex,
     getLogin,
     getRegister,
+    getError,
     getUsers,
     registerUser,
     loginUser,
