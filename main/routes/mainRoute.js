@@ -2,12 +2,10 @@ const express = require('express');
 const mainController = require('../controllers/mainController');
 const mainRouter = express.Router();
 
-router.get('/', mainController.getIndex);
-router.get('/login', mainController.getLogin);
-router.get('/register', mainController.getRegister);
-router.get('/errorpage', mainController.getError);
-
-router.get('/booking', bookingController.getBooking);
+mainRouter.get('/', mainController.getIndex);
+mainRouter.get('/login', mainController.getLogin);
+mainRouter.get('/register', mainController.getRegister);
+mainRouter.get('/errorpage', mainController.getError);
 
 mainRouter.get('/users', mainController.getUsers);
 mainRouter.post('/users/register', mainController.registerUser);

@@ -30,14 +30,14 @@ radioArray.forEach(radio => {
             if (radio.checked) {
                 deleteSelection.classList.add("visible");
             }
-            
+
             else {
                 if (deleteSelection.classList.contains("visible")) {
                     deleteSelection.classList.remove("visible");
                 }
             }
-            
-            
+
+
             // Update placeholder
             if (radio.checked) {
                 selectedSlot = radio.id;
@@ -93,13 +93,17 @@ levels.forEach(level => {
     });
 });
 
+
+let slots = document.querySelectorAll(".slot");
+function removeReserved() {
+    slots.forEach(item => {
+        item.classList.remove("reserved")
+    });
+}
+
 document.querySelectorAll('.circle').forEach(circle => {
     circle.addEventListener('click', async () => {
-        let slots = document.querySelectorAll(".slot");
-        slots.forEach(item => {
-            item.classList.remove("reserved")
-        });
-
+        removeReserved();
         const floor = circle.textContent.trim();
 
         try {
@@ -112,18 +116,18 @@ document.querySelectorAll('.circle').forEach(circle => {
             });
 
             const data = await response.json();
-            console.log(data.reservedSpots)
 
             for (let i = 0; i < data.reservedSpots.length; i++) {
-                console.log(slots[data.reservedSpots[i]["parking_space_num"]-1])
-                slots[data.reservedSpots[i]["parking_space_num"]-1].classList.add("reserved")
+                slots[data.reservedSpots[i]["parking_space_num"] - 1].classList.add("reserved")
             }
-            
+
 
         } catch (err) {
             console.error("Fetch error:", err);
         }
     });
 });
+
+levels[0].click();
 
 //#endregion
