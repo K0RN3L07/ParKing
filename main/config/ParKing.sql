@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
 	`parking_space_id` int NOT NULL,
 	`start_time` datetime NOT NULL,
 	`end_time` datetime NOT NULL,
+	`parking_status` varchar(255),
 	`payment_status` varchar(255) NOT NULL,
 	`plate_num` varchar(255) NOT NULL,
 	`booked_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

@@ -12,6 +12,12 @@ function getMyBookings(req, res) {
     });
 }
 
+function getUserBookings(req, res) {
+    res.render('getUserBookings', {
+        user: req.session.user || null
+    });
+}
+
 async function bookSlot(req, res) {
     const user_id = req.session.user?.id;
 
@@ -65,9 +71,20 @@ async function getAllReservedOnFloor(req, res) {
     res.status(200).json({reservedSpots: reservedSpots})
 }
 
+async function getUserBookings(req, res) {
+    let user_id = req.session.user?.id;
+    
+    const data = await User.getUserBookings(user_id);
+
+    console.log(data);
+    
+    res.status(200).json(data);
+}
+
 module.exports = {
     getNewBooking,
     getMyBookings,
     bookSlot,
-    getAllReservedOnFloor
+    getAllReservedOnFloor,
+    getUserBookings
 }

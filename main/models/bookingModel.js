@@ -43,3 +43,22 @@ exports.getAllReservedOnFloor = (floor) => {
         )
     })
 }
+
+exports.getUserBookings = (id) => {
+    return new Promise((resolve, reject) => {
+        db.query(
+            `
+            SELECT parking_spaces.floor_num, parking_spaces.parking_space_num, bookings.start_time, bookings.end_time, bookings.parking_status, bookings.plate_num
+            FROM parking_spaces INNER JOIN bookings
+            ON parking_spaces.id = bookings.parking_space_id INNER JOIN users
+            ON users.id = bookings.user_id
+            WHERE users.id = ?
+            `,
+            [id],
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result)
+            }
+        )
+    })
+}

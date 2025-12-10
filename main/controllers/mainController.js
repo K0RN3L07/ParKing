@@ -69,7 +69,7 @@ async function loginUser(req, res) {
 
     }
     catch (err) {
-        console.error(err);
+        console.log(err);
         return res.status(500).render('errorpage', {code: 500, error: err});
     }
 }
