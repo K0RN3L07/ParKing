@@ -235,6 +235,13 @@ id {
     background-color: var(--selected-color);
 }
 
+.slot svg {
+    display: block;
+    fill: var(--parking-zone);
+    width: 60%;
+    height: 60%;
+}
+
 .reserved {
     background-color: var(--reserved-color);
 } 
@@ -412,6 +419,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     .container {
         flex-direction: column;
         gap: 20px;
+    }
+
+    .parking-map {
+        max-width: 800px;
+        max-height: 800px;
     }
 
     .parking-container,

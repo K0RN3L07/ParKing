@@ -25,34 +25,36 @@
             <a href="#">Kapcsolat</a>
             <% if (user) {%>
                 <a href="/booking">Foglalás</a>
-            <%} else {%>
-                <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
-            <%}%>
+                <%} else {%>
+                    <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+                    <%}%>
         </div>
 
         <div class="profile-container">
 
             <% if (user) {%>
-                <h2><%= user.name %></h2>
-            <%}%>
+                <h2>
+                    <%= user.name %>
+                </h2>
+                <%}%>
 
-            <div class="profile-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
-                    stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="32" cy="20" r="12" />
-                    <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
-                </svg>
+                    <div class="profile-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
+                            stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="32" cy="20" r="12" />
+                            <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
+                        </svg>
 
-                <div class="profile-icon-dropdown-container" tabindex="0">
-                    <a href="">Fiókom szerkesztése</a>
-                    <a>Sötét mód</a>
-                    <% if (user) { %>
-                        <a href="/logout">Kijelentkezés</a>
-                    <% } else { %>
-                        <a href="/login">Bejelentkezés</a>
-                    <% } %>
-                </div>
-            </div>
+                        <div class="profile-icon-dropdown-container" tabindex="0">
+                            <a href="">Fiókom szerkesztése</a>
+                            <a>Sötét mód</a>
+                            <% if (user) { %>
+                                <a href="/logout">Kijelentkezés</a>
+                                <% } else { %>
+                                    <a href="/login">Bejelentkezés</a>
+                                    <% } %>
+                        </div>
+                    </div>
         </div>
 
         <div class="hamburger-menu" onclick="toggleHamburgerMenu()">
@@ -66,29 +68,29 @@
             <a href="#">Rólunk</a>
             <a href="#">Kapcsolat</a>
             <% if (user) { %>
-            <a href="/booking">Foglalás</a>
-            <% } else { %>
-            <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
-            <% } %>
-
-            <div class="my-profile" onclick="toggleProfileDropdown()">
-                <p>Profil</p>
-
-                <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960"
-                    width="32px" fill="var(--primary-text-color)">
-                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-                </svg>
-            </div>
-
-            <div class="profile-dropdown-conatiner">
-                <a href="">Fiókom szerkesztése</a>
-                <a href="">Sötét mód</a>
-                <% if (user) { %>
-                    <a href="/logout">Kijelentkezés</a>
+                <a href="/booking">Foglalás</a>
                 <% } else { %>
-                    <a href="/login">Bejelentkezés</a>
-                <% } %>
-            </div>
+                    <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+                    <% } %>
+
+                        <div class="my-profile" onclick="toggleProfileDropdown()">
+                            <p>Profil</p>
+
+                            <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px"
+                                viewBox="0 -960 960 960" width="32px" fill="var(--primary-text-color)">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg>
+                        </div>
+
+                        <div class="profile-dropdown-conatiner">
+                            <a href="">Fiókom szerkesztése</a>
+                            <a href="">Sötét mód</a>
+                            <% if (user) { %>
+                                <a href="/logout">Kijelentkezés</a>
+                                <% } else { %>
+                                    <a href="/login">Bejelentkezés</a>
+                                    <% } %>
+                        </div>
 
         </div>
     </nav>
@@ -104,7 +106,7 @@
             <div class="container">
                 <div class="parking-container">
                     <span id="deleteSelection">Kijelölés törlése</span>
-                    
+
                     <div class="parking-map">
                         <div class="vertical-container">
 
@@ -174,34 +176,59 @@
 
                             <div class="row">
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot electric">
                                     <id>11</id>
                                     <input type="radio" name="radio-slot" id="11">
                                     <label for="11"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M240-360v40q0 17-11.5 28.5T200-280h-40q-17 0-28.5-11.5T120-320v-320l84-240q6-18 21.5-29t34.5-11h440q19 0 34.5 11t21.5 29l84 240v320q0 17-11.5 28.5T800-280h-40q-17 0-28.5-11.5T720-320v-40H240Zm-8-360h496l-42-120H274l-42 120Zm-32 80v200-200Zm100 160q25 0 42.5-17.5T360-540q0-25-17.5-42.5T300-600q-25 0-42.5 17.5T240-540q0 25 17.5 42.5T300-480Zm360 0q25 0 42.5-17.5T720-540q0-25-17.5-42.5T660-600q-25 0-42.5 17.5T600-540q0 25 17.5 42.5T660-480ZM520-40 280-160h160v-80l240 120H520v80ZM200-440h560v-200H200v200Z" />
+                                    </svg>
                                 </div>
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot electric">
                                     <id>12</id>
                                     <input type="radio" name="radio-slot" id="12">
                                     <label for="12"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M240-360v40q0 17-11.5 28.5T200-280h-40q-17 0-28.5-11.5T120-320v-320l84-240q6-18 21.5-29t34.5-11h440q19 0 34.5 11t21.5 29l84 240v320q0 17-11.5 28.5T800-280h-40q-17 0-28.5-11.5T720-320v-40H240Zm-8-360h496l-42-120H274l-42 120Zm-32 80v200-200Zm100 160q25 0 42.5-17.5T360-540q0-25-17.5-42.5T300-600q-25 0-42.5 17.5T240-540q0 25 17.5 42.5T300-480Zm360 0q25 0 42.5-17.5T720-540q0-25-17.5-42.5T660-600q-25 0-42.5 17.5T600-540q0 25 17.5 42.5T660-480ZM520-40 280-160h160v-80l240 120H520v80ZM200-440h560v-200H200v200Z" />
+                                    </svg>
                                 </div>
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot electric">
                                     <id>13</id>
                                     <input type="radio" name="radio-slot" id="13">
                                     <label for="13"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M240-360v40q0 17-11.5 28.5T200-280h-40q-17 0-28.5-11.5T120-320v-320l84-240q6-18 21.5-29t34.5-11h440q19 0 34.5 11t21.5 29l84 240v320q0 17-11.5 28.5T800-280h-40q-17 0-28.5-11.5T720-320v-40H240Zm-8-360h496l-42-120H274l-42 120Zm-32 80v200-200Zm100 160q25 0 42.5-17.5T360-540q0-25-17.5-42.5T300-600q-25 0-42.5 17.5T240-540q0 25 17.5 42.5T300-480Zm360 0q25 0 42.5-17.5T720-540q0-25-17.5-42.5T660-600q-25 0-42.5 17.5T600-540q0 25 17.5 42.5T660-480ZM520-40 280-160h160v-80l240 120H520v80ZM200-440h560v-200H200v200Z" />
+                                    </svg>
                                 </div>
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot handicapped">
                                     <id>14</id>
                                     <input type="radio" name="radio-slot" id="14">
                                     <label for="14"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M480-720q-33 0-56.5-23.5T400-800q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800q0 33-23.5 56.5T480-720ZM680-80v-200H480q-33 0-56.5-23.5T400-360v-240q0-33 23.5-56.5T480-680q24 0 41.5 10.5T559-636q55 66 99.5 90.5T760-520v80q-53 0-107-23t-93-55v138h120q33 0 56.5 23.5T760-300v220h-80Zm-280 0q-83 0-141.5-58.5T200-280q0-72 45.5-127T360-476v82q-35 14-57.5 44.5T280-280q0 50 35 85t85 35q39 0 69.5-22.5T514-240h82q-14 69-69 114.5T400-80Z" />
+                                    </svg>
                                 </div>
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot handicapped">
                                     <id>15</id>
                                     <input type="radio" name="radio-slot" id="15">
                                     <label for="15"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M480-720q-33 0-56.5-23.5T400-800q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800q0 33-23.5 56.5T480-720ZM680-80v-200H480q-33 0-56.5-23.5T400-360v-240q0-33 23.5-56.5T480-680q24 0 41.5 10.5T559-636q55 66 99.5 90.5T760-520v80q-53 0-107-23t-93-55v138h120q33 0 56.5 23.5T760-300v220h-80Zm-280 0q-83 0-141.5-58.5T200-280q0-72 45.5-127T360-476v82q-35 14-57.5 44.5T280-280q0 50 35 85t85 35q39 0 69.5-22.5T514-240h82q-14 69-69 114.5T400-80Z" />
+                                    </svg>
                                 </div>
 
                             </div>
@@ -219,34 +246,59 @@
 
                             <div class="row bottom-row">
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot electric">
                                     <id>16</id>
                                     <input type="radio" name="radio-slot" id="16">
                                     <label for="16"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M240-360v40q0 17-11.5 28.5T200-280h-40q-17 0-28.5-11.5T120-320v-320l84-240q6-18 21.5-29t34.5-11h440q19 0 34.5 11t21.5 29l84 240v320q0 17-11.5 28.5T800-280h-40q-17 0-28.5-11.5T720-320v-40H240Zm-8-360h496l-42-120H274l-42 120Zm-32 80v200-200Zm100 160q25 0 42.5-17.5T360-540q0-25-17.5-42.5T300-600q-25 0-42.5 17.5T240-540q0 25 17.5 42.5T300-480Zm360 0q25 0 42.5-17.5T720-540q0-25-17.5-42.5T660-600q-25 0-42.5 17.5T600-540q0 25 17.5 42.5T660-480ZM520-40 280-160h160v-80l240 120H520v80ZM200-440h560v-200H200v200Z" />
+                                    </svg>
                                 </div>
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot electric">
                                     <id>17</id>
                                     <input type="radio" name="radio-slot" id="17">
                                     <label for="17"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M240-360v40q0 17-11.5 28.5T200-280h-40q-17 0-28.5-11.5T120-320v-320l84-240q6-18 21.5-29t34.5-11h440q19 0 34.5 11t21.5 29l84 240v320q0 17-11.5 28.5T800-280h-40q-17 0-28.5-11.5T720-320v-40H240Zm-8-360h496l-42-120H274l-42 120Zm-32 80v200-200Zm100 160q25 0 42.5-17.5T360-540q0-25-17.5-42.5T300-600q-25 0-42.5 17.5T240-540q0 25 17.5 42.5T300-480Zm360 0q25 0 42.5-17.5T720-540q0-25-17.5-42.5T660-600q-25 0-42.5 17.5T600-540q0 25 17.5 42.5T660-480ZM520-40 280-160h160v-80l240 120H520v80ZM200-440h560v-200H200v200Z" />
+                                    </svg>
                                 </div>
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot electric">
                                     <id>18</id>
                                     <input type="radio" name="radio-slot" id="18">
                                     <label for="18"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M240-360v40q0 17-11.5 28.5T200-280h-40q-17 0-28.5-11.5T120-320v-320l84-240q6-18 21.5-29t34.5-11h440q19 0 34.5 11t21.5 29l84 240v320q0 17-11.5 28.5T800-280h-40q-17 0-28.5-11.5T720-320v-40H240Zm-8-360h496l-42-120H274l-42 120Zm-32 80v200-200Zm100 160q25 0 42.5-17.5T360-540q0-25-17.5-42.5T300-600q-25 0-42.5 17.5T240-540q0 25 17.5 42.5T300-480Zm360 0q25 0 42.5-17.5T720-540q0-25-17.5-42.5T660-600q-25 0-42.5 17.5T600-540q0 25 17.5 42.5T660-480ZM520-40 280-160h160v-80l240 120H520v80ZM200-440h560v-200H200v200Z" />
+                                    </svg>
                                 </div>
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot handicapped">
                                     <id>19</id>
                                     <input type="radio" name="radio-slot" id="19">
                                     <label for="19"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M480-720q-33 0-56.5-23.5T400-800q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800q0 33-23.5 56.5T480-720ZM680-80v-200H480q-33 0-56.5-23.5T400-360v-240q0-33 23.5-56.5T480-680q24 0 41.5 10.5T559-636q55 66 99.5 90.5T760-520v80q-53 0-107-23t-93-55v138h120q33 0 56.5 23.5T760-300v220h-80Zm-280 0q-83 0-141.5-58.5T200-280q0-72 45.5-127T360-476v82q-35 14-57.5 44.5T280-280q0 50 35 85t85 35q39 0 69.5-22.5T514-240h82q-14 69-69 114.5T400-80Z" />
+                                    </svg>
                                 </div>
 
-                                <div class="vertical-slot slot">
+                                <div class="vertical-slot slot handicapped">
                                     <id>20</id>
                                     <input type="radio" name="radio-slot" id="20">
                                     <label for="20"></label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M480-720q-33 0-56.5-23.5T400-800q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800q0 33-23.5 56.5T480-720ZM680-80v-200H480q-33 0-56.5-23.5T400-360v-240q0-33 23.5-56.5T480-680q24 0 41.5 10.5T559-636q55 66 99.5 90.5T760-520v80q-53 0-107-23t-93-55v138h120q33 0 56.5 23.5T760-300v220h-80Zm-280 0q-83 0-141.5-58.5T200-280q0-72 45.5-127T360-476v82q-35 14-57.5 44.5T280-280q0 50 35 85t85 35q39 0 69.5-22.5T514-240h82q-14 69-69 114.5T400-80Z" />
+                                    </svg>
                                 </div>
 
                             </div>
@@ -330,13 +382,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Search free parking spaces -->
                     <div class="row">
                         <button onclick="searchFreeParkingSpaces()">Szabad parkolóhelyek keresése</button>
                     </div>
 
-                    
+
 
                     <!-- License plate and slot -->
                     <div class="row">
