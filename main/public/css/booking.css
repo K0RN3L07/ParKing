@@ -58,8 +58,8 @@ h4 {
     align-self: center;
 
     width: 100%;
-    max-width: 700px;
-    max-height: 700px;
+    max-width: 600px;
+    max-height: 600px;
     height: 90%;
     aspect-ratio: 1 / 1;
     background-color: var(--asplaht-gray);
@@ -295,7 +295,8 @@ id {
 
 #floorTitle {
     position: absolute;
-    bottom: 0;
+    top: 0;
+    margin-top: 5px;
 }
 
 /* #endregion */
@@ -308,8 +309,9 @@ id {
         "row1"
         "row2"
         "row3"
-        "row4";
-    grid-template-rows: 3fr 3fr 3fr 1fr;
+        "row4"
+        "row5";
+    grid-template-rows: 2fr 2fr 1fr 2fr 4fr;
     flex-direction: column;
     width: 50%;
     padding-left: 10px;
