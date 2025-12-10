@@ -99,6 +99,32 @@
     <div class="container">
         <h1>Foglalásaim</h1>
 
+        <% if (bookings) {%>
+            <table>
+                <tr>
+                    <th>Emelet</th>
+                    <th>Parkolóhely</th>
+                    <th>Mettől</th>
+                    <th>Meddig</th>
+                    <th>Állapot</th>
+                    <th>Rendszám</th>
+                </tr>
+                
+                <% bookings.forEach(booking => { %>
+                    <tr>
+                        <td><%= booking["floor_num"] %></td>
+                        <td><%= booking["parking_space_num"] %></td>
+                        <td><%= JSON.stringify(booking["start_time"]).substring(1, JSON.stringify(booking["start_time"]).length - 1) %></td>
+                        <td><%= booking["end_time"] %></td>
+                        <td><%= booking["parking_status"] %></td>
+                        <td><%= booking["plate_num"] %></td>
+                    </tr>
+                <% }) %>
+            </table>
+        <% } else {%>
+            <h2>Még nincs foglalásod!</h2>
+        <% } %>
+        
         <a href="/newBooking">Új foglalás</a>
     </div>
 

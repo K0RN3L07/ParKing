@@ -1,22 +1,24 @@
 const User = require('../models/bookingModel');
 
-function getNewBooking(req, res) {
+async function getNewBooking(req, res) {
     res.render('newBooking', {
         user: req.session.user || null
     });
 }
 
-function getMyBookings(req, res) {
-    res.render('myBookings', {
-        user: req.session.user || null,
-    });
+async function getMyBookings(req, res) {
+    let user_id = req.session.user?.id;
+    
+    const data = await User.getUserBookings(user_id);
+    
+    res.render("myBookings", {bookings: data, user: req.session.user || null});
 }
 
-function getUserBookings(req, res) {
-    res.render('getUserBookings', {
-        user: req.session.user || null
-    });
-}
+// function getUserBookings(req, res) {
+//     res.render('getUserBookings', {
+//         user: req.session.user || null
+//     });
+// }
 
 async function bookSlot(req, res) {
     const user_id = req.session.user?.id;
@@ -72,13 +74,11 @@ async function getAllReservedOnFloor(req, res) {
 }
 
 async function getUserBookings(req, res) {
-    let user_id = req.session.user?.id;
+    // let user_id = req.session.user?.id;
     
-    const data = await User.getUserBookings(user_id);
-
-    console.log(data);
+    // const data = await User.getUserBookings(user_id);
     
-    res.status(200).render("../views/myBookings.ejs", {bookings: data})
+    // res.render("myBookings", {bookings: data, user: req.session.user || null});
 }
 
 module.exports = {
