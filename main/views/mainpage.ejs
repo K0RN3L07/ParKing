@@ -22,7 +22,7 @@
             <a href="#">Rólunk</a>
             <a href="#">Kapcsolat</a>
             <% if (user) {%>
-                <a href="/booking">Foglalás</a>
+                <a href="/myBookings">Foglalás</a>
             <%} else {%>
                 <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
             <%}%>
@@ -64,7 +64,7 @@
             <a href="#">Rólunk</a>
             <a href="#">Kapcsolat</a>
             <% if (user) { %>
-            <a href="/booking">Foglalás</a>
+            <a href="/myBookings">Foglalás</a>
             <% } else { %>
             <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
             <% } %>
@@ -109,7 +109,7 @@
                 <% if (user) {%>
                     <h2>Kezdd meg a foglalást most!</h2>
                     <div class="get-started">
-                        <a href="/booking"><button id="primary-button">Foglalás</button></a>
+                        <a href="/myBookings"><button id="primary-button">Foglalás</button></a>
                     </div>
                 <%}else{%>
                     <h2>A foglalások megkezdéséhez jelentkezz be! Ha még nincs fiókod regisztálj!</h2>
