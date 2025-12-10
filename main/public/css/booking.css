@@ -105,6 +105,10 @@ id {
     border-bottom: 4px solid var(--parking-zone);
 }
 
+.reserved label {
+    pointer-events: none;
+}
+
 .vertical-container .horizontal-slot input {
     display: none;
 }
