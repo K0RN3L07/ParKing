@@ -1,7 +1,13 @@
 const User = require('../models/bookingModel');
 
-function getBooking(req, res) {
-    res.render('booking', {
+function getNewBooking(req, res) {
+    res.render('newBooking', {
+        user: req.session.user || null
+    });
+}
+
+function getMyBookings(req, res) {
+    res.render('myBookings', {
         user: req.session.user || null
     });
 }
@@ -60,7 +66,8 @@ async function getAllReservedOnFloor(req, res) {
 }
 
 module.exports = {
-    getBooking,
+    getNewBooking,
+    getMyBookings,
     bookSlot,
     getAllReservedOnFloor
 }

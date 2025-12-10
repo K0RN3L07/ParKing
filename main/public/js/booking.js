@@ -118,7 +118,7 @@ document.querySelectorAll('.circle').forEach(circle => {
             const data = await response.json();
 
             for (let i = 0; i < data.reservedSpots.length; i++) {
-                slots[data.reservedSpots[i]["parking_space_num"] - 1].classList.add("reserved")
+                slots[data.reservedSpots[i]["parking_space_num"] - 1].classList.add("reserved");
             }
 
 
