@@ -8,7 +8,7 @@ function getNewBooking(req, res) {
 
 function getMyBookings(req, res) {
     res.render('myBookings', {
-        user: req.session.user || null
+        user: req.session.user || null,
     });
 }
 
@@ -78,7 +78,7 @@ async function getUserBookings(req, res) {
 
     console.log(data);
     
-    res.status(200).json(data);
+    res.status(200).render("../views/myBookings.ejs", {bookings: data})
 }
 
 module.exports = {
