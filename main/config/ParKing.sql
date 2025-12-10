@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
 	`start_time` datetime NOT NULL,
 	`end_time` datetime NOT NULL,
 	`payment_status` varchar(255) NOT NULL,
-	`plate_num` varchar(255) NOT NULL UNIQUE,
+	`plate_num` varchar(255) NOT NULL,
 	`booked_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`),
     
