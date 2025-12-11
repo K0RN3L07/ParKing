@@ -109,23 +109,47 @@
                     <th>Állapot</th>
                     <th>Rendszám</th>
                 </tr>
-                
-                <% bookings.forEach(booking => { %>
+
+                <% bookings.forEach(booking=> { %>
                     <tr>
-                        <td><%= booking["floor_num"] %></td>
-                        <td><%= booking["parking_space_num"] %></td>
-                        <td><%= JSON.stringify(booking["start_time"]).substring(1, JSON.stringify(booking["start_time"]).length - 1) %></td>
-                        <td><%= booking["end_time"] %></td>
-                        <td><%= booking["parking_status"] %></td>
-                        <td><%= booking["plate_num"] %></td>
+                        <td>
+                            <%= booking["floor_num"] %>
+                        </td>
+                        <td>
+                            <%= booking["parking_space_num"] %>
+                        </td>
+                        <% const date1=new Date(booking["start_time"]); const
+                            start_formatted=date1.toISOString().slice(0, 10) + ", " + date1.toISOString().slice(11, 16);
+                            %>
+                            <td>
+                                <%= start_formatted %>
+                            </td>
+                            <% const date2=new Date(booking["end_time"]); const
+                                end_formatted=date2.toISOString().slice(0, 10) + ", " + date2.toISOString().slice(11,
+                                16); %>
+                                <td>
+                                    <%= end_formatted %>
+                                </td>
+                                <td>
+                                    <%= booking["parking_status"] %>
+                                </td>
+                                <td>
+                                    <%= booking["plate_num"] %>
+                                </td>
                     </tr>
-                <% }) %>
+                    <% }) %>
             </table>
-        <% } else {%>
-            <h2>Még nincs foglalásod!</h2>
-        <% } %>
-        
-        <a href="/newBooking">Új foglalás</a>
+            <% } else {%>
+                <h2>Még nincs foglalásod!</h2>
+                <% } %>
+
+                    <a href="/newBooking" class="add-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e3e3e3">
+                            <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                        </svg>
+                        Új foglalás
+                    </a>
     </div>
 
 

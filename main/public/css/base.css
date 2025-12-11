@@ -32,6 +32,7 @@ body {
 :root {
     --base-color: #e7ecefff;
     --secondary-base-color: #cfd8df;
+    --accent-base-color: #e0e5eb;
     --primary-text-color: #111111;
     --secondary-text-color: #333333;
     --accent-text-color: #f0f0f0;
@@ -49,6 +50,7 @@ body {
 .darkmode {
     --base-color: #070b1d;
     --secondary-base-color: #0f1631;
+    --accent-base-color: #1f1e42;
     --primary-text-color: #ebebeb;
     --secondary-text-color: #d6d6d6;
     --primary-color: #274c77ff;
