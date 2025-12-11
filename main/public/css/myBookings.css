@@ -1,3 +1,4 @@
+/* #region Basic Elements */
 body {
     display: flex;
     justify-content: center;
@@ -10,12 +11,15 @@ body {
     flex-direction: column;
     color: var(--primary-text-color);
 }
+/* #endregion */
 
+/* Title */
 .container h1 {
     font-size: 1.7em;
     font-family: LSB;
 }
 
+/* New booking Button */
 .container .add-button {
     width: fit-content;
     display: flex;
@@ -44,11 +48,17 @@ body {
     fill: var(--accent-text-color);
 }
 
+/* My Bookings Table */
 table {
     background-color: var(--secondary-base-color);
     border-radius: 20px;
     border-collapse: collapse;
     margin-top: 20px;
+    overflow-x: hidden;
+}
+
+tr {
+    width: 100%;
 }
 
 th {
@@ -78,7 +88,8 @@ tr:nth-child(odd) td {
 }
 
 
-td, th {
+td,
+th {
     padding: 20px;
     width: fit-content;
     text-align: center;
@@ -89,6 +100,7 @@ td, th {
 tr:first-child th:first-child {
     border-top-left-radius: 20px;
 }
+
 tr:first-child th:last-child {
     border-top-right-radius: 20px;
 }
@@ -97,6 +109,7 @@ tr:first-child th:last-child {
 tr:last-child td:first-child {
     border-bottom-left-radius: 20px;
 }
+
 tr:last-child td:last-child {
     border-bottom-right-radius: 20px;
 }
@@ -104,3 +117,31 @@ tr:last-child td:last-child {
 tr:hover {
     filter: contrast(0.95);
 }
+
+/* #region Responsivity */
+@media (max-width:730px) {
+    table {
+        display: block;
+        overflow-x: scroll;
+    }
+
+    table::-webkit-scrollbar {
+        height: 10px;
+        border-radius: 10px;
+    }
+
+    table::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 10px;
+    }
+
+    tr:last-child td:first-child {
+        border-bottom-left-radius: 0;
+    }
+
+    tr:last-child td:last-child {
+        border-bottom-right-radius: 0;
+    }
+}
+
+/* #endregion */
