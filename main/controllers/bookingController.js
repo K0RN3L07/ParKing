@@ -14,12 +14,6 @@ async function getMyBookings(req, res) {
     res.render("myBookings", {bookings: data, user: req.session.user || null});
 }
 
-// function getUserBookings(req, res) {
-//     res.render('getUserBookings', {
-//         user: req.session.user || null
-//     });
-// }
-
 async function bookSlot(req, res) {
     const user_id = req.session.user?.id;
 
@@ -73,18 +67,9 @@ async function getAllReservedOnFloor(req, res) {
     res.status(200).json({reservedSpots: reservedSpots})
 }
 
-async function getUserBookings(req, res) {
-    // let user_id = req.session.user?.id;
-    
-    // const data = await User.getUserBookings(user_id);
-    
-    // res.render("myBookings", {bookings: data, user: req.session.user || null});
-}
-
 module.exports = {
     getNewBooking,
     getMyBookings,
     bookSlot,
-    getAllReservedOnFloor,
-    getUserBookings
+    getAllReservedOnFloor
 }
