@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/mainpage.css">
 <script src="/js/main.js" defer></script>
 <%- include('layout', {body: '' }) %>
 
@@ -43,7 +43,6 @@
 
                 <div class="profile-icon-dropdown-container" tabindex="0">
                     <a href="">Fiókom szerkesztése</a>
-                    <a>Sötét mód</a>
                     <% if (user) { %>
                         <a href="/logout">Kijelentkezés</a>
                     <% } else { %>
@@ -80,7 +79,6 @@
 
             <div class="profile-dropdown-conatiner">
                 <a href="">Fiókom szerkesztése</a>
-                <a href="">Sötét mód</a>
                 <% if (user) { %>
                     <a href="/logout">Kijelentkezés</a>
                 <% } else { %>

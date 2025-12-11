@@ -19,6 +19,10 @@ body {
     font-family: LSB;
 }
 
+.container h2 {
+    margin-top: 20px;
+}
+
 /* New booking Button */
 .container .add-button {
     width: fit-content;
@@ -126,7 +130,7 @@ tr:hover {
     }
 
     table::-webkit-scrollbar {
-        height: 10px;
+        height: 8px;
         border-radius: 10px;
     }
 

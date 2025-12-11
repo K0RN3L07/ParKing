@@ -46,7 +46,6 @@
 
                         <div class="profile-icon-dropdown-container" tabindex="0">
                             <a href="">Fiókom szerkesztése</a>
-                            <a>Sötét mód</a>
                             <% if (user) { %>
                                 <a href="/logout">Kijelentkezés</a>
                                 <% } else { %>
@@ -83,7 +82,6 @@
 
                         <div class="profile-dropdown-conatiner">
                             <a href="">Fiókom szerkesztése</a>
-                            <a href="">Sötét mód</a>
                             <% if (user) { %>
                                 <a href="/logout">Kijelentkezés</a>
                                 <% } else { %>
@@ -100,57 +98,57 @@
     <div class="container">
         <h1>Foglalásaim</h1>
 
-        <% if (bookings) {%>
-            <table>
-                <tr>
-                    <th>Emelet</th>
-                    <th>Parkolóhely</th>
-                    <th>Mettől</th>
-                    <th>Meddig</th>
-                    <th>Állapot</th>
-                    <th>Rendszám</th>
-                </tr>
-
-                <% bookings.forEach(booking=> { %>
+            <% if (bookings != "") {%>
+                <table>
                     <tr>
-                        <td>
-                            <%= booking["floor_num"] %>
-                        </td>
-                        <td>
-                            <%= booking["parking_space_num"] %>
-                        </td>
-                        <% const date1=new Date(booking["start_time"]); const
-                            start_formatted=date1.toISOString().slice(0, 10) + ", " + date1.toISOString().slice(11, 16);
-                            %>
+                        <th>Emelet</th>
+                        <th>Parkolóhely</th>
+                        <th>Mettől</th>
+                        <th>Meddig</th>
+                        <th>Állapot</th>
+                        <th>Rendszám</th>
+                    </tr>
+
+                    <% bookings.forEach(booking=> { %>
+                        <tr>
                             <td>
-                                <%= start_formatted %>
+                                <%= booking["floor_num"] %>
                             </td>
-                            <% const date2=new Date(booking["end_time"]); const
-                                end_formatted=date2.toISOString().slice(0, 10) + ", " + date2.toISOString().slice(11,
+                            <td>
+                                <%= booking["parking_space_num"] %>
+                            </td>
+                            <% const date1=new Date(booking["start_time"]); const
+                                start_formatted=date1.toISOString().slice(0, 10) + ", " + date1.toISOString().slice(11,
                                 16); %>
                                 <td>
-                                    <%= end_formatted %>
+                                    <%= start_formatted %>
                                 </td>
-                                <td>
-                                    <%= booking["parking_status"] %>
-                                </td>
-                                <td>
-                                    <%= booking["plate_num"] %>
-                                </td>
-                    </tr>
-                    <% }) %>
-            </table>
+                                <% const date2=new Date(booking["end_time"]); const
+                                    end_formatted=date2.toISOString().slice(0, 10) + ", " +
+                                    date2.toISOString().slice(11, 16); %>
+                                    <td>
+                                        <%= end_formatted %>
+                                    </td>
+                                    <td>
+                                        <%= booking["parking_status"] %>
+                                    </td>
+                                    <td>
+                                        <%= booking["plate_num"] %>
+                                    </td>
+                        </tr>
+                        <% }) %>
+                </table>
             <% } else {%>
                 <h2>Még nincs foglalásod!</h2>
-                <% } %>
+            <% } %>
 
-                    <a href="/newBooking" class="add-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                            fill="#e3e3e3">
-                            <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
-                        </svg>
-                        Új foglalás
-                    </a>
+            <a href="/newBooking" class="add-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#e3e3e3">
+                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                </svg>
+                Új foglalás hozzáadása
+            </a>
     </div>
 
 
