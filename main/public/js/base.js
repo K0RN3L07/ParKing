@@ -15,6 +15,18 @@ function toggleDarkMode() {
     }
 }
 
+function setThemeSameAsSystemTheme() {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.body.classList.add('darkmode');
+  } else {
+    document.body.classList.remove('darkmode');
+  }
+}
+
+setThemeSameAsSystemTheme();
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeSameAsSystemTheme);
+
 //#endregion
 
 //#region Profile Icon Dropdown
