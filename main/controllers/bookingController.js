@@ -21,7 +21,7 @@ async function bookSlot(req, res) {
         return res.status(401).json({ error: "Nincs bejelentkezve!" });
     }
 
-    const {
+    let {
         parking_slot,
         start_date,
         start_time,
@@ -52,7 +52,7 @@ async function bookSlot(req, res) {
             parking_space_id,
             start,
             end,
-            plate_num)
+            plate_num.toUpperCase())
 
         res.status(200).json({ msg: "Sikeres foglalás!" })
     }

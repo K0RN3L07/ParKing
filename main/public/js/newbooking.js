@@ -9,10 +9,21 @@ let parkingSlotInputForBackend = document.getElementsByName('parking_slot');
 let selectedSlot;
 let selectedLevel = 1;
 
+function getCurrentDate() {
+    return new Date().toISOString().split("T")[0];
+}
+
 let startDateInput = document.getElementById('start-date');
 let startTimeInput = document.getElementById('start-time');
+
+startDateInput.setAttribute("min", getCurrentDate());
+
 let endDateInput = document.getElementById('end-date');
 let endTimeInput = document.getElementById('end-time');
+
+startDateInput.addEventListener("input", () => {
+    endDateInput.setAttribute("min", startDateInput.value);
+})
 
 function checkIfDatesAreSet() {
     if (startDateInput.value && startTimeInput.value && endDateInput.value && endTimeInput.value) {

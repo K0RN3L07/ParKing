@@ -122,6 +122,20 @@ tr:hover {
     filter: contrast(0.95);
 }
 
+.delete-btn {
+    background-color: var(--delete-color);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 6px;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-btn svg {
+    fill: var(--accent-text-color);
+}
+
 /* #region Responsivity */
 @media (max-width:730px) {
     table {

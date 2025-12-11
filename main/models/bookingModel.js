@@ -58,8 +58,7 @@ exports.getUserBookings = (id) => {
             [id],
             (err, result) => {
                 if (err) return reject(err);
-                console.log(result)
-                resolve(result)
+                resolve(result);
             }
         )
     })
