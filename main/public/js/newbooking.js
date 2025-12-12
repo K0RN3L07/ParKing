@@ -68,11 +68,41 @@ deleteSelection.addEventListener('click', () => {
     radioArray.forEach(radio => {
         radio.checked = false;
     });
-
+    
     // Update placeholder
     parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
     parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
     deleteSelection.classList.remove("visible");
+});
+
+//#endregion
+
+//#region Search for open spot button
+
+let searchForOpenSpotsButton = document.getElementById("searchForOpenSpots");
+let bookButton = document.getElementById("bookButton");
+
+let plateNum = document.getElementById("license");
+let hiddenField = document.getElementById("hiddenField");
+
+function checkIfAllBoxesFilled() {
+    console.log(hiddenField.value)
+    if (!checkIfDatesAreSet() || !plateNum.value || hiddenField.value.includes("null") || !hiddenField.value){
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+searchForOpenSpotsButton.addEventListener("click", () => {
+    if (checkIfDatesAreSet()) {
+        searchButtonClicked = true;
+        levels[0].click();
+    }
+    else {
+        alert("Válaszd ki az idópontot először!");
+    }
 });
 
 //#endregion
@@ -82,27 +112,32 @@ deleteSelection.addEventListener('click', () => {
 let levels = document.querySelectorAll('.circle');
 let selectedIdx;
 
+let searchButtonClicked = false;
+
 levels.forEach(level => {
     level.addEventListener("click", () => {
-        radioArray.forEach(radio => {
-            radio.checked = false;
-        });
-
-        selectedIdx = parseInt(level.innerHTML) - 1;
-        levels.forEach(lvl => lvl.classList.remove("selected-level"));
-
-        levels[selectedIdx].classList.add("selected-level");
-
-
-        // Update placeholder
-        if (level.classList.contains("selected-level")) {
-            selectedLevel = selectedIdx + 1;
+        if (searchButtonClicked){
+            radioArray.forEach(radio => {
+                radio.checked = false;
+            });
+    
+            selectedIdx = parseInt(level.innerHTML) - 1;
+            levels.forEach(lvl => lvl.classList.remove("selected-level"));
+    
+            levels[selectedIdx].classList.add("selected-level");
+    
+    
+            // Update placeholder
+            if (level.classList.contains("selected-level")) {
+                selectedLevel = selectedIdx + 1;
+            }
+    
+            parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
+            parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
         }
-
-        parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
-        parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
     });
 });
+
 
 
 let slots = document.querySelectorAll(".slot");
@@ -114,31 +149,51 @@ function removeReserved() {
 
 document.querySelectorAll('.circle').forEach(circle => {
     circle.addEventListener('click', async () => {
-        removeReserved();
-        const floor = circle.textContent.trim();
+        if (searchButtonClicked) {
+            removeReserved();
+            const floor = circle.textContent.trim();
+            
+            try {
+                const response = await fetch('/getAllReservedOnFloor', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ parking_slot: floor })
+                });
 
-        try {
-            const response = await fetch('/getAllReservedOnFloor', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ parking_slot: floor })
-            });
+                const data = await response.json();
+                
+                for (let i = 0; i < data.reservedSpots.length; i++) {
+                    slots[data.reservedSpots[i]["parking_space_num"] - 1].classList.add("reserved");
+                }
 
-            const data = await response.json();
-
-            for (let i = 0; i < data.reservedSpots.length; i++) {
-                slots[data.reservedSpots[i]["parking_space_num"] - 1].classList.add("reserved");
+                
+            } catch (err) {
+                console.log("Fetch error:", err);
             }
-
-
-        } catch (err) {
-            console.error("Fetch error:", err);
+        }
+        else {
+            alert("Válaszd ki az időpontot először!")
         }
     });
 });
 
-levels[0].click();
+//#endregion
+
+// #region Book button
+
+bookButton.addEventListener("click", () => {
+    if (checkIfAllBoxesFilled()) {
+        bookButton.setAttribute("type", "submit");
+        confirm("Sikeres foglalás!")
+    }
+    else {
+        bookButton.setAttribute("type", "button");
+        alert("Minden mező kitöltése kötelező!");
+    }
+})
+
+
 
 //#endregion

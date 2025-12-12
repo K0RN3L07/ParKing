@@ -391,7 +391,7 @@
 
                     <!-- Search free parking spaces -->
                     <div class="row">
-                        <button onclick="searchFreeParkingSpaces()">Szabad parkolóhelyek keresése</button>
+                        <button type="button" id="searchForOpenSpots">Szabad parkolóhelyek keresése</button>
                     </div>
 
 
@@ -408,13 +408,13 @@
                             <div class="form-field">
                                 <label for="slotInput">Parkoló hely (válaszd ki az ábrán)</label>
                                 <input type="text" disabled name="parking-slot" id="slotInput" value="1. emelet,">
-                                <input type="hidden" name="parking_slot">
+                                <input type="hidden" name="parking_slot" id="hiddenField">
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <button type="submit">Foglalás</button>
+                        <button type="button" id="bookButton">Foglalás</button>
                     </div>
                 </div>
 

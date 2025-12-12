@@ -52,9 +52,11 @@ async function bookSlot(req, res) {
             parking_space_id,
             start,
             end,
-            plate_num.toUpperCase())
+            plate_num.toUpperCase());
 
-        res.status(200).json({ msg: "Sikeres foglalás!" })
+        return res.redirect('/myBookings');
+
+        // res.status(200).json({ msg: "Sikeres foglalás!" })
     }
 }
 
