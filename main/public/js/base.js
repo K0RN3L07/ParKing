@@ -15,6 +15,7 @@ function toggleDarkMode() {
     }
 }
 
+// Setting Theme Same As System Theme
 function setThemeSameAsSystemTheme() {
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.body.classList.add('darkmode');
