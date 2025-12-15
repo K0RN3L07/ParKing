@@ -112,6 +112,7 @@ window.addEventListener("resize", () => {
 
 //#region My Profile Dropdown
 
+
 let dropdownToggled = false;
 let dropdownIcon = document.getElementById("dropdown-icon");
 let dropdownContainer = document.querySelector(".profile-dropdown-conatiner");
