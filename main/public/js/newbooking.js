@@ -79,9 +79,6 @@ deleteSelection.addEventListener('click', () => {
 
 //#region Search for open spot button
 
-let searchForOpenSpotsButton = document.getElementById("searchForOpenSpots");
-let bookButton = document.getElementById("bookButton");
-
 let plateNum = document.getElementById("license");
 let hiddenField = document.getElementById("hiddenField");
 
@@ -95,13 +92,31 @@ function checkIfAllBoxesFilled() {
     }
 }
 
-searchForOpenSpotsButton.addEventListener("click", () => {
+startDateInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
         searchButtonClicked = true;
         levels[0].click();
     }
-    else {
-        alert("Válaszd ki az idópontot először!");
+});
+
+startTimeInput.addEventListener("input", () => {
+    if (checkIfDatesAreSet()) {
+        searchButtonClicked = true;
+        levels[0].click();
+    }
+});
+
+endDateInput.addEventListener("input", () => {
+    if (checkIfDatesAreSet()) {
+        searchButtonClicked = true;
+        levels[0].click();
+    }
+});
+
+endTimeInput.addEventListener("input", () => {
+    if (checkIfDatesAreSet()) {
+        searchButtonClicked = true;
+        levels[0].click();
     }
 });
 
