@@ -31,11 +31,15 @@ exports.getParkingSpaceId = (floor, slot) => {
     });
 };
 
-exports.getAllReservedOnFloor = (floor) => {
+exports.getAllReservedOnFloor = (floor, start, end) => {
     return new Promise((resolve, reject) => {
         db.query(
-            "SELECT parking_spaces.parking_space_num FROM parking_spaces INNER JOIN bookings ON parking_spaces.id = bookings.parking_space_id WHERE parking_spaces.floor_num = ?",
-            [floor],
+            `SELECT parking_spaces.parking_space_num
+            FROM parking_spaces INNER JOIN bookings ON parking_spaces.id = bookings.parking_space_id
+            WHERE parking_spaces.floor_num = ?
+            AND
+            (bookings.start_time BETWEEN ? AND ? OR bookings.end_time BETWEEN ? AND ?)`,
+            [floor, start, end, start, end],
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result)

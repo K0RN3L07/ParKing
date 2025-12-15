@@ -94,7 +94,6 @@ let hiddenField = document.getElementById("hiddenField");
 
 // Check If All Fields Are Filled
 function checkIfAllBoxesFilled() {
-    console.log(hiddenField.value)
     if (!checkIfDatesAreSet() || !plateNum.value || hiddenField.value.includes("null") || !hiddenField.value){
         return false;
     }
@@ -103,7 +102,13 @@ function checkIfAllBoxesFilled() {
     }
 }
 
-//#region Show Reserved Parking Spaces
+function getAllDates(){
+    start_date = document.getElementById("start-date").value;
+    start_time = document.getElementById("start-time").value;
+    end_date = document.getElementById("end-date").value;
+    end_time = document.getElementById("end-time").value;
+    return [start_date, start_time, end_date, end_time];
+}
 
 startDateInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
@@ -189,10 +194,17 @@ document.querySelectorAll('.circle').forEach(circle => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ parking_slot: floor })
+                    body: JSON.stringify({ 
+                        parking_slot: floor,
+                        start_date: getAllDates()[0],
+                        start_time: getAllDates()[1],
+                        end_date: getAllDates()[2],
+                        end_time: getAllDates()[3]
+                        })
                 });
 
                 const data = await response.json();
+                console.log(data)
                 
                 for (let i = 0; i < data.reservedSpots.length; i++) {
                     slots[data.reservedSpots[i]["parking_space_num"] - 1].classList.add("reserved");

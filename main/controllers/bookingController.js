@@ -61,12 +61,17 @@ async function bookSlot(req, res) {
 }
 
 async function getAllReservedOnFloor(req, res) {
-    let { parking_slot } = req.body;
-    let floor = parking_slot.split(';')[0]
+    let { parking_slot, start_date, start_time, end_date, end_time } = req.body;
 
-    let reservedSpots = await User.getAllReservedOnFloor(floor)
+    let start = (start_date + " " + start_time + ":00").toString();
+    let end = (end_date + " " + end_time + ":00").toString();
+    console.log(start)
 
-    res.status(200).json({reservedSpots: reservedSpots})
+    let floor = parking_slot.split(';')[0];
+
+    let reservedSpots = await User.getAllReservedOnFloor(floor, start, end);
+
+    res.status(200).json({reservedSpots: reservedSpots});
 }
 
 module.exports = {
