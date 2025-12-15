@@ -91,6 +91,12 @@ button {
     display: flex;
     flex-direction: column;
     width: 85%;
+    position: relative;
+}
+
+#about-us {
+    position: absolute;
+    top: -150px;
 }
 
 .about-us-container h2 {
