@@ -188,6 +188,7 @@ strong, h3 {
     }
 }
 
+/* About Us */
 @media (max-width:1130px) {
     .card {
         grid-template-areas: 

@@ -77,6 +77,7 @@ let hamburgerBtn = document.querySelector(".hamburger-menu");
 let hamburgerToggled = false;
 let itemsVertical = document.getElementsByClassName("items-vertical");
 
+// Main Toggling Function
 function toggleHamburgerMenu() {
     hamburgerToggled = !hamburgerToggled;
     if (hamburgerToggled) {
@@ -94,6 +95,7 @@ function toggleHamburgerMenu() {
     }
 }
 
+// Closing it on resize
 window.addEventListener("resize", () => {
     if (window.innerWidth > 690) {
         hamburgerToggled = false;
@@ -114,6 +116,7 @@ let dropdownToggled = false;
 let dropdownIcon = document.getElementById("dropdown-icon");
 let dropdownContainer = document.querySelector(".profile-dropdown-conatiner");
 
+// Main Toggling Function
 function toggleProfileDropdown() {
     dropdownToggled = !dropdownToggled;
     if (dropdownToggled) {

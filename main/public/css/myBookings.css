@@ -13,7 +13,7 @@ body {
 }
 /* #endregion */
 
-/* Title */
+/* #region Title */
 .container h1 {
     font-size: 1.7em;
     font-family: LSB;
@@ -23,7 +23,9 @@ body {
     margin-top: 20px;
 }
 
-/* New booking Button */
+/* #endregion */
+
+/* #region New booking Button */
 .container .add-button {
     width: fit-content;
     display: flex;
@@ -52,7 +54,9 @@ body {
     fill: var(--accent-text-color);
 }
 
-/* My Bookings Table */
+/* #endregion */
+
+/* #region My Bookings Table */
 table {
     background-color: var(--secondary-base-color);
     border-radius: 20px;
@@ -135,6 +139,8 @@ tr:hover {
 .delete-btn svg {
     fill: var(--accent-text-color);
 }
+
+/* #endregion */
 
 /* #region Responsivity */
 @media (max-width:730px) {

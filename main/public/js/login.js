@@ -1,3 +1,5 @@
+// #region Email Field Animation
+
 let email = document.getElementById("email");
 let emailLabel = document.getElementById("emailLabel");
 
@@ -15,6 +17,10 @@ email.addEventListener("focusout", () => {
     }
 })
 
+//#endregion
+
+//#region  Password Field Animation
+
 let password = document.getElementById("password");
 let passwordLabel = document.getElementById("passwordLabel");
 
@@ -31,3 +37,5 @@ password.addEventListener("focusout", () => {
         passwordLabel.style.transform = "translateY(-110%)";
     }
 });
+
+//#endregion

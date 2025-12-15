@@ -17,7 +17,7 @@ function toggleDarkMode() {
 
 //#endregion
 
-//#region Animations
+//#region Name Field Animation
 
 let fullname = document.getElementById("name");
 let nameLabel = document.getElementById("nameLabel");
@@ -36,6 +36,10 @@ fullname.addEventListener("focusout", () => {
     }
 })
 
+//#endregion
+
+//#region Email Field Animation
+
 let email = document.getElementById("email");
 let emailLabel = document.getElementById("emailLabel");
 
@@ -52,6 +56,10 @@ email.addEventListener("focusout", () => {
         emailLabel.style.transform = "translateY(-110%)";
     }
 })
+
+//#endregion
+
+//#region Phone Number Field Animation
 
 let phoneNum = document.getElementById("phoneNum");
 let phoneNumLabel = document.getElementById("phoneNumLabel");
@@ -70,6 +78,10 @@ phoneNum.addEventListener("focusout", () => {
     }
 })
 
+//#endregion
+
+//#region Password Field Animation
+
 let password = document.getElementById("password");
 let passwordLabel = document.getElementById("passwordLabel");
 
@@ -86,6 +98,10 @@ password.addEventListener("focusout", () => {
         passwordLabel.style.transform = "translateY(-110%)";
     }
 })
+
+//#endregion
+
+//#region Password Again Field Animation
 
 let passwordAgain = document.getElementById("passwordAgain");
 let passwordAgainLabel = document.getElementById("passwordAgainLabel");

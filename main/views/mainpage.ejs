@@ -17,6 +17,7 @@
             <img src="/img/full_logo.png" alt="">
         </a>
 
+        <!-- Nav Items -->
         <div class="items">
             <a href="/">Főoldal</a>
             <a href="#about-us">Rólunk</a>
@@ -28,8 +29,8 @@
             <%}%>
         </div>
 
+        <!-- Nav Profile Dropdown -->
         <div class="profile-container">
-
             <% if (user) {%>
                 <h2><%= user.name %></h2>
             <%}%>
@@ -52,6 +53,7 @@
             </div>
         </div>
 
+        <!-- Nav Hamburger Menu -->
         <div class="hamburger-menu" onclick="toggleHamburgerMenu()">
             <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px">
                 <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
@@ -68,6 +70,7 @@
             <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
             <% } %>
 
+            <!-- Profile Dropdown -->
             <div class="my-profile" onclick="toggleProfileDropdown()">
                 <p>Profil</p>
 
@@ -125,13 +128,16 @@
         <!-- #region About Us -->
 
         <div class="about-us-container">
+            <!-- Anchor spacer -->
             <span id="about-us"></span>
             
+            <!-- About Us Card -->
             <div class="card">
                 <div class="image">
                     <img src="/img/parking_garage.jpg" alt="">
                 </div>
                 
+                <!-- About Us Content -->
                 <div class="content">
                     <h2>Rólunk</h2>
 

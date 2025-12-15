@@ -19,43 +19,43 @@
             <img src="/img/full_logo.png" alt="">
         </a>
 
+        <!-- Nav Items -->
         <div class="items">
             <a href="/">Főoldal</a>
-            <a href="/#about-us">Rólunk</a>
+            <a href="#about-us">Rólunk</a>
             <a href="#">Kapcsolat</a>
             <% if (user) {%>
                 <a href="/myBookings">Foglalás</a>
-                <%} else {%>
-                    <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
-                    <%}%>
+            <%} else {%>
+                <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+            <%}%>
         </div>
 
+        <!-- Nav Profile Dropdown -->
         <div class="profile-container">
-
             <% if (user) {%>
-                <h2>
-                    <%= user.name %>
-                </h2>
-                <%}%>
+                <h2><%= user.name %></h2>
+            <%}%>
 
-                    <div class="profile-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
-                            stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="32" cy="20" r="12" />
-                            <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
-                        </svg>
+            <div class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
+                    stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="32" cy="20" r="12" />
+                    <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
+                </svg>
 
-                        <div class="profile-icon-dropdown-container" tabindex="0">
-                            <a href="">Fiókom szerkesztése</a>
-                            <% if (user) { %>
-                                <a href="/logout">Kijelentkezés</a>
-                                <% } else { %>
-                                    <a href="/login">Bejelentkezés</a>
-                                    <% } %>
-                        </div>
-                    </div>
+                <div class="profile-icon-dropdown-container" tabindex="0">
+                    <a href="">Fiókom szerkesztése</a>
+                    <% if (user) { %>
+                        <a href="/logout">Kijelentkezés</a>
+                    <% } else { %>
+                        <a href="/login">Bejelentkezés</a>
+                    <% } %>
+                </div>
+            </div>
         </div>
 
+        <!-- Nav Hamburger Menu -->
         <div class="hamburger-menu" onclick="toggleHamburgerMenu()">
             <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px">
                 <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
@@ -64,31 +64,32 @@
 
         <div class="items-vertical">
             <a href="/">Főoldal</a>
-            <a href="/#about-us">Rólunk</a>
+            <a href="#about-us">Rólunk</a>
             <a href="#">Kapcsolat</a>
             <% if (user) { %>
-                <a href="/myBookings">Foglalás</a>
+            <a href="/myBookings">Foglalás</a>
+            <% } else { %>
+            <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+            <% } %>
+
+            <!-- Profile Dropdown -->
+            <div class="my-profile" onclick="toggleProfileDropdown()">
+                <p>Profil</p>
+
+                <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960"
+                    width="32px" fill="var(--primary-text-color)">
+                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                </svg>
+            </div>
+
+            <div class="profile-dropdown-conatiner">
+                <a href="">Fiókom szerkesztése</a>
+                <% if (user) { %>
+                    <a href="/logout">Kijelentkezés</a>
                 <% } else { %>
-                    <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
-                    <% } %>
-
-                        <div class="my-profile" onclick="toggleProfileDropdown()">
-                            <p>Profil</p>
-
-                            <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px"
-                                viewBox="0 -960 960 960" width="32px" fill="var(--primary-text-color)">
-                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-                            </svg>
-                        </div>
-
-                        <div class="profile-dropdown-conatiner">
-                            <a href="">Fiókom szerkesztése</a>
-                            <% if (user) { %>
-                                <a href="/logout">Kijelentkezés</a>
-                                <% } else { %>
-                                    <a href="/login">Bejelentkezés</a>
-                                    <% } %>
-                        </div>
+                    <a href="/login">Bejelentkezés</a>
+                <% } %>
+            </div>
 
         </div>
     </nav>
@@ -99,6 +100,7 @@
 
         <form action="/bookSlot" method="POST">
             <div class="header">
+                <!-- Back To myBookings Page -->
                 <a href="/myBookings" title="Vissza a foglalásaimhoz">
                     <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px"
                         fill="#1f1f1f">
@@ -108,12 +110,16 @@
                 <h1>ParKing - Parkolóhely foglalás</h1>
             </div>
 
+            <!-- #region Main Content -->
             <h4>Válassz emeletet és parkolóhelyet!</h4>
             <div class="container">
                 <div class="parking-container">
                     <span id="deleteSelection">Kijelölés törlése</span>
 
+                    <!-- #region Parking Space Selector -->
                     <div class="parking-map">
+
+                        <!-- Normal Type Parking Spaces -->
                         <div class="vertical-container">
 
                             <div class="horizontal-slot slot">
@@ -180,6 +186,7 @@
 
                         <div class="horizontal-container">
 
+                            <!-- Electric & Handicapped Parking Spaces (Row 1) -->
                             <div class="row">
 
                                 <div class="vertical-slot slot electric">
@@ -239,6 +246,7 @@
 
                             </div>
 
+                            <!-- Entrance & Exit (Row 2) -->
                             <div class="col">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                     width="24px" fill="#e3e3e3">
@@ -250,6 +258,7 @@
                                 </svg>
                             </div>
 
+                            <!-- Electric & Handicapped Parking Spaces (Row 3) -->
                             <div class="row bottom-row">
 
                                 <div class="vertical-slot slot electric">
@@ -312,7 +321,9 @@
                         </div>
 
                     </div>
+                    <!-- #endregion -->
 
+                    <!-- #region Level Selector -->
                     <div class="level-select">
 
                         <div class="line"></div>
@@ -333,9 +344,11 @@
 
                         <h4 id="floorTitle">Emeletek</h4>
                     </div>
+                    <!-- #endregion -->
 
                 </div>
 
+                <!-- #region Form Fields -->
                 <div class="form-items-container">
                     <!-- Start date and time -->
                     <div class="row">
@@ -410,8 +423,11 @@
                         <button type="button" id="bookButton">Foglalás</button>
                     </div>
                 </div>
+                <!-- #endregion -->
 
             </div>
+            <!-- #endregion -->
+        
         </form>
     </div>
     <!-- #endregion -->

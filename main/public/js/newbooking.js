@@ -9,6 +9,7 @@ let parkingSlotInputForBackend = document.getElementsByName('parking_slot');
 let selectedSlot;
 let selectedLevel = 1;
 
+// Getting Current Date And Formatting It
 function getCurrentDate() {
     return new Date().toISOString().split("T")[0];
 }
@@ -25,6 +26,7 @@ startDateInput.addEventListener("input", () => {
     endDateInput.setAttribute("min", startDateInput.value);
 })
 
+// Check If Date & Time Inputs Are Filled
 function checkIfDatesAreSet() {
     if (startDateInput.value && startTimeInput.value && endDateInput.value && endTimeInput.value) {
         return true;
@@ -33,6 +35,8 @@ function checkIfDatesAreSet() {
         return false;
     }
 }
+
+//#region Parking Space Selection
 
 radioArray.forEach(radio => {
     radio.addEventListener('change', () => {
@@ -64,6 +68,10 @@ radioArray.forEach(radio => {
     });
 });
 
+//#endregion
+
+//#region Delete Selected Space Button
+
 deleteSelection.addEventListener('click', () => {
     radioArray.forEach(radio => {
         radio.checked = false;
@@ -77,11 +85,14 @@ deleteSelection.addEventListener('click', () => {
 
 //#endregion
 
-//#region Search for open spot button
+//#endregion
+
+//#region Search For Free Space Button
 
 let plateNum = document.getElementById("license");
 let hiddenField = document.getElementById("hiddenField");
 
+// Check If All Fields Are Filled
 function checkIfAllBoxesFilled() {
     console.log(hiddenField.value)
     if (!checkIfDatesAreSet() || !plateNum.value || hiddenField.value.includes("null") || !hiddenField.value){
@@ -91,6 +102,8 @@ function checkIfAllBoxesFilled() {
         return true;
     }
 }
+
+//#region Show Reserved Parking Spaces
 
 startDateInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
@@ -122,6 +135,8 @@ endTimeInput.addEventListener("input", () => {
 
 //#endregion
 
+//#endregion
+
 //#region Level Selector
 
 let levels = document.querySelectorAll('.circle');
@@ -129,6 +144,7 @@ let selectedIdx;
 
 let searchButtonClicked = false;
 
+// Adding Event Listeners
 levels.forEach(level => {
     level.addEventListener("click", () => {
         if (searchButtonClicked){
@@ -153,8 +169,7 @@ levels.forEach(level => {
     });
 });
 
-
-
+// Remove Reserved Spaces When Chaning Floor
 let slots = document.querySelectorAll(".slot");
 function removeReserved() {
     slots.forEach(item => {
@@ -208,7 +223,5 @@ bookButton.addEventListener("click", () => {
         alert("Minden mező kitöltése kötelező!");
     }
 })
-
-
 
 //#endregion
