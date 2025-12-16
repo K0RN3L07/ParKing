@@ -122,7 +122,7 @@
                     <th>Törlés</th>
                 </tr>
 
-                <% bookings.forEach(booking=> { %>
+                <% bookings.forEach(booking => { %>
                     <tr>
                         <td>
                             <%= booking["plate_num"] %>
@@ -152,7 +152,7 @@
                                     <%= booking["parking_status"] %>
                                 </td>
                                 <td>
-                                    <button class="delete-btn">
+                                    <button class="delete-btn" data-booking-id="<%= booking["id"] %>">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                             width="24px" fill="#1f1f1f">
                                             <path

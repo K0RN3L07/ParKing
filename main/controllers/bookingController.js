@@ -8,10 +8,10 @@ async function getNewBooking(req, res) {
 
 async function getMyBookings(req, res) {
     let user_id = req.session.user?.id;
-    
+
     const data = await User.getUserBookings(user_id);
-    
-    res.render("myBookings", {bookings: data, user: req.session.user || null});
+
+    res.render("myBookings", { bookings: data, user: req.session.user || null });
 }
 
 async function bookSlot(req, res) {
@@ -65,18 +65,28 @@ async function getAllReservedOnFloor(req, res) {
 
     let start = (start_date + " " + start_time + ":00").toString();
     let end = (end_date + " " + end_time + ":00").toString();
-    console.log(start)
 
     let floor = parking_slot.split(';')[0];
 
     let reservedSpots = await User.getAllReservedOnFloor(floor, start, end);
 
-    res.status(200).json({reservedSpots: reservedSpots});
+    res.status(200).json({ reservedSpots: reservedSpots });
 }
+
+async function deleteBooking(req, res) {
+    try {
+        await User.deleteById(req.params.id);
+        res.sendStatus(204);
+
+    } catch (err) {
+        res.status(500).json({ error: "Delete failed" });
+    }
+};
 
 module.exports = {
     getNewBooking,
     getMyBookings,
     bookSlot,
-    getAllReservedOnFloor
+    getAllReservedOnFloor,
+    deleteBooking
 }

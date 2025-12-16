@@ -34,25 +34,27 @@ exports.getParkingSpaceId = (floor, slot) => {
 exports.getAllReservedOnFloor = (floor, start, end) => {
     return new Promise((resolve, reject) => {
         db.query(
-            `SELECT parking_spaces.parking_space_num
-            FROM parking_spaces INNER JOIN bookings ON parking_spaces.id = bookings.parking_space_id
-            WHERE parking_spaces.floor_num = ?
-            AND
-            (bookings.start_time BETWEEN ? AND ? OR bookings.end_time BETWEEN ? AND ?)`,
-            [floor, start, end, start, end],
+            `SELECT DISTINCT parking_spaces.parking_space_num
+             FROM parking_spaces
+             JOIN bookings 
+               ON parking_spaces.id = bookings.parking_space_id
+             WHERE parking_spaces.floor_num = ?
+               AND bookings.start_time < ?
+               AND bookings.end_time > ?`,
+            [floor, end, start],
             (err, result) => {
                 if (err) return reject(err);
-                resolve(result)
+                resolve(result);
             }
-        )
-    })
-}
+        );
+    });
+};
 
 exports.getUserBookings = (id) => {
     return new Promise((resolve, reject) => {
         db.query(
             `
-            SELECT parking_spaces.floor_num, parking_spaces.parking_space_num, bookings.start_time, bookings.end_time, bookings.parking_status, bookings.plate_num, parking_spaces.type
+            SELECT bookings.id, parking_spaces.floor_num, parking_spaces.parking_space_num, bookings.start_time, bookings.end_time, bookings.parking_status, bookings.plate_num, parking_spaces.type
             FROM parking_spaces INNER JOIN bookings
             ON parking_spaces.id = bookings.parking_space_id INNER JOIN users
             ON users.id = bookings.user_id
@@ -67,3 +69,17 @@ exports.getUserBookings = (id) => {
         )
     })
 }
+
+
+exports.deleteById = (id) => {
+    return new Promise((resolve, reject) => {
+        db.query(
+            "DELETE FROM bookings WHERE id = ?",
+            [id],
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result.affectedRows);
+            }
+        );
+    });
+};
