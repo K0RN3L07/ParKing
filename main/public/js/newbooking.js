@@ -36,6 +36,9 @@ function checkIfDatesAreSet() {
     }
 }
 
+let selectedSpotType = document.getElementById("selectedSpotType");
+
+
 //#region Parking Space Selection
 
 radioArray.forEach(radio => {

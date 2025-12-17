@@ -22,7 +22,7 @@
         <!-- Nav Items -->
         <div class="items">
             <a href="/">Főoldal</a>
-            <a href="#about-us">Rólunk</a>
+            <a href="/#about-us">Rólunk</a>
             <a href="#">Kapcsolat</a>
             <% if (user) {%>
                 <a href="/myBookings">Foglalás</a>
@@ -403,7 +403,7 @@
                     </div>
 
                     <!-- License plate and slot -->
-                    <div class="row">
+                    <div class="row multiple">
                         <h3>További adatok</h3>
                         <div class="form-field-row">
                             <div class="form-field">
@@ -415,6 +415,18 @@
                                 <label for="slotInput">Parkoló hely (válaszd ki az ábrán)</label>
                                 <input type="text" disabled name="parking-slot" id="slotInput" value="1. emelet,">
                                 <input type="hidden" name="parking_slot" id="hiddenField">
+                            </div>
+                        </div>
+
+                        <div class="form-field-row">
+                            <div class="form-field">
+                                <label for="license">Parkolóhely típusa</label>
+                                <input type="text" disabled name="type" id="type" placeholder="Válaszd ki a parkolóhelyet">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="slotInput">Parkoló hely ára</label>
+                                <input type="text" disabled name="parking-slot" id="price" placeholder="Válaszd ki a parkolóhelyet">
                             </div>
                         </div>
                     </div>
