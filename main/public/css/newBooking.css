@@ -342,9 +342,8 @@ id {
         "row1"
         "row2"
         "row3"
-        "row4"
-        "row5";
-    grid-template-rows: 2fr 2fr 1fr 2fr 4fr;
+        "row4";
+    grid-template-rows: 1fr 1fr 1.5fr 1fr;
     flex-direction: column;
     width: 50%;
     padding-left: 10px;
@@ -354,6 +353,10 @@ id {
     position: relative;
     display: flex;
     flex-direction: column;
+}
+
+.multiple {
+    gap: 15px;
 }
 
 .form-items-container .row h3 {
