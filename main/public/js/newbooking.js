@@ -181,7 +181,7 @@ levels.forEach(level => {
 let slots = document.querySelectorAll(".slot");
 function removeReserved() {
     slots.forEach(item => {
-        item.classList.remove("reserved")
+        item.classList.remove("reserved");
     });
 }
 
@@ -207,7 +207,6 @@ document.querySelectorAll('.circle').forEach(circle => {
                 });
 
                 const data = await response.json();
-                console.log(data)
                 
                 for (let i = 0; i < data.reservedSpots.length; i++) {
                     slots[data.reservedSpots[i]["parking_space_num"] - 1].classList.add("reserved");
@@ -219,7 +218,7 @@ document.querySelectorAll('.circle').forEach(circle => {
             }
         }
         else {
-            alert("Válaszd ki az időpontot először!")
+            alert("Válaszd ki az időpontot először!");
         }
     });
 });
@@ -231,12 +230,12 @@ document.querySelectorAll('.circle').forEach(circle => {
 bookButton.addEventListener("click", () => {
     if (checkIfAllBoxesFilled()) {
         bookButton.setAttribute("type", "submit");
-        confirm("Sikeres foglalás!")
+        confirm("Sikeres foglalás!");
     }
     else {
         bookButton.setAttribute("type", "button");
         alert("Minden mező kitöltése kötelező!");
     }
-})
+});
 
 //#endregion

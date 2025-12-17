@@ -2,7 +2,7 @@ const express = require('express');
 const bookingController = require('../controllers/bookingController');
 const bookingRouter = express.Router();
 
-bookingRouter.get('/myBookings', bookingController.getMyBookings)
+bookingRouter.get('/myBookings', bookingController.getMyBookings);
 bookingRouter.get('/newBooking', bookingController.getNewBooking);
 
 bookingRouter.post('/bookSlot', bookingController.bookSlot);

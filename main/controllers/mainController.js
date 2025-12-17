@@ -17,21 +17,21 @@ function getError(req, res) {
     res.render('errorpage', { user: req.session.user || null, code: null, error: null});
 }
 
-async function getUsers(req, res) {
-    try {
-        const users = await User.getAllUsers();
-        return res.status(200).json(users);
-    }
-    catch (err) {
-        return res.status(500).render('errorpage', {code: 500, error: err});
-    }
-};
+// async function getUsers(req, res) {
+//     try {
+//         const users = await User.getAllUsers();
+//         return res.status(200).json(users);
+//     }
+//     catch (err) {
+//         return res.status(500).render('errorpage', {code: 500, error: err});
+//     }
+// };
 
 async function registerUser(req, res) {
     const { name, email, phone_num, password } = req.body;
 
     if (!name || !email || !phone_num || !password) {
-        return res.status(400).json({ msg: 'error' })
+        return res.status(400).json({ msg: 'error' });
     }
     else {
         const saltRounds = 10;
@@ -65,7 +65,7 @@ async function loginUser(req, res) {
             name: user.name,
             email: user.email,
             phone_num: user.phone_num
-        };
+        }
 
         return res.redirect('/');
 
@@ -90,8 +90,8 @@ module.exports = {
     getLogin,
     getRegister,
     getError,
-    getUsers,
+    // getUsers,
     registerUser,
     loginUser,
     logoutUser,
-};
+}

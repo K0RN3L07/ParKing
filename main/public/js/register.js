@@ -24,7 +24,7 @@ let nameLabel = document.getElementById("nameLabel");
 
 fullname.addEventListener("focusin", () => {
     nameLabel.style.transform = "translateY(-250%)";
-})
+});
 
 fullname.addEventListener("focusout", () => {
     if (fullname.value != "") {
@@ -34,7 +34,7 @@ fullname.addEventListener("focusout", () => {
     else {
         nameLabel.style.transform = "translateY(-110%)";
     }
-})
+});
 
 //#endregion
 
@@ -45,7 +45,7 @@ let emailLabel = document.getElementById("emailLabel");
 
 email.addEventListener("focusin", () => {
     emailLabel.style.transform = "translateY(-250%)";
-})
+});
 
 email.addEventListener("focusout", () => {
     if (email.value != "") {
@@ -55,7 +55,7 @@ email.addEventListener("focusout", () => {
     else {
         emailLabel.style.transform = "translateY(-110%)";
     }
-})
+});
 
 //#endregion
 
@@ -66,7 +66,7 @@ let phoneNumLabel = document.getElementById("phoneNumLabel");
 
 phoneNum.addEventListener("focusin", () => {
     phoneNumLabel.style.transform = "translateY(-250%)";
-})
+});
 
 phoneNum.addEventListener("focusout", () => {
     if (phoneNum.value != "") {
@@ -76,7 +76,7 @@ phoneNum.addEventListener("focusout", () => {
     else {
         phoneNumLabel.style.transform = "translateY(-110%)";
     }
-})
+});
 
 //#endregion
 
@@ -87,7 +87,7 @@ let passwordLabel = document.getElementById("passwordLabel");
 
 password.addEventListener("focusin", () => {
     passwordLabel.style.transform = "translateY(-250%)";
-})
+});
 
 password.addEventListener("focusout", () => {
     if (password.value != "") {
@@ -97,7 +97,7 @@ password.addEventListener("focusout", () => {
     else {
         passwordLabel.style.transform = "translateY(-110%)";
     }
-})
+});
 
 //#endregion
 
@@ -108,7 +108,7 @@ let passwordAgainLabel = document.getElementById("passwordAgainLabel");
 
 passwordAgain.addEventListener("focusin", () => {
     passwordAgainLabel.style.transform = "translateY(-250%)";
-})
+});
 
 passwordAgain.addEventListener("focusout", () => {
     if (passwordAgain.value != "") {
@@ -118,7 +118,7 @@ passwordAgain.addEventListener("focusout", () => {
     else {
         passwordAgainLabel.style.transform = "translateY(-110%)";
     }
-})
+});
 
 //#endregion
 

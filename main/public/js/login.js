@@ -26,7 +26,7 @@ let passwordLabel = document.getElementById("passwordLabel");
 
 password.addEventListener("focusin", () => {
     passwordLabel.style.transform = "translateY(-250%)";
-})
+});
 
 password.addEventListener("focusout", () => {
     if (password.value != "") {

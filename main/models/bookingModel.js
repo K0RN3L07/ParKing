@@ -1,4 +1,4 @@
-const db = require('../config/database')
+const db = require('../config/database');
 
 exports.addBooking = (
     user_id,
@@ -14,8 +14,8 @@ exports.addBooking = (
                 if (err) return reject(err);
                 resolve(result.insertId);
             }
-        )
-    })
+        );
+    });
 }
 
 exports.getParkingSpaceId = (floor, slot) => {
@@ -29,7 +29,7 @@ exports.getParkingSpaceId = (floor, slot) => {
             }
         );
     });
-};
+}
 
 exports.getAllReservedOnFloor = (floor, start, end) => {
     return new Promise((resolve, reject) => {
@@ -48,7 +48,7 @@ exports.getAllReservedOnFloor = (floor, start, end) => {
             }
         );
     });
-};
+}
 
 exports.getUserBookings = (id) => {
     return new Promise((resolve, reject) => {
@@ -66,8 +66,8 @@ exports.getUserBookings = (id) => {
                 if (err) return reject(err);
                 resolve(result);
             }
-        )
-    })
+        );
+    });
 }
 
 
@@ -82,4 +82,4 @@ exports.deleteById = (id) => {
             }
         );
     });
-};
+}

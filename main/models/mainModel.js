@@ -1,13 +1,13 @@
-const db = require('../config/database')
+const db = require('../config/database');
 
-exports.getAllUsers = () => {
-    return new Promise((resolve, reject) => {
-        db.query("SELECT * FROM users", (err, result) => {
-            if (err) return reject(err);
-            resolve(result);
-        });
-    });
-};
+// exports.getAllUsers = () => {
+//     return new Promise((resolve, reject) => {
+//         db.query("SELECT * FROM users", (err, result) => {
+//             if (err) return reject(err);
+//             resolve(result);
+//         });
+//     });
+// };
 
 exports.registerUser = (name, email, phone_num, password) => {
     return new Promise((resolve, reject) => {
@@ -16,11 +16,11 @@ exports.registerUser = (name, email, phone_num, password) => {
             [name, email, phone_num, password],
             (err, result) => {
                 if (err) return reject(err);
-                resolve(result.insertId)
+                resolve(result.insertId);
             }
-        )
-    })
-};
+        );
+    });
+}
 
 exports.getUserByEmail = (email) => {
     return new Promise((resolve, reject) => {

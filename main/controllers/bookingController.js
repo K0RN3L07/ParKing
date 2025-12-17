@@ -81,7 +81,7 @@ async function deleteBooking(req, res) {
     } catch (err) {
         res.status(500).json({ error: "Delete failed" });
     }
-};
+}
 
 module.exports = {
     getNewBooking,
