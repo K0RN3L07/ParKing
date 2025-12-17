@@ -39,7 +39,6 @@ async function registerUser(req, res) {
         await User.registerUser(name, email, phone_num, hashedPassword);
 
         res.redirect('/login');
-        //return res.status(200).json({message: "Felhasználó hozzáadva!", id});
     }
 }
 
@@ -52,9 +51,12 @@ async function loginUser(req, res) {
 
     try {
         const user = await User.getUserByEmail(email);
-        const match = await bcrypt.compare(password, user.password);
+        if (!user) {
+            return res.status(400).json({error: "Invalid email or password"});
+        }
 
-        if (!user || !match) {
+        const match = await bcrypt.compare(password, user.password);
+        if (!match) {
             return res.status(401).json({ msg: "Invalid email or password" });
         }
 
@@ -70,7 +72,7 @@ async function loginUser(req, res) {
     }
     catch (err) {
         console.log(err);
-        return res.status(500).render('errorpage', {code: 500, error: err});
+        return res.render('errorpage', {code: 500, error: err, user: req.session.user});
     }
 }
 

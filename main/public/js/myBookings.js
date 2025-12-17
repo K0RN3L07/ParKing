@@ -1,8 +1,8 @@
 document.addEventListener("click", async (e) => {
-    const btn = e.target.closest(".delete-btn");
-    if (!btn) return;
+    const deleteButton = e.target.closest(".delete-btn");
+    if (!deleteButton) return;
 
-    const bookingId = btn.dataset.bookingId;
+    const bookingId = deleteButton.dataset.bookingId;
 
     if (!confirm("Are you sure you want to delete this booking?")) return;
 
@@ -12,7 +12,7 @@ document.addEventListener("click", async (e) => {
         });
 
         if (res.ok) {
-            btn.closest("tr").remove();
+            deleteButton.closest("tr").remove();
         } else {
             alert("Delete failed");
         }
