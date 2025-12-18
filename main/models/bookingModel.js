@@ -83,3 +83,17 @@ exports.deleteById = (id) => {
         );
     });
 }
+
+
+exports.getParkingSpaceTypeAndPrice = (id) => {
+    return new Promise((resolve, reject) => {
+        db.query(
+            "SELECT parking_spaces.type, parking_spaces.price_per_hour FROM parking_spaces WHERE parking_spaces.id = ?",
+            [id],
+            (err, results) => {
+                if (err) return reject(err);
+                resolve(results);
+            }
+        );
+    });
+}

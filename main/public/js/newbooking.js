@@ -62,6 +62,7 @@ radioArray.forEach(radio => {
                 parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, ${selectedSlot}. parkolóhely`);
                 parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${selectedSlot}`);
             }
+            getParkingSpaceTypeAndPrice(parkingSlotInputForBackend[0].getAttribute("value"));
         }
 
         else {
@@ -79,7 +80,7 @@ deleteSelection.addEventListener('click', () => {
     radioArray.forEach(radio => {
         radio.checked = false;
     });
-    
+
     // Update placeholder
     parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
     parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
@@ -97,7 +98,7 @@ let hiddenField = document.getElementById("hiddenField");
 
 // Check If All Fields Are Filled
 function checkIfAllBoxesFilled() {
-    if (!checkIfDatesAreSet() || !plateNum.value || hiddenField.value.includes("null") || !hiddenField.value){
+    if (!checkIfDatesAreSet() || !plateNum.value || hiddenField.value.includes("null") || !hiddenField.value) {
         return false;
     }
     else {
@@ -105,12 +106,31 @@ function checkIfAllBoxesFilled() {
     }
 }
 
-function getAllDates(){
+function getAllDates() {
     start_date = document.getElementById("start-date").value;
     start_time = document.getElementById("start-time").value;
     end_date = document.getElementById("end-date").value;
     end_time = document.getElementById("end-time").value;
     return [start_date, start_time, end_date, end_time];
+}
+
+async function getParkingSpaceTypeAndPrice(parking_slot) {
+    const response = await fetch('/getParkingSpaceTypeAndPrice', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ parking_slot })
+    });
+    const text = await response.text();
+    console.log("RAW RESPONSE:", text);
+
+    if (!text) {
+        throw new Error("Empty response from server");
+    }
+
+    const data = JSON.parse(text);
+    console.log(data);
 }
 
 startDateInput.addEventListener("input", () => {
@@ -155,22 +175,22 @@ let searchButtonClicked = false;
 // Adding Event Listeners
 levels.forEach(level => {
     level.addEventListener("click", () => {
-        if (searchButtonClicked){
+        if (searchButtonClicked) {
             radioArray.forEach(radio => {
                 radio.checked = false;
             });
-    
+
             selectedIdx = parseInt(level.innerHTML) - 1;
             levels.forEach(lvl => lvl.classList.remove("selected-level"));
-    
+
             levels[selectedIdx].classList.add("selected-level");
-    
-    
+
+
             // Update placeholder
             if (level.classList.contains("selected-level")) {
                 selectedLevel = selectedIdx + 1;
             }
-    
+
             parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
             parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
         }
@@ -190,29 +210,29 @@ document.querySelectorAll('.circle').forEach(circle => {
         if (searchButtonClicked) {
             removeReserved();
             const floor = circle.textContent.trim();
-            
+
             try {
                 const response = await fetch('/getAllReservedOnFloor', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ 
+                    body: JSON.stringify({
                         parking_slot: floor,
                         start_date: getAllDates()[0],
                         start_time: getAllDates()[1],
                         end_date: getAllDates()[2],
                         end_time: getAllDates()[3]
-                        })
+                    })
                 });
 
                 const data = await response.json();
-                
+
                 for (let i = 0; i < data.reservedSpots.length; i++) {
                     slots[data.reservedSpots[i]["parking_space_num"] - 1].classList.add("reserved");
                 }
 
-                
+
             } catch (err) {
                 console.log("Fetch error:", err);
             }
