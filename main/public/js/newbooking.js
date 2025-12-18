@@ -76,6 +76,9 @@ radioArray.forEach(radio => {
 
 //#region Delete Selected Space Button
 
+let priceField = document.getElementById("price");
+let typeField = document.getElementById("type");
+
 deleteSelection.addEventListener('click', () => {
     radioArray.forEach(radio => {
         radio.checked = false;
@@ -83,18 +86,19 @@ deleteSelection.addEventListener('click', () => {
 
     // Update placeholder
     parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
+    priceField.value = "";
+    typeField.value = "";
+    console.log(typeField.value);
+    
     parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
     deleteSelection.classList.remove("visible");
 });
 
 //#endregion
 
-//#endregion
-
-//#region Search For Free Space Button
-
 let plateNum = document.getElementById("license");
 let hiddenField = document.getElementById("hiddenField");
+
 
 // Check If All Fields Are Filled
 function checkIfAllBoxesFilled() {
@@ -123,14 +127,13 @@ async function getParkingSpaceTypeAndPrice(parking_slot) {
         body: JSON.stringify({ parking_slot })
     });
     const text = await response.text();
-    console.log("RAW RESPONSE:", text);
 
     if (!text) {
         throw new Error("Empty response from server");
     }
-
     const data = JSON.parse(text);
-    console.log(data);
+    document.getElementById("type").value = data["type"]
+    document.getElementById("price").value = data["price_per_hour"] + "Ft / óra"
 }
 
 startDateInput.addEventListener("input", () => {
@@ -161,7 +164,6 @@ endTimeInput.addEventListener("input", () => {
     }
 });
 
-//#endregion
 
 //#endregion
 

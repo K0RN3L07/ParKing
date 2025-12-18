@@ -44,7 +44,7 @@ async function bookSlot(req, res) {
         !end_time ||
         !plate_num
     ) {
-        res.status(400).json({ error: "Hiányos adatok!" });
+        return res.status(400).json({ error: "Hiányos adatok!" });
     }
     else {
         await User.addBooking(
@@ -76,19 +76,17 @@ async function getAllReservedOnFloor(req, res) {
 async function deleteBooking(req, res) {
     try {
         await User.deleteById(req.params.id);
-        res.status(204).json({msg: "Sikeres törlés!"});
+        return res.status(204).json({msg: "Sikeres törlés!"});
 
     } catch (err) {
-        res.status(500).json({ error: "A törlés sikertelen!" });
+        return res.status(500).json({ error: "A törlés sikertelen!" });
     }
 }
 
 async function getParkingSpaceTypeAndPrice(req, res) {
     try {
         const { parking_slot } = req.body;
-
         const [floor, slot] = parking_slot.split(';');
-
         const idResult = await User.getParkingSpaceId(floor, slot);
 
         if (!idResult || idResult.length === 0) {
@@ -96,18 +94,17 @@ async function getParkingSpaceTypeAndPrice(req, res) {
         }
 
         const parking_space_id = idResult[0].id;
-
         const result = await User.getParkingSpaceTypeAndPrice(parking_space_id);
 
         if (!result || result.length === 0) {
             return res.status(404).json({ error: "No data found" });
         }
 
-        res.status(200).json(result[0]);
+        return res.status(200).json(result[0]);
 
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: "Internal server error" });
+        return res.status(500).json({ error: "Internal server error" });
     }
 }
 
