@@ -107,11 +107,11 @@ exports.setStatuses = () => {
                 bookings.end_time,
                 IF(
                     bookings.end_time < CURRENT_TIMESTAMP,
-                    'lejárt',
+                    'Lejárt',
                     IF(
                         CURRENT_TIMESTAMP BETWEEN bookings.start_time AND bookings.end_time,
-                        'aktív',
-                        'későbbi'
+                        'Aktív',
+                        'Későbbi'
                     )
                 ) AS status
                 FROM bookings
