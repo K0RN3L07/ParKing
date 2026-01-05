@@ -12,4 +12,6 @@ bookingRouter.post("/getParkingSpaceTypeAndPrice", bookingController.getParkingS
 
 bookingRouter.delete('/deleteBooking/:id', bookingController.deleteBooking);
 
+bookingRouter.get('/setStatuses', bookingController.setStatuses);
+
 module.exports = {bookingRouter}

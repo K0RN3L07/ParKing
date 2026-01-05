@@ -10,6 +10,11 @@ async function getMyBookings(req, res) {
     let user_id = req.session.user?.id;
 
     const data = await User.getUserBookings(user_id);
+    const statuses = await User.setStatuses();
+
+    for (let i = 0; i < data.length; i++) {
+        data[i]["parking_status"] = statuses[i]["status"];
+    }
 
     res.render("myBookings", { bookings: data, user: req.session.user || null });
 }
@@ -108,11 +113,28 @@ async function getParkingSpaceTypeAndPrice(req, res) {
     }
 }
 
+async function setStatuses(req, res) {
+    try {
+        const results = await User.setStatuses();
+
+        if (!results || results.length === 0) {
+            return res.status(404).json({ error: "No bookings found" });
+        }
+
+        res.status(200).json(results);
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
+
 module.exports = {
     getNewBooking,
     getMyBookings,
     bookSlot,
     getAllReservedOnFloor,
     deleteBooking,
-    getParkingSpaceTypeAndPrice
+    getParkingSpaceTypeAndPrice,
+    setStatuses
 }
