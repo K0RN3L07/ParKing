@@ -25,33 +25,35 @@
             <a href="#">Kapcsolat</a>
             <% if (user) {%>
                 <a href="/myBookings">Foglalás</a>
-            <%} else {%>
-                <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
-            <%}%>
+                <%} else {%>
+                    <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+                    <%}%>
         </div>
 
         <!-- Nav Profile Dropdown -->
         <div class="profile-container">
             <% if (user) {%>
-                <h2><%= user.name %></h2>
-            <%}%>
+                <h2>
+                    <%= user.name %>
+                </h2>
+                <%}%>
 
-            <div class="profile-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
-                    stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="32" cy="20" r="12" />
-                    <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
-                </svg>
+                    <div class="profile-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
+                            stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="32" cy="20" r="12" />
+                            <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
+                        </svg>
 
-                <div class="profile-icon-dropdown-container" tabindex="0">
-                    <a href="">Fiókom szerkesztése</a>
-                    <% if (user) { %>
-                        <a href="/logout">Kijelentkezés</a>
-                    <% } else { %>
-                        <a href="/login">Bejelentkezés</a>
-                    <% } %>
-                </div>
-            </div>
+                        <div class="profile-icon-dropdown-container" tabindex="0">
+                            <a href="">Fiókom szerkesztése</a>
+                            <% if (user) { %>
+                                <a href="/logout">Kijelentkezés</a>
+                                <% } else { %>
+                                    <a href="/login">Bejelentkezés</a>
+                                    <% } %>
+                        </div>
+                    </div>
         </div>
 
         <!-- Nav Hamburger Menu -->
@@ -66,29 +68,29 @@
             <a href="#about-us">Rólunk</a>
             <a href="#">Kapcsolat</a>
             <% if (user) { %>
-            <a href="/myBookings">Foglalás</a>
-            <% } else { %>
-            <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
-            <% } %>
-
-            <!-- Profile Dropdown -->
-            <div class="my-profile" onclick="toggleProfileDropdown()">
-                <p>Profil</p>
-
-                <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960"
-                    width="32px" fill="var(--primary-text-color)">
-                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-                </svg>
-            </div>
-
-            <div class="profile-dropdown-conatiner">
-                <a href="">Fiókom szerkesztése</a>
-                <% if (user) { %>
-                    <a href="/logout">Kijelentkezés</a>
+                <a href="/myBookings">Foglalás</a>
                 <% } else { %>
-                    <a href="/login">Bejelentkezés</a>
-                <% } %>
-            </div>
+                    <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+                    <% } %>
+
+                        <!-- Profile Dropdown -->
+                        <div class="my-profile" onclick="toggleProfileDropdown()">
+                            <p>Profil</p>
+
+                            <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px"
+                                viewBox="0 -960 960 960" width="32px" fill="var(--primary-text-color)">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg>
+                        </div>
+
+                        <div class="profile-dropdown-conatiner">
+                            <a href="">Fiókom szerkesztése</a>
+                            <% if (user) { %>
+                                <a href="/logout">Kijelentkezés</a>
+                                <% } else { %>
+                                    <a href="/login">Bejelentkezés</a>
+                                    <% } %>
+                        </div>
 
         </div>
     </nav>
@@ -100,7 +102,7 @@
         <h1>Foglalásaim</h1>
 
         <!-- If user has any bookings, list all booked spaces in a table -->
-        <% if (bookings != "") {%>
+        <% if (bookings !="" ) {%>
 
             <a href="/newBooking" class="add-button">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
@@ -122,7 +124,7 @@
                     <th>Törlés</th>
                 </tr>
 
-                <% bookings.forEach(booking => { %>
+                <% bookings.forEach(booking=> { %>
                     <tr>
                         <td>
                             <%= booking["plate_num"] %>
@@ -134,14 +136,14 @@
                             <%= booking["parking_space_num"] %>
                         </td>
                         <% const date1=new Date(booking["start_time"]); const
-                            start_formatted=date1.toISOString().slice(0, 10) + ", " + date1.toISOString().slice(11, 16);
-                            %>
+                            start_formatted=date1.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
+                            day: "2-digit" , hour: "2-digit" , minute: "2-digit" }); %>
                             <td>
                                 <%= start_formatted %>
                             </td>
                             <% const date2=new Date(booking["end_time"]); const
-                                end_formatted=date2.toISOString().slice(0, 10) + ", " + date2.toISOString().slice(11,
-                                16); %>
+                                end_formatted=date2.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
+                                day: "2-digit" , hour: "2-digit" , minute: "2-digit" }); %>
                                 <td>
                                     <%= end_formatted %>
                                 </td>
@@ -156,14 +158,14 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                             width="24px" fill="#1f1f1f">
                                             <path
-                                            d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                                                d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
                                         </svg>
                                     </button>
                                 </td>
                     </tr>
                     <% }) %>
             </table>
-           
+
             <!-- If user doesn't have any bookings, show message -->
             <% } else {%>
                 <h2>Még nincs foglalásod!</h2>

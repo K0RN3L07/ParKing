@@ -3,6 +3,7 @@ document.addEventListener("click", async (e) => {
     if (!deleteButton) return;
 
     const bookingId = deleteButton.dataset.bookingId;
+    console.log(deleteButton.dataset.bookingId);
 
     if (!confirm("Are you sure you want to delete this booking?")) return;
 
