@@ -247,10 +247,7 @@ document.querySelectorAll('.circle').forEach(circle => {
 
 //#endregion
 
-<<<<<<< Updated upstream
-=======
 // #region Book button
->>>>>>> Stashed changes
 
 document.getElementById("bookForm").addEventListener("submit", async (e) => {
     e.preventDefault();
