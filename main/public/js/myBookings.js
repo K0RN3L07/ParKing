@@ -3,21 +3,27 @@ document.addEventListener("click", async (e) => {
     if (!deleteButton) return;
 
     const bookingId = deleteButton.dataset.bookingId;
-    console.log(deleteButton.dataset.bookingId);
 
-    if (!confirm("Are you sure you want to delete this booking?")) return;
+    const confirmed = await createConfirmationPopup("Biztosan törölni szeretnéd?");
 
-    try {
-        const res = await fetch(`/deleteBooking/${bookingId}`, {
-            method: "DELETE"
-        });
+    if (confirmed) {
+        try {
+            const res = await fetch(`/deleteBooking/${bookingId}`, {
+                method: "DELETE"
+            });
 
-        if (res.ok) {
-            deleteButton.closest("tr").remove();
-        } else {
-            alert("Delete failed");
+            if (res.ok) {
+                deleteButton.closest("tr").remove();
+                createPopup("Deleted successfully", true);
+            } else {
+                createPopup("Delete failed", false);
+            }
+        } catch (err) {
+            console.error(err);
         }
-    } catch (err) {
-        console.error(err);
+    } else {
+        return;
     }
+
+
 });

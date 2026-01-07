@@ -167,10 +167,10 @@ nav {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    
+
 }
 
-.profile-container h2{
+.profile-container h2 {
     font-weight: bolder;
     color: var(--primary-text-color);
     transition: .3s;
@@ -333,7 +333,7 @@ nav {
     background-color: var(--accent-base-color);
     border: 3px solid var(--primary-color);
     border-radius: 15px;
-    width: clamp(200px, 100% , 300px);
+    width: clamp(200px, 100%, 300px);
     height: 150px;
     z-index: 100;
     opacity: 0;
@@ -372,6 +372,66 @@ nav {
     background-color: var(--primary-color);
     height: 5px;
     border-radius: 10px;
+}
+
+
+.backgroundFilter {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.showBackgroundFilter {
+    display: flex;
+}
+
+.confirmationPopupContainer {
+    width: 300px;
+    height: 100px;
+    padding: 0 20px;
+    background-color: var(--accent-base-color);
+    border: 3px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 15px;
+}
+
+.confirmationPopupContainer span {
+    font-weight: bold;
+    color: var(--primary-text-color);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    width: 100%;
+    text-align: center;
+}
+
+.confirmationPopupContainer .buttonContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+}
+
+.confirmationPopupContainer .buttonContainer .btn {
+    padding: 5px 10px;
+    background-color: var(--secondary-color);
+    color: var(--accent-text-color);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+.cancelButton {
+    background-color: var(--primary-color) !important;
 }
 
 /* #endregion */
