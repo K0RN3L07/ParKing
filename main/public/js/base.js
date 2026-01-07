@@ -138,75 +138,84 @@ function toggleProfileDropdown() {
 
 //#region Popup
 
-function createPopup(msg, success) {
-    let popupContainer = document.createElement("div");
-    popupContainer.setAttribute("class", "popupContainer");
+class CreatePopup {
 
-    let icon = document.createElement("img");
-    let message = document.createElement("span");
+    timerDiv = document.createElement("div");
 
-    let closeBtn = document.createElement("div");
-    closeBtn.setAttribute("id", "closeBtn");
-    closeBtn.setAttribute("onclick", "closePopup()");
-    closeBtn.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="24"
-         height="24"
-         viewBox="0 -960 960 960"
-         fill="var(--primary-text-color)">
-      <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-    </svg>
-    `;
-
-    let timerDiv = document.createElement("div");
-    timerDiv.setAttribute("id", "timerDiv");
-
-    if (typeof success === "boolean" && success) {
-        icon.setAttribute("src", "/img/success.png");
-    }
-
-    else {
-        icon.setAttribute("src", "/img/error.png");
-    }
-
-    if (typeof msg === "string" && msg) {
-        message.innerHTML = msg;
-    }
-
-    else {
-        console.log("Nem megfelelő típus")
-    }
-
-    timerMs = 10000;
-    let countdown = setInterval(() => {
-        timerMs -= 10;
-        timerDiv.style.width = `${timerMs / 100}%`;
-
-        if (timerMs <= 0) {
-            clearInterval(countdown);
-            closePopup();
+    constructor (msg, success) {
+        let popupContainer = document.createElement("div");
+        popupContainer.setAttribute("class", "popupContainer");
+    
+        let icon = document.createElement("img");
+        let message = document.createElement("span");
+    
+        let closeBtn = document.createElement("div");
+        closeBtn.setAttribute("id", "closeBtn");
+        closeBtn.setAttribute("onclick", "closePopup()");
+        closeBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="24"
+             height="24"
+             viewBox="0 -960 960 960"
+             fill="var(--primary-text-color)">
+          <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+        </svg>
+        `;
+    
+        this.timerDiv.setAttribute("id", "timerDiv");
+    
+        if (typeof success === "boolean" && success) {
+            icon.setAttribute("src", "/img/success.png");
         }
-    }, 1);
+    
+        else {
+            icon.setAttribute("src", "/img/error.png");
+        }
+    
+        if (typeof msg === "string" && msg) {
+            message.innerHTML = msg;
+        }
+    
+        else {
+            console.log("Nem megfelelő típus")
+        }
+    
+        // Adding elements
+        popupContainer.appendChild(icon);
+        popupContainer.appendChild(message);
+        popupContainer.appendChild(closeBtn);
+        popupContainer.appendChild(this.timerDiv);
+        document.body.appendChild(popupContainer);
+    
+        setTimeout(() => {
+            popupContainer.classList.add("showPopup");
+        }, 100);
+        
+        this.setTimer();
+    }
 
-    // Adding elements
-    popupContainer.appendChild(icon);
-    popupContainer.appendChild(message);
-    popupContainer.appendChild(closeBtn);
-    popupContainer.appendChild(timerDiv);
-    document.body.appendChild(popupContainer);
+    setTimer() {
+        let timerMs = 10000;
+        let countdown = setInterval(() => {
+            timerMs -= 10;
+            this.timerDiv.style.width = `${timerMs / 100}%`;
+    
+            if (timerMs <= 0) {
+                clearInterval(countdown);
+                this.closePopup();
+            }
+        }, 1);
+    }
 
-    setTimeout(() => {
-        popupContainer.classList.add("showPopup");
-    }, 100);
+    closePopup() {
+        let popup = document.getElementsByClassName("popupContainer");
+        popup[0].classList.remove("showPopup") 
+        setTimeout(() => {
+            document.body.removeChild(popup[0]);
+        }, 300);
+    }
 }
 
-function closePopup() {
-    let popup = document.querySelector(".popupContainer");
-    popup.classList.remove("showPopup");
-    setTimeout(() => {
-        document.body.removeChild(popup);
-    }, 300);
-}
 
 function createConfirmationPopup(msg) {
     return new Promise((resolve) => {

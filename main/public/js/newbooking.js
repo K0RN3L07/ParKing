@@ -247,6 +247,10 @@ document.querySelectorAll('.circle').forEach(circle => {
 
 //#endregion
 
+<<<<<<< Updated upstream
+=======
+// #region Book button
+>>>>>>> Stashed changes
 
 document.getElementById("bookForm").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -271,16 +275,18 @@ document.getElementById("bookForm").addEventListener("submit", async (e) => {
                 }
             }
             else {
-                createPopup(result.msg, result.success);
+                new CreatePopup(result.msg, result.success);
             }
         }
         catch (err){
             console.log(err);
             
-            createPopup(result.msg, result.success);
+            new CreatePopup(result.msg, result.success);
         }
     } catch (err) {
         console.error(err);
-        createPopup("Hiba történt a kapcsolat során", false);
+        new CreatePopup("Hiba történt a kapcsolat során", false);
     }
 });
+
+//#endregion

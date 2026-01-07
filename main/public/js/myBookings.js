@@ -14,9 +14,9 @@ document.addEventListener("click", async (e) => {
 
             if (res.ok) {
                 deleteButton.closest("tr").remove();
-                createPopup("Sikeres törlés", true);
+                new CreatePopup("Sikeres törlés", true);
             } else {
-                createPopup("Sikertelen törlés", false);
+                new CreatePopup("Sikertelen törlés", false);
             }
         } catch (err) {
             console.error(err);
