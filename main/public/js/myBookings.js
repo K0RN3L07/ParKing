@@ -24,6 +24,4 @@ document.addEventListener("click", async (e) => {
     } else {
         return;
     }
-
-
 });

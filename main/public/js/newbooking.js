@@ -249,15 +249,53 @@ document.querySelectorAll('.circle').forEach(circle => {
 
 // #region Book button
 
-bookButton.addEventListener("click", () => {
-    if (checkIfAllBoxesFilled()) {
-        bookButton.setAttribute("type", "submit");
-        confirm("Sikeres foglalás!");
-    }
-    else {
-        bookButton.setAttribute("type", "button");
-        alert("Minden mező kitöltése kötelező!");
-    }
-});
+// bookButton.addEventListener("click", () => {
+//     if (checkIfAllBoxesFilled()) {
+//         bookButton.setAttribute("type", "submit");
+//         confirm("Sikeres foglalás!");
+//     }
+//     else {
+//         bookButton.setAttribute("type", "button");
+//         alert("Minden mező kitöltése kötelező!");
+//     }
+// });
 
 //#endregion
+
+
+document.getElementById("bookForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    try {
+        try{
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+    
+            const response = await fetch("/bookSlot", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+    
+            if (result.success) {
+                const confirmed = await createOKPopup(result.msg);
+                if (confirmed) {
+                    window.location.href = "/myBookings";
+                }
+            }
+            else {
+                createPopup(result.msg, result.success);
+            }
+        }
+        catch (err){
+            console.log(err);
+            
+            createPopup(result.msg, result.success);
+        }
+    } catch (err) {
+        console.error(err);
+        createPopup("Hiba történt a kapcsolat során", false);
+    }
+});

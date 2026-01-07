@@ -254,4 +254,41 @@ function createConfirmationPopup(msg) {
     });
 }
 
+function createOKPopup(msg) {
+    return new Promise((resolve) => {
+        let backgroundFilter = document.createElement("div");
+        backgroundFilter.className = "backgroundFilter showBackgroundFilter";
+
+        let confirmationPopupContainer = document.createElement("div");
+        confirmationPopupContainer.className = "confirmationPopupContainer";
+
+        let message = document.createElement("span");
+        message.innerHTML = typeof msg === "string" && msg ? msg : "Hiba";
+
+        let buttonContainer = document.createElement("div");
+        buttonContainer.className = "buttonContainer";
+
+        let yesButton = document.createElement("button");
+        yesButton.className = "btn yesButton";
+        yesButton.innerHTML = "Igen"
+
+        // ✔ Button handlers
+        yesButton.addEventListener("click", () => {
+            cleanup();
+            resolve(true);
+        });
+
+
+        function cleanup() {
+            backgroundFilter.remove();
+        }
+
+        confirmationPopupContainer.appendChild(message);
+        buttonContainer.appendChild(yesButton);
+        confirmationPopupContainer.appendChild(buttonContainer);
+        backgroundFilter.appendChild(confirmationPopupContainer);
+        document.body.appendChild(backgroundFilter);
+    });
+}
+
 //#endregion

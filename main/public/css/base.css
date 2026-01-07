@@ -339,6 +339,7 @@ nav {
     opacity: 0;
     scale: 0.5;
     transition: .3s ease-in-out;
+    padding: 0 10px;
 }
 
 .showPopup {
@@ -353,7 +354,7 @@ nav {
 }
 
 .popupContainer span {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--primary-text-color);
 }
 
