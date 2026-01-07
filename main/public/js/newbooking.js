@@ -66,7 +66,7 @@ radioArray.forEach(radio => {
         }
 
         else {
-            createPopup("Válaszd ki az időpontot először!")
+            new CreatePopup("Válaszd ki az időpontot először!", false)
             radio.checked = false;
         }
     });
@@ -240,7 +240,7 @@ document.querySelectorAll('.circle').forEach(circle => {
             }
         }
         else {
-            createPopup("Válaszd ki az időpontot először!")
+            new CreatePopup("Válaszd ki az időpontot először!", false)
         }
     });
 });
