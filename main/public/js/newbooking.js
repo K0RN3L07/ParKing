@@ -66,7 +66,7 @@ radioArray.forEach(radio => {
         }
 
         else {
-            alert("A parkolóhely kiválasztásához előbb állítsd be a foglalás időtartamát!");
+            createPopup("Válaszd ki az időpontot először!")
             radio.checked = false;
         }
     });
@@ -240,25 +240,10 @@ document.querySelectorAll('.circle').forEach(circle => {
             }
         }
         else {
-            alert("Válaszd ki az időpontot először!");
+            createPopup("Válaszd ki az időpontot először!")
         }
     });
 });
-
-//#endregion
-
-// #region Book button
-
-// bookButton.addEventListener("click", () => {
-//     if (checkIfAllBoxesFilled()) {
-//         bookButton.setAttribute("type", "submit");
-//         confirm("Sikeres foglalás!");
-//     }
-//     else {
-//         bookButton.setAttribute("type", "button");
-//         alert("Minden mező kitöltése kötelező!");
-//     }
-// });
 
 //#endregion
 

@@ -25,7 +25,7 @@
             <% if (user) {%>
                 <a href="/myBookings">Foglalás</a>
             <%} else {%>
-                <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+                <a style="cursor: pointer;" onclick="createPopup('A foglalás megkezdéséhez jelentkezz be!')">Foglalás</a>
             <%}%>
         </div>
 
@@ -67,7 +67,7 @@
             <% if (user) { %>
             <a href="/myBookings">Foglalás</a>
             <% } else { %>
-            <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+            <a style="cursor: pointer;" onclick="createPopup('A foglalás megkezdéséhez jelentkezz be!')">Foglalás</a>
             <% } %>
 
             <!-- Profile Dropdown -->
