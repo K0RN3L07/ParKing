@@ -228,7 +228,7 @@ form.addEventListener("submit", async function (e) {
             sessionStorage.setItem("popupMsg", result.msg);
             sessionStorage.setItem("popupSuccess", result.success);
 
-            window.location.href = "/";
+            window.location.href = "/login";
         }
         else {
             new CreatePopup(result.msg, result.success);
