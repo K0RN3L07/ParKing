@@ -1,22 +1,3 @@
-//#region Dark Mode Toggle
-
-function toggleDarkMode() {
-    let button = document.getElementById("dark-mode-switch");
-    // Enabling Dark Mode
-    if (!document.body.classList.contains("darkmode")) {
-        document.body.classList.add("darkmode");
-        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/></svg>';
-    }
-
-    // Disabling Dark Mode
-    else {
-        document.body.classList.remove("darkmode");
-        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>'
-    }
-}
-
-//#endregion
-
 //#region Name Field Animation
 
 let fullname = document.getElementById("name");
@@ -122,41 +103,110 @@ passwordAgain.addEventListener("focusout", () => {
 
 //#endregion
 
-// const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/;
-// const notValidCharacters = /[áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/;
+//#region Validation
 
-// let errorMessage = document.getElementById("errorMessage");
+const form = document.getElementById("registerForm");
 
-// // Checking Password For Regex
-// function passwordSuitableForRegex() {
-//     console.log(password.value)
-//     console.log(passwordRegex.test(password.value))
-//     if (!passwordRegex.test(password.value)) {
-//         errorMessage.style["display"] = "block";
-//         errorMessage.innerHTML += "A jelszónak legalább 8 karakterből kell állnia, és tartalmaznia kell nagybetűt, kisbetűt, számot és speciális karaktert! Nem tartalmazhat ékezetes karaktereket!";
-//     }
+form.addEventListener("submit", function (e) {
+    e.preventDefault(); // stop form submit
 
-//     else {
-//         errorMessage.style["display"] = "none";
-//         errorMessage.innerHTML = "";
-//     }
-// }
+    // Minimum length (8 characters)
+    const lengthRegex = /^.{8,}$/;
 
-// // Check If Passwords Match
-// function passwordMatchCheck() {
-//     if (password.value != "" && passwordAgain.value != "") {
-//         if (password.value !== passwordAgain.value) {
-//             errorMessage.style.display = "block";
-//             errorMessage.innerHTML += "A jelszavak nem egyeznek!";
-//         }
+    // At least one uppercase letter
+    const uppercaseRegex = /[A-Z]/;
 
-//         else {
-//             errorMessage.style.display = "none";
-//             errorMessage.innerHTML = "";
-//         }
-//     }
-// }
+    // At least one lowercase letter
+    const lowercaseRegex = /[a-z]/;
 
-// password.addEventListener("input", passwordMatchCheck);
-// password.addEventListener("input", passwordSuitableForRegex);
-// passwordAgain.addEventListener("input", passwordMatchCheck);
+    // At least one number
+    const numberRegex = /\d/;
+
+    // At least one special character
+    const specialCharRegex = /[^A-Za-z0-9]/;
+    
+    // No space character
+    const noSpaceRegex = /^\S+$/;
+
+    const aszf = document.getElementById("aszf").checked;
+
+    // Simple email regex
+    const emailRegex =
+        /^(?!.*\.\.)(?!.*[^\x00-\x7F])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // Hungarian character regex
+    const hunCharRegex = /[áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/;
+
+    // Phone number regex
+    const phoneRegex = /^\d+$/;
+
+    if (fullname.value === "") {
+        new CreatePopup("A név megadása kötelező!", false);
+        return;
+    }
+
+    if (!emailRegex.test(email.value)) {
+        new CreatePopup("Érvénytelen email cím!", false);
+        return;
+    }
+
+    if (phoneNum.value === "") {
+        new CreatePopup("A telefonszám megadása kötelező!", false);
+        return;
+    }
+
+    if (!phoneRegex.test(phoneNum.value)) {
+        new CreatePopup("A telefonszám csak számot tartalmazhat!", false);
+        return;
+    }
+
+    //#region Password Regex
+    if (!uppercaseRegex.test(password.value)) {
+        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 nagybetűs karakter!", false);
+        return;
+    }
+
+    if (!lowercaseRegex.test(password.value)) {
+        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 kisbetűs karakter!", false);
+        return;
+    }
+
+    if (!numberRegex.test(password.value)) {
+        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 számot!", false);
+        return;
+    }
+
+    if (!specialCharRegex.test(password.value)) {
+        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 speciális karakter!", false);
+        return;
+    }
+
+    if (!noSpaceRegex.test(password.value)) {
+        new CreatePopup("A jelszó nem tartalmazhat szóközt!", false);
+        return;
+    }
+
+    if (hunCharRegex.test(password.value)) {
+        new CreatePopup("A jelszó nem tartalmazhat ékezetes karaktereket!", false);
+        return;
+    }
+
+    if (!lengthRegex.test(password.value)) {
+        new CreatePopup("A jelszónak legalább 8 karakter hosszúnak kell lennie!", false);
+        return;
+    }
+    //#endregion
+
+    if (password.value !== passwordAgain.value) {
+        new CreatePopup("A két jelszó nem egyezik!", false);
+        return;
+    }
+    if (!aszf) {
+        new CreatePopup("El kell fogadnia az ÁSZF-et és az Adatkezelési Szabályzatot!", false);
+        return;
+    }
+
+    form.submit();
+});
+
+//#endregion

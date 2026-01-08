@@ -279,7 +279,7 @@ function createOKPopup(msg) {
 
         let yesButton = document.createElement("button");
         yesButton.className = "btn yesButton";
-        yesButton.innerHTML = "Igen"
+        yesButton.innerHTML = "Ok";
 
         // ✔ Button handlers
         yesButton.addEventListener("click", () => {
