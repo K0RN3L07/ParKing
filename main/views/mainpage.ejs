@@ -25,7 +25,7 @@
             <% if (user) {%>
                 <a href="/myBookings">Foglalás</a>
             <%} else {%>
-                <a style="cursor: pointer;" onclick="createPopup('A foglalás megkezdéséhez jelentkezz be!')">Foglalás</a>
+                <a style="cursor: pointer;" onclick="new CreatePopup('A foglalás megkezdéséhez jelentkezz be!', false)">Foglalás</a>
             <%}%>
         </div>
 
@@ -45,7 +45,7 @@
                 <div class="profile-icon-dropdown-container" tabindex="0">
                     <a href="">Fiókom szerkesztése</a>
                     <% if (user) { %>
-                        <a href="/logout">Kijelentkezés</a>
+                        <a class="logoutBtn" href="/logout">Kijelentkezés</a>
                     <% } else { %>
                         <a href="/login">Bejelentkezés</a>
                     <% } %>
@@ -80,10 +80,10 @@
                 </svg>
             </div>
 
-            <div class="profile-dropdown-conatiner">
+            <div class="profile-dropdown-container">
                 <a href="">Fiókom szerkesztése</a>
                 <% if (user) { %>
-                    <a href="/logout">Kijelentkezés</a>
+                    <a class="logoutBtn" href="/logout">Kijelentkezés</a>
                 <% } else { %>
                     <a href="/login">Bejelentkezés</a>
                 <% } %>

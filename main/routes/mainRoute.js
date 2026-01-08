@@ -11,7 +11,7 @@ mainRouter.get('/errorpage', mainController.getError);
 mainRouter.post('/users/register', mainController.registerUser);
 mainRouter.post('/users/login', mainController.loginUser);
 
-mainRouter.get('/logout', mainController.logoutUser);
+mainRouter.post('/logout', mainController.logoutUser);
 
 
 module.exports = {mainRouter}

@@ -118,7 +118,7 @@ window.addEventListener("resize", () => {
 
 let dropdownToggled = false;
 let dropdownIcon = document.getElementById("dropdown-icon");
-let dropdownContainer = document.querySelector(".profile-dropdown-conatiner");
+let dropdownContainer = document.querySelector(".profile-dropdown-container");
 
 // Main Toggling Function
 function toggleProfileDropdown() {

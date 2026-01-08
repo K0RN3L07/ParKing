@@ -298,18 +298,18 @@ nav {
     color: var(--primary-text-color);
 }
 
-.profile-dropdown-conatiner {
+.profile-dropdown-container {
     display: none;
     flex-direction: column;
     width: 100%;
 }
 
-.profile-dropdown-conatiner a {
+.profile-dropdown-container a {
     padding-left: 25px;
     width: 100%;
 }
 
-.profile-dropdown-conatiner a:hover {
+.profile-dropdown-container a:hover {
     padding-left: 35px;
 }
 
