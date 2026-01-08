@@ -107,7 +107,7 @@ passwordAgain.addEventListener("focusout", () => {
 
 const form = document.getElementById("registerForm");
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
     e.preventDefault(); // stop form submit
 
     // Minimum length (8 characters)
@@ -124,7 +124,7 @@ form.addEventListener("submit", function (e) {
 
     // At least one special character
     const specialCharRegex = /[^A-Za-z0-9]/;
-    
+
     // No space character
     const noSpaceRegex = /^\S+$/;
 
@@ -206,7 +206,38 @@ form.addEventListener("submit", function (e) {
         return;
     }
 
-    form.submit();
+    const data = {
+        name: fullname.value,
+        email: email.value,
+        phone_num: phoneNum.value,
+        password: password.value
+    };
+
+    try {
+        const res = await fetch("/users/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        new CreatePopup(result.msg, result.success);
+
+        if (result.success) {
+            sessionStorage.setItem("popupMsg", result.msg);
+            sessionStorage.setItem("popupSuccess", result.success);
+
+            window.location.href = "/";
+        }
+        else {
+            new CreatePopup(result.msg, result.success);
+        }
+
+    } catch (err) {
+        console.error(err);
+        new CreatePopup("Szerverhiba történt!", false);
+    }
 });
 
 //#endregion

@@ -57,8 +57,6 @@ if (loginForm && email && password) {
 
             const result = await res.json();
 
-            // YOUR EXISTING POPUP FUNCTION
-
             if (result.success) {
                 sessionStorage.setItem("popupMsg", result.msg);
                 sessionStorage.setItem("popupSuccess", result.success);
@@ -71,7 +69,7 @@ if (loginForm && email && password) {
 
         } catch (err) {
             console.error(err);
-            createPopup("Szerverhiba történt!", false);
+            new CreatePopup("Szerverhiba történt!", false);
         }
     });
 }
