@@ -142,13 +142,13 @@ class CreatePopup {
 
     timerDiv = document.createElement("div");
 
-    constructor (msg, success) {
+    constructor(msg, success) {
         let popupContainer = document.createElement("div");
         popupContainer.setAttribute("class", "popupContainer");
-    
+
         let icon = document.createElement("img");
         let message = document.createElement("span");
-    
+
         let closeBtn = document.createElement("div");
         closeBtn.setAttribute("id", "closeBtn");
         closeBtn.setAttribute("onclick", "closePopup()");
@@ -161,36 +161,36 @@ class CreatePopup {
           <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
         </svg>
         `;
-    
+
         this.timerDiv.setAttribute("id", "timerDiv");
-    
+
         if (typeof success === "boolean" && success) {
             icon.setAttribute("src", "/img/success.png");
         }
-    
+
         else {
             icon.setAttribute("src", "/img/error.png");
         }
-    
+
         if (typeof msg === "string" && msg) {
             message.innerHTML = msg;
         }
-    
+
         else {
             console.log("Nem megfelelő típus")
         }
-    
+
         // Adding elements
         popupContainer.appendChild(icon);
         popupContainer.appendChild(message);
         popupContainer.appendChild(closeBtn);
         popupContainer.appendChild(this.timerDiv);
         document.body.appendChild(popupContainer);
-    
+
         setTimeout(() => {
             popupContainer.classList.add("showPopup");
         }, 100);
-        
+
         this.setTimer();
     }
 
@@ -199,7 +199,7 @@ class CreatePopup {
         let countdown = setInterval(() => {
             timerMs -= 10;
             this.timerDiv.style.width = `${timerMs / 100}%`;
-    
+
             if (timerMs <= 0) {
                 clearInterval(countdown);
                 this.closePopup();
@@ -209,7 +209,7 @@ class CreatePopup {
 
     closePopup() {
         let popup = document.getElementsByClassName("popupContainer");
-        popup[0].classList.remove("showPopup") 
+        popup[0].classList.remove("showPopup")
         setTimeout(() => {
             document.body.removeChild(popup[0]);
         }, 300);
@@ -279,7 +279,7 @@ function createOKPopup(msg) {
 
         let yesButton = document.createElement("button");
         yesButton.className = "btn yesButton";
-        yesButton.innerHTML = "Igen"
+        yesButton.innerHTML = "Ok"
 
         // ✔ Button handlers
         yesButton.addEventListener("click", () => {
@@ -301,3 +301,17 @@ function createOKPopup(msg) {
 }
 
 //#endregion
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const msg = sessionStorage.getItem("popupMsg");
+    const success = sessionStorage.getItem("popupSuccess");
+
+    if (msg !== null && success !== null) {
+        console.log(success);
+        
+        new CreatePopup(msg, !success);
+        sessionStorage.removeItem("popupMsg");
+        sessionStorage.removeItem("popupSuccess");
+    }
+});
