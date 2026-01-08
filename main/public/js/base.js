@@ -141,17 +141,23 @@ function toggleProfileDropdown() {
 class CreatePopup {
 
     timerDiv = document.createElement("div");
+    countdown = null;
+    isClosing = false;
+    popupContainer = null;
 
     constructor(msg, success) {
-        let popupContainer = document.createElement("div");
-        popupContainer.setAttribute("class", "popupContainer");
+        this.popupContainer = document.createElement("div");
+        this.popupContainer.setAttribute("class", "popupContainer");
 
         let icon = document.createElement("img");
         let message = document.createElement("span");
 
         let closeBtn = document.createElement("div");
         closeBtn.setAttribute("id", "closeBtn");
-        closeBtn.setAttribute("onclick", "closePopup()");
+        closeBtn.addEventListener("click", () => {
+            this.closePopup();
+        });
+
         closeBtn.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg"
              width="24"
@@ -181,37 +187,48 @@ class CreatePopup {
         }
 
         // Adding elements
-        popupContainer.appendChild(icon);
-        popupContainer.appendChild(message);
-        popupContainer.appendChild(closeBtn);
-        popupContainer.appendChild(this.timerDiv);
-        document.body.appendChild(popupContainer);
+        this.popupContainer.appendChild(icon);
+        this.popupContainer.appendChild(message);
+        this.popupContainer.appendChild(closeBtn);
+        this.popupContainer.appendChild(this.timerDiv);
+        document.body.appendChild(this.popupContainer);
 
         setTimeout(() => {
-            popupContainer.classList.add("showPopup");
+            this.popupContainer.classList.add("showPopup");
         }, 100);
 
         this.setTimer();
     }
 
     setTimer() {
-        let timerMs = 10000;
-        let countdown = setInterval(() => {
+        let timerMs = 5000;
+
+        this.countdown = setInterval(() => {
             timerMs -= 10;
-            this.timerDiv.style.width = `${timerMs / 100}%`;
+            this.timerDiv.style.width = `${timerMs / 50}%`;
 
             if (timerMs <= 0) {
-                clearInterval(countdown);
                 this.closePopup();
             }
-        }, 1);
+        }, 10);
     }
 
     closePopup() {
-        let popup = document.getElementsByClassName("popupContainer");
-        popup[0].classList.remove("showPopup")
+        if (this.isClosing) return;
+        this.isClosing = true;
+
+        if (this.countdown) {
+            clearInterval(this.countdown);
+            this.countdown = null;
+        }
+
+        this.popupContainer.classList.remove("showPopup");
+
         setTimeout(() => {
-            document.body.removeChild(popup[0]);
+            if (this.popupContainer) {
+                this.popupContainer.remove();
+                this.popupContainer = null;
+            }
         }, 300);
     }
 }
@@ -305,12 +322,10 @@ function createOKPopup(msg) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const msg = sessionStorage.getItem("popupMsg");
-    const success = sessionStorage.getItem("popupSuccess");
+    const success = Boolean(sessionStorage.getItem("popupSuccess"));
 
     if (msg !== null && success !== null) {
-        console.log(success);
-        
-        new CreatePopup(msg, !success);
+        new CreatePopup(msg, success);
         sessionStorage.removeItem("popupMsg");
         sessionStorage.removeItem("popupSuccess");
     }
