@@ -61,7 +61,6 @@ async function bookSlot(req, res) {
 
         return res.status(200).json({ msg: "Sikeres foglalás!", success: true });
     } catch (err) {
-        console.error(err);
         return res.status(500).json({ msg: "Foglalás sikertelen!", success: false });
     }
 }
