@@ -44,8 +44,28 @@ async function bookSlot(req, res) {
 
         let { parking_slot, start_date, start_time, end_date, end_time, plate_num } = req.body;
 
-        if (!parking_slot || !start_date || !start_time || !end_date || !end_time || !plate_num) {
-            return res.status(400).json({ msg: "Hiányos adatok!", success: false });
+        if (!start_date) {
+            return res.status(400).json({ msg: "Kezdő dátum megadása kötelező!", success: false });
+        }
+
+        if (!start_time) {
+            return res.status(400).json({ msg: "Kezdő időpont megadása kötelező!", success: false });
+        }
+
+        if (!end_date) {
+            return res.status(400).json({ msg: "Vég dátum megadása kötelező!", success: false });
+        }
+
+        if (!end_time) {
+            return res.status(400).json({ msg: "Vég időpont megadása kötelező!", success: false });
+        }
+
+        if (!plate_num) {
+            return res.status(400).json({ msg: "Rendszám megadása kötelező!", success: false });
+        }
+
+        if (!parking_slot) {
+            return res.status(400).json({ msg: "Parkolóhely megadása kötelező!", success: false });
         }
 
         let parking_space_id = await User.getParkingSpaceId(parking_slot.split(';')[0], parking_slot.split(';')[1]);
