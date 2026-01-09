@@ -21,10 +21,11 @@ async function getMyBookings(req, res) {
         }
 
         const data = await User.getUserBookings(user_id);
-        const statuses = await User.setStatuses();
+        const statuses = await User.setStatuses(user_id);
 
         for (let i = 0; i < data.length; i++) {
             data[i]["parking_status"] = statuses[i]["status"];
+            
         }
 
         // Optionally render page, still could use JSON for popup
