@@ -96,79 +96,15 @@
     </nav>
     <!-- #endregion -->
 
-    <!-- #region My Bookings -->
+    <div class="main-container">
 
-    <div class="container">
-        <h1>Foglalásaim</h1>
+        <!-- #region My Bookings -->
 
-        <!-- If user has any bookings, list all booked spaces in a table -->
-        <% if (bookings !="" ) {%>
+        <div class="container">
+            <h1>Foglalásaim</h1>
 
-            <a href="/newBooking" class="add-button">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                    fill="#e3e3e3">
-                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
-                </svg>
-                Új foglalás hozzáadása
-            </a>
-
-            <table>
-                <tr>
-                    <th>Rendszám</th>
-                    <th>Emelet</th>
-                    <th>Parkolóhely</th>
-                    <th>Mettől</th>
-                    <th>Meddig</th>
-                    <th>Típus</th>
-                    <th>Állapot</th>
-                    <th>Törlés</th>
-                </tr>
-
-                <% bookings.forEach(booking=> { %>
-                    <tr>
-                        <td>
-                            <%= booking["plate_num"] %>
-                        </td>
-                        <td>
-                            <%= booking["floor_num"] %>
-                        </td>
-                        <td>
-                            <%= booking["parking_space_num"] %>
-                        </td>
-                        <% const date1=new Date(booking["start_time"]); const
-                            start_formatted=date1.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
-                            day: "2-digit" , hour: "2-digit" , minute: "2-digit" }); %>
-                            <td>
-                                <%= start_formatted %>
-                            </td>
-                            <% const date2=new Date(booking["end_time"]); const
-                                end_formatted=date2.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
-                                day: "2-digit" , hour: "2-digit" , minute: "2-digit" }); %>
-                                <td>
-                                    <%= end_formatted %>
-                                </td>
-                                <td>
-                                    <%= booking["type"] %>
-                                </td>
-                                <td>
-                                    <%= booking["parking_status"] %>
-                                </td>
-                                <td>
-                                    <button class="delete-btn" data-booking-id="<%= booking["id"] %>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                            width="24px" fill="#1f1f1f">
-                                            <path
-                                                d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                    </tr>
-                    <% }) %>
-            </table>
-
-            <!-- If user doesn't have any bookings, show message -->
-            <% } else {%>
-                <h2 style="letter-spacing: 1px;">Jelenleg nincs foglalásod!</h2>
+            <!-- If user has any bookings, list all booked spaces in a table -->
+            <% if (bookings !="" ) {%>
 
                 <a href="/newBooking" class="add-button">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
@@ -177,8 +113,138 @@
                     </svg>
                     Új foglalás hozzáadása
                 </a>
-                <% } %>
+
+                <table>
+                    <tr>
+                        <th>Rendszám</th>
+                        <th>Emelet</th>
+                        <th>Parkolóhely</th>
+                        <th>Mettől</th>
+                        <th>Meddig</th>
+                        <th>Típus</th>
+                        <th>Állapot</th>
+                        <th>Törlés</th>
+                    </tr>
+
+                    <% bookings.forEach(booking=> { %>
+                        <tr>
+                            <td>
+                                <%= booking["plate_num"] %>
+                            </td>
+                            <td>
+                                <%= booking["floor_num"] %>
+                            </td>
+                            <td>
+                                <%= booking["parking_space_num"] %>
+                            </td>
+                            <% const date1=new Date(booking["start_time"]); const
+                                start_formatted=date1.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
+                                day: "2-digit" , hour: "2-digit" , minute: "2-digit" }); %>
+                                <td>
+                                    <%= start_formatted %>
+                                </td>
+                                <% const date2=new Date(booking["end_time"]); const
+                                    end_formatted=date2.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
+                                    day: "2-digit" , hour: "2-digit" , minute: "2-digit" }); %>
+                                    <td>
+                                        <%= end_formatted %>
+                                    </td>
+                                    <td>
+                                        <%= booking["type"] %>
+                                    </td>
+                                    <td>
+                                        <%= booking["parking_status"] %>
+                                    </td>
+                                    <td>
+                                        <button class="delete-btn" data-booking-id="<%= booking["id"] %>">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                                <path
+                                                    d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                        </tr>
+                        <% }) %>
+                </table>
+
+                <!-- If user doesn't have any bookings, show message -->
+                <% } else {%>
+                    <h2 style="letter-spacing: 1px;">Jelenleg nincs foglalásod!</h2>
+
+                    <a href="/newBooking" class="add-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e3e3e3">
+                            <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                        </svg>
+                        Új foglalás hozzáadása
+                    </a>
+                    <% } %>
+        </div>
+
+        <!-- #endregion -->
+
+        <!-- #region Footer -->
+
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- Links -->
+                <div class="footer-links">
+                    <div>
+                        <h4>Cégünk</h4>
+                        <ul>
+                            <li><a href="#about-us">Rólunk</a></li>
+                            <li><a href="#">Kapcsolat</a></li>
+                            <li><a href="/myBookings">Foglalás</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>Jogi információk</h4>
+                        <ul>
+                            <li><a href="/adatkezelesi.html">Adatkezelési tájékoztató</a></li>
+                            <li><a href="/aszf.html">ÁSZF</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>Szolgáltatások</h4>
+                        <ul>
+                            <li><a href="#">Funkciók</a></li>
+                            <li><a href="#">Árazás</a></li>
+                            <li><a href="#">Parkoló partnerek</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>Kövess minket</h4>
+                        <ul>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand -->
+            <div class="footer-brand">
+                <hr>
+                <h2>ParKing</h2>
+                <p>Foglalj előre, érkezz gond nélkül.</p>
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 ParKing. Minden jog fenntartva.
+            </div>
+        </footer>
+
+        <!-- #endregion -->
+
     </div>
-
-
-    <!-- #endregion -->

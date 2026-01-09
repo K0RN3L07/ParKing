@@ -4,13 +4,28 @@ body {
     justify-content: center;
 }
 
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .container {
     margin-top: 150px;
     width: 90%;
     display: flex;
     flex-direction: column;
     color: var(--primary-text-color);
+    margin-bottom: 100px;
 }
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: -400px;
+}
+
 /* #endregion */
 
 /* #region Title */

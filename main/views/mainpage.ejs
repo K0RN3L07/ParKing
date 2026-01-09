@@ -24,33 +24,36 @@
             <a href="">Kapcsolat</a>
             <% if (user) {%>
                 <a href="/myBookings">Foglalás</a>
-            <%} else {%>
-                <a style="cursor: pointer;" onclick="new CreatePopup('A foglalás megkezdéséhez jelentkezz be!', false)">Foglalás</a>
-            <%}%>
+                <%} else {%>
+                    <a style="cursor: pointer;"
+                        onclick="new CreatePopup('A foglalás megkezdéséhez jelentkezz be!', false)">Foglalás</a>
+                    <%}%>
         </div>
 
         <!-- Nav Profile Dropdown -->
         <div class="profile-container">
             <% if (user) {%>
-                <h2><%= user.name %></h2>
-            <%}%>
+                <h2>
+                    <%= user.name %>
+                </h2>
+                <%}%>
 
-            <div class="profile-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
-                    stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="32" cy="20" r="12" />
-                    <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
-                </svg>
+                    <div class="profile-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
+                            stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="32" cy="20" r="12" />
+                            <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
+                        </svg>
 
-                <div class="profile-icon-dropdown-container" tabindex="0">
-                    <a href="">Fiókom szerkesztése</a>
-                    <% if (user) { %>
-                        <a class="logoutBtn" href="/logout">Kijelentkezés</a>
-                    <% } else { %>
-                        <a href="/login">Bejelentkezés</a>
-                    <% } %>
-                </div>
-            </div>
+                        <div class="profile-icon-dropdown-container" tabindex="0">
+                            <a href="">Fiókom szerkesztése</a>
+                            <% if (user) { %>
+                                <a class="logoutBtn" href="/logout">Kijelentkezés</a>
+                                <% } else { %>
+                                    <a href="/login">Bejelentkezés</a>
+                                    <% } %>
+                        </div>
+                    </div>
         </div>
 
         <!-- Nav Hamburger Menu -->
@@ -65,29 +68,30 @@
             <a href="#about-us">Rólunk</a>
             <a href="">Kapcsolat</a>
             <% if (user) { %>
-            <a href="/myBookings">Foglalás</a>
-            <% } else { %>
-            <a style="cursor: pointer;" onclick="createPopup('A foglalás megkezdéséhez jelentkezz be!')">Foglalás</a>
-            <% } %>
-
-            <!-- Profile Dropdown -->
-            <div class="my-profile" onclick="toggleProfileDropdown()">
-                <p>Profil</p>
-
-                <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960"
-                    width="32px" fill="var(--primary-text-color)">
-                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-                </svg>
-            </div>
-
-            <div class="profile-dropdown-container">
-                <a href="">Fiókom szerkesztése</a>
-                <% if (user) { %>
-                    <a class="logoutBtn" href="/logout">Kijelentkezés</a>
+                <a href="/myBookings">Foglalás</a>
                 <% } else { %>
-                    <a href="/login">Bejelentkezés</a>
-                <% } %>
-            </div>
+                    <a style="cursor: pointer;"
+                        onclick="createPopup('A foglalás megkezdéséhez jelentkezz be!')">Foglalás</a>
+                    <% } %>
+
+                        <!-- Profile Dropdown -->
+                        <div class="my-profile" onclick="toggleProfileDropdown()">
+                            <p>Profil</p>
+
+                            <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px"
+                                viewBox="0 -960 960 960" width="32px" fill="var(--primary-text-color)">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg>
+                        </div>
+
+                        <div class="profile-dropdown-container">
+                            <a href="">Fiókom szerkesztése</a>
+                            <% if (user) { %>
+                                <a class="logoutBtn" href="/logout">Kijelentkezés</a>
+                                <% } else { %>
+                                    <a href="/login">Bejelentkezés</a>
+                                    <% } %>
+                        </div>
 
         </div>
     </nav>
@@ -103,23 +107,23 @@
 
                 <% if (user) {%>
                     <h1>Üdvözlünk a ParKing weboldalán <%= user.name %>!</h1>
-                <%}else{%>
-                    <h1>Üdvözlünk a ParKing weboldalán!</h1>
-                <%}%>
+                    <%}else{%>
+                        <h1>Üdvözlünk a ParKing weboldalán!</h1>
+                        <%}%>
 
-                <% if (user) {%>
-                    <h2>Kezdd meg a foglalást most!</h2>
-                    <div class="get-started">
-                        <a href="/myBookings"><button id="primary-button">Foglalás</button></a>
-                    </div>
-                <%}else{%>
-                    <h2>A foglalások megkezdéséhez jelentkezz be! Ha még nincs fiókod regisztálj!</h2>
-                    <div class="get-started">
-                        <a href="/login"><button id="primary-button">Bejelentkezés</button></a>
-                        <a href="/register"><button id="secondary-color">Regisztráció</button></a>
-                    </div>
-                <%}%>
-                
+                            <% if (user) {%>
+                                <h2>Kezdd meg a foglalást most!</h2>
+                                <div class="get-started">
+                                    <a href="/myBookings"><button id="primary-button">Foglalás</button></a>
+                                </div>
+                                <%}else{%>
+                                    <h2>A foglalások megkezdéséhez jelentkezz be! Ha még nincs fiókod regisztálj!</h2>
+                                    <div class="get-started">
+                                        <a href="/login"><button id="primary-button">Bejelentkezés</button></a>
+                                        <a href="/register"><button id="secondary-color">Regisztráció</button></a>
+                                    </div>
+                                    <%}%>
+
 
             </div>
         </div>
@@ -130,23 +134,25 @@
         <div class="about-us-container">
             <!-- Anchor spacer -->
             <span id="about-us"></span>
-            
+
             <!-- About Us Card -->
             <div class="card">
                 <div class="image">
                     <img src="/img/parking_garage.jpg" alt="">
                 </div>
-                
+
                 <!-- About Us Content -->
                 <div class="content">
                     <h2>Rólunk</h2>
 
                     <p>
-                        A <strong>ParKing</strong> azért jött létre, hogy egyszerűvé, gyorssá és stresszmentessé tegye a városi parkolást. 
-                        Szolgáltatásunk segítségével a felhasználók előre lefoglalhatják autójuk helyét egy modern, 
-                        <strong>5 emeletes, emeletenként 20 férőhelyes</strong> parkolóházban – összesen <strong>100 parkolóhely</strong> közül.
+                        A <strong>ParKing</strong> azért jött létre, hogy egyszerűvé, gyorssá és stresszmentessé tegye a
+                        városi parkolást.
+                        Szolgáltatásunk segítségével a felhasználók előre lefoglalhatják autójuk helyét egy modern,
+                        <strong>5 emeletes, emeletenként 20 férőhelyes</strong> parkolóházban – összesen <strong>100
+                            parkolóhely</strong> közül.
                     </p>
-                    
+
 
                     <ul>
                         <h3>Célunk</h3>
@@ -165,10 +171,11 @@
                     </ul>
 
                     <p>
-                        Hiszünk abban, hogy a parkolásnak nem kell idegőrlőnek lennie. A ParKinggel minden autós kényelmesen, 
+                        Hiszünk abban, hogy a parkolásnak nem kell idegőrlőnek lennie. A ParKinggel minden autós
+                        kényelmesen,
                         biztonságosan és kiszámítható módon tervezheti útját.
                     </p>
-                    
+
                     <p>
                         <strong>ParKing – Foglalj előre, érkezz gond nélkül.</strong>
                     </p>
@@ -178,8 +185,69 @@
 
         <!-- #endregion -->
 
-        <br><br><br><br><br>
+        <!-- #region Footer -->
+
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- Links -->
+                <div class="footer-links">
+                    <div>
+                        <h4>Cégünk</h4>
+                        <ul>
+                            <li><a href="#about-us">Rólunk</a></li>
+                            <li><a href="#">Kapcsolat</a></li>
+                            <li><a href="/myBookings">Foglalás</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>Jogi információk</h4>
+                        <ul>
+                            <li><a href="/adatkezelesi.html">Adatkezelési tájékoztató</a></li>
+                            <li><a href="/aszf.html">ÁSZF</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>Szolgáltatások</h4>
+                        <ul>
+                            <li><a href="#">Funkciók</a></li>
+                            <li><a href="#">Árazás</a></li>
+                            <li><a href="#">Parkoló partnerek</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>Kövess minket</h4>
+                        <ul>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand -->
+            <div class="footer-brand">
+                <hr>
+                <h2>ParKing</h2>
+                <p>Foglalj előre, érkezz gond nélkül.</p>
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 ParKing. Minden jog fenntartva.
+            </div>
+        </footer>
+
+        <!-- #endregion -->
+
+        <!-- #endregion -->
 
     </div>
-
-    <!-- #endregion -->

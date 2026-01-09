@@ -26,33 +26,35 @@
             <a href="#">Kapcsolat</a>
             <% if (user) {%>
                 <a href="/myBookings">Foglalás</a>
-            <%} else {%>
-                <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
-            <%}%>
+                <%} else {%>
+                    <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+                    <%}%>
         </div>
 
         <!-- Nav Profile Dropdown -->
         <div class="profile-container">
             <% if (user) {%>
-                <h2><%= user.name %></h2>
-            <%}%>
+                <h2>
+                    <%= user.name %>
+                </h2>
+                <%}%>
 
-            <div class="profile-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
-                    stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="32" cy="20" r="12" />
-                    <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
-                </svg>
+                    <div class="profile-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="35" height="35" fill="none"
+                            stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="32" cy="20" r="12" />
+                            <path d="M8 56c0-10.6667 9.6-20 24-20s24 9.3333 24 20" />
+                        </svg>
 
-                <div class="profile-icon-dropdown-container" tabindex="0">
-                    <a href="">Fiókom szerkesztése</a>
-                    <% if (user) { %>
-                        <a class="logoutBtn" href="/logout">Kijelentkezés</a>
-                    <% } else { %>
-                        <a href="/login">Bejelentkezés</a>
-                    <% } %>
-                </div>
-            </div>
+                        <div class="profile-icon-dropdown-container" tabindex="0">
+                            <a href="">Fiókom szerkesztése</a>
+                            <% if (user) { %>
+                                <a class="logoutBtn" href="/logout">Kijelentkezés</a>
+                                <% } else { %>
+                                    <a href="/login">Bejelentkezés</a>
+                                    <% } %>
+                        </div>
+                    </div>
         </div>
 
         <!-- Nav Hamburger Menu -->
@@ -67,29 +69,29 @@
             <a href="#about-us">Rólunk</a>
             <a href="#">Kapcsolat</a>
             <% if (user) { %>
-            <a href="/myBookings">Foglalás</a>
-            <% } else { %>
-            <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
-            <% } %>
-
-            <!-- Profile Dropdown -->
-            <div class="my-profile" onclick="toggleProfileDropdown()">
-                <p>Profil</p>
-
-                <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960"
-                    width="32px" fill="var(--primary-text-color)">
-                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-                </svg>
-            </div>
-
-            <div class="profile-dropdown-container">
-                <a href="">Fiókom szerkesztése</a>
-                <% if (user) { %>
-                    <a class="logoutBtn" href="/logout">Kijelentkezés</a>
+                <a href="/myBookings">Foglalás</a>
                 <% } else { %>
-                    <a href="/login">Bejelentkezés</a>
-                <% } %>
-            </div>
+                    <a style="cursor: pointer;" onclick="alert('Jelentkezz be!')">Foglalás</a>
+                    <% } %>
+
+                        <!-- Profile Dropdown -->
+                        <div class="my-profile" onclick="toggleProfileDropdown()">
+                            <p>Profil</p>
+
+                            <svg id="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="32px"
+                                viewBox="0 -960 960 960" width="32px" fill="var(--primary-text-color)">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg>
+                        </div>
+
+                        <div class="profile-dropdown-container">
+                            <a href="">Fiókom szerkesztése</a>
+                            <% if (user) { %>
+                                <a class="logoutBtn" href="/logout">Kijelentkezés</a>
+                                <% } else { %>
+                                    <a href="/login">Bejelentkezés</a>
+                                    <% } %>
+                        </div>
 
         </div>
     </nav>
@@ -421,12 +423,14 @@
                         <div class="form-field-row">
                             <div class="form-field">
                                 <label for="license">Parkolóhely típusa</label>
-                                <input type="text" disabled name="type" id="type" placeholder="Válaszd ki a parkolóhelyet">
+                                <input type="text" disabled name="type" id="type"
+                                    placeholder="Válaszd ki a parkolóhelyet">
                             </div>
 
                             <div class="form-field">
                                 <label for="slotInput">Parkoló hely ára</label>
-                                <input type="text" disabled name="parking-slot" id="price" placeholder="Válaszd ki a parkolóhelyet">
+                                <input type="text" disabled name="parking-slot" id="price"
+                                    placeholder="Válaszd ki a parkolóhelyet">
                             </div>
                         </div>
                     </div>
@@ -439,7 +443,70 @@
 
             </div>
             <!-- #endregion -->
-        
+
         </form>
+
+        <!-- #region Footer -->
+
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- Links -->
+                <div class="footer-links">
+                    <div>
+                        <h4>Cégünk</h4>
+                        <ul>
+                            <li><a href="#about-us">Rólunk</a></li>
+                            <li><a href="#">Kapcsolat</a></li>
+                            <li><a href="/myBookings">Foglalás</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>Jogi információk</h4>
+                        <ul>
+                            <li><a href="/adatkezelesi.html">Adatkezelési tájékoztató</a></li>
+                            <li><a href="/aszf.html">ÁSZF</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>Szolgáltatások</h4>
+                        <ul>
+                            <li><a href="#">Funkciók</a></li>
+                            <li><a href="#">Árazás</a></li>
+                            <li><a href="#">Parkoló partnerek</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>Kövess minket</h4>
+                        <ul>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand -->
+            <div class="footer-brand">
+                <hr>
+                <h2>ParKing</h2>
+                <p>Foglalj előre, érkezz gond nélkül.</p>
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 ParKing. Minden jog fenntartva.
+            </div>
+        </footer>
+
+        <!-- #endregion -->
     </div>
     <!-- #endregion -->
