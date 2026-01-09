@@ -457,7 +457,12 @@
                         <ul>
                             <li><a href="#about-us">Rólunk</a></li>
                             <li><a href="#">Kapcsolat</a></li>
-                            <li><a href="/myBookings">Foglalás</a></li>
+                            <% if (user) {%>
+                                <li><a href="/myBookings">Foglalás</a></li>
+                                <%} else {%>
+                                    <li><a style="cursor: pointer;"
+                                        onclick="new CreatePopup('A foglalás megkezdéséhez jelentkezz be!', false)">Foglalás</a></li>
+                                    <%}%>
                         </ul>
                     </div>
                 </div>
