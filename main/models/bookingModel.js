@@ -98,27 +98,36 @@ exports.getParkingSpaceTypeAndPrice = (id) => {
     });
 }
 
-exports.setStatuses = () => {
+exports.setStatuses = (userId) => {
     return new Promise((resolve, reject) => {
         db.query(
-            `SELECT 
-                bookings.id,
-                bookings.start_time,
-                bookings.end_time,
+            `UPDATE bookings
+             SET parking_status =
                 IF(
-                    bookings.end_time < CURRENT_TIMESTAMP,
+                    end_time < CURRENT_TIMESTAMP,
                     'Lejárt',
                     IF(
-                        CURRENT_TIMESTAMP BETWEEN bookings.start_time AND bookings.end_time,
+                        CURRENT_TIMESTAMP BETWEEN start_time AND end_time,
                         'Aktív',
                         'Későbbi'
                     )
-                ) AS status
-                FROM bookings
-                ORDER BY bookings.start_time`,
-            (err, results) => {
+                )
+             WHERE user_id = ?`,
+            [userId],
+            (err) => {
                 if (err) return reject(err);
-                resolve(results);
+
+                db.query(
+                    `SELECT id, start_time, end_time, parking_status
+                     FROM bookings
+                     WHERE user_id = ?
+                     ORDER BY start_time`,
+                    [userId],
+                    (err, results) => {
+                        if (err) return reject(err);
+                        resolve(results);
+                    }
+                );
             }
         );
     });
