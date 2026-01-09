@@ -36,7 +36,31 @@ async function registerUser(req, res) {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        await User.registerUser(name, email, phone_num, hashedPassword);
+        try {
+            await User.registerUser(name, email, phone_num, hashedPassword);
+        }
+        catch (err) {
+            if (err.code === "ER_DUP_ENTRY") {
+                if (err.sqlMessage.includes("'email'")) {
+                    return res.status(400).json({
+                        msg: "Ezzel az email címmel már regisztráltak!",
+                        success: false
+                    });
+                }
+                if (err.sqlMessage.includes("'phone_num'")) {
+                    return res.status(400).json({
+                        msg: "Ezzel a telefonszámmal már regisztráltak!",
+                        success: false
+                    });
+                }
+            }
+            else{
+                return res.status(400).json({
+                    msg: String(err),
+                    success: false
+                });
+            }
+        }
 
         return res.status(201).json({
             msg: "Sikeres regisztráció!",

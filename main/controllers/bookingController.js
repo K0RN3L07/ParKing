@@ -63,8 +63,8 @@ async function bookSlot(req, res) {
         if (!plate_num) {
             return res.status(400).json({ msg: "Rendszám megadása kötelező!", success: false });
         }
-
-        if (!parking_slot) {
+        
+        if (parking_slot.split(';')[1] === null) {
             return res.status(400).json({ msg: "Parkolóhely megadása kötelező!", success: false });
         }
 
