@@ -13,15 +13,6 @@ function getRegister(req, res) {
     res.render('register', { success: true, msg: null });
 }
 
-function getError(req, res) {
-    res.render('errorpage', {
-        user: req.session.user || null,
-        code: null,
-        error: null,
-        success: false
-    });
-}
-
 async function registerUser(req, res) {
     try {
         const { name, email, phone_num, password } = req.body;
