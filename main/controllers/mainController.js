@@ -142,7 +142,6 @@ module.exports = {
     getIndex,
     getLogin,
     getRegister,
-    getError,
     registerUser,
     loginUser,
     logoutUser
