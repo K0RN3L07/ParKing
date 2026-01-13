@@ -15,7 +15,6 @@ if (email && emailLabel) {
 }
 
 //#endregion
-
 //#region Password Field Animation
 
 const password = document.getElementById("password");
