@@ -126,6 +126,7 @@ exports.setStatuses = (userId) => {
                     (err, results) => {
                         if (err) return reject(err);
                         resolve(results);
+                        
                     }
                 );
             }

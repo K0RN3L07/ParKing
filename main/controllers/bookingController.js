@@ -24,10 +24,9 @@ async function getMyBookings(req, res) {
         const statuses = await User.setStatuses(user_id);
 
         for (let i = 0; i < data.length; i++) {
-            data[i]["parking_status"] = statuses[i]["status"];
-            
+            data[i]["parking_status"] = statuses[i]["parking_status"];
         }
-
+        
         // Optionally render page, still could use JSON for popup
         res.render("myBookings", { bookings: data, user: req.session.user || null });
     } catch (err) {
