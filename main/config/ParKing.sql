@@ -43,6 +43,19 @@ CREATE TABLE IF NOT EXISTS `bookings` (
         ON UPDATE CASCADE) -- Frissítés esetén felülír
 ;
 
+CREATE TABLE IF NOT EXISTS `messages` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`user_id` int NOT NULL,
+	`message` text NOT NULL,
+	`booked_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (`id`),
+
+	FOREIGN KEY (user_id) REFERENCES users(id)
+		ON DELETE CASCADE -- Törlés esetén felülír
+        ON UPDATE CASCADE, -- Frissítés esetén felülír
+)
+
 INSERT INTO `parking_spaces` (`floor_num`, `parking_space_num`, `type`, `price_per_hour`, `is_available`) VALUES
 (1, 1, 'Normál', 400, TRUE),
 (1, 2, 'Normál', 400, TRUE),
