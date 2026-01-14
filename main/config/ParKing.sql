@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `messages` (
 
 	FOREIGN KEY (user_id) REFERENCES users(id)
 		ON DELETE CASCADE -- Törlés esetén felülír
-        ON UPDATE CASCADE, -- Frissítés esetén felülír
-)
+        ON UPDATE CASCADE) -- Frissítés esetén felülír
+;
 
 INSERT INTO `parking_spaces` (`floor_num`, `parking_space_num`, `type`, `price_per_hour`, `is_available`) VALUES
 (1, 1, 'Normál', 400, TRUE),
