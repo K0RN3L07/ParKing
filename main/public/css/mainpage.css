@@ -92,6 +92,7 @@ button {
     flex-direction: column;
     width: 85%;
     position: relative;
+    margin-bottom: 100px;
 }
 
 #about-us {

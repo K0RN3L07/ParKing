@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-container {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    color: var(--primary-text-color);
+    background-color: var(--base-color);
+}
+
+.main-container h1 {
+    margin-top: 150px;
+    font-size: 1.6rem;
+}
