@@ -1,0 +1,68 @@
+<!-- #region Footer -->
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Links -->
+            <div class="footer-links">
+                <div>
+                    <h4>Cégünk</h4>
+                    <ul>
+                        <li><a href="#about-us">Rólunk</a></li>
+                        <li><a href="#">Kapcsolat</a></li>
+                        <% if (user) {%>
+                            <li><a href="/myBookings">Foglalás</a></li>
+                            <%} else {%>
+                                <li><a style="cursor: pointer;"
+                                    onclick="new CreatePopup('A foglalás megkezdéséhez jelentkezz be!', false)">Foglalás</a></li>
+                                <%}%>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div>
+                    <h4>Jogi információk</h4>
+                    <ul>
+                        <li><a href="/adatkezelesi.html">Adatkezelési tájékoztató</a></li>
+                        <li><a href="/aszf.html">ÁSZF</a></li>
+                        <li><a href="/szolgaltatasok.html">Szolgáltatások</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div>
+                    <h4>Szolgáltatások</h4>
+                    <ul>
+                        <li><a href="/szolgaltatasok.html#funkciok">Funkciók</a></li>
+                        <li><a href="/szolgaltatasok.html#arazas">Árazás</a></li>
+                        <li><a href="/szolgaltatasok.html#partnerek">Parkoló partnerek</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div>
+                    <h4>Kövess minket</h4>
+                    <ul>
+                        <li><a onclick="new CreatePopup('Még nincs!', false)" href="#">LinkedIn</a></li>
+                        <li><a onclick="new CreatePopup('Még nincs!', false)" href="#">Facebook</a></li>
+                        <li><a onclick="new CreatePopup('Még nincs!', false)" href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brand -->
+        <div class="footer-brand">
+            <hr>
+            <h2>ParKing</h2>
+            <p>Foglalj előre, érkezz gond nélkül.</p>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 ParKing. Minden jog fenntartva.
+        </div>
+    </footer>
+
+    <!-- #endregion -->
