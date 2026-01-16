@@ -22,14 +22,15 @@
             <input disabled type="text" id="phone_num_input" name="phone_num_input" value="<%= user.phone_num %>">
         </div>
         
-        <div class="row">
-            <input type="button" disabled value="Jelszó megváltoztatása">
-        </div>
+        <input type="button" class="btn" disabled value="Jelszó megváltoztatása">
         
-        <div class="row">
-            <button type="button" id="editBtn">Szerkesztés</button>
-            <button class="hide" type="button" id="saveBtn">Mentés</button>
-            <button class="hide" id="cancelBtn" type="button">Mégse</button>
+        <div class="lastRow">
+            <button type="button" id="editBtn">
+                
+                Szerkesztés
+            </button>
+            <button class="hide btn" id="saveBtn" type="submit">Mentés</button>
+            <button class="hide btn" id="cancelBtn" type="button">Mégse</button>
         </div>
         
     </form>
