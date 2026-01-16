@@ -2,38 +2,42 @@
 <script src="/js/editProfile.js" defer></script>
 <%- include('navbarLayout', {body: '' }) %>
 
-<div class="main-container">
-    <h1>Fiók Adatai</h1>
+    <div class="main-container">
+        <h1>Fiók Adatai</h1>
 
-    <form id="editProfileForm" class="user-data-container">
-        
-        <div class="row">
-            <label for="name_input">Név:</label>
-            <input disabled type="text" id="name_input" name="name_input" value="<%= user.name %>">
-        </div>
-        
-        <div class="row">
-            <label for="email_input">E-mail cím:</label>
-            <input disabled type="text" id="email_input" name="email_input" value="<%= user.email %>">
-        </div>
-        
-        <div class="row">
-            <label for="phone_num_input">Telefonszám:</label>
-            <input disabled type="text" id="phone_num_input" name="phone_num_input" value="<%= user.phone_num %>">
-        </div>
-        
-        <input type="button" class="btn" disabled value="Jelszó megváltoztatása">
-        
-        <div class="lastRow">
-            <button type="button" id="editBtn">
-                
-                Szerkesztés
-            </button>
-            <button class="hide btn" id="saveBtn" type="submit">Mentés</button>
-            <button class="hide btn" id="cancelBtn" type="button">Mégse</button>
-        </div>
-        
-    </form>
-</div>
+        <form id="editProfileForm" class="user-data-container">
 
-<%- include('footer', {body: '' }) %>
+            <div class="row">
+                <label for="name_input">Név:</label>
+                <input disabled type="text" id="name_input" name="name_input" value="<%= user.name %>">
+            </div>
+
+            <div class="row">
+                <label for="email_input">E-mail cím:</label>
+                <input disabled type="text" id="email_input" name="email_input" value="<%= user.email %>">
+            </div>
+
+            <div class="row">
+                <label for="phone_num_input">Telefonszám:</label>
+                <input disabled type="text" id="phone_num_input" name="phone_num_input" value="<%= user.phone_num %>">
+            </div>
+
+            <input type="button" class="btn" disabled value="Jelszó megváltoztatása">
+
+            <div class="lastRow">
+                <button type="button" id="editBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                        fill="#1f1f1f">
+                        <path
+                            d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z" />
+                    </svg>
+                    Szerkesztés
+                </button>
+                <button class="hide btn" id="saveBtn" type="submit">Mentés</button>
+                <button class="hide btn" id="cancelBtn" type="button">Mégse</button>
+            </div>
+
+        </form>
+    </div>
+
+    <%- include('footer', {body: '' }) %>

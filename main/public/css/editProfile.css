@@ -19,7 +19,7 @@ body {
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 form .row {
@@ -56,11 +56,9 @@ form .row input:active {
     padding: 10px 20px;
     background-color: var(--base-color);
     color: var(--secondary-color);
-    text-decoration: none;
     border-radius: 20px;
     border: 2px solid var(--secondary-color);
     transition: .3s;
-    margin-bottom: 10px;
 }
 
 .btn:not(:disabled):hover {
@@ -72,4 +70,42 @@ form .row input:active {
 
 .btn:disabled {
     opacity: 0.5;
+}
+
+#editBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px 20px;
+    background-color: var(--base-color);
+    color: var(--secondary-color);
+    border-radius: 20px;
+    border: 2px solid var(--secondary-color);
+    transition: .3s;
+    margin-bottom: 10px;
+}
+
+#editBtn svg {
+    fill: var(--secondary-color);
+    transition: .3s;
+}
+
+#editBtn:hover {
+    background-color: var(--secondary-color);
+    color: var(--accent-text-color);
+    cursor: pointer;
+    transition: .3s;
+}
+
+#editBtn:hover svg {
+    fill: var(--accent-text-color);
+    transition: .3s;
+}
+
+.lastRow {
+    display: flex;
+    margin: 20px 0 100px;
+    gap: 10px;
 }
