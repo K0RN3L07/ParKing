@@ -1,15 +1,37 @@
 <link rel="stylesheet" href="css/editProfile.css">
+<script src="/js/editProfile.js" defer></script>
 <%- include('navbarLayout', {body: '' }) %>
 
 <div class="main-container">
     <h1>Fiók Adatai</h1>
 
-    <form action="" method="post" class="user-data-container">
-        <div class="labels-container">
-            
+    <form action="/editProfileData" method="put" class="user-data-container">
+        
+        <div class="row">
+            <label for="name_input">Név:</label>
+            <input disabled type="text" id="name_input" name="name_input" placeholder="<%= user.name %>">
         </div>
-
-        <div class="data-container"></div>
+        
+        <div class="row">
+            <label for="email_input">E-mail cím:</label>
+            <input disabled type="text" id="email_input" name="email_input" placeholder="<%= user.email %>">
+        </div>
+        
+        <div class="row">
+            <label for="phone_num_input">Telefonszám:</label>
+            <input disabled type="text" id="phone_num_input" name="phone_num_input" placeholder="<%= user.phone_num %>">
+        </div>
+        
+        <div class="row">
+            <input type="button" disabled value="Jelszó megváltoztatása">
+        </div>
+        
+        <div class="row">
+            <button type="button" id="editBtn">Szerkesztés</button>
+            <button class="hide" id="saveBtn" type="submit">Mentés</button>
+            <button class="hide" id="cancelBtn" type="button">Mégse</button>
+        </div>
+        
     </form>
 </div>
 
