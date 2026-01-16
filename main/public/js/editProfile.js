@@ -39,3 +39,32 @@ cancelBtn.addEventListener("click", () => {
     saveBtn.classList.toggle("hide");
     cancelBtn.classList.toggle("hide");
 });
+
+document.getElementById('saveBtn').addEventListener('click', async () => {
+    const data = {
+        name: document.getElementById('name_input').value,
+        email: document.getElementById('email_input').value,
+        phone_num: document.getElementById('phone_num_input').value
+    };
+
+    const res = await fetch('/editProfileData', {
+        method: 'PUT',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+        sessionStorage.setItem("popupMsg", result.msg);
+        sessionStorage.setItem("popupSuccess", result.success);
+
+        window.location.href = "/";
+    }
+    else {
+        new CreatePopup(result.msg, result.success);
+    }
+});

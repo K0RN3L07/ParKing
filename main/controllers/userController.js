@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
 
 async function getEditProfile(req, res) {
@@ -12,6 +13,32 @@ async function getEditProfile(req, res) {
     }
 }
 
+async function editProfileData(req, res) {
+    try {
+        let user_id = req.session.user?.id;
+
+        if (!user_id) {
+            return res.status(401).json({ msg: "Nincs bejelentkezve!", success: false });
+        }
+        const new_data = req.body;
+        await User.editProfileData(user_id, new_data);
+
+        req.session.user = {
+            id: req.session.user.id,
+            name: new_data.name,
+            email: new_data.email,
+            phone_num: new_data.phone_num
+        };
+
+        return res.json({ msg: "Sikeres módosítás!", success: true });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: "Szerver oldali hiba!", success: false });
+    }
+}
+
 module.exports = {
-    getEditProfile
+    getEditProfile,
+    editProfileData
 };
