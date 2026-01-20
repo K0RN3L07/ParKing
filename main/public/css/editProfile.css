@@ -84,7 +84,6 @@ form .row input:active {
     border-radius: 20px;
     border: 2px solid var(--secondary-color);
     transition: .3s;
-    margin-bottom: 10px;
 }
 
 #editBtn svg {

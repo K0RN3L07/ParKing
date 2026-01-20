@@ -5,6 +5,8 @@ let cancelBtn = document.getElementById("cancelBtn");
 
 let inputs = document.getElementsByTagName("input");
 
+//#region Main EventListeners & Buttons
+
 editBtn.addEventListener("click", () => {
     editEnabled = !editEnabled;
 
@@ -40,11 +42,47 @@ cancelBtn.addEventListener("click", () => {
     cancelBtn.classList.toggle("hide");
 });
 
-document.getElementById('saveBtn').addEventListener('click', async () => {
+const editProfileForm = document.getElementById("editProfileForm");
+
+editProfileForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    //#region Validation 
+
+    let name_input = document.getElementById("name_input");
+    let email_input = document.getElementById("email_input");
+    let phone_num_input = document.getElementById("phone_num_input");
+
+    const emailRegex = /^(?!.*\.\.)(?!.*[^\x00-\x7F])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    const phoneRegex = /^\d+$/;
+
+    if (name_input.value === "") {
+        new CreatePopup("A név mező nem lehet üres!", false);
+        return;
+    }
+
+    if (!emailRegex.test(email_input.value)) {        
+        new CreatePopup("Érvénytelen email cím!", false);
+        return;
+    }
+
+    if (phone_num_input.value === "") {
+        new CreatePopup("A telefonszám mező nem lehet üres!", false);
+        return;
+    }
+
+    if (!phoneRegex.test(phone_num_input.value)) {
+        new CreatePopup("A telefonszám csak számot tartalmazhat!", false);
+        return;
+    }
+
+    //#endregion
+
     const data = {
-        name: document.getElementById('name_input').value,
-        email: document.getElementById('email_input').value,
-        phone_num: document.getElementById('phone_num_input').value
+        name: name_input.value,
+        email: email_input.value,
+        phone_num: phone_num_input.value
     };
 
     const res = await fetch('/editProfileData', {
@@ -68,3 +106,6 @@ document.getElementById('saveBtn').addEventListener('click', async () => {
         new CreatePopup(result.msg, result.success);
     }
 });
+
+//#endregion
+

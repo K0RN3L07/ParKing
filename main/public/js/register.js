@@ -204,7 +204,7 @@ form.addEventListener("submit", async function (e) {
     if (!aszf) {
         new CreatePopup("El kell fogadnia az ÁSZF-et és az Adatkezelési Szabályzatot!", false);
         return;
-    }
+    }    
 
     const data = {
         name: fullname.value,
