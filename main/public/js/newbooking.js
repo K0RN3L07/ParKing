@@ -93,8 +93,7 @@ deleteSelection.addEventListener('click', () => {
     parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
     priceField.value = "";
     typeField.value = "";
-    console.log(typeField.value);
-
+    
     parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
     deleteSelection.classList.remove("visible");
 });
