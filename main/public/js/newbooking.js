@@ -16,11 +16,11 @@ function getCurrentDate() {
 
 let startDateInput = document.getElementById('start-date');
 let startTimeInput = document.getElementById('start-time');
-
 startDateInput.setAttribute("min", getCurrentDate());
 
 let endDateInput = document.getElementById('end-date');
 let endTimeInput = document.getElementById('end-time');
+endDateInput.setAttribute("min", getCurrentDate());
 
 startDateInput.addEventListener("input", () => {
     endDateInput.setAttribute("min", startDateInput.value);
@@ -31,9 +31,7 @@ function checkIfDatesAreSet() {
     if (startDateInput.value && startTimeInput.value && endDateInput.value && endTimeInput.value) {
         return true;
     }
-    else {
-        return false;
-    }
+    return false;
 }
 
 let selectedSpotType = document.getElementById("selectedSpotType");
@@ -45,28 +43,35 @@ radioArray.forEach(radio => {
     radio.addEventListener('change', () => {
 
         if (checkIfDatesAreSet()) {
-            if (radio.checked) {
-                deleteSelection.classList.add("visible");
+            if (endTimeInput.value < startTimeInput.value) {
+                new CreatePopup("Helytelen időintervallum!", false)
+                radio.checked = false;
             }
+            else{
 
-            else {
-                if (deleteSelection.classList.contains("visible")) {
-                    deleteSelection.classList.remove("visible");
+                if (radio.checked) {
+                    deleteSelection.classList.add("visible");
                 }
+    
+                else {
+                    if (deleteSelection.classList.contains("visible")) {
+                        deleteSelection.classList.remove("visible");
+                    }
+                }
+    
+    
+                // Update placeholder
+                if (radio.checked) {
+                    selectedSlot = radio.id;
+                    parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, ${selectedSlot}. parkolóhely`);
+                    parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${selectedSlot}`);
+                }
+                getParkingSpaceTypeAndPrice(parkingSlotInputForBackend[0].getAttribute("value"));
             }
-
-
-            // Update placeholder
-            if (radio.checked) {
-                selectedSlot = radio.id;
-                parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, ${selectedSlot}. parkolóhely`);
-                parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${selectedSlot}`);
-            }
-            getParkingSpaceTypeAndPrice(parkingSlotInputForBackend[0].getAttribute("value"));
         }
 
         else {
-            new CreatePopup("Válaszd ki az időpontot először!", false)
+            new CreatePopup("Válaszd ki az időpontot először!", false);
             radio.checked = false;
         }
     });
@@ -89,7 +94,7 @@ deleteSelection.addEventListener('click', () => {
     priceField.value = "";
     typeField.value = "";
     console.log(typeField.value);
-    
+
     parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
     deleteSelection.classList.remove("visible");
 });
@@ -138,28 +143,28 @@ async function getParkingSpaceTypeAndPrice(parking_slot) {
 
 startDateInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
-        searchButtonClicked = true;
+        allDatesSet = true;
         levels[0].click();
     }
 });
 
 startTimeInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
-        searchButtonClicked = true;
+        allDatesSet = true;
         levels[0].click();
     }
 });
 
 endDateInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
-        searchButtonClicked = true;
+        allDatesSet = true;
         levels[0].click();
     }
 });
 
 endTimeInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
-        searchButtonClicked = true;
+        allDatesSet = true;
         levels[0].click();
     }
 });
@@ -172,12 +177,12 @@ endTimeInput.addEventListener("input", () => {
 let levels = document.querySelectorAll('.circle');
 let selectedIdx;
 
-let searchButtonClicked = false;
+let allDatesSet = false;
 
 // Adding Event Listeners
 levels.forEach(level => {
     level.addEventListener("click", () => {
-        if (searchButtonClicked) {
+        if (allDatesSet) {
             radioArray.forEach(radio => {
                 radio.checked = false;
             });
@@ -209,7 +214,7 @@ function removeReserved() {
 
 document.querySelectorAll('.circle').forEach(circle => {
     circle.addEventListener('click', async () => {
-        if (searchButtonClicked) {
+        if (allDatesSet) {
             removeReserved();
             const floor = circle.textContent.trim();
 
@@ -251,12 +256,12 @@ document.querySelectorAll('.circle').forEach(circle => {
 
 document.getElementById("bookForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    
+
     try {
-        try{
+        try {
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData.entries());
-    
+
             const response = await fetch("/bookSlot", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -264,7 +269,7 @@ document.getElementById("bookForm").addEventListener("submit", async (e) => {
             });
 
             const result = await response.json();
-    
+
             if (result.success) {
                 const confirmed = await createOKPopup(result.msg);
                 if (confirmed) {
@@ -275,9 +280,9 @@ document.getElementById("bookForm").addEventListener("submit", async (e) => {
                 new CreatePopup(result.msg, result.success);
             }
         }
-        catch (err){
+        catch (err) {
             console.log(err);
-            
+
             new CreatePopup(result.msg, result.success);
         }
     } catch (err) {
