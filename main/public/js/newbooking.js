@@ -43,7 +43,7 @@ radioArray.forEach(radio => {
     radio.addEventListener('change', () => {
 
         if (checkIfDatesAreSet()) {
-            if (endTimeInput.value < startTimeInput.value) {
+            if (startDateInput.value == endDateInput.value && endTimeInput.value < startTimeInput.value) {
                 new CreatePopup("Helytelen időintervallum!", false)
                 radio.checked = false;
             }
