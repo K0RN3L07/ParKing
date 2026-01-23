@@ -5,6 +5,7 @@ const cors = require('cors');
 const mainRoute = require('./routes/mainRoute');
 const bookingRoute = require('./routes/bookingRoutes');
 const userRoute = require('./routes/userRoutes');
+const messagesRoute = require('./routes/messagesRoutes');
 const path = require('path');
 
 const app = express();
@@ -31,6 +32,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', mainRoute.mainRouter);
 app.use('/', bookingRoute.bookingRouter);
 app.use('/', userRoute.userRouter);
+app.use('/', messagesRoute.messagesRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
