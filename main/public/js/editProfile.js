@@ -26,6 +26,20 @@ editBtn.addEventListener("click", () => {
     currentName = name_input.value;
     currentEmail = email_input.value;
     currentPhoneNum = phone_num_input.value;
+    
+    if (editEnabled) {
+        for (let i = 0; i < inputs.length; i++) {
+            const input = inputs[i];
+            input.disabled = false;
+        }
+    }
+
+    else {
+        for (let i = 0; i < inputs.length; i++) {
+            const input = inputs[i];
+            input.disabled = true;
+        }
+    }
 });
 
 function setToDefaultView() {
@@ -34,6 +48,11 @@ function setToDefaultView() {
     editBtn.classList.toggle("hide");
     saveBtn.classList.toggle("hide");
     cancelBtn.classList.toggle("hide");
+    
+    for (let i = 0; i < inputs.length; i++) {
+        const input = inputs[i];
+        input.disabled = true;
+    }
 }
 
 
@@ -207,7 +226,7 @@ editPasswordForm.addEventListener("submit", (e) => {
     }
 
     // Fetch goes here 🔽
-    
+
 
     if (editPasswordContainer.classList.contains("showBackgroundFilter")) {
         editPasswordContainer.classList.remove("showBackgroundFilter")
