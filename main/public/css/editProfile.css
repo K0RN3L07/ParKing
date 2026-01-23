@@ -105,6 +105,23 @@ form .row input:active {
 
 .lastRow {
     display: flex;
-    margin: 20px 0 100px;
+    margin: 20px 0 10px;
     gap: 10px;
+}
+
+
+#editPasswordForm {
+    padding: 0 20px;
+    background-color: var(--accent-base-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 15px;
+}
+
+#cancelPasswordBtn {
+    margin-top: 10px;
+}
+
+
+.footer {
+    margin-top: 50px;
 }

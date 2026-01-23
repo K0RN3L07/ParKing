@@ -22,8 +22,6 @@
                 <input disabled type="text" id="phone_num_input" name="phone_num_input" value="<%= user.phone_num %>">
             </div>
 
-            <input type="button" class="btn" disabled value="Jelszó megváltoztatása">
-
             <div class="lastRow">
                 <button type="button" id="editBtn">
                     <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
@@ -37,7 +35,33 @@
                 <button class="hide btn" id="cancelBtn" type="button">Mégse</button>
             </div>
 
+            <input type="button" class="btn" id="editPasswordBtn" value="Jelszó megváltoztatása">
+
         </form>
+
+        <div class="backgroundFilter" id="editPasswordContainer">
+            <form id="editPasswordForm">
+                <div class="row">
+                    <label for="currentPassword">Jelenlegi jelszava:</label>
+                    <input type="password" name="current_password" id="currentPassword">
+                </div>
+
+                <div class="row">
+                    <label for="newPassword">Új jelszó:</label>
+                    <input type="password" name="new_password" id="newPassword">
+                </div>
+
+                <div class="row">
+                    <label for="newPasswordAgain">Új jelszó mégegyszer:</label>
+                    <input type="password" name="new_password_again" id="newPasswordAgain">
+                </div>
+
+                <div class="row">
+                    <button type="submit" class="btn" id="savePasswordBtn">Mentés</button>
+                    <button type="button" class="btn" id="cancelPasswordBtn">Mégse</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <%- include('footer', {body: '' }) %>
