@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
+const Main = require('../models/mainModel');
 
 async function getEditProfile(req, res) {
     try {
@@ -30,7 +31,7 @@ async function editProfileData(req, res) {
             phone_num: new_data.phone_num
         };
 
-        return res.json({ msg: "Sikeres módosítás!", success: true });
+        return res.status(200).json({ msg: "Sikeres módosítás!", success: true });
 
     } catch (err) {
         console.error(err);
@@ -38,7 +39,26 @@ async function editProfileData(req, res) {
     }
 }
 
+async function doPasswordsMatch(req, res) {
+    try {
+        const {password} = req.body?.current_password
+        console.log(password);
+
+        await Main.getUserByEmail(req.session.user?.email);
+        if (!user_id) {
+            return res.status(401).json({ msg: "Nincs bejelentkezve!", success: false });
+        }
+        
+        return res.status(200).json({msg: "Sikeres változtatás!", success: true})
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: "Szerver oldali hiba!", success: false });
+    }
+}
+
 module.exports = {
     getEditProfile,
-    editProfileData
+    editProfileData,
+    doPasswordMatch
 };
