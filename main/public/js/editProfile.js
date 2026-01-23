@@ -4,7 +4,7 @@ let saveBtn = document.getElementById("saveBtn");
 let cancelBtn = document.getElementById("cancelBtn");
 let editPasswordBtn = document.getElementById("editPasswordBtn");
 
-let inputs = document.getElementsByTagName("input");
+let inputs = document.querySelectorAll(".profileDataInput");
 
 let name_input = document.getElementById("name_input");
 let email_input = document.getElementById("email_input");
