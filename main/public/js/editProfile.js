@@ -5,6 +5,14 @@ let cancelBtn = document.getElementById("cancelBtn");
 
 let inputs = document.getElementsByTagName("input");
 
+let name_input = document.getElementById("name_input");
+let email_input = document.getElementById("email_input");
+let phone_num_input = document.getElementById("phone_num_input");
+
+let currentName;
+let currentEmail;
+let currentPhoneNum;
+
 //#region Main EventListeners & Buttons
 
 editBtn.addEventListener("click", () => {
@@ -13,6 +21,10 @@ editBtn.addEventListener("click", () => {
     editBtn.classList.toggle("hide");
     saveBtn.classList.toggle("hide");
     cancelBtn.classList.toggle("hide");
+
+    currentName = name_input.value;
+    currentEmail = email_input.value;
+    currentPhoneNum = phone_num_input.value;
 
     if (editEnabled) {
         for (let i = 0; i < inputs.length; i++) {
@@ -29,7 +41,7 @@ editBtn.addEventListener("click", () => {
     }
 });
 
-cancelBtn.addEventListener("click", () => {
+function setToDefaultView() {
     editEnabled = false;
 
     for (let i = 0; i < inputs.length; i++) {
@@ -40,6 +52,15 @@ cancelBtn.addEventListener("click", () => {
     editBtn.classList.toggle("hide");
     saveBtn.classList.toggle("hide");
     cancelBtn.classList.toggle("hide");
+}
+
+
+cancelBtn.addEventListener("click", () => {
+    setToDefaultView();
+
+    name_input.value = currentName;
+    email_input.value = currentEmail;
+    phone_num_input.value = currentPhoneNum;
 });
 
 const editProfileForm = document.getElementById("editProfileForm");
@@ -48,10 +69,6 @@ editProfileForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     //#region Validation 
-
-    let name_input = document.getElementById("name_input");
-    let email_input = document.getElementById("email_input");
-    let phone_num_input = document.getElementById("phone_num_input");
 
     const emailRegex = /^(?!.*\.\.)(?!.*[^\x00-\x7F])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -93,17 +110,28 @@ editProfileForm.addEventListener('submit', async (e) => {
         },
         body: JSON.stringify(data)
     });
-
+    
     const result = await res.json();
-
+    
     if (result.success) {
         sessionStorage.setItem("popupMsg", result.msg);
         sessionStorage.setItem("popupSuccess", result.success);
 
-        window.location.href = "/";
+        window.location.reload();
     }
     else {
         new CreatePopup(result.msg, result.success);
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const msg = sessionStorage.getItem("popupMsg");
+    const success = Boolean(sessionStorage.getItem("popupSuccess"));
+
+    if (msg !== null && success !== null) {
+        new CreatePopup(msg, success);
+        sessionStorage.removeItem("popupMsg");
+        sessionStorage.removeItem("popupSuccess");
     }
 });
 
