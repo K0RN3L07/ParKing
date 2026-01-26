@@ -170,6 +170,11 @@ h3 {
 
 /* #region Contact */
 
+#contact {
+    position: absolute;
+    top: -150px;
+}
+
 .contact-container {
     display: flex;
     flex-direction: column;
@@ -203,10 +208,40 @@ label {
     border: none;
     border-radius: 10px;
     box-shadow: var(--container-shadow);
+    padding: 10px;
+    font-size: 1.05em;
+    margin: 10px 0;
 }
 
 #messageInput:focus {
     outline: 2px solid var(--secondary-color);
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--base-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid var(--secondary-color);
+    transition: .3s;
+    font-family: Lato Regular;
+}
+
+.btn:hover {
+    transition: .3s;
+    background-color: var(--secondary-color);
+    color: var(--accent-text-color);
 }
 
 /* #endregion */

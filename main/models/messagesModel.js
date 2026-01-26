@@ -7,7 +7,7 @@ exports.sendMessage = (user_id, message) => {
             [user_id, message],
             (err, result) => {
                 if (err) return reject(err);
-                return resolve(insertId)
+                return resolve(result);
             }
         );
     });

@@ -89,18 +89,20 @@
         <!-- #region Contact -->
 
         <div class="contact-container">
+            <span id="contact"></span>
+
             <div class="card">
                 <div class="image">
                     <img src="/img/parking_support.png" alt="">
                 </div>
 
-                <form method="POST" class="contact-content">
+                <form method="POST" action="/sendMessage" class="contact-content">
                     <h2>Kapcsolat - üzenetküldés</h2>
                     <label for="messageInput">Üzenet:</label>
                     <textarea name="message" id="messageInput"></textarea>
                     <div class="actions-container">
-                        <a href="">Törlés</a>
-                        <button type="submit">Küldés</button>
+                        <button type="submit" class="btn">Küldés</button>
+                        <button type="button" class="btn" onclick="deleteMessageContent()">Törlés</button>
                     </div>
                 </form>
             </div>
