@@ -51,17 +51,17 @@ async function doPasswordsMatch(req, res) {
             return res.status(401).json({ msg: "Nincs bejelentkezve!", success: false });
         }
 
-        const match = await bcrypt.compare(password, user.password)
+        const match = await bcrypt.compare(password, user.password);
 
         if (!match){
-            return res.status(400).json({msg: "Helytelen jelenlegi jelszó!", success: false})
+            return res.status(400).json({msg: "Helytelen jelenlegi jelszó!", success: false});
         };
 
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
-        await User.editPassword(user_id, hashedPassword)
+        await User.editPassword(user_id, hashedPassword);
 
-        return res.status(200).json({ msg: "Sikeres változtatás!", success: true })
+        return res.status(200).json({ msg: "Sikeres változtatás!", success: true });
     }
     catch (err) {
         console.error(err);

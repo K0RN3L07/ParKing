@@ -254,8 +254,6 @@ editPasswordForm.addEventListener("submit", async (e) => {
     } catch (err) {
         console.error("Fetch error:", err);
     }
-
-
 });
 
 //#endregion
