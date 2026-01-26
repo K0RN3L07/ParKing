@@ -241,3 +241,26 @@ form.addEventListener("submit", async function (e) {
 });
 
 //#endregion
+
+// Autofill fix
+window.addEventListener("DOMContentLoaded", () => {
+    if (fullname.value) {
+        nameLabel.style.transform = "translateY(-250%)";
+    }
+
+    if (!email.value) {
+        emailLabel.style.transform = "translateY(-250%)";
+    }
+
+    if (!phoneNum.value) {
+        phoneNumLabel.style.transform = "translateY(-250%)";
+    }
+
+    if (!password.value) {
+        passwordLabel.style.transform = "translateY(-250%)";
+    }
+
+    if (!passwordAgain.value) {
+        passwordAgainLabel.style.transform = "translateY(-250%)";
+    }
+});

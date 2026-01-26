@@ -55,7 +55,9 @@ body {
     height: 30px;
 }
 
-.container .row .input-field input {
+.container .row .input-field input,
+.container .row .input-field input:active,
+.container .row .input-field input:focus {
     border: none;
     background-color: var(--secondary-base-color);
     color: var(--primary-text-color) !important;
@@ -67,6 +69,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
+    font-family: Lato Regular;
     background-color: var(--secondary-base-color) !important;
     -webkit-box-shadow: 0 0 0 1000px var(--secondary-base-color) inset !important;
     -webkit-text-fill-color: var(--primary-text-color) !important;

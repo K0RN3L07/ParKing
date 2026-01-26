@@ -4,7 +4,7 @@ function deleteMessageContent() {
 }
 
 document.getElementById("sendMessageForm").addEventListener("submit", async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     
     let data = document.getElementById("messageInput").value;
 

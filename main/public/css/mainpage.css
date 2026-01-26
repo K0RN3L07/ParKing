@@ -207,13 +207,27 @@ label {
     border: none;
     border-radius: 10px;
     box-shadow: var(--container-shadow);
-    padding: 10px;
+    padding: 10px 0 10px 10px;
     font-size: 1.05em;
     margin: 10px 0;
 }
 
 #messageInput:focus {
     outline: 2px solid var(--secondary-color);
+}
+
+#messageInput::-webkit-scrollbar {
+    width: 15px;
+    border-radius: 10px;
+}
+
+#messageInput::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+
+    /* fake margin */
+    border: 5px solid transparent;
+    background-clip: content-box;
 }
 
 .actions-container {
@@ -300,13 +314,13 @@ label {
 /* About Us */
 @media (max-width:1230px) {
     .about-us-container .card {
-        grid-template-areas: 
+        grid-template-areas:
             "image"
             "about";
     }
 
     .contact-container .card {
-        grid-template-areas: 
+        grid-template-areas:
             "contact";
     }
 
@@ -339,6 +353,11 @@ label {
 @media (max-width:500px) {
     .about-us-container {
         width: 100%;
+    }
+
+    .contact-container {
+        width: 100%;
+        border-radius: 0%;
     }
 }
 

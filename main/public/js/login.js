@@ -15,6 +15,7 @@ if (email && emailLabel) {
 }
 
 //#endregion
+
 //#region Password Field Animation
 
 const password = document.getElementById("password");
@@ -32,7 +33,6 @@ if (password && passwordLabel) {
 }
 
 //#endregion
-
 
 //#region Login Fetch
 
@@ -74,3 +74,14 @@ if (loginForm && email && password) {
 }
 
 //#endregion
+
+// Autofill fix
+window.addEventListener("DOMContentLoaded", () => {
+    if (!email.value) {
+        emailLabel.style.transform = "translateY(-250%)";
+    }
+
+    if (!password.value) {
+        passwordLabel.style.transform = "translateY(-250%)";
+    }
+});
