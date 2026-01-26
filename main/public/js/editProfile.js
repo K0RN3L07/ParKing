@@ -238,17 +238,17 @@ editPasswordForm.addEventListener("submit", async (e) => {
             },
             credentials: 'include', // IMPORTANT for session cookies
             body: JSON.stringify({
-                password: document.getElementById("currentPassword").value,
-                confirmPassword: 'test123'
+                password: currentPassword.value,
+                newPassword: newPassword.value
             })
+            
         });
 
-        const data = await response.json();
+        const result = await response.json();
 
-        if (data.success) {
-            console.log("✅", data.msg);
-        } else {
-            console.log("❌", data.msg);
+        new CreatePopup(result.msg, result.success);
+        if (result.success && editPasswordContainer.classList.contains("showBackgroundFilter")) {
+            editPasswordContainer.classList.remove("showBackgroundFilter");
         }
 
     } catch (err) {
@@ -256,9 +256,6 @@ editPasswordForm.addEventListener("submit", async (e) => {
     }
 
 
-    if (editPasswordContainer.classList.contains("showBackgroundFilter")) {
-        editPasswordContainer.classList.remove("showBackgroundFilter")
-    }
 });
 
 //#endregion
