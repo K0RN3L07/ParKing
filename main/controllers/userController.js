@@ -44,6 +44,10 @@ async function doPasswordsMatch(req, res) {
         const password = req.body.password;
         const newPassword = req.body.newPassword;
 
+        if (password === newPassword){
+            return res.status(401).json({ msg: "Az új jelszó nem egyezhet meg a régivel!", success: false });
+        }
+
         const user = await Main.getUserByEmail(req.session.user?.email);
         const user_id = user.id;
 
