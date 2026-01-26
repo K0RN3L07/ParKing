@@ -185,10 +185,28 @@ h3 {
 .contact-content {
     grid-area: contact;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: LSB;
+    font-weight: 400;
+    font-size: 1.1em;
 }
 
 #messageInput {
-    resize: both;
+    resize: none;
+    height: 100%;
+    background-color: var(--accent-base-color);
+    color: var(--primary-text-color);
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--container-shadow);
+}
+
+#messageInput:focus {
+    outline: 2px solid var(--secondary-color);
 }
 
 /* #endregion */

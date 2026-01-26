@@ -2,7 +2,6 @@ let editEnabled = false;
 let editBtn = document.getElementById("editBtn");
 let saveBtn = document.getElementById("saveBtn");
 let cancelBtn = document.getElementById("cancelBtn");
-let editPasswordBtn = document.getElementById("editPasswordBtn");
 
 let inputs = document.querySelectorAll(".profileDataInput");
 
@@ -139,8 +138,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Edit Password
 let editPasswordContainer = document.getElementById("editPasswordContainer");
+let editPasswordBtn = document.getElementById("editPasswordBtn");
 let cancelPasswordBtn = document.getElementById("cancelPasswordBtn");
 let editPasswordForm = document.getElementById("editPasswordForm");
+
+let currentPassword = document.getElementById("currentPassword");
+let newPassword = document.getElementById("newPassword");
+let newPasswordAgain = document.getElementById("newPasswordAgain");
 
 editPasswordBtn.addEventListener("click", () => {
     if (!editPasswordContainer.classList.contains("showBackgroundFilter")) {
@@ -150,16 +154,15 @@ editPasswordBtn.addEventListener("click", () => {
 
 cancelPasswordBtn.addEventListener("click", () => {
     if (editPasswordContainer.classList.contains("showBackgroundFilter")) {
-        editPasswordContainer.classList.remove("showBackgroundFilter")
+        editPasswordContainer.classList.remove("showBackgroundFilter");
+        currentPassword.value = "";
+        newPassword.value = "";
+        newPasswordAgain.value = "";
     }
 });
 
 editPasswordForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    let currentPassword = document.getElementById("currentPassword");
-    let newPassword = document.getElementById("newPassword");
-    let newPasswordAgain = document.getElementById("newPasswordAgain");
 
     //#region Password Regex
 

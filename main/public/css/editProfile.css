@@ -43,13 +43,19 @@ form .row input {
     color: var(--primary-text-color);
 }
 
+form .row input[type=password] {
+    outline: 2px solid var(--secondary-base-color);
+    outline-offset: -1px;
+}
+
+form .row input:focus,
+form .row input:active {
+    outline: 2px solid var(--secondary-color);
+}
+
 form .row input:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-}
-
-form .row input:active {
-    outline: none;
 }
 
 input:-webkit-autofill,
