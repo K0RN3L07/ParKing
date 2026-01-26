@@ -72,6 +72,7 @@ h4 {
 }
 
 .parking-map {
+    position: relative;
     display: grid;
     grid-template-areas: "vertical-container horizontal-container";
     grid-template-columns: 2fr 3fr;
@@ -100,7 +101,7 @@ id {
     grid-area: "vertical-container";
     display: flex;
     flex-direction: column;
-    /* height: 500px; */
+    height: 100%;
 }
 
 .vertical-container .horizontal-slot {
@@ -191,6 +192,10 @@ id {
     align-items: flex-end;
 }
 
+.horizontal-container .bottom-row .vertical-slot label {
+    margin-bottom: -5px;
+}
+
 /* Horizontal slots - top row */
 .horizontal-container .row .vertical-slot {
     position: relative;
@@ -245,6 +250,7 @@ id {
 
 .horizontal-container .vertical-slot label {
     font-size: 1.5em;
+    margin-top: -5px;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -458,6 +464,22 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
     .form-items-container {
         padding-left: 0px;
+    }
+}
+
+@media (max-width:450px) {
+    .form-items-container .row .form-field-row {
+        flex-direction: column;
+    }
+
+    .form-items-container .row .form-field-row .form-field {
+        width: 100%;
+    }
+}
+
+@media (max-width:410px) {
+    .parking-map {
+        height: auto;
     }
 }
 
