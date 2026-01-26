@@ -41,29 +41,31 @@ async function editProfileData(req, res) {
 
 async function doPasswordsMatch(req, res) {
     try {
-        const { password } = req.body.password;
+        const password = req.body.password;
+        const newPassword = req.body.newPassword;
 
         const user = await Main.getUserByEmail(req.session.user?.email);
         const user_id = user.id;
-
-        console.log(user);
 
         if (!user_id) {
             return res.status(401).json({ msg: "Nincs bejelentkezve!", success: false });
         }
 
-        const match = await bcrypt.compare(password, user.password)
+        const match = await bcrypt.compare(password, user.password);
 
         if (!match){
-            console.log("not match");
-            
+            return res.status(400).json({msg: "Helytelen jelenlegi jelszó!", success: false});
         };
 
-        return res.status(200).json({ msg: "Sikeres változtatás!", success: true })
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+        await User.editPassword(user_id, hashedPassword);
+
+        return res.status(200).json({ msg: "Sikeres változtatás!", success: true });
     }
     catch (err) {
         console.error(err);
-        res.status(500).json({ msg: "Szerver oldali hiba!", success: false });
+        return res.status(500).json({ msg: "Szerver oldali hiba!", success: false });
     }
 }
 

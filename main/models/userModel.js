@@ -14,3 +14,18 @@ exports.editProfileData = (userId, data) => {
         })
     })
 }
+
+exports.editPassword = (userId, newPassword) => {
+    return new Promise((resolve, reject) => {
+        db.query(`
+            UPDATE users
+            SET password = ?
+            WHERE id = ?
+            `,
+            [newPassword, userId],
+            (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+        })
+    })
+}
