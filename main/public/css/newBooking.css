@@ -475,6 +475,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     .form-items-container .row .form-field-row .form-field {
         width: 100%;
     }
+
+    .form-items-container .row .form-field-row .form-field input {
+        width: 100%;
+    }
 }
 
 @media (max-width:410px) {
