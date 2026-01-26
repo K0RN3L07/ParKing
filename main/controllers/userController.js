@@ -60,5 +60,5 @@ async function doPasswordsMatch(req, res) {
 module.exports = {
     getEditProfile,
     editProfileData,
-    doPasswordMatch
+    doPasswordsMatch
 };
