@@ -8,8 +8,6 @@
         <!-- #region Banner Section -->
         <div class="banner">
             <div class="banner-content">
-
-
                 <% if (user) {%>
                     <h1>Üdvözlünk a ParKing weboldalán <%= user.name %>!</h1>
                     <%}else{%>
@@ -28,8 +26,6 @@
                                         <a href="/register"><button id="secondary-color">Regisztráció</button></a>
                                     </div>
                                     <%}%>
-
-
             </div>
         </div>
         <!-- #endregion -->
@@ -47,7 +43,7 @@
                 </div>
 
                 <!-- About Us Content -->
-                <div class="content">
+                <div class="about-content">
                     <h2>Rólunk</h2>
 
                     <p>
@@ -84,6 +80,24 @@
                     <p>
                         <strong>ParKing – Foglalj előre, érkezz gond nélkül.</strong>
                     </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #endregion -->
+
+        <!-- #region Contact -->
+
+        <div class="contact-container">
+            <div class="card">
+                <div class="image">
+                    <img src="/img/parking_support.png" alt="">
+                </div>
+
+                <div class="contact-content">
+                    <h2>Kapcsolat - üzenetküldés</h2>
+                    <label for="messageInput">Üzenet:</label>
+                    <textarea name="message" id="messageInput"></textarea>
                 </div>
             </div>
         </div>
