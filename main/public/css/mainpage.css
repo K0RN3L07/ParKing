@@ -131,7 +131,6 @@ button {
     flex-direction: column;
     width: 85%;
     position: relative;
-    margin-bottom: 100px;
 }
 
 #about-us {
@@ -299,12 +298,26 @@ label {
 }
 
 /* About Us */
-@media (max-width:1130px) {
+@media (max-width:1230px) {
     .about-us-container .card {
         grid-template-areas: 
             "image"
             "about";
     }
+
+    .contact-container .card {
+        grid-template-areas: 
+            "contact";
+    }
+
+    .contact-container .card .image {
+        display: none;
+    }
+
+    .contact-container .card #messageInput {
+        min-height: 200px;
+    }
+
     .card {
         grid-template-rows: 1fr auto;
         grid-template-columns: none;
