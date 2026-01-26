@@ -131,7 +131,6 @@ button {
     flex-direction: column;
     width: 85%;
     position: relative;
-    margin-bottom: 100px;
 }
 
 #about-us {
@@ -170,6 +169,11 @@ h3 {
 
 /* #region Contact */
 
+#contact {
+    position: absolute;
+    top: -150px;
+}
+
 .contact-container {
     display: flex;
     flex-direction: column;
@@ -203,10 +207,40 @@ label {
     border: none;
     border-radius: 10px;
     box-shadow: var(--container-shadow);
+    padding: 10px;
+    font-size: 1.05em;
+    margin: 10px 0;
 }
 
 #messageInput:focus {
     outline: 2px solid var(--secondary-color);
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--base-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid var(--secondary-color);
+    transition: .3s;
+    font-family: Lato Regular;
+}
+
+.btn:hover {
+    transition: .3s;
+    background-color: var(--secondary-color);
+    color: var(--accent-text-color);
 }
 
 /* #endregion */
@@ -264,12 +298,26 @@ label {
 }
 
 /* About Us */
-@media (max-width:1130px) {
+@media (max-width:1230px) {
     .about-us-container .card {
         grid-template-areas: 
             "image"
             "about";
     }
+
+    .contact-container .card {
+        grid-template-areas: 
+            "contact";
+    }
+
+    .contact-container .card .image {
+        display: none;
+    }
+
+    .contact-container .card #messageInput {
+        min-height: 200px;
+    }
+
     .card {
         grid-template-rows: 1fr auto;
         grid-template-columns: none;

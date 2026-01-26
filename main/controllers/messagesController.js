@@ -17,7 +17,7 @@ async function sendMessage(req, res) {
 
         return res.status(200).json({msg: "Köszönjük hogy elmondtad a véleményedet!", success: true});
     }
-    catch {
+    catch (err) {
         console.error(err);
         res.status(500).json({ msg: "Szerver hiba!", success: false });
     }
