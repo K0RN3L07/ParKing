@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 	`id` int AUTO_INCREMENT NOT NULL,
 	`user_id` int NOT NULL,
 	`message` text NOT NULL,
-	`booked_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`sent_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (`id`),
 
