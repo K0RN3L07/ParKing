@@ -6,6 +6,6 @@ userRouter.get("/editProfile", userController.getEditProfile);
 
 userRouter.put("/editProfileData", userController.editProfileData);
 
-userRouter.post("/doPasswordMatch", userController.editProfileData);
+userRouter.post("/doPasswordsMatch", userController.doPasswordsMatch);
 
 module.exports = {userRouter}

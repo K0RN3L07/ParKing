@@ -154,7 +154,7 @@ cancelPasswordBtn.addEventListener("click", () => {
     }
 });
 
-editPasswordForm.addEventListener("submit", (e) => {
+editPasswordForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     let currentPassword = document.getElementById("currentPassword");
@@ -226,6 +226,31 @@ editPasswordForm.addEventListener("submit", (e) => {
     }
 
     // Fetch goes here 🔽
+
+    try {
+        const response = await fetch('/doPasswordsMatch', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include', // IMPORTANT for session cookies
+            body: JSON.stringify({
+                password: document.getElementById("currentPassword").value,
+                confirmPassword: 'test123'
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            console.log("✅", data.msg);
+        } else {
+            console.log("❌", data.msg);
+        }
+
+    } catch (err) {
+        console.error("Fetch error:", err);
+    }
 
 
     if (editPasswordContainer.classList.contains("showBackgroundFilter")) {
