@@ -141,3 +141,9 @@ input:-webkit-autofill:active {
 .footer {
     margin-top: 50px;
 }
+
+@media (max-height:390px) {
+    .backgroundFilter {
+        overflow-x: scroll;
+    }
+}
