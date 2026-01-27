@@ -34,6 +34,31 @@ if (password && passwordLabel) {
 
 //#endregion
 
+//#region Show Password
+
+let passwordToggleBtns = document.querySelectorAll("#passwordToggle");
+let isPasswordShown = false;
+let showSvg = document.querySelector(".showSvg");
+let hideSvg = document.querySelector(".hideSvg");
+
+passwordToggleBtns.forEach(passwordToggle => {
+    passwordToggle.addEventListener("click", () => {
+        isPasswordShown = !isPasswordShown;
+        if (isPasswordShown) {
+            password.type = "text";
+            showSvg.classList.remove("hide");
+            hideSvg.classList.add("hide");
+        }
+        else {
+            password.type = "password";
+            showSvg.classList.add("hide");
+            hideSvg.classList.remove("hide");
+        }
+    });
+});
+
+//#endregion
+
 //#region Login Fetch
 
 const loginForm = document.getElementById("loginForm");
