@@ -168,10 +168,10 @@ input:not(:-webkit-autofill) {
 @media (max-width:400px) {
 
     .container {
-        background-color: var(--secondary-base-color);
+        background: var(--logreg-gradient-bg);
         height: 100vh;
         width: 100vw;
-        border: 2px solid var(--secondary-color);
+        border: none;
         border-radius: 0;
     }
 

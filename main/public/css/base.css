@@ -44,6 +44,7 @@ body {
     --secondary-color: #0870bd;
     --container-shadow: 0 8px 24px rgba(39, 76, 119, 0.12);
     --delete-color: #D11A2A;
+    --logreg-gradient-bg: linear-gradient(180deg,#3f6fa0 0%,#cfd8df 18%,#cfd8df 58%,#8fb0cf 78%,#0e4c8a 100%);
 
     /* antiflash-white */
     /* inmn-blue */
@@ -60,6 +61,7 @@ body {
     --secondary-text-color: #d6d6d6;
     --primary-color: #274c77ff;
     --secondary-color: #0870bd;
+    --logreg-gradient-bg: linear-gradient(180deg,#0c4074 0%,#0f1631 10%,#0f1631 55%,#0e4c8a 100%);
 }
 
 /* #endregion */
