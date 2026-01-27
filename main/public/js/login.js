@@ -5,12 +5,12 @@ const emailLabel = document.getElementById("emailLabel");
 
 if (email && emailLabel) {
     email.addEventListener("focusin", () => {
-        emailLabel.style.transform = "translateY(-250%)";
+        emailLabel.style.transform = "translateY(-210%)";
     });
 
     email.addEventListener("focusout", () => {
         emailLabel.style.transform =
-            email.value !== "" ? "translateY(-250%)" : "translateY(-110%)";
+            email.value !== "" ? "translateY(-210%)" : "translateY(-110%)";
     });
 }
 
@@ -23,12 +23,12 @@ const passwordLabel = document.getElementById("passwordLabel");
 
 if (password && passwordLabel) {
     password.addEventListener("focusin", () => {
-        passwordLabel.style.transform = "translateY(-250%)";
+        passwordLabel.style.transform = "translateY(-210%)";
     });
 
     password.addEventListener("focusout", () => {
         passwordLabel.style.transform =
-            password.value !== "" ? "translateY(-250%)" : "translateY(-110%)";
+            password.value !== "" ? "translateY(-210%)" : "translateY(-110%)";
     });
 }
 
@@ -76,12 +76,11 @@ if (loginForm && email && password) {
 //#endregion
 
 // Autofill fix
-window.addEventListener("DOMContentLoaded", () => {
-    if (!email.value) {
-        emailLabel.style.transform = "translateY(-250%)";
-    }
+document.addEventListener("animationstart", (e) => {
+    if (e.animationName === "onAutoFillStart") {
+        const input = e.target;
 
-    if (!password.value) {
-        passwordLabel.style.transform = "translateY(-250%)";
+        if (input === email) emailLabel.style.transform = "translateY(-210%)";
+        if (input === password) passwordLabel.style.transform = "translateY(-210%)";
     }
 });

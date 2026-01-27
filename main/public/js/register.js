@@ -1,15 +1,15 @@
 //#region Name Field Animation
 
-let fullname = document.getElementById("name");
-let nameLabel = document.getElementById("nameLabel");
+const fullname = document.getElementById("name");
+const nameLabel = document.getElementById("nameLabel");
 
 fullname.addEventListener("focusin", () => {
-    nameLabel.style.transform = "translateY(-250%)";
+    nameLabel.style.transform = "translateY(-210%)";
 });
 
 fullname.addEventListener("focusout", () => {
     if (fullname.value != "") {
-        nameLabel.style.transform = "translateY(-250%)";
+        nameLabel.style.transform = "translateY(-210%)";
     }
 
     else {
@@ -21,16 +21,16 @@ fullname.addEventListener("focusout", () => {
 
 //#region Email Field Animation
 
-let email = document.getElementById("email");
-let emailLabel = document.getElementById("emailLabel");
+const email = document.getElementById("email");
+const emailLabel = document.getElementById("emailLabel");
 
 email.addEventListener("focusin", () => {
-    emailLabel.style.transform = "translateY(-250%)";
+    emailLabel.style.transform = "translateY(-210%)";
 });
 
 email.addEventListener("focusout", () => {
     if (email.value != "") {
-        emailLabel.style.transform = "translateY(-250%)";
+        emailLabel.style.transform = "translateY(-210%)";
     }
 
     else {
@@ -42,16 +42,18 @@ email.addEventListener("focusout", () => {
 
 //#region Phone Number Field Animation
 
-let phoneNum = document.getElementById("phoneNum");
-let phoneNumLabel = document.getElementById("phoneNumLabel");
+const phoneNum = document.getElementById("phoneNum");
+const phoneNumLabel = document.getElementById("phoneNumLabel");
+phoneNum.value="";
+
 
 phoneNum.addEventListener("focusin", () => {
-    phoneNumLabel.style.transform = "translateY(-250%)";
+    phoneNumLabel.style.transform = "translateY(-210%)";
 });
 
 phoneNum.addEventListener("focusout", () => {
     if (phoneNum.value != "") {
-        phoneNumLabel.style.transform = "translateY(-250%)";
+        phoneNumLabel.style.transform = "translateY(-210%)";
     }
 
     else {
@@ -63,16 +65,16 @@ phoneNum.addEventListener("focusout", () => {
 
 //#region Password Field Animation
 
-let password = document.getElementById("password");
-let passwordLabel = document.getElementById("passwordLabel");
+const password = document.getElementById("password");
+const passwordLabel = document.getElementById("passwordLabel");
 
 password.addEventListener("focusin", () => {
-    passwordLabel.style.transform = "translateY(-250%)";
+    passwordLabel.style.transform = "translateY(-210%)";
 });
 
 password.addEventListener("focusout", () => {
     if (password.value != "") {
-        passwordLabel.style.transform = "translateY(-250%)";
+        passwordLabel.style.transform = "translateY(-210%)";
     }
 
     else {
@@ -84,16 +86,16 @@ password.addEventListener("focusout", () => {
 
 //#region Password Again Field Animation
 
-let passwordAgain = document.getElementById("passwordAgain");
-let passwordAgainLabel = document.getElementById("passwordAgainLabel");
+const passwordAgain = document.getElementById("passwordAgain");
+const passwordAgainLabel = document.getElementById("passwordAgainLabel");
 
 passwordAgain.addEventListener("focusin", () => {
-    passwordAgainLabel.style.transform = "translateY(-250%)";
+    passwordAgainLabel.style.transform = "translateY(-210%)";
 });
 
 passwordAgain.addEventListener("focusout", () => {
     if (passwordAgain.value != "") {
-        passwordAgainLabel.style.transform = "translateY(-250%)";
+        passwordAgainLabel.style.transform = "translateY(-210%)";
     }
 
     else {
@@ -243,24 +245,11 @@ form.addEventListener("submit", async function (e) {
 //#endregion
 
 // Autofill fix
-window.addEventListener("DOMContentLoaded", () => {
-    if (fullname.value) {
-        nameLabel.style.transform = "translateY(-250%)";
-    }
+document.addEventListener("animationstart", (e) => {
+    if (e.animationName === "onAutoFillStart") {
+        const input = e.target;
 
-    if (!email.value) {
-        emailLabel.style.transform = "translateY(-250%)";
-    }
-
-    if (!phoneNum.value) {
-        phoneNumLabel.style.transform = "translateY(-250%)";
-    }
-
-    if (!password.value) {
-        passwordLabel.style.transform = "translateY(-250%)";
-    }
-
-    if (!passwordAgain.value) {
-        passwordAgainLabel.style.transform = "translateY(-250%)";
+        if (input === email) emailLabel.style.transform = "translateY(-210%)";
+        if (input === password) passwordLabel.style.transform = "translateY(-210%)";
     }
 });

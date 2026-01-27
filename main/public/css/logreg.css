@@ -65,6 +65,7 @@ body {
     width: 92%;
 }
 
+/* Autofill styling */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -73,6 +74,19 @@ input:-webkit-autofill:active {
     background-color: var(--secondary-base-color) !important;
     -webkit-box-shadow: 0 0 0 1000px var(--secondary-base-color) inset !important;
     -webkit-text-fill-color: var(--primary-text-color) !important;
+}
+
+/* Autofill label translation for js */
+@keyframes onAutoFillStart {}
+
+@keyframes onAutoFillCancel {}
+
+input:-webkit-autofill {
+    animation-name: onAutoFillStart;
+}
+
+input:not(:-webkit-autofill) {
+    animation-name: onAutoFillCancel;
 }
 
 .container .row .input-field input:focus {
@@ -154,9 +168,10 @@ input:-webkit-autofill:active {
 @media (max-width:400px) {
 
     .container {
+        background-color: var(--secondary-base-color);
         height: 100vh;
         width: 100vw;
-        border: none;
+        border: 2px solid var(--secondary-color);
         border-radius: 0;
     }
 
