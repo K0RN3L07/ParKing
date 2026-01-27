@@ -187,6 +187,11 @@ editPasswordForm.addEventListener("submit", async (e) => {
     // Hungarian character regex
     const hunCharRegex = /[áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/;
 
+    if (newPassword.value === "") {
+        new CreatePopup("Minden mező kitöltése kötelező!", false);
+        return;
+    }
+
     if (!uppercaseRegex.test(newPassword.value)) {
         new CreatePopup("A jelszónak tartalmaznia kell legalább 1 nagybetűs karakter!", false);
         return;
@@ -228,15 +233,13 @@ editPasswordForm.addEventListener("submit", async (e) => {
         return;
     }
 
-    // Fetch goes here 🔽
-
     try {
         const response = await fetch('/doPasswordsMatch', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'include', // IMPORTANT for session cookies
+            credentials: 'include',
             body: JSON.stringify({
                 password: currentPassword.value,
                 newPassword: newPassword.value
