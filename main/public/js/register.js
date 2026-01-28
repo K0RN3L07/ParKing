@@ -105,6 +105,53 @@ passwordAgain.addEventListener("focusout", () => {
 
 //#endregion
 
+
+//#region Show Password
+
+let passwordToggleBtns = document.querySelectorAll("#passwordToggle");
+let isPasswordShown = false;
+let showSvg = document.querySelector(".showSvg");
+let hideSvg = document.querySelector(".hideSvg");
+
+passwordToggleBtns.forEach(passwordToggle => {
+    passwordToggle.addEventListener("click", () => {
+        isPasswordShown = !isPasswordShown;
+        if (isPasswordShown) {
+            password.type = "text";
+            showSvg.classList.remove("hide");
+            hideSvg.classList.add("hide");
+        }
+        else {
+            password.type = "password";
+            showSvg.classList.add("hide");
+            hideSvg.classList.remove("hide");
+        }
+    });
+});
+
+let passwordAgainToggleBtns = document.querySelectorAll("#passwordAgainToggle");
+let isPasswordAgainShown = false;
+let showAgainSvg = document.querySelector(".showAgainSvg");
+let hideAgainSvg = document.querySelector(".hideAgainSvg");
+
+passwordAgainToggleBtns.forEach(passwordAgainToggle => {
+    passwordAgainToggle.addEventListener("click", () => {
+        isPasswordAgainShown = !isPasswordAgainShown;
+        if (isPasswordAgainShown) {
+            passwordAgain.type = "text";
+            showAgainSvg.classList.remove("hide");
+            hideAgainSvg.classList.add("hide");
+        }
+        else {
+            passwordAgain.type = "password";
+            showAgainSvg.classList.add("hide");
+            hideAgainSvg.classList.remove("hide");
+        }
+    });
+});
+
+//#endregion
+
 //#region Validation
 
 const form = document.getElementById("registerForm");

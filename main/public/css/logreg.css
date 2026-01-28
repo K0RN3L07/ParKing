@@ -55,7 +55,8 @@ body {
     height: 30px;
 }
 
-.container .row #passwordToggle {
+.container .row #passwordToggle,
+.container .row #passwordAgainToggle {
     cursor: pointer;
 }
 
