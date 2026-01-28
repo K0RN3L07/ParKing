@@ -26,6 +26,7 @@ namespace AdminPage
             {
                 InitializeComponent();
                 LoadUsersData();
+                LoadMessagesData();
                 LoadBookingsData();
                 LoadParkingSpacesData();
             }
@@ -57,6 +58,7 @@ namespace AdminPage
         private void LoadAllData_Click(object sender, RoutedEventArgs e)
         {
             LoadUsersData();
+            LoadMessagesData();
             LoadBookingsData();
             LoadParkingSpacesData();
         }
@@ -66,6 +68,13 @@ namespace AdminPage
             userTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM users").DefaultView;
             
             if (userTable.ItemsSource != null) { return true; } else { return false; }
+        }
+        
+        private bool LoadMessagesData()
+        {
+            messagesTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM messages").DefaultView;
+            
+            if (messagesTable.ItemsSource != null) { return true; } else { return false; }
         }
 
         private bool LoadBookingsData()

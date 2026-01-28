@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminPage"
         mc:Ignorable="d"
-        Title="CRUD Műveletek" Height="606" Width="1478" Icon="/logo.ico">
+        Title="ParKing - Admin" Height="606" Width="1478" Icon="/logo.ico">
     <Grid Margin="0,0,0,1">
 
         <TabControl x:Name="tabControl" Margin="10,10,10,10">
@@ -49,6 +49,27 @@
                     />
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
+                        <Button Content="Töröl" Click="DeleteUser_Click" Width="75" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Mesasges Tábla">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid x:Name="messagesTable" 
+                        Grid.Row="0"
+                        AutoGenerateColumns="True"
+                        SelectionChanged="UsersGrid_SelectionChanged"
+                    />
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
                         <Button Content="Töröl" Click="DeleteUser_Click" Width="75" Margin="10,0,0,0"/>
                     </StackPanel>
