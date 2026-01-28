@@ -14,6 +14,13 @@ function getCurrentDate() {
     return new Date().toISOString().split("T")[0];
 }
 
+function getCurrentTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
+
 let startDateInput = document.getElementById('start-date');
 let startTimeInput = document.getElementById('start-time');
 startDateInput.setAttribute("min", getCurrentDate());
@@ -43,7 +50,7 @@ radioArray.forEach(radio => {
     radio.addEventListener('change', () => {
 
         if (checkIfDatesAreSet()) {
-            if (startDateInput.value == endDateInput.value && endTimeInput.value < startTimeInput.value) {
+            if ((startDateInput.value == endDateInput.value && endTimeInput.value < startTimeInput.value) || (startDateInput.value == getCurrentDate() && startTimeInput.value < getCurrentTime())) {
                 new CreatePopup("Helytelen időintervallum!", false)
                 radio.checked = false;
             }
