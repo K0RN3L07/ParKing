@@ -10,6 +10,7 @@
 
         <TabControl x:Name="tabControl" Margin="10,10,10,10">
 
+            <!--#region Users -->
             <TabItem Header="Users Tábla">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
@@ -19,8 +20,6 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0" VerticalAlignment="Top" Height="35" Orientation="Horizontal">
-                        <Label Content="ID:" Width="27" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbUsersId" Cursor="No" IsEnabled="False" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
 
                         <Label Content="Név:" Width="41" Height="30" FontSize="14"/>
                         <TextBox x:Name="tbName" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
@@ -34,12 +33,10 @@
                         <Label Content="Jelszó:" Width="49" Height="30" FontSize="14"/>
                         <TextBox x:Name="tbPassword" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Regisztráció ideje:" Width="122" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbRegistered" Cursor="No" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" IsEnabled="False"/>
-
                         <Button Content="X" Width="35" Margin="10,0,0,0" Click="ClearButton_Click"/>
                         <Button Content="Hozzáad" Click="AddUser_Click" Width="85" Margin="10,0,0,0"/>
                         <Button Content="Módosítás" Click="UpdateUser_Click" Width="85" Margin="10,0,0,0"/>
+                        <TextBox x:Name="tbId" TextWrapping="Wrap" Text="" Width="120" Height="30" VerticalContentAlignment="Center" Opacity="0"/>
                     </StackPanel>
 
                     <DataGrid x:Name="userTable" 
@@ -55,8 +52,10 @@
 
                 </Grid>
             </TabItem>
+            <!--#endregion-->
 
-            <TabItem Header="Mesasges Tábla">
+            <!--#region Messages -->
+            <TabItem Header="Messages Tábla">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -66,17 +65,18 @@
                     <DataGrid x:Name="messagesTable" 
                         Grid.Row="0"
                         AutoGenerateColumns="True"
-                        SelectionChanged="UsersGrid_SelectionChanged"
                     />
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
-                        <Button Content="Töröl" Click="DeleteUser_Click" Width="75" Margin="10,0,0,0"/>
+                        <Button Content="Töröl" Click="DeleteMessage_Click" Width="75" Margin="10,0,0,0"/>
                     </StackPanel>
 
                 </Grid>
             </TabItem>
+            <!--#endregion-->
 
+            <!--#region Bookings -->
             <TabItem Header="Bookings Tábla">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
@@ -125,55 +125,27 @@
 
                 </Grid>
             </TabItem>
+            <!--#endregion -->
 
+            <!--#region Parking Spaces-->
             <TabItem Header="Parking Spaces Tábla">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="35"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="35"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" VerticalAlignment="Center" Height="35" Orientation="Horizontal">
-                        <Label Content="ID:" Width="27" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbParkingId" Cursor="No" IsEnabled="False" TextWrapping="Wrap" Text="" Width="45" Height="30" VerticalContentAlignment="Center"/>
-
-                        <Label Content="Emelet:" Width="56" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbFloorNum" TextWrapping="Wrap" Text="" Width="80" Height="30" VerticalContentAlignment="Center"/>
-
-                        <Label Content="Parkoló száma:" Width="101" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbParkingNumber" TextWrapping="Wrap" Text="" Width="150" Height="30" VerticalContentAlignment="Center"/>
-
-                        <Label Content="Típus:" Width="46" Height="30" FontSize="14"/>
-                        <ComboBox Width="120" x:Name="cbType" VerticalContentAlignment="Center"              >
-                            <ComboBoxItem Content="Normál"/>
-                            <ComboBoxItem Content="Elektromos"/>
-                            <ComboBoxItem Content="Mozgássérült"/>
-                        </ComboBox>
-
-                        <Label Content="Óránkénti ár:" Width="89" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbPricePerHour" TextWrapping="Wrap" Text="" Width="140" Height="30" VerticalContentAlignment="Center"/>
-
-                        <Label Content="Elérhető-e:" Width="77" Height="30" FontSize="14"/>
-                        <CheckBox x:Name="cbIsAvailable" IsChecked="True" Width="20" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
-
-                        <Button Content="X" Width="35" Margin="10,0,0,0" Click="ClearButton_Click"/>
-                        <Button Content="Hozzáad" Click="AddParking_Click" Width="85" Margin="10,0,0,0"/>
-                        <Button Content="Módosítás" Click="UpdateParking_Click" Width="85" Margin="10,0,0,0"/>
-                    </StackPanel>
-
                     <DataGrid x:Name="parkingTable"
-                              Grid.Row="1"
+                              Grid.Row="0"
                               AutoGenerateColumns="True"
-                              SelectionChanged="ParkingGrid_SelectionChanged"
-                    />      
+                    />
 
-                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
-                        <Button Content="Töröl" Click="DeleteParking_Click" Width="75" Margin="10,0,0,0"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
+            <!--#endregion-->
 
         </TabControl>
 

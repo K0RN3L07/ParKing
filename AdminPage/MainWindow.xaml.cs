@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static AdminPage.db_config;
 using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
+using System.Text.RegularExpressions;
 
 namespace AdminPage
 {
@@ -93,17 +94,73 @@ namespace AdminPage
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(tbName.Text) && !string.IsNullOrWhiteSpace(tbEmail.Text) && !string.IsNullOrWhiteSpace(tbPhoneNum.Text) && !string.IsNullOrWhiteSpace(tbPassword.Text))
+            //if (!string.IsNullOrWhiteSpace(tbName.Text) && !string.IsNullOrWhiteSpace(tbEmail.Text) && !string.IsNullOrWhiteSpace(tbPhoneNum.Text) && !string.IsNullOrWhiteSpace(tbPassword.Text))
+            //{
+            //    string query = $"INSERT INTO users (name, email, phone_num, password) VALUES ('{tbName.Text}', '{tbEmail.Text}', '{tbPhoneNum.Text}', '{tbPassword.Text}')";
+            //    DatabaseHelper.ExecuteQuery(query);
+            //    LoadUsersData();
+            //    ClearUsersFields();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Kérlek, töltsd ki az összes mezőt!");
+            //}
+
+            Regex emailRegex = new Regex(
+                 @"^(?!.*\.\.)(?!.*[^\x00-\x7F])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+             );
+
+            Regex phoneRegex = new Regex(
+                 @"^\d+$"
+             );
+
+            Regex passwordRegex = new Regex(
+                @"^(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])\S+$"
+            );
+
+            if (string.IsNullOrWhiteSpace(tbName.Text))
             {
-                string query = $"INSERT INTO users (name, email, phone_num, password) VALUES ('{tbName.Text}', '{tbEmail.Text}', '{tbPhoneNum.Text}', '{tbPassword.Text}')";
-                DatabaseHelper.ExecuteQuery(query);
-                LoadUsersData();
-                ClearUsersFields();
+                MessageBox.Show("Név nem lehet üres!");
+                return;
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(tbEmail.Text))
             {
-                MessageBox.Show("Kérlek, töltsd ki az összes mezőt!");
+                MessageBox.Show("Email nem lehet üres!");
+                return;
             }
+
+            if (!emailRegex.IsMatch(tbEmail.Text))
+            {
+                MessageBox.Show("Email formátuma nem megfelelő!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tbPhoneNum.Text))
+            {
+                MessageBox.Show("Telefonszám nem lehet üres!");
+                return;
+            }
+
+            if (!phoneRegex.IsMatch(tbPhoneNum.Text))
+            {
+                MessageBox.Show("Telefonszám csak számot tartalmazhat!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tbPassword.Text))
+            {
+                MessageBox.Show("Jelszó nem lehet üres!");
+                return;
+            }
+
+            if (!passwordRegex.IsMatch(tbPassword.Text))
+            {
+                MessageBox.Show("A jelszónak legalább 8 karakter hosszúnak kell lennie és nem tartalmazhat szóközt és ékezetes karaktereket!\nValamint tartalmaznia kell legalább egy: \n\t- nagybetűt\n\t- kisbetűt\n\t- számot\n\t- speciális karaktert");
+                return;
+            }
+
+            
         }
 
         private void AddBooking_Click(object sender, RoutedEventArgs e)
@@ -114,23 +171,6 @@ namespace AdminPage
                 DatabaseHelper.ExecuteQuery(query);
                 LoadBookingsData();
                 ClearBookingsFields();
-            }
-            else
-            {
-                MessageBox.Show("Kérlek, töltsd ki az összes mezőt!");
-            }
-        }
-
-        private void AddParking_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(tbFloorNum.Text) && !string.IsNullOrWhiteSpace(tbParkingNumber.Text) && !string.IsNullOrWhiteSpace(cbType.Text) && !string.IsNullOrWhiteSpace(tbPricePerHour.Text))
-            {
-                // Adjust column names if your DB schema differs
-                string isAvaliable = cbIsAvailable.IsChecked == true ? "1" : "0";
-                string query = $"INSERT INTO parking_spaces (floor_num, parking_space_num, type, price_per_hour, is_available) VALUES ('{tbFloorNum.Text}', '{tbParkingNumber.Text}', '{cbType.Text}', '{tbPricePerHour.Text}', '{isAvaliable}')";
-                DatabaseHelper.ExecuteQuery(query);
-                LoadParkingSpacesData();
-                ClearParkingFields();
             }
             else
             {
@@ -153,6 +193,21 @@ namespace AdminPage
             }
         }
 
+        private void DeleteMessage_Click(object sender, RoutedEventArgs e)
+        {
+            if (messagesTable.SelectedItem is DataRowView row)
+            {
+                int id = Convert.ToInt32(row["id"]);
+                string query = $"DELETE FROM messages WHERE id = {id}";
+                DatabaseHelper.ExecuteQuery(query);
+                LoadMessagesData();
+            }
+            else
+            {
+                MessageBox.Show("Válassz ki egy sort a törléshez!");
+            }
+        }
+
         private void DeleteBooking_Click(object sender, RoutedEventArgs e)
         {
             if (bookingsTable.SelectedItem is DataRowView row)
@@ -168,31 +223,15 @@ namespace AdminPage
             }
         }
 
-        private void DeleteParking_Click(object sender, RoutedEventArgs e)
-        {
-            if (parkingTable.SelectedItem is DataRowView row)
-            {
-                int id = Convert.ToInt32(row["id"]);
-                string query = $"DELETE FROM parking_spaces WHERE id = {id}";
-                DatabaseHelper.ExecuteQuery(query);
-                LoadParkingSpacesData();
-            }
-            else
-            {
-                MessageBox.Show("Válassz ki egy sort a törléshez!");
-            }
-        }
-
         private void UsersGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (userTable.SelectedItem is DataRowView row)
             {
-                tbUsersId.Text = row["id"].ToString();
+                tbId.Text = row["id"].ToString();
                 tbName.Text = row["name"].ToString();
                 tbEmail.Text = row["email"].ToString();
                 tbPhoneNum.Text = row["phone_num"].ToString();
                 tbPassword.Text = row["password"].ToString();
-                tbRegistered.Text = row["registered_at"].ToString();
             }
         }
 
@@ -209,34 +248,13 @@ namespace AdminPage
             }
         }
 
-        private void ParkingGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            if (parkingTable.SelectedItem is DataRowView row)
-            {
-                tbParkingId.Text = row["id"].ToString();
-                // use safe column names - adjust if your schema differs
-                if (row.Row.Table.Columns.Contains("floor_num")) tbFloorNum.Text = row["floor_num"].ToString();
-                if (row.Row.Table.Columns.Contains("parking_space_num")) tbParkingNumber.Text = row["parking_space_num"].ToString();
-                if (row.Row.Table.Columns.Contains("type")) cbType.Text = row["type"].ToString();
-                if (row.Row.Table.Columns.Contains("price_per_hour")) tbPricePerHour.Text = row["price_per_hour"].ToString();
-                if (row.Row.Table.Columns.Contains("is_available")) cbIsAvailable.IsChecked = Convert.ToBoolean(row["is_available"].ToString());
-            }
-        }
-
         private void UpdateUser_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbUsersId.Text))
-            {
-                MessageBox.Show("Válassz ki egy sort a módosításhoz!");
-                return;
-            }
-
-            int id = int.Parse(tbUsersId.Text);
+            string id = tbId.Text;
             string name = tbName.Text;
             string email = tbEmail.Text;
             string phoneNum = tbPhoneNum.Text;
             string password = tbPassword.Text;
-            //DateTime registered = DateTime.Now;
 
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(phoneNum) || string.IsNullOrWhiteSpace(password))
             {
@@ -279,49 +297,12 @@ namespace AdminPage
             MessageBox.Show("Sikeres módosítás!");
         }
 
-        private void UpdateParking_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(tbParkingId.Text))
-            {
-                MessageBox.Show("Válassz ki egy sort a módosításhoz!");
-                return;
-            }
-
-            if (cbType.SelectedItem is not ComboBoxItem comboBoxItem)
-            {
-                MessageBox.Show("Válassz ki egy típust!");
-                return;
-            }
-
-
-            int id = int.Parse(tbParkingId.Text);
-            string floorNum = tbFloorNum.Text;
-            string parkingNum = tbParkingNumber.Text;
-            string type = comboBoxItem.Content.ToString() ?? string.Empty;
-            string pricePerHour = tbPricePerHour.Text;
-            string isAvaliable = cbIsAvailable.IsChecked == true ? "1" : "0";
-
-            if (string.IsNullOrWhiteSpace(floorNum) || string.IsNullOrWhiteSpace(parkingNum) || string.IsNullOrWhiteSpace(type) || string.IsNullOrWhiteSpace(pricePerHour))
-            {
-                MessageBox.Show("Egyik mező sem lehet üres!");
-                return;
-            }
-
-            string query = $"UPDATE parking_spaces SET floor_num = '{floorNum}', parking_space_num = '{parkingNum}', type = '{type}', is_available = '{isAvaliable}' WHERE id = {id}";
-            DatabaseHelper.ExecuteQuery(query);
-            LoadParkingSpacesData();
-            ClearParkingFields();
-            MessageBox.Show("Sikeres módosítás!");
-        }
-
         private void ClearUsersFields()
         {
-            tbUsersId.Clear();
             tbName.Clear();
             tbEmail.Clear();
             tbPhoneNum.Clear();
             tbPassword.Clear();
-            tbRegistered.Clear();
         }
         
         private void ClearBookingsFields()
@@ -334,21 +315,10 @@ namespace AdminPage
             tbPlateNum.Clear();
         }
 
-        private void ClearParkingFields()
-        {
-            tbParkingId.Clear();
-            tbFloorNum.Clear();
-            tbParkingNumber.Clear();
-            cbType.SelectedValue = "";
-            tbPricePerHour.Clear();
-            cbIsAvailable.IsChecked = false;
-        }
-
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             ClearUsersFields();
             ClearBookingsFields();
-            ClearParkingFields();
         }
     }
 }
