@@ -33,6 +33,10 @@ startDateInput.addEventListener("input", () => {
     endDateInput.setAttribute("min", startDateInput.value);
 })
 
+endDateInput.addEventListener("input", () => {
+    startDateInput.setAttribute("max", endDateInput.value);
+})
+
 // Check If Date & Time Inputs Are Filled
 function checkIfDatesAreSet() {
     if (startDateInput.value && startTimeInput.value && endDateInput.value && endTimeInput.value) {
@@ -50,7 +54,10 @@ radioArray.forEach(radio => {
     radio.addEventListener('change', () => {
 
         if (checkIfDatesAreSet()) {
-            if ((startDateInput.value == endDateInput.value && endTimeInput.value < startTimeInput.value) || (startDateInput.value == getCurrentDate() && startTimeInput.value < getCurrentTime())) {
+            if (
+                (startDateInput.value == endDateInput.value && endTimeInput.value < startTimeInput.value)
+                || (startDateInput.value == getCurrentDate() && startTimeInput.value < getCurrentTime())
+                || startDateInput.value > endDateInput.value) {
                 new CreatePopup("Helytelen időintervallum!", false)
                 radio.checked = false;
             }
