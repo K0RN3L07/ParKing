@@ -62,12 +62,12 @@ function checkCorrectDateInterval() {
     }
 }
 
-// function isMoreThanOneYearAway(fromDate, toDate) {
-//     const oneYearLater = new Date(fromDate);
-//     oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+function isMoreThanOneYearAway(fromDate, toDate) {
+    const oneYearLater = new Date(fromDate);
+    oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
 
-//     return toDate > oneYearLater;
-// }
+    return toDate > oneYearLater;
+}
 
 
 radioArray.forEach(radio => {
@@ -79,29 +79,34 @@ radioArray.forEach(radio => {
                 radio.checked = false;
             }
             else {
-                if (radio.checked) {
-                    deleteSelection.classList.add("visible");
+                if (isMoreThanOneYearAway(getCurrentDate(), getAllDates()[2])){
+                    new CreatePopup("Nem lehet több mint egy évvel előre foglalni!", false)
                 }
-
-                else {
-                    if (deleteSelection.classList.contains("visible")) {
-                        deleteSelection.classList.remove("visible");
+                else{
+                    console.log(getCurrentDate());
+                    console.log(new Date(getCurrentDate()).getFullYear() + 1);
+                    console.log(getAllDates()[2]);
+                    console.log(isMoreThanOneYearAway(getCurrentDate(), getAllDates()[2]));
+                    
+                    if (radio.checked) {
+                        deleteSelection.classList.add("visible");
                     }
+    
+                    else {
+                        if (deleteSelection.classList.contains("visible")) {
+                            deleteSelection.classList.remove("visible");
+                        }
+                    }
+    
+    
+                    // Update placeholder
+                    if (radio.checked) {
+                        selectedSlot = radio.id;
+                        parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, ${selectedSlot}. parkolóhely`);
+                        parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${selectedSlot}`);
+                    }
+                    getParkingSpaceTypeAndPrice(parkingSlotInputForBackend[0].getAttribute("value"));
                 }
-
-
-                // Update placeholder
-                if (radio.checked) {
-                    selectedSlot = radio.id;
-                    parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, ${selectedSlot}. parkolóhely`);
-                    parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${selectedSlot}`);
-                }
-                getParkingSpaceTypeAndPrice(parkingSlotInputForBackend[0].getAttribute("value"));
-                // if (isMoreThanOneYearAway(getAllDates()[2])){
-                //     new CreatePopup("Nem lehet több mint egy évvel előre foglalni!", false)
-                // }
-                // else{
-                // }
             }
         }
 
