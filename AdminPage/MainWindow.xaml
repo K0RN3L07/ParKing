@@ -5,14 +5,202 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminPage"
         mc:Ignorable="d"
-        Title="ParKing - Admin" Height="606" Width="1478" Icon="/logo.ico">
-    <Grid Margin="0,0,0,1">
+        Title="ParKing - Admin" Height="606" Width="1478" Icon="/logo.ico"
+        Background="{DynamicResource WindowBackground}"
+        Foreground="{DynamicResource PrimaryText}">
 
+    <Window.Resources>
+        <!-- Palette mapped from your webpage variables -->
+        <SolidColorBrush x:Key="WindowBackground" Color="#FF070B1D"/>
+        <!-- base-color -->
+        <SolidColorBrush x:Key="Surface" Color="#FF0F1631"/>
+        <!-- secondary-base-color -->
+        <SolidColorBrush x:Key="SurfaceHover" Color="#FF1F1E42"/>
+        <!-- accent-base-color (used for hover) -->
+        <SolidColorBrush x:Key="Accent" Color="#FF274C77"/>
+        <!-- primary-color -->
+        <SolidColorBrush x:Key="AccentStrong" Color="#FF0870BD"/>
+        <!-- secondary-color -->
+        <SolidColorBrush x:Key="PrimaryText" Color="#FFEBEBEB"/>
+        <!-- primary-text-color -->
+        <SolidColorBrush x:Key="SecondaryText" Color="#FFD6D6D6"/>
+        <!-- secondary-text-color -->
+        <SolidColorBrush x:Key="Divider" Color="#FF203044"/>
+        <!-- subtle divider with contrast -->
+
+        <!-- Label -->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!-- TextBox -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource Surface}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="CaretBrush" Value="{StaticResource PrimaryText}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
+                    <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Button -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource Surface}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="MinWidth" Value="64"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{StaticResource AccentStrong}"/>
+                    <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.45"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- DatePicker -->
+        <Style TargetType="DatePicker">
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+            <Setter Property="Background" Value="{StaticResource Surface}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="Padding" Value="6,4"/>
+        </Style>
+
+        <!-- TabControl & TabItem -->
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style TargetType="TabItem">
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="0,0,4,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border x:Name="Bd" Background="Transparent" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource Surface}"/>
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Divider}"/>
+                                <Setter TargetName="Bd" Property="BorderThickness" Value="0,0,0,1"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource SurfaceHover}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- DataGrid style with the webpage colors -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="RowHeight" Value="30"/>
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+            <Setter Property="CanUserResizeColumns" Value="False"/>
+            <Setter Property="ColumnHeaderHeight" Value="40"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="All"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource Divider}"/>
+            <Setter Property="VerticalGridLinesBrush" Value="{StaticResource Divider}"/>
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="{StaticResource Surface}"/>
+                        <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Padding" Value="10, 0"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="RowStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{StaticResource Accent}"/>
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Padding" Value="10,0"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,1">
         <TabControl x:Name="tabControl" Margin="10,10,10,10">
 
-            <!--#region Users -->
+            <!-- Users -->
             <TabItem Header="Users Tábla">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="{DynamicResource WindowBackground}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="*"/>
@@ -20,65 +208,63 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0" VerticalAlignment="Top" Height="35" Orientation="Horizontal">
+                        <Label Content="Név:" Width="41" Height="30"/>
+                        <TextBox x:Name="tbName" Width="120" Height="30" TextWrapping="Wrap" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Név:" Width="41" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbName" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="Email:" Width="45" Height="30"/>
+                        <TextBox x:Name="tbEmail" Width="242" Height="30" TextWrapping="Wrap" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Email:" Width="45" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbEmail" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="Telefonszám:" Width="92" Height="30"/>
+                        <TextBox x:Name="tbPhoneNum" Width="120" Height="30" TextWrapping="Wrap" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Telefonszám:" Width="92" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbPhoneNum" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
-
-                        <Label Content="Jelszó:" Width="49" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbPassword" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="Jelszó:" Width="49" Height="30"/>
+                        <TextBox x:Name="tbPassword" Width="120" Height="30" TextWrapping="Wrap" VerticalContentAlignment="Center"/>
 
                         <Button Content="X" Width="35" Margin="10,0,0,0" Click="ClearButton_Click"/>
                         <Button Content="Hozzáad" Click="AddUser_Click" Width="85" Margin="10,0,0,0"/>
                         <Button Content="Módosítás" Click="UpdateUser_Click" Width="85" Margin="10,0,0,0"/>
-                        <TextBox x:Name="tbId" TextWrapping="Wrap" Text="" Width="120" Height="30" VerticalContentAlignment="Center" Opacity="0"/>
+                        <TextBox x:Name="tbId" Width="120" Height="30" Opacity="0" VerticalContentAlignment="Center"/>
                     </StackPanel>
 
-                    <DataGrid x:Name="userTable" 
+                    <DataGrid x:Name="userTable"
                               Grid.Row="1"
                               AutoGenerateColumns="True"
                               SelectionChanged="UsersGrid_SelectionChanged"
-                    />
+                              CanUserAddRows="False"/>
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
                         <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
                         <Button Content="Töröl" Click="DeleteUser_Click" Width="75" Margin="10,0,0,0"/>
                     </StackPanel>
-
                 </Grid>
             </TabItem>
-            <!--#endregion-->
 
-            <!--#region Messages -->
+            <!-- Messages -->
             <TabItem Header="Messages Tábla">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="{DynamicResource WindowBackground}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="35"/>
                     </Grid.RowDefinitions>
 
-                    <DataGrid x:Name="messagesTable" 
-                        Grid.Row="0"
-                        AutoGenerateColumns="True"
-                    />
+                    <DataGrid x:Name="messagesTable"
+                              Grid.Row="0"
+                              AutoGenerateColumns="True"
+                              CanUserAddRows="False"
+                              RowHeight="50"
+                              />
+                    
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
                         <Button Content="Töröl" Click="DeleteMessage_Click" Width="75" Margin="10,0,0,0"/>
                     </StackPanel>
-
                 </Grid>
             </TabItem>
-            <!--#endregion-->
 
-            <!--#region Bookings -->
+            <!-- Bookings -->
             <TabItem Header="Bookings Tábla">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="{DynamicResource WindowBackground}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="*"/>
@@ -86,50 +272,48 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0" VerticalAlignment="Center" Height="35" Orientation="Horizontal">
-                        <Label Content="ID:" Width="27" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbBookingsId" Cursor="No" IsEnabled="False" TextWrapping="Wrap" Text="" Width="35" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="ID:" Width="27" Height="30"/>
+                        <TextBox x:Name="tbBookingsId" Cursor="No" IsEnabled="False" Width="35" Height="30" VerticalContentAlignment="Center"/>
 
-                        <Label Content="User ID:" Width="59" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbBookingsUserId" TextWrapping="Wrap" Text="" Width="35" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="User ID:" Width="59" Height="30"/>
+                        <TextBox x:Name="tbBookingsUserId" Width="35" Height="30" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Parking ID:" Width="74" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbBookingsParkingId" TextWrapping="Wrap" Text="" Width="35" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="Parking ID:" Width="74" Height="30"/>
+                        <TextBox x:Name="tbBookingsParkingId" Width="35" Height="30" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Foglalás kezdete:" Width="118" Height="30" FontSize="14"/>
-                        <DatePicker x:Name="dpStartTime" Height="35" Width="111" VerticalContentAlignment="Center" Text="Válassz időpontot" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
+                        <Label Content="Foglalás kezdete:" Width="118" Height="30"/>
+                        <DatePicker x:Name="dpStartTime" Height="35" Width="111" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
 
-                        <Label Content="Foglalás vége:" Width="99" Height="30" FontSize="14"/>
-                        <DatePicker x:Name="dpEndTime" Height="35" Width="111" VerticalContentAlignment="Center" Text="Válassz időpontot" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
+                        <Label Content="Foglalás vége:" Width="99" Height="30"/>
+                        <DatePicker x:Name="dpEndTime" Height="35" Width="111" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
 
-                        <Label Content="Foglalás időpontja:" Width="129" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbBooked" IsEnabled="False" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="Foglalás időpontja:" Width="129" Height="30"/>
+                        <TextBox x:Name="tbBooked" IsEnabled="False" Width="120" Height="30" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Jármű rendszáma:" Width="124" Height="30" FontSize="14"/>
-                        <TextBox x:Name="tbPlateNum" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="Jármű rendszáma:" Width="124" Height="30"/>
+                        <TextBox x:Name="tbPlateNum" Width="120" Height="30" VerticalContentAlignment="Center"/>
 
                         <Button Content="X" Width="35" Margin="10,0,0,0" Click="ClearButton_Click"/>
                         <Button Content="Hozzáad" Click="AddBooking_Click" Width="85" Margin="10,0,0,0"/>
                         <Button Content="Módosítás" Click="UpdateBooking_Click" Width="85" Margin="10,0,0,0"/>
                     </StackPanel>
 
-                    <DataGrid x:Name="bookingsTable" 
+                    <DataGrid x:Name="bookingsTable"
                               Grid.Row="1"
                               AutoGenerateColumns="True"
                               SelectionChanged="BookingsGrid_SelectionChanged"
-                    />
+                              CanUserAddRows="False"/>
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
                         <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
                         <Button Content="Töröl" Click="DeleteBooking_Click" Width="75" Margin="10,0,0,0"/>
                     </StackPanel>
-
                 </Grid>
             </TabItem>
-            <!--#endregion -->
 
-            <!--#region Parking Spaces-->
+            <!-- Parking Spaces -->
             <TabItem Header="Parking Spaces Tábla">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="{DynamicResource WindowBackground}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="35"/>
@@ -138,16 +322,14 @@
                     <DataGrid x:Name="parkingTable"
                               Grid.Row="0"
                               AutoGenerateColumns="True"
-                    />
+                              CanUserAddRows="False"/>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <!--#endregion-->
 
         </TabControl>
-
     </Grid>
 </Window>

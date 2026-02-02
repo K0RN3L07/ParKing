@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminPage"
         mc:Ignorable="d"
+        Background="#FF0F1631"
         Title="ParKing - Admin Bejelentkezés" Height="450" Width="600" ResizeMode="NoResize" Icon="/logo.ico">
+
+    <Window.Resources>
+        <!-- Palette mapped from your webpage variables -->
+        <SolidColorBrush x:Key="WindowBackground" Color="#FF070B1D"/>
+        <!-- base-color -->
+        <SolidColorBrush x:Key="Surface" Color="#FF0F1631"/>
+        <!-- secondary-base-color -->
+        <SolidColorBrush x:Key="SurfaceHover" Color="#FF1F1E42"/>
+        <!-- accent-base-color (used for hover) -->
+        <SolidColorBrush x:Key="Accent" Color="#FF274C77"/>
+        <!-- primary-color -->
+        <SolidColorBrush x:Key="AccentStrong" Color="#FF0870BD"/>
+        <!-- secondary-color -->
+        <SolidColorBrush x:Key="PrimaryText" Color="#FFEBEBEB"/>
+        <!-- primary-text-color -->
+        <SolidColorBrush x:Key="SecondaryText" Color="#FFD6D6D6"/>
+        <!-- secondary-text-color -->
+        <SolidColorBrush x:Key="Divider" Color="#FF203044"/>
+        <!-- subtle divider with contrast -->
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#FFEBEBEB" />
+        </Style>
+
+        <!-- TextBox -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#FF1F1E42"/>
+            <Setter Property="Foreground" Value="#FFEBEBEB"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <!-- PasswordBox -->
+        <Style TargetType="PasswordBox">
+            <Setter Property="Background" Value="#FF1F1E42"/>
+            <Setter Property="Foreground" Value="#FFEBEBEB"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
+        
         <Label Content="ParKing - Admin Bejelentkezés" HorizontalAlignment="Center" Height="67" Margin="0,20,0,0" VerticalAlignment="Top" Width="584" FontSize="36" FontWeight="UltraBold" HorizontalContentAlignment="Center"/>
 
         <Label Content="Felhasználónév:" HorizontalAlignment="Center" Margin="0,118,0,0" VerticalAlignment="Top" Height="30px" Width="194" FontSize="16" FontWeight="SemiBold" Padding="0,5,5,5"/>

@@ -226,3 +226,5 @@ C:\Users\Technikus\Documents\Tapolcsányi Dávid\ParKing\AdminPage\obj\Debug\net
 C:\Users\Technikus\Documents\Tapolcsányi Dávid\ParKing\AdminPage\obj\Debug\net8.0-windows\AdminPage.pdb
 C:\Users\Technikus\Documents\Tapolcsányi Dávid\ParKing\AdminPage\obj\Debug\net8.0-windows\AdminPage.genruntimeconfig.cache
 C:\Users\Technikus\Documents\Tapolcsányi Dávid\ParKing\AdminPage\obj\Debug\net8.0-windows\ref\AdminPage.dll
+D:\Munka\Matos Kornél\ParKing\AdminPage\bin\Debug\net8.0-windows\BCrypt.Net-Next.dll
+D:\Munka\Matos Kornél\ParKing\AdminPage\obj\Debug\net8.0-windows\App.baml

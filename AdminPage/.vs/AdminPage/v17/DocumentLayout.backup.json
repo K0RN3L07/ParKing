@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,8 +34,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\Login.xaml",
+              "RelativeDocumentMoniker": "Login.xaml",
+              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\Login.xaml*",
+              "RelativeToolTip": "Login.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-02T11:07:18.66Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
@@ -46,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
@@ -64,27 +84,27 @@
               "RelativeDocumentMoniker": "MainWindow.xaml",
               "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
-              "ViewState": "AgIAABMAAAAAAAAAAAAjwCYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-01-28T09:42:01.479Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml.cs*",
-              "RelativeToolTip": "MainWindow.xaml.cs*",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAQwJ4AAAD5AAAAAAAAAA==",
+              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAABYBAAAAAAAAAAAAAPAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-02T09:44:52.778Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "db_config.cs",
               "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\db_config.cs",
               "RelativeDocumentMoniker": "db_config.cs",

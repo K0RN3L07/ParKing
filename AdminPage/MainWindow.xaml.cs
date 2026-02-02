@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using static AdminPage.db_config;
 using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
 using System.Text.RegularExpressions;
+using BCrypt;
 
 namespace AdminPage
 {
@@ -160,7 +161,13 @@ namespace AdminPage
                 return;
             }
 
-            
+            int saltRounds = 10;
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(tbPassword.Text, workFactor: saltRounds);
+
+            string query = $"INSERT INTO users (name, email, phone_num, password) VALUES ('{tbName.Text}', '{tbEmail.Text}', '{tbPhoneNum.Text}', '{hashedPassword}')";
+            DatabaseHelper.ExecuteQuery(query);
+            LoadUsersData();
+            ClearUsersFields();
         }
 
         private void AddBooking_Click(object sender, RoutedEventArgs e)
@@ -231,7 +238,6 @@ namespace AdminPage
                 tbName.Text = row["name"].ToString();
                 tbEmail.Text = row["email"].ToString();
                 tbPhoneNum.Text = row["phone_num"].ToString();
-                tbPassword.Text = row["password"].ToString();
             }
         }
 
