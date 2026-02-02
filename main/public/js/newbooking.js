@@ -15,10 +15,10 @@ function getCurrentDate() {
 }
 
 function getCurrentTime() {
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-  return `${hours}:${minutes}`;
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    return `${hours}:${minutes}`;
 }
 
 let startDateInput = document.getElementById('start-date');
@@ -50,30 +50,46 @@ let selectedSpotType = document.getElementById("selectedSpotType");
 
 //#region Parking Space Selection
 
+function checkCorrectDateInterval() {
+    if (
+        (startDateInput.value == endDateInput.value && endTimeInput.value < startTimeInput.value)
+        || (startDateInput.value == getCurrentDate() && startTimeInput.value < getCurrentTime())
+        || startDateInput.value > endDateInput.value) {
+        return false
+    }
+    else {
+        return true
+    }
+}
+
+// function isMoreThanOneYearAway(fromDate, toDate) {
+//     const oneYearLater = new Date(fromDate);
+//     oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+
+//     return toDate > oneYearLater;
+// }
+
+
 radioArray.forEach(radio => {
     radio.addEventListener('change', () => {
 
         if (checkIfDatesAreSet()) {
-            if (
-                (startDateInput.value == endDateInput.value && endTimeInput.value < startTimeInput.value)
-                || (startDateInput.value == getCurrentDate() && startTimeInput.value < getCurrentTime())
-                || startDateInput.value > endDateInput.value) {
+            if (!checkCorrectDateInterval()) {
                 new CreatePopup("Helytelen időintervallum!", false)
                 radio.checked = false;
             }
-            else{
-
+            else {
                 if (radio.checked) {
                     deleteSelection.classList.add("visible");
                 }
-    
+
                 else {
                     if (deleteSelection.classList.contains("visible")) {
                         deleteSelection.classList.remove("visible");
                     }
                 }
-    
-    
+
+
                 // Update placeholder
                 if (radio.checked) {
                     selectedSlot = radio.id;
@@ -81,6 +97,11 @@ radioArray.forEach(radio => {
                     parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${selectedSlot}`);
                 }
                 getParkingSpaceTypeAndPrice(parkingSlotInputForBackend[0].getAttribute("value"));
+                // if (isMoreThanOneYearAway(getAllDates()[2])){
+                //     new CreatePopup("Nem lehet több mint egy évvel előre foglalni!", false)
+                // }
+                // else{
+                // }
             }
         }
 
@@ -97,8 +118,9 @@ radioArray.forEach(radio => {
 
 let priceField = document.getElementById("price");
 let typeField = document.getElementById("type");
+let totalCost = document.getElementById("totalCost");
 
-deleteSelection.addEventListener('click', () => {
+function resetValues(){
     radioArray.forEach(radio => {
         radio.checked = false;
     });
@@ -107,9 +129,14 @@ deleteSelection.addEventListener('click', () => {
     parkingSlotInput[0].setAttribute("value", `${selectedLevel}. emelet, `);
     priceField.value = "";
     typeField.value = "";
-    
+    totalCost.value = "";
+
     parkingSlotInputForBackend[0].setAttribute("value", `${selectedLevel};${null}`);
     deleteSelection.classList.remove("visible");
+}
+
+deleteSelection.addEventListener('click', () => {
+    resetValues();
 });
 
 //#endregion
@@ -152,6 +179,16 @@ async function getParkingSpaceTypeAndPrice(parking_slot) {
     const data = JSON.parse(text);
     document.getElementById("type").value = data["type"]
     document.getElementById("price").value = data["price_per_hour"] + "Ft / óra"
+    let price = data["price_per_hour"] * parseInt(startedHoursBetween(getAllDates()[0], getAllDates()[1], getAllDates()[2], getAllDates()[3]))
+    document.getElementById("totalCost").value = price + "Ft";
+}
+
+function startedHoursBetween(startDate, startTime, endDate, endTime) {
+    const start = new Date(`${startDate}T${startTime}`);
+    const end = new Date(`${endDate}T${endTime}`);
+    const msDiff = end - start; // difference in milliseconds
+    const hours = msDiff / (1000 * 60 * 60);
+    return Math.ceil(hours);
 }
 
 startDateInput.addEventListener("input", () => {
@@ -272,26 +309,33 @@ document.getElementById("bookForm").addEventListener("submit", async (e) => {
 
     try {
         try {
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData.entries());
+            if (checkCorrectDateInterval()) {
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData.entries());
 
-            const response = await fetch("/bookSlot", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
+                const response = await fetch("/bookSlot", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
 
-            const result = await response.json();
+                const result = await response.json();
 
-            if (result.success) {
-                const confirmed = await createOKPopup(result.msg);
-                if (confirmed) {
-                    window.location.href = "/myBookings";
+                if (result.success) {
+                    const confirmed = await createOKPopup(result.msg);
+                    if (confirmed) {
+                        window.location.href = "/myBookings";
+                    }
+                }
+                else {
+                    new CreatePopup(result.msg, result.success);
                 }
             }
             else {
-                new CreatePopup(result.msg, result.success);
+                resetValues()
+                new CreatePopup("Helytelen időintervallum!", false);
             }
+
         }
         catch (err) {
             console.log(err);

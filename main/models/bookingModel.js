@@ -59,7 +59,7 @@ exports.getUserBookings = (id) => {
             ON parking_spaces.id = bookings.parking_space_id INNER JOIN users
             ON users.id = bookings.user_id
             WHERE users.id = ?
-            ORDER BY bookings.start_time
+            ORDER BY bookings.start_time, bookings.end_time
             `,
             [id],
             (err, result) => {
