@@ -319,6 +319,8 @@ document.getElementById("bookForm").addEventListener("submit", async (e) => {
             if (checkCorrectDateInterval()) {
                 const formData = new FormData(e.target);
                 const data = Object.fromEntries(formData.entries());
+                console.log(data);
+                
 
                 const response = await fetch("/bookSlot", {
                     method: "POST",

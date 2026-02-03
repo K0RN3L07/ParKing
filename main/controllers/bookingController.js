@@ -2,7 +2,6 @@ const User = require('../models/bookingModel');
 
 async function getNewBooking(req, res) {
     try {
-        // If you still want to render the page, you can return a success message optionally
         res.render('newBooking', {
             user: req.session.user || null
         });
@@ -42,7 +41,7 @@ async function bookSlot(req, res) {
             return res.status(401).json({ msg: "Nincs bejelentkezve!", success: false });
         }
 
-        let { parking_slot, start_date, start_time, end_date, end_time, plate_num } = req.body;
+        let { parking_slot, start_date, start_time, end_date, end_time, plate_num, total_cost } = req.body;
 
         if (!start_date) {
             return res.status(400).json({ msg: "Kezdő dátum megadása kötelező!", success: false });
@@ -77,7 +76,7 @@ async function bookSlot(req, res) {
         let start = start_date + " " + start_time;
         let end = end_date + " " + end_time;
 
-        await User.addBooking(user_id, parking_space_id, start, end, plate_num.toUpperCase());
+        await User.addBooking(user_id, parking_space_id, start, end, plate_num.toUpperCase(), total_cost);
 
         return res.status(200).json({ msg: "Sikeres foglalás!", success: true });
     } catch (err) {

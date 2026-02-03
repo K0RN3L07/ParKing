@@ -5,11 +5,12 @@ exports.addBooking = (
     parking_space_id,
     start,
     end,
+    total_price,
     plate_num) => {
     return new Promise((resolve, reject) => {
         db.query(
-            "INSERT INTO bookings (user_id, parking_space_id, start_time, end_time, payment_status, plate_num) VALUES (?, ?, ?, ?, ?, ?)",
-            [user_id, parking_space_id, start, end, "fizetve", plate_num],
+            "INSERT INTO bookings (user_id, parking_space_id, start_time, end_time, total_price,  payment_status, plate_num) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            [user_id, parking_space_id, start, end, total_price, "fizetve", plate_num],
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result.insertId);
