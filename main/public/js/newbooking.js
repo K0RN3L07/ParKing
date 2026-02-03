@@ -62,12 +62,11 @@ function checkCorrectDateInterval() {
     }
 }
 
-function isMoreThanOneYearAway(fromDate, toDate) {
-    const oneYearLater = new Date(fromDate);
-    oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
-
-    return toDate > oneYearLater;
+function isMoreThanOneYearAway() {
+    let yearPlusOne = (parseInt(getCurrentDate().split('-')[0]) + 1).toString() + "-" + getCurrentDate().split('-')[1].toString() + "-" + getCurrentDate().split("-")[2].toString();
+    return getAllDates()[2] > yearPlusOne;
 }
+
 
 
 radioArray.forEach(radio => {
@@ -77,16 +76,15 @@ radioArray.forEach(radio => {
             if (!checkCorrectDateInterval()) {
                 new CreatePopup("Helytelen időintervallum!", false)
                 radio.checked = false;
+                resetValues()
             }
             else {
                 if (isMoreThanOneYearAway(getCurrentDate(), getAllDates()[2])){
                     new CreatePopup("Nem lehet több mint egy évvel előre foglalni!", false)
+                    radio.checked = false;
+                    resetValues()
                 }
                 else{
-                    console.log(getCurrentDate());
-                    console.log(new Date(getCurrentDate()).getFullYear() + 1);
-                    console.log(getAllDates()[2]);
-                    console.log(isMoreThanOneYearAway(getCurrentDate(), getAllDates()[2]));
                     
                     if (radio.checked) {
                         deleteSelection.classList.add("visible");
@@ -198,6 +196,7 @@ function startedHoursBetween(startDate, startTime, endDate, endTime) {
 
 startDateInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
+        resetValues();
         allDatesSet = true;
         levels[0].click();
     }
@@ -205,6 +204,7 @@ startDateInput.addEventListener("input", () => {
 
 startTimeInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
+        resetValues();
         allDatesSet = true;
         levels[0].click();
     }
@@ -212,6 +212,7 @@ startTimeInput.addEventListener("input", () => {
 
 endDateInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
+        resetValues();
         allDatesSet = true;
         levels[0].click();
     }
@@ -219,6 +220,7 @@ endDateInput.addEventListener("input", () => {
 
 endTimeInput.addEventListener("input", () => {
     if (checkIfDatesAreSet()) {
+        resetValues();
         allDatesSet = true;
         levels[0].click();
     }
