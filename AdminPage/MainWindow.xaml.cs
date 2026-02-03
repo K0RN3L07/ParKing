@@ -95,18 +95,6 @@ namespace AdminPage
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
-            //if (!string.IsNullOrWhiteSpace(tbName.Text) && !string.IsNullOrWhiteSpace(tbEmail.Text) && !string.IsNullOrWhiteSpace(tbPhoneNum.Text) && !string.IsNullOrWhiteSpace(tbPassword.Text))
-            //{
-            //    string query = $"INSERT INTO users (name, email, phone_num, password) VALUES ('{tbName.Text}', '{tbEmail.Text}', '{tbPhoneNum.Text}', '{tbPassword.Text}')";
-            //    DatabaseHelper.ExecuteQuery(query);
-            //    LoadUsersData();
-            //    ClearUsersFields();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Kérlek, töltsd ki az összes mezőt!");
-            //}
-
             Regex emailRegex = new Regex(
                  @"^(?!.*\.\.)(?!.*[^\x00-\x7F])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
              );
@@ -174,7 +162,7 @@ namespace AdminPage
         {
             if (!string.IsNullOrWhiteSpace(tbBookingsUserId.Text) && !string.IsNullOrWhiteSpace(tbBookingsParkingId.Text) && !string.IsNullOrWhiteSpace(dpStartTime.Text) && !string.IsNullOrWhiteSpace(dpEndTime.Text) && !string.IsNullOrWhiteSpace(tbPlateNum.Text))
             {
-                string query = $"INSERT INTO bookings (user_id, parking_space_id, start_time, end_time, payment_status, plate_num) VALUES ('{tbBookingsUserId.Text}', '{tbBookingsParkingId.Text}', '{dpStartTime.Text}', '{dpEndTime.Text}', 'fizetve', '{tbPlateNum.Text}')";
+                string query = $"INSERT INTO bookings (user_id, parking_space_id, start_time, end_time, payment_status, plate_num) VALUES ('{tbBookingsUserId.Text}', '{tbBookingsParkingId.Text}', '{dpStartTime.Text}', '{dpEndTime.Text}', 'fizetve', '{tbPlateNum.Text.ToUpper()}')";
                 DatabaseHelper.ExecuteQuery(query);
                 LoadBookingsData();
                 ClearBookingsFields();

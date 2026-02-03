@@ -94,12 +94,107 @@
         </Style>
 
         <!-- DatePicker -->
-        <Style TargetType="DatePicker">
-            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-            <Setter Property="Background" Value="{StaticResource Surface}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
-            <Setter Property="BorderThickness" Value="0,0,0,1"/>
-            <Setter Property="Padding" Value="6,4"/>
+        <Style x:Key="StyledDatePicker" TargetType="DatePicker">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DatePicker">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- DatePickerTextBox with TextBox style -->
+                            <DatePickerTextBox
+                        x:Name="PART_TextBox"
+                        Grid.Column="0"
+                        Background="{StaticResource Surface}"
+                        Foreground="{StaticResource PrimaryText}"
+                        BorderBrush="{StaticResource Divider}"
+                        BorderThickness="0,0,0,1"
+                        Padding="6,4"
+                        VerticalContentAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryText}">
+
+                                <DatePickerTextBox.Style>
+                                    <Style TargetType="DatePickerTextBox">
+                                        <Setter Property="Background" Value="{StaticResource Surface}"/>
+                                        <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                                        <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
+                                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                        <Setter Property="Padding" Value="6,4"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                        <Setter Property="CaretBrush" Value="{StaticResource PrimaryText}"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                                            </Trigger>
+                                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                                <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
+                                                <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DatePickerTextBox.Style>
+                            </DatePickerTextBox>
+
+                            <!-- Icon button -->
+                            <ToggleButton
+                        x:Name="PART_Button"
+                        Grid.Column="1"
+                        Width="32"
+                        Height="32"
+                        Focusable="False"
+                        Cursor="Hand"
+                        Margin="2,0,0,0">
+
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border x:Name="border" Background="Transparent" CornerRadius="4">
+                                            <Path
+                                        x:Name="Icon"
+                                        Data="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                                        Fill="#FFD6D6D6"
+                                        Width="16"
+                                        Height="16"
+                                        Stretch="Uniform"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                        </Border>
+
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="#22007ACC"/>
+                                                <Setter TargetName="Icon" Property="Fill" Value="#007ACC"/>
+                                            </Trigger>
+
+                                            <Trigger Property="IsChecked" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="#33007ACC"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+
+                            <!-- Calendar popup -->
+                            <Popup
+                        x:Name="PART_Popup"
+                        Placement="Bottom"
+                        IsOpen="{Binding IsChecked, ElementName=PART_Button}"
+                        StaysOpen="False"
+                        AllowsTransparency="True">
+                                <Border BorderThickness="1" BorderBrush="Gray" Background="White">
+                                    <Calendar
+                                x:Name="PART_Calendar"
+                                SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <!-- TabControl & TabItem -->
@@ -282,10 +377,10 @@
                         <TextBox x:Name="tbBookingsParkingId" Width="35" Height="30" VerticalContentAlignment="Center"/>
 
                         <Label Content="Foglalás kezdete:" Width="118" Height="30"/>
-                        <DatePicker x:Name="dpStartTime" Height="35" Width="111" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
+                        <DatePicker Style="{StaticResource StyledDatePicker}" x:Name="dpStartTime" Height="35" Width="45" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
 
                         <Label Content="Foglalás vége:" Width="99" Height="30"/>
-                        <DatePicker x:Name="dpEndTime" Height="35" Width="111" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
+                        <DatePicker Style="{StaticResource StyledDatePicker}" x:Name="dpEndTime" Height="35" Width="45" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
 
                         <Label Content="Foglalás időpontja:" Width="129" Height="30"/>
                         <TextBox x:Name="tbBooked" IsEnabled="False" Width="120" Height="30" VerticalContentAlignment="Center"/>
