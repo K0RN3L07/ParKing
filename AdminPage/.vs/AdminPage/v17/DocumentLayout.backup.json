@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\",
+  "WorkspaceRootPath": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\adminpage\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\adminpage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\adminpage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\adminpage\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|d:\\munka\\matos korn\u00E9l\\parking\\adminpage\\db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\adminpage\\db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -30,31 +30,26 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "App.xaml",
-              "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\App.xaml",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\App.xaml",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-02T09:44:52.591Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-02T09:44:52.591Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml*",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml*",
               "RelativeToolTip": "MainWindow.xaml*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-12-02T09:44:52.772Z",
@@ -64,11 +59,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml*",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml*",
               "RelativeToolTip": "MainWindow.xaml*",
-              "ViewState": "AgIAAP8AAAAAAAAAAAAiwAUBAABeAAAAAAAAAA==",
+              "ViewState": "AgIAAH0BAAAAAAAAAAAvwJMBAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-01-28T09:42:01.479Z",
               "EditorCaption": ""
@@ -77,40 +72,25 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAA3wFkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAIA2wBwAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-02T09:44:52.778Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-02T09:44:52.778Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "db_config.cs",
-              "DocumentMoniker": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\db_config.cs",
+              "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\db_config.cs",
               "RelativeDocumentMoniker": "db_config.cs",
-              "ToolTip": "D:\\Munka\\Matos Korn\u00E9l\\ParKing\\AdminPage\\db_config.cs",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\db_config.cs",
               "RelativeToolTip": "db_config.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAcwD8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-02T09:44:52.781Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 1908,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

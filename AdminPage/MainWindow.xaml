@@ -1,194 +1,206 @@
-﻿<Window x:Class="AdminPage.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AdminPage"
-        mc:Ignorable="d"
-        Title="ParKing - Admin" Height="606" Width="1478" Icon="/logo.ico"
-        Background="{DynamicResource WindowBackground}"
-        Foreground="{DynamicResource PrimaryText}">
+﻿<Window
+    x:Class="AdminPage.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AdminPage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ParKing - Admin"
+    Width="1478"
+    Height="606"
+    Background="{DynamicResource WindowBackground}"
+    Foreground="{DynamicResource PrimaryText}"
+    Icon="/logo.ico"
+    mc:Ignorable="d">
 
     <Window.Resources>
-        <!-- Palette mapped from your webpage variables -->
-        <SolidColorBrush x:Key="WindowBackground" Color="#FF070B1D"/>
-        <!-- base-color -->
-        <SolidColorBrush x:Key="Surface" Color="#FF0F1631"/>
-        <!-- secondary-base-color -->
-        <SolidColorBrush x:Key="SurfaceHover" Color="#FF1F1E42"/>
-        <!-- accent-base-color (used for hover) -->
-        <SolidColorBrush x:Key="Accent" Color="#FF274C77"/>
-        <!-- primary-color -->
-        <SolidColorBrush x:Key="AccentStrong" Color="#FF0870BD"/>
-        <!-- secondary-color -->
-        <SolidColorBrush x:Key="PrimaryText" Color="#FFEBEBEB"/>
-        <!-- primary-text-color -->
-        <SolidColorBrush x:Key="SecondaryText" Color="#FFD6D6D6"/>
-        <!-- secondary-text-color -->
-        <SolidColorBrush x:Key="Divider" Color="#FF203044"/>
-        <!-- subtle divider with contrast -->
+        <!--  Palette mapped from your webpage variables  -->
+        <SolidColorBrush x:Key="WindowBackground" Color="#FF070B1D" />
+        <!--  base-color  -->
+        <SolidColorBrush x:Key="Surface" Color="#FF0F1631" />
+        <!--  secondary-base-color  -->
+        <SolidColorBrush x:Key="SurfaceHover" Color="#FF1F1E42" />
+        <!--  accent-base-color (used for hover)  -->
+        <SolidColorBrush x:Key="Accent" Color="#FF274C77" />
+        <!--  primary-color  -->
+        <SolidColorBrush x:Key="AccentStrong" Color="#FF0870BD" />
+        <!--  secondary-color  -->
+        <SolidColorBrush x:Key="PrimaryText" Color="#FFEBEBEB" />
+        <!--  primary-text-color  -->
+        <SolidColorBrush x:Key="SecondaryText" Color="#FFD6D6D6" />
+        <!--  secondary-text-color  -->
+        <SolidColorBrush x:Key="Divider" Color="#FF203044" />
+        <!--  subtle divider with contrast  -->
 
-        <!-- Label -->
+        <!--  Label  -->
         <Style TargetType="Label">
-            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14" />
         </Style>
 
-        <!-- TextBox -->
+        <!--  TextBox  -->
         <Style TargetType="TextBox">
-            <Setter Property="Background" Value="{StaticResource Surface}"/>
-            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
-            <Setter Property="BorderThickness" Value="0,0,0,1"/>
-            <Setter Property="Padding" Value="6,4"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="CaretBrush" Value="{StaticResource PrimaryText}"/>
+            <Setter Property="Background" Value="{StaticResource Surface}" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Divider}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="6,4" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="CaretBrush" Value="{StaticResource PrimaryText}" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                    <Setter Property="Background" Value="{StaticResource SurfaceHover}" />
                 </Trigger>
                 <Trigger Property="IsKeyboardFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
-                    <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource Accent}" />
+                    <Setter Property="Background" Value="{StaticResource SurfaceHover}" />
                 </Trigger>
             </Style.Triggers>
         </Style>
 
-        <!-- Button -->
+        <!--  Button  -->
         <Style TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource Surface}"/>
-            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="8,4"/>
-            <Setter Property="MinWidth" Value="64"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="{StaticResource Surface}" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Divider}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="8,4" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="3">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="3">
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
-                    <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
+                    <Setter Property="Background" Value="{StaticResource SurfaceHover}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource Divider}" />
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" Value="{StaticResource AccentStrong}"/>
-                    <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                    <Setter Property="Background" Value="{StaticResource AccentStrong}" />
+                    <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.45"/>
+                    <Setter Property="Opacity" Value="0.45" />
                 </Trigger>
             </Style.Triggers>
         </Style>
 
-        <!-- DatePicker -->
+        <!--  DatePicker  -->
         <Style x:Key="StyledDatePicker" TargetType="DatePicker">
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="Height" Value="30" />
+            <Setter Property="MinWidth" Value="120" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="DatePicker">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <!-- DatePickerTextBox with TextBox style -->
+                            <!--  DatePickerTextBox with TextBox style  -->
                             <DatePickerTextBox
-                        x:Name="PART_TextBox"
-                        Grid.Column="0"
-                        Background="{StaticResource Surface}"
-                        Foreground="{StaticResource PrimaryText}"
-                        BorderBrush="{StaticResource Divider}"
-                        BorderThickness="0,0,0,1"
-                        Padding="6,4"
-                        VerticalContentAlignment="Center"
-                        CaretBrush="{StaticResource PrimaryText}">
+                                x:Name="PART_TextBox"
+                                Grid.Column="0"
+                                Padding="6,4"
+                                VerticalContentAlignment="Center"
+                                Background="{StaticResource Surface}"
+                                BorderBrush="{StaticResource Divider}"
+                                BorderThickness="0,0,0,1"
+                                CaretBrush="{StaticResource PrimaryText}"
+                                Foreground="{StaticResource PrimaryText}">
 
                                 <DatePickerTextBox.Style>
                                     <Style TargetType="DatePickerTextBox">
-                                        <Setter Property="Background" Value="{StaticResource Surface}"/>
-                                        <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-                                        <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
-                                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                                        <Setter Property="Padding" Value="6,4"/>
-                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                        <Setter Property="CaretBrush" Value="{StaticResource PrimaryText}"/>
+                                        <Setter Property="Background" Value="{StaticResource Surface}" />
+                                        <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
+                                        <Setter Property="BorderBrush" Value="{StaticResource Divider}" />
+                                        <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                        <Setter Property="Padding" Value="6,4" />
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                        <Setter Property="CaretBrush" Value="{StaticResource PrimaryText}" />
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                                                <Setter Property="Background" Value="{StaticResource SurfaceHover}" />
                                             </Trigger>
                                             <Trigger Property="IsKeyboardFocused" Value="True">
-                                                <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
-                                                <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                                                <Setter Property="BorderBrush" Value="{StaticResource Accent}" />
+                                                <Setter Property="Background" Value="{StaticResource SurfaceHover}" />
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
                                 </DatePickerTextBox.Style>
                             </DatePickerTextBox>
 
-                            <!-- Icon button -->
+                            <!--  Icon button  -->
                             <ToggleButton
-                        x:Name="PART_Button"
-                        Grid.Column="1"
-                        Width="32"
-                        Height="32"
-                        Focusable="False"
-                        Cursor="Hand"
-                        Margin="2,0,0,0">
+                                x:Name="PART_Button"
+                                Grid.Column="1"
+                                Width="32"
+                                Height="32"
+                                Margin="2,0,0,0"
+                                Cursor="Hand"
+                                Focusable="False">
 
                                 <ToggleButton.Template>
                                     <ControlTemplate TargetType="ToggleButton">
-                                        <Border x:Name="border" Background="Transparent" CornerRadius="4">
+                                        <Border
+                                            x:Name="border"
+                                            Background="Transparent"
+                                            CornerRadius="4">
                                             <Path
-                                        x:Name="Icon"
-                                        Data="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
-                                        Fill="#FFD6D6D6"
-                                        Width="16"
-                                        Height="16"
-                                        Stretch="Uniform"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
+                                                x:Name="Icon"
+                                                Width="16"
+                                                Height="16"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Data="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                                                Fill="#FFD6D6D6"
+                                                Stretch="Uniform" />
                                         </Border>
 
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#22007ACC"/>
-                                                <Setter TargetName="Icon" Property="Fill" Value="#007ACC"/>
+                                                <Setter TargetName="border" Property="Background" Value="#22007ACC" />
+                                                <Setter TargetName="Icon" Property="Fill" Value="#007ACC" />
                                             </Trigger>
 
                                             <Trigger Property="IsChecked" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#33007ACC"/>
+                                                <Setter TargetName="border" Property="Background" Value="#33007ACC" />
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
                                 </ToggleButton.Template>
                             </ToggleButton>
 
-                            <!-- Calendar popup -->
+                            <!--  Calendar popup  -->
                             <Popup
-                        x:Name="PART_Popup"
-                        Placement="Bottom"
-                        IsOpen="{Binding IsChecked, ElementName=PART_Button}"
-                        StaysOpen="False"
-                        AllowsTransparency="True">
-                                <Border BorderThickness="1" BorderBrush="Gray" Background="White">
-                                    <Calendar
-                                x:Name="PART_Calendar"
-                                SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                x:Name="PART_Popup"
+                                AllowsTransparency="True"
+                                IsOpen="{Binding IsChecked, ElementName=PART_Button}"
+                                Placement="Bottom"
+                                StaysOpen="False">
+                                <Border
+                                    Background="White"
+                                    BorderBrush="Gray"
+                                    BorderThickness="1">
+                                    <Calendar x:Name="PART_Calendar" SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}}" />
                                 </Border>
                             </Popup>
                         </Grid>
@@ -197,32 +209,38 @@
             </Setter>
         </Style>
 
-        <!-- TabControl & TabItem -->
+        <!--  TabControl & TabItem  -->
         <Style TargetType="TabControl">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
         </Style>
 
         <Style TargetType="TabItem">
-            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Padding" Value="12,6"/>
-            <Setter Property="Margin" Value="0,0,4,0"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Padding" Value="12,6" />
+            <Setter Property="Margin" Value="0,0,4,0" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TabItem">
-                        <Border x:Name="Bd" Background="Transparent" Padding="{TemplateBinding Padding}">
-                            <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border
+                            x:Name="Bd"
+                            Padding="{TemplateBinding Padding}"
+                            Background="Transparent">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                ContentSource="Header" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource Surface}"/>
-                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Divider}"/>
-                                <Setter TargetName="Bd" Property="BorderThickness" Value="0,0,0,1"/>
+                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource Surface}" />
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Divider}" />
+                                <Setter TargetName="Bd" Property="BorderThickness" Value="0,0,0,1" />
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource SurfaceHover}"/>
+                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource SurfaceHover}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -230,49 +248,47 @@
             </Setter>
         </Style>
 
-        <!-- DataGrid style with the webpage colors -->
+        <!--  DataGrid style with the webpage colors  -->
         <Style TargetType="DataGrid">
-            <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
-            <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="RowHeight" Value="30"/>
-            <Setter Property="CanUserReorderColumns" Value="False"/>
-            <Setter Property="CanUserResizeColumns" Value="False"/>
-            <Setter Property="ColumnHeaderHeight" Value="40"/>
-            <Setter Property="HeadersVisibility" Value="Column"/>
-            <Setter Property="GridLinesVisibility" Value="All"/>
-            <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource Divider}"/>
-            <Setter Property="VerticalGridLinesBrush" Value="{StaticResource Divider}"/>
+            <Setter Property="Background" Value="{StaticResource WindowBackground}" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="RowHeight" Value="30" />
+            <Setter Property="CanUserReorderColumns" Value="False" />
+            <Setter Property="CanUserResizeColumns" Value="False" />
+            <Setter Property="ColumnHeaderHeight" Value="40" />
+            <Setter Property="HeadersVisibility" Value="Column" />
+            <Setter Property="GridLinesVisibility" Value="All" />
+            <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource Divider}" />
+            <Setter Property="VerticalGridLinesBrush" Value="{StaticResource Divider}" />
             <Setter Property="ColumnHeaderStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="{StaticResource Surface}"/>
-                        <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-                        <Setter Property="FontWeight" Value="SemiBold"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Padding" Value="10, 0"/>
-                        <Setter Property="BorderBrush" Value="{StaticResource Divider}"/>
+                        <Setter Property="Background" Value="{StaticResource Surface}" />
+                        <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
+                        <Setter Property="FontWeight" Value="SemiBold" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="Padding" Value="10,0" />
+                        <Setter Property="BorderBrush" Value="{StaticResource Divider}" />
                     </Style>
                 </Setter.Value>
             </Setter>
             <Setter Property="RowStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridRow">
-                        <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                        <Setter Property="Background" Value="{StaticResource WindowBackground}" />
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="SnapsToDevicePixels" Value="True" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource SurfaceHover}"/>
+                                <Setter Property="Background" Value="{StaticResource SurfaceHover}" />
                             </Trigger>
+
+                            <!--  This will always apply when the row is selected, regardless of focus  -->
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="{StaticResource Accent}"/>
-                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
-                            </Trigger>
-                            <Trigger Property="IsFocused" Value="False">
-                                <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
-                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                                <Setter Property="Background" Value="{StaticResource Accent}" />
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -281,11 +297,11 @@
             <Setter Property="CellStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridCell">
-                        <Setter Property="Padding" Value="10,0"/>
-                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Padding" Value="10,0" />
+                        <Setter Property="BorderThickness" Value="1" />
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -297,133 +313,306 @@
     <Grid Margin="0,0,0,1">
         <TabControl x:Name="tabControl" Margin="10,10,10,10">
 
-            <!-- Users -->
+            <!--  Users  -->
             <TabItem Header="Users Tábla">
                 <Grid Background="{DynamicResource WindowBackground}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" VerticalAlignment="Top" Height="35" Orientation="Horizontal">
-                        <Label Content="Név:" Width="41" Height="30"/>
-                        <TextBox x:Name="tbName" Width="120" Height="30" TextWrapping="Wrap" VerticalContentAlignment="Center"/>
+                    <StackPanel
+                        Grid.Row="0"
+                        Height="35"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <Label
+                            Width="41"
+                            Height="30"
+                            Content="Név:" />
+                        <TextBox
+                            x:Name="tbName"
+                            Width="120"
+                            Height="30"
+                            VerticalContentAlignment="Center"
+                            TextWrapping="Wrap" />
 
-                        <Label Content="Email:" Width="45" Height="30"/>
-                        <TextBox x:Name="tbEmail" Width="242" Height="30" TextWrapping="Wrap" VerticalContentAlignment="Center"/>
+                        <Label
+                            Width="45"
+                            Height="30"
+                            Content="Email:" />
+                        <TextBox
+                            x:Name="tbEmail"
+                            Width="242"
+                            Height="30"
+                            VerticalContentAlignment="Center"
+                            TextWrapping="Wrap" />
 
-                        <Label Content="Telefonszám:" Width="92" Height="30"/>
-                        <TextBox x:Name="tbPhoneNum" Width="120" Height="30" TextWrapping="Wrap" VerticalContentAlignment="Center"/>
+                        <Label
+                            Width="92"
+                            Height="30"
+                            Content="Telefonszám:" />
+                        <TextBox
+                            x:Name="tbPhoneNum"
+                            Width="120"
+                            Height="30"
+                            VerticalContentAlignment="Center"
+                            TextWrapping="Wrap" />
 
-                        <Label Content="Jelszó:" Width="49" Height="30"/>
-                        <TextBox x:Name="tbPassword" Width="120" Height="30" TextWrapping="Wrap" VerticalContentAlignment="Center"/>
+                        <Label
+                            Width="49"
+                            Height="30"
+                            Content="Jelszó:" />
+                        <TextBox
+                            x:Name="tbPassword"
+                            Width="120"
+                            Height="30"
+                            VerticalContentAlignment="Center"
+                            TextWrapping="Wrap" />
 
-                        <Button Content="X" Width="35" Margin="10,0,0,0" Click="ClearButton_Click"/>
-                        <Button Content="Hozzáad" Click="AddUser_Click" Width="85" Margin="10,0,0,0"/>
-                        <Button Content="Módosítás" Click="UpdateUser_Click" Width="85" Margin="10,0,0,0"/>
-                        <TextBox x:Name="tbId" Width="120" Height="30" Opacity="0" VerticalContentAlignment="Center"/>
+                        <Button
+                            Width="35"
+                            Margin="10,0,0,0"
+                            Click="ClearButton_Click"
+                            Content="X" />
+                        <Button
+                            Width="85"
+                            Margin="10,0,0,0"
+                            Click="AddUser_Click"
+                            Content="Hozzáad" />
+                        <Button
+                            Width="85"
+                            Margin="10,0,0,0"
+                            Click="UpdateUser_Click"
+                            Content="Módosítás" />
+                        <TextBox
+                            x:Name="tbId"
+                            Width="120"
+                            Height="30"
+                            VerticalContentAlignment="Center"
+                            Opacity="0" />
                     </StackPanel>
 
-                    <DataGrid x:Name="userTable"
-                              Grid.Row="1"
-                              AutoGenerateColumns="True"
-                              SelectionChanged="UsersGrid_SelectionChanged"
-                              CanUserAddRows="False"/>
+                    <DataGrid
+                        x:Name="userTable"
+                        Grid.Row="1"
+                        AutoGenerateColumns="True"
+                        CanUserAddRows="False"
+                        SelectionChanged="UsersGrid_SelectionChanged">
+                        <DataGrid.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FF274C77" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White" />
+                        </DataGrid.Resources>
+                    </DataGrid>
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
-                        <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
-                        <Button Content="Töröl" Click="DeleteUser_Click" Width="75" Margin="10,0,0,0"/>
+                        <Button
+                            Width="75"
+                            Margin="10,0,0,0"
+                            Click="LoadAllData_Click"
+                            Content="Úratöltés" />
+                        <Button
+                            Width="75"
+                            Margin="10,0,0,0"
+                            Click="DeleteUser_Click"
+                            Content="Töröl" />
                     </StackPanel>
                 </Grid>
             </TabItem>
 
-            <!-- Messages -->
+            <!--  Messages  -->
             <TabItem Header="Messages Tábla">
                 <Grid Background="{DynamicResource WindowBackground}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid x:Name="messagesTable"
-                              Grid.Row="0"
-                              AutoGenerateColumns="True"
-                              CanUserAddRows="False"
-                              RowHeight="50"
-                              />
+                    <DataGrid
+                        x:Name="messagesTable"
+                        Grid.Row="0"
+                        AutoGenerateColumns="True"
+                        CanUserAddRows="False"
+                        RowHeight="50">
+                        <DataGrid.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FF274C77" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="#FFEBEBEB" />
+                        </DataGrid.Resources>
+                    </DataGrid>
 
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
-                        <Button Content="Töröl" Click="DeleteMessage_Click" Width="75" Margin="10,0,0,0"/>
+                        <Button
+                            Width="75"
+                            Margin="10,0,0,0"
+                            Click="LoadAllData_Click"
+                            Content="Úratöltés" />
+                        <Button
+                            Width="75"
+                            Margin="10,0,0,0"
+                            Click="DeleteMessage_Click"
+                            Content="Töröl" />
                     </StackPanel>
                 </Grid>
             </TabItem>
 
-            <!-- Bookings -->
+            <!--  Bookings  -->
             <TabItem Header="Bookings Tábla">
                 <Grid Background="{DynamicResource WindowBackground}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" VerticalAlignment="Center" Height="35" Orientation="Horizontal">
-                        <Label Content="User ID:"/>
-                        <ComboBox x:Name="cbBookingsUserId" Width="149" Height="30" VerticalContentAlignment="Center"/>
+                    <StackPanel
+                        Grid.Row="0"
+                        Height="35"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Label Content="User ID:" />
+                        <ComboBox
+                            x:Name="cbBookingsUserId"
+                            Width="149"
+                            Height="30"
+                            VerticalContentAlignment="Center" />
 
-                        <Label Content="Parking ID:" Width="74" Height="30"/>
-                        <TextBox x:Name="tbBookingsParkingId" Width="35" Height="30" VerticalContentAlignment="Center"/>
+                        <Label
+                            Width="74"
+                            Height="30"
+                            Content="Parking ID:" />
+                        <TextBox
+                            x:Name="tbBookingsParkingId"
+                            Width="35"
+                            Height="30"
+                            VerticalContentAlignment="Center" />
 
-                        <Label Content="Foglalás kezdete:" Width="118" Height="30"/>
-                        <DatePicker Style="{StaticResource StyledDatePicker}" x:Name="dpStartTime" Height="35" Width="45" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
+                        <Label
+                            Width="118"
+                            Height="30"
+                            Content="Foglalás kezdete:" />
+                        <DatePicker
+                            x:Name="dpStartTime"
+                            Width="45"
+                            Height="35"
+                            BorderThickness="0,0,0,0"
+                            FirstDayOfWeek="Monday"
+                            Style="{StaticResource StyledDatePicker}" />
 
-                        <Label Content="Foglalás vége:" Width="99" Height="30"/>
-                        <DatePicker Style="{StaticResource StyledDatePicker}" x:Name="dpEndTime" Height="35" Width="45" FirstDayOfWeek="Monday" BorderThickness="0,0,0,0"/>
+                        <Label
+                            Width="99"
+                            Height="30"
+                            Content="Foglalás vége:" />
+                        <DatePicker
+                            x:Name="dpEndTime"
+                            Width="45"
+                            Height="35"
+                            BorderThickness="0,0,0,0"
+                            FirstDayOfWeek="Monday"
+                            Style="{StaticResource StyledDatePicker}" />
 
-                        <Label Content="Foglalás időpontja:" Width="129" Height="30"/>
-                        <TextBox x:Name="tbBooked" IsEnabled="False" Width="120" Height="30" VerticalContentAlignment="Center"/>
+                        <Label
+                            Width="129"
+                            Height="30"
+                            Content="Foglalás időpontja:" />
+                        <TextBox
+                            x:Name="tbBooked"
+                            Width="120"
+                            Height="30"
+                            VerticalContentAlignment="Center"
+                            IsEnabled="False" />
 
-                        <Label Content="Jármű rendszáma:" Width="124" Height="30"/>
-                        <TextBox x:Name="tbPlateNum" Width="120" Height="30" VerticalContentAlignment="Center"/>
+                        <Label
+                            Width="124"
+                            Height="30"
+                            Content="Jármű rendszáma:" />
+                        <TextBox
+                            x:Name="tbPlateNum"
+                            Width="120"
+                            Height="30"
+                            VerticalContentAlignment="Center" />
 
-                        <Button Content="X" Width="35" Margin="10,0,0,0" Click="ClearButton_Click"/>
-                        <Button Content="Hozzáad" Click="AddBooking_Click" Width="85" Margin="10,0,0,0"/>
-                        <Button Content="Módosítás" Click="UpdateBooking_Click" Width="85" Margin="10,0,0,0"/>
-                        
-                        <TextBox x:Name="tbBookingsId" Opacity="0" Cursor="No" IsEnabled="False" Width="35" Height="30" VerticalContentAlignment="Center"/>
+                        <Button
+                            Width="35"
+                            Margin="10,0,0,0"
+                            Click="ClearButton_Click"
+                            Content="X" />
+                        <Button
+                            Width="85"
+                            Margin="10,0,0,0"
+                            Click="AddBooking_Click"
+                            Content="Hozzáad" />
+                        <Button
+                            Width="85"
+                            Margin="10,0,0,0"
+                            Click="UpdateBooking_Click"
+                            Content="Módosítás" />
+
+                        <TextBox
+                            x:Name="tbBookingsId"
+                            Width="35"
+                            Height="30"
+                            VerticalContentAlignment="Center"
+                            Cursor="No"
+                            IsEnabled="False"
+                            Opacity="0" />
                     </StackPanel>
 
-                    <DataGrid x:Name="bookingsTable"
-                              Grid.Row="1"
-                              AutoGenerateColumns="True"
-                              SelectionChanged="BookingsGrid_SelectionChanged"
-                              CanUserAddRows="False"/>
+                    <DataGrid
+                        x:Name="bookingsTable"
+                        Grid.Row="1"
+                        AutoGenerateColumns="True"
+                        CanUserAddRows="False"
+                        SelectionChanged="BookingsGrid_SelectionChanged">
+
+                        <DataGrid.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FF274C77" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="#FFEBEBEB" />
+                        </DataGrid.Resources>
+
+                    </DataGrid>
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
-                        <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
-                        <Button Content="Töröl" Click="DeleteBooking_Click" Width="75" Margin="10,0,0,0"/>
+                        <Button
+                            Width="75"
+                            Margin="10,0,0,0"
+                            Click="LoadAllData_Click"
+                            Content="Úratöltés" />
+                        <Button
+                            Width="75"
+                            Margin="10,0,0,0"
+                            Click="DeleteBooking_Click"
+                            Content="Töröl" />
                     </StackPanel>
                 </Grid>
             </TabItem>
 
-            <!-- Parking Spaces -->
+            <!--  Parking Spaces  -->
             <TabItem Header="Parking Spaces Tábla">
                 <Grid Background="{DynamicResource WindowBackground}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid x:Name="parkingTable"
-                              Grid.Row="0"
-                              AutoGenerateColumns="True"
-                              CanUserAddRows="False"/>
+                    <DataGrid
+                        x:Name="parkingTable"
+                        Grid.Row="0"
+                        AutoGenerateColumns="True"
+                        CanUserAddRows="False">
+                        <DataGrid.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FF274C77" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="#FFEBEBEB" />
+                        </DataGrid.Resources>
+                    </DataGrid>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
+                        <Button
+                            Width="75"
+                            Margin="10,0,0,0"
+                            Click="LoadAllData_Click"
+                            Content="Úratöltés" />
                     </StackPanel>
                 </Grid>
             </TabItem>
