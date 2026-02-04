@@ -83,7 +83,19 @@ namespace AdminPage
         {
             bookingsTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM bookings").DefaultView;
 
-            MessageBox.Show(DatabaseHelper.GetData("SELECT * FROM bookings").DefaultView.ToString());
+            DataTable userData = DatabaseHelper.GetData("SELECT bookings.user_id, users.name FROM users INNER JOIN bookings ON users.id = bookings.user_id");
+
+            List<string> formattedUsers = new List<string>();
+
+            foreach (DataRow row in userData.Rows)
+            {
+                // Safely convert using 'as string' and default values
+                string id = row["user_id"]?.ToString() ?? "0";        // row["user_id"] could be null
+                string name = row["name"] as string ?? "Unknown";     // cast to string and default
+
+                cbBookingsUserId.Items.Add($"{id}, {name}");
+            }
+
 
             if (bookingsTable.ItemsSource != null) { return true; } else { return false; }
         }

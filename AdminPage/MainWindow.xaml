@@ -476,7 +476,8 @@
                             x:Name="cbBookingsUserId"
                             Width="149"
                             Height="30"
-                            VerticalContentAlignment="Center" />
+                            VerticalContentAlignment="Center"
+                            Background="#FFE227C1"/>
 
                         <Label
                             Width="74"
