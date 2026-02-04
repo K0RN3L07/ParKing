@@ -349,7 +349,7 @@ id {
         "row2"
         "row3"
         "row4";
-    grid-template-rows: 1fr 1fr 1.5fr 1fr;
+    grid-template-rows: auto auto * auto;
     flex-direction: column;
     width: 50%;
     padding-left: 10px;

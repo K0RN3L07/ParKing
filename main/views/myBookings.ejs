@@ -29,6 +29,7 @@
                         <th>Mettől</th>
                         <th>Meddig</th>
                         <th>Típus</th>
+                        <th>Végösszeg</th>
                         <th>Állapot</th>
                         <th>Törlés</th>
                     </tr>
@@ -58,6 +59,9 @@
                                     </td>
                                     <td>
                                         <%= booking["type"] %>
+                                    </td>
+                                    <td>
+                                        <%= booking["total_price"] %> Ft
                                     </td>
                                     <td>
                                         <%= booking["parking_status"] %>

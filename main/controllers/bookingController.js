@@ -25,6 +25,7 @@ async function getMyBookings(req, res) {
         for (let i = 0; i < data.length; i++) {
             data[i]["parking_status"] = statuses[i]["parking_status"];
         }
+        console.log(data);
         
         // Optionally render page, still could use JSON for popup
         res.render("myBookings", { bookings: data, user: req.session.user || null });
@@ -76,7 +77,7 @@ async function bookSlot(req, res) {
         let start = start_date + " " + start_time;
         let end = end_date + " " + end_time;
 
-        await User.addBooking(user_id, parking_space_id, start, end, plate_num.toUpperCase(), total_cost);
+        await User.addBooking(user_id, parking_space_id, start, end, total_cost, plate_num.toUpperCase());
 
         return res.status(200).json({ msg: "Sikeres foglalás!", success: true });
     } catch (err) {

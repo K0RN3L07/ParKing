@@ -156,7 +156,7 @@ tr:hover {
 /* #endregion */
 
 /* #region Responsivity */
-@media (max-width:970px) {
+@media (max-width:1080px) {
     table {
         display: block;
         overflow-x: scroll;

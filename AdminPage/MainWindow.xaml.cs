@@ -83,6 +83,8 @@ namespace AdminPage
         {
             bookingsTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM bookings").DefaultView;
 
+            MessageBox.Show(DatabaseHelper.GetData("SELECT * FROM bookings").DefaultView.ToString());
+
             if (bookingsTable.ItemsSource != null) { return true; } else { return false; }
         }
 
@@ -160,9 +162,9 @@ namespace AdminPage
 
         private void AddBooking_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(tbBookingsUserId.Text) && !string.IsNullOrWhiteSpace(tbBookingsParkingId.Text) && !string.IsNullOrWhiteSpace(dpStartTime.Text) && !string.IsNullOrWhiteSpace(dpEndTime.Text) && !string.IsNullOrWhiteSpace(tbPlateNum.Text))
+            if (!string.IsNullOrWhiteSpace(cbBookingsUserId.Text) && !string.IsNullOrWhiteSpace(tbBookingsParkingId.Text) && !string.IsNullOrWhiteSpace(dpStartTime.Text) && !string.IsNullOrWhiteSpace(dpEndTime.Text) && !string.IsNullOrWhiteSpace(tbPlateNum.Text))
             {
-                string query = $"INSERT INTO bookings (user_id, parking_space_id, start_time, end_time, payment_status, plate_num) VALUES ('{tbBookingsUserId.Text}', '{tbBookingsParkingId.Text}', '{dpStartTime.Text}', '{dpEndTime.Text}', 'fizetve', '{tbPlateNum.Text.ToUpper()}')";
+                string query = $"INSERT INTO bookings (user_id, parking_space_id, start_time, end_time, payment_status, plate_num) VALUES ('{cbBookingsUserId.Text}', '{tbBookingsParkingId.Text}', '{dpStartTime.Text}', '{dpEndTime.Text}', 'fizetve', '{tbPlateNum.Text.ToUpper()}')";
                 DatabaseHelper.ExecuteQuery(query);
                 LoadBookingsData();
                 ClearBookingsFields();
@@ -234,7 +236,7 @@ namespace AdminPage
             if (bookingsTable.SelectedItem is DataRowView row)
             {
                 tbBookingsId.Text = row["id"].ToString();
-                tbBookingsUserId.Text = row["user_id"].ToString();
+                cbBookingsUserId.Text = row["user_id"].ToString();
                 tbBookingsParkingId.Text = row["parking_space_id"].ToString();
                 dpStartTime.Text = row["start_time"].ToString();
                 dpEndTime.Text = row["end_time"].ToString();
@@ -272,7 +274,7 @@ namespace AdminPage
             }
 
             int id = int.Parse(tbBookingsId.Text);
-            int user_id = string.IsNullOrWhiteSpace(tbBookingsUserId.Text) ? 0 : int.Parse(tbBookingsUserId.Text);
+            int user_id = string.IsNullOrWhiteSpace(cbBookingsUserId.Text) ? 0 : int.Parse(cbBookingsUserId.Text);
             int parking_id = string.IsNullOrWhiteSpace(tbBookingsParkingId.Text) ? 0 : int.Parse(tbBookingsParkingId.Text);
             string start_time= dpStartTime.Text;
             string end_time = dpEndTime.Text;
@@ -302,7 +304,7 @@ namespace AdminPage
         private void ClearBookingsFields()
         {
             tbBookingsId.Clear();
-            tbBookingsUserId.Clear();
+            //cbBookingsUserId.Clear();
             tbBookingsParkingId.Clear();
             dpStartTime.Text = "";
             dpEndTime.Text = "";

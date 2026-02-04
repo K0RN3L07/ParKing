@@ -259,7 +259,7 @@
             <Setter Property="RowStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridRow">
-                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
                         <Setter Property="BorderThickness" Value="1"/>
                         <Setter Property="SnapsToDevicePixels" Value="True"/>
                         <Style.Triggers>
@@ -268,6 +268,10 @@
                             </Trigger>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="{StaticResource Accent}"/>
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="False">
+                                <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
                                 <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
                             </Trigger>
                         </Style.Triggers>
@@ -348,7 +352,7 @@
                               CanUserAddRows="False"
                               RowHeight="50"
                               />
-                    
+
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button Content="Úratöltés" Click="LoadAllData_Click" Width="75" Margin="10,0,0,0"/>
@@ -367,11 +371,8 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0" VerticalAlignment="Center" Height="35" Orientation="Horizontal">
-                        <Label Content="ID:" Width="27" Height="30"/>
-                        <TextBox x:Name="tbBookingsId" Cursor="No" IsEnabled="False" Width="35" Height="30" VerticalContentAlignment="Center"/>
-
-                        <Label Content="User ID:" Width="59" Height="30"/>
-                        <TextBox x:Name="tbBookingsUserId" Width="35" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="User ID:"/>
+                        <ComboBox x:Name="cbBookingsUserId" Width="149" Height="30" VerticalContentAlignment="Center"/>
 
                         <Label Content="Parking ID:" Width="74" Height="30"/>
                         <TextBox x:Name="tbBookingsParkingId" Width="35" Height="30" VerticalContentAlignment="Center"/>
@@ -391,6 +392,8 @@
                         <Button Content="X" Width="35" Margin="10,0,0,0" Click="ClearButton_Click"/>
                         <Button Content="Hozzáad" Click="AddBooking_Click" Width="85" Margin="10,0,0,0"/>
                         <Button Content="Módosítás" Click="UpdateBooking_Click" Width="85" Margin="10,0,0,0"/>
+                        
+                        <TextBox x:Name="tbBookingsId" Opacity="0" Cursor="No" IsEnabled="False" Width="35" Height="30" VerticalContentAlignment="Center"/>
                     </StackPanel>
 
                     <DataGrid x:Name="bookingsTable"
