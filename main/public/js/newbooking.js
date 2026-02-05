@@ -183,7 +183,7 @@ async function getParkingSpaceTypeAndPrice(parking_slot) {
     document.getElementById("type").value = data["type"]
     document.getElementById("price").value = data["price_per_hour"] + "Ft / óra"
     let price = data["price_per_hour"] * parseInt(startedHoursBetween(getAllDates()[0], getAllDates()[1], getAllDates()[2], getAllDates()[3]))
-    document.getElementById("totalCost").value = price + "Ft";
+    document.getElementById("totalCost").value = price + " Ft";
 }
 
 function startedHoursBetween(startDate, startTime, endDate, endTime) {
@@ -319,8 +319,6 @@ document.getElementById("bookForm").addEventListener("submit", async (e) => {
             if (checkCorrectDateInterval()) {
                 const formData = new FormData(e.target);
                 const data = Object.fromEntries(formData.entries());
-                console.log(data);
-                
 
                 const response = await fetch("/bookSlot", {
                     method: "POST",
