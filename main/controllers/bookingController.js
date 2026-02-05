@@ -25,13 +25,12 @@ async function getMyBookings(req, res) {
         for (let i = 0; i < data.length; i++) {
             data[i]["parking_status"] = statuses[i]["parking_status"];
         }
-        console.log(data);
         
         // Optionally render page, still could use JSON for popup
         res.render("myBookings", { bookings: data, user: req.session.user || null });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ msg: "Hiba a foglalások lekérésekor", success: false });
+        return res.status(500).json({ msg: "Hiba a foglalások lekérésekor", success: false });
     }
 }
 
@@ -99,10 +98,10 @@ async function getAllReservedOnFloor(req, res) {
 
         let reservedSpots = await User.getAllReservedOnFloor(floor, start, end);
 
-        res.status(200).json({ reservedSpots, msg: "Foglalások lekérve", success: true });
+        return res.status(200).json({ reservedSpots, msg: "Foglalások lekérve", success: true });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ msg: "Hiba a foglalások lekérésekor", success: false });
+        return res.status(500).json({ msg: "Hiba a foglalások lekérésekor", success: false });
     }
 }
 
@@ -152,10 +151,10 @@ async function setStatuses(req, res) {
             return res.status(404).json({ msg: "Nincsenek foglalások", success: false });
         }
 
-        res.status(200).json({ results, msg: "Státuszok lekérve", success: true });
+        return res.status(200).json({ results, msg: "Státuszok lekérve", success: true });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ msg: "Hiba a státuszok lekérésekor", success: false });
+        return res.status(500).json({ msg: "Hiba a státuszok lekérésekor", success: false });
     }
 }
 
