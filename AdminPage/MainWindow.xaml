@@ -59,6 +59,72 @@
             </Style.Triggers>
         </Style>
 
+        <!--  ComboBox  -->
+        <!--<Style TargetType="ComboBox">
+            <Setter Property="Background" Value="{StaticResource Surface}" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Divider}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            --><!-- Bottom border --><!--
+                            <Border
+                        x:Name="Border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" />
+
+                            --><!-- Selected item --><!--
+                            <ContentPresenter
+                        Margin="6,2,24,2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" />
+
+                            --><!-- Toggle arrow --><!--
+                            <ToggleButton
+                        x:Name="ToggleButton"
+                        Focusable="False"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        HorizontalAlignment="Right"
+                        Width="24"
+                        IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
+                                <TextBlock Text="▼" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </ToggleButton>
+
+                            --><!-- Dropdown popup --><!--
+                            <Popup
+                        x:Name="PART_Popup"
+                        Placement="Bottom"
+                        IsOpen="{TemplateBinding IsDropDownOpen}"
+                        AllowsTransparency="True"
+                        Focusable="False"
+                        PopupAnimation="Fade">
+                                <Border
+                            Background="{StaticResource Surface}"
+                            BorderBrush="{StaticResource Divider}"
+                            BorderThickness="1">
+                                    <ScrollViewer>
+                                        <ItemsPresenter/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+
+                        --><!-- Hover & open triggers --><!--
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ToggleButton" Property="Background" Value="{StaticResource SurfaceHover}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+
         <!--  Button  -->
         <Style TargetType="Button">
             <Setter Property="Background" Value="{StaticResource Surface}" />
@@ -476,8 +542,7 @@
                             x:Name="cbBookingsUserId"
                             Width="149"
                             Height="30"
-                            VerticalContentAlignment="Center"
-                            Background="#FFE227C1"/>
+                            VerticalContentAlignment="Center" />
 
                         <Label
                             Width="74"
