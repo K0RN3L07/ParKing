@@ -56,7 +56,7 @@ exports.getUserBookings = (id) => {
     return new Promise((resolve, reject) => {
         db.query(
             `
-            SELECT bookings.id, parking_spaces.floor_num, parking_spaces.parking_space_num, bookings.start_time, bookings.end_time, bookings.parking_status, total_price, bookings.plate_num, parking_spaces.type
+            SELECT bookings.id, parking_spaces.floor_num, parking_spaces.parking_space_num, bookings.start_time, bookings.end_time, bookings.parking_status, bookings.total_price, bookings.plate_num, parking_spaces.type
             FROM parking_spaces INNER JOIN bookings
             ON parking_spaces.id = bookings.parking_space_id INNER JOIN users
             ON users.id = bookings.user_id

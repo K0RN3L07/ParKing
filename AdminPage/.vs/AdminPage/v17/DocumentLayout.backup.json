@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\adminpage\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\adminpage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\adminpage\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8D91DA97-BFF2-4010-997E-B262C4C8F22E}|AdminPage.csproj|c:\\users\\technikus\\documents\\matos kornel\\parking\\adminpage\\db_config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -50,8 +50,8 @@
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml*",
-              "RelativeToolTip": "MainWindow.xaml*",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-12-02T09:44:52.772Z",
               "EditorCaption": ""
@@ -62,22 +62,22 @@
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml*",
-              "RelativeToolTip": "MainWindow.xaml*",
-              "ViewState": "AgIAANYBAAAAAAAAAAAAAOABAAA/AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAswJEAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-01-28T09:42:01.479Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAWwFUAAACEAAAAAAAAAA==",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAywFUAAACEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-02T09:44:52.778Z",
               "EditorCaption": ""

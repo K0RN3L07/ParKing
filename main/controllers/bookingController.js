@@ -25,7 +25,6 @@ async function getMyBookings(req, res) {
         for (let i = 0; i < data.length; i++) {
             data[i]["parking_status"] = statuses[i]["parking_status"];
         }
-        console.log(data);
         
         // Optionally render page, still could use JSON for popup
         res.render("myBookings", { bookings: data, user: req.session.user || null });
