@@ -17,7 +17,10 @@ After pulling the latest changes, install dependencies:
 ```bash
 npm update
 npm run setup
+npm run dotenv
 ```
+
+❗**Make sure you fill `.env` file in root folder**
 
 ---
 
