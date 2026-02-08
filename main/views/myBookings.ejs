@@ -1,8 +1,7 @@
 <link rel="stylesheet" href="/css/myBookings.css">
 <script src="/js/myBookings.js" defer></script>
 <title>Parking | Foglalásaim</title>
-<%- include('navbarLayout', {body: '' }) %>
-
+<%- include('navbarLayout', { body: '' }) %>
     <div class="main-container">
 
         <!-- #region My Bookings -->
@@ -11,15 +10,18 @@
             <h1>Foglalásaim</h1>
 
             <!-- If user has any bookings, list all booked spaces in a table -->
-            <% if (bookings != "") {%>
-
-                <a href="/newBooking" class="add-button">
+            <% if (bookings !="" ) { %><a href="/newBooking" class="add-button">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                         fill="#e3e3e3">
                         <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
                     </svg>
                     Új foglalás hozzáadása
                 </a>
+
+                <div class="details-container">
+                    <input type="checkbox" name="details" id="details">
+                    <label for="details">Részletek megjelenítése</label>
+                </div>
 
                 <table>
                     <tr>
@@ -28,13 +30,12 @@
                         <th>Parkolóhely</th>
                         <th>Mettől</th>
                         <th>Meddig</th>
-                        <th>Típus</th>
-                        <th>Végösszeg</th>
-                        <th>Fizetés állapota</th>
-                        <th>Állapot</th>
+                        <th class="detailed">Típus</th>
+                        <th class="detailed">Végösszeg</th>
+                        <th class="detailed">Fizetés állapota</th>
+                        <th class="detailed">Állapot</th>
                         <th>Törlés</th>
                     </tr>
-
                     <% bookings.forEach(booking=> { %>
                         <tr>
                             <td>
@@ -46,45 +47,43 @@
                             <td>
                                 <%= booking["parking_space_num"] %>
                             </td>
-                            <% const date1=new Date(booking["start_time"]); const
-                                start_formatted=date1.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
+                            <% const date1=new Date(booking["start_time"]);
+                            const start_formatted=date1.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
+                            day: "2-digit" , hour: "2-digit" , minute: "2-digit" }); %>
+                            <td>
+                                <%= start_formatted %>
+                            </td>
+                                <% const date2=new Date(booking["end_time"]);
+                                const end_formatted=date2.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
                                 day: "2-digit" , hour: "2-digit" , minute: "2-digit" }); %>
-                                <td>
-                                    <%= start_formatted %>
-                                </td>
-                                <% const date2=new Date(booking["end_time"]); const
-                                    end_formatted=date2.toLocaleString("hu-HU", { year: "numeric" , month: "2-digit" ,
-                                    day: "2-digit" , hour: "2-digit" , minute: "2-digit" }); %>
-                                    <td>
-                                        <%= end_formatted %>
-                                    </td>
-                                    <td>
-                                        <%= booking["type"] %>
-                                    </td>
-                                    <td>
-                                        <%= booking["total_price"] %> Ft
-                                    </td>
-                                    <td>
-                                        <%= "Fizetve" %>
-                                    </td>
-                                    <td>
-                                        <%= booking["parking_status"] %>
-                                    </td>
-                                    <td>
-                                        <button class="delete-btn" data-booking-id="<%= booking["id"] %>">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
-                                                <path
-                                                    d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
-                                            </svg>
-                                        </button>
-                                    </td>
+                            <td>
+                                <%= end_formatted %>
+                            </td>
+                            <td class="detailed">
+                                <%= booking["type"] %>
+                            </td>
+                            <td class="detailed">
+                                <%= booking["total_price"] %>Ft
+                            </td>
+                            <td class="detailed">Fizetve</td>
+                            <td class="detailed">
+                                <%= booking["parking_status"] %>
+                            </td>
+                            <td>
+                                <button class="delete-btn" data-booking-id="<%= booking[" id"] %>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                        viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                                    </svg>
+                                </button>
+                            </td>
                         </tr>
                         <% }) %>
                 </table>
 
                 <!-- If user doesn't have any bookings, show message -->
-                <% } else {%>
+                <% } else { %>
                     <h2 style="letter-spacing: 1px;">Jelenleg nincs foglalásod!</h2>
 
                     <a href="/newBooking" class="add-button spacer">
@@ -95,10 +94,11 @@
                         Új foglalás hozzáadása
                     </a>
 
+
+
                     <% } %>
         </div>
 
         <!-- #endregion -->
-
-        <%- include('footer', {body: '' }) %>
+        <%- include('footer', { body: '' }) %>
     </div>
