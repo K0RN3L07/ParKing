@@ -34,6 +34,18 @@ document.addEventListener("click", async (e) => {
     }
 });
 
+let details = document.getElementById("details");
+let detailLabel = document.getElementById("detailLabel");
+
+details.addEventListener("change", () => {
+    if (details.checked) {
+        detailLabel.innerHTML = "Részletek elrejtése";
+    }
+    else {
+        detailLabel.innerHTML = "Részletek megjelenítése";
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const msg = sessionStorage.getItem("popupMsg");
     const success = Boolean(sessionStorage.getItem("popupSuccess"));

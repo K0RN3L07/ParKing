@@ -645,11 +645,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\AdminPage.csproj",
+      "projectUniqueName": "D:\\Munka\\Matos Kornél\\ParKing\\AdminPage\\AdminPage.csproj",
       "projectName": "AdminPage",
-      "projectPath": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\AdminPage.csproj",
+      "projectPath": "D:\\Munka\\Matos Kornél\\ParKing\\AdminPage\\AdminPage.csproj",
       "packagesPath": "C:\\Users\\Technikus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Technikus\\Documents\\Matos Kornel\\ParKing\\AdminPage\\obj\\",
+      "outputPath": "D:\\Munka\\Matos Kornél\\ParKing\\AdminPage\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -716,7 +716,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

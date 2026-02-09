@@ -64,7 +64,17 @@ body {
 }
 
 .details-container {
-    margin: 10px 0px 0px 8px;
+    margin: 20px 0px -10px 8px;
+}
+
+#details {
+    display: none;
+}
+
+.details-container label {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .details-container:has(#details:checked) ~ table .detailed {

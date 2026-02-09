@@ -83,19 +83,21 @@ namespace AdminPage
         {
             bookingsTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM bookings").DefaultView;
 
-            DataTable userData = DatabaseHelper.GetData("SELECT bookings.user_id, users.name FROM users INNER JOIN bookings ON users.id = bookings.user_id");
-
-            List<string> formattedUsers = new List<string>();
+            DataTable userData = DatabaseHelper.GetData("SELECT users.id, users.name FROM users");
 
             foreach (DataRow row in userData.Rows)
             {
                 // Safely convert using 'as string' and default values
-                string id = row["user_id"]?.ToString() ?? "0";        // row["user_id"] could be null
+                string id = row["id"]?.ToString() ?? "0";        // row["id"] could be null
                 string name = row["name"] as string ?? "Unknown";     // cast to string and default
 
-                cbBookingsUserId.Items.Add($"{id}, {name}");
-            }
+                // Adding only once
+                if (!cbBookingsUserId.Items.Contains($"{id}, {name}"))
+                {
+                    cbBookingsUserId.Items.Add($"{id}, {name}");
+                }
 
+            }
 
             if (bookingsTable.ItemsSource != null) { return true; } else { return false; }
         }
@@ -248,7 +250,7 @@ namespace AdminPage
             if (bookingsTable.SelectedItem is DataRowView row)
             {
                 tbBookingsId.Text = row["id"].ToString();
-                cbBookingsUserId.Text = row["user_id"].ToString();
+                cbBookingsUserId.SelectedIndex = int.Parse(row["user_id"].ToString()) - 1;
                 tbBookingsParkingId.Text = row["parking_space_id"].ToString();
                 dpStartTime.Text = row["start_time"].ToString();
                 dpEndTime.Text = row["end_time"].ToString();
@@ -290,7 +292,7 @@ namespace AdminPage
             int parking_id = string.IsNullOrWhiteSpace(tbBookingsParkingId.Text) ? 0 : int.Parse(tbBookingsParkingId.Text);
             string start_time= dpStartTime.Text;
             string end_time = dpEndTime.Text;
-            string plate_num = tbPlateNum.Text;
+            string plate_num = tbPlateNum.Text.ToUpper();
 
             if (user_id == 0 || parking_id == 0 || string.IsNullOrWhiteSpace(start_time) || string.IsNullOrWhiteSpace(end_time) || string.IsNullOrWhiteSpace(plate_num))
             {
