@@ -13,7 +13,7 @@ document.addEventListener("click", async (e) => {
             });
 
             if (res.ok) {
-                let rows = document.querySelectorAll("tr");
+                let rows = document.getElementsByTagName("tr");
                 if (rows.length == 2) {
                     sessionStorage.setItem("popupMsg", "Sikeres törlés!");
                     sessionStorage.setItem("popupSuccess", true);
