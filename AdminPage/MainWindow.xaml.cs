@@ -250,7 +250,18 @@ namespace AdminPage
             if (bookingsTable.SelectedItem is DataRowView row)
             {
                 tbBookingsId.Text = row["id"].ToString();
-                cbBookingsUserId.SelectedIndex = int.Parse(row["user_id"].ToString()) - 1;
+
+                // Safely handle possible null value for user_id
+                string? userIdStr = row["user_id"]?.ToString();
+                if (int.TryParse(userIdStr, out int userId) && userId > 0)
+                {
+                    cbBookingsUserId.SelectedIndex = userId - 1;
+                }
+                else
+                {
+                    cbBookingsUserId.SelectedIndex = -1;
+                }
+
                 tbBookingsParkingId.Text = row["parking_space_id"].ToString();
                 dpStartTime.Text = row["start_time"].ToString();
                 dpEndTime.Text = row["end_time"].ToString();
@@ -318,7 +329,7 @@ namespace AdminPage
         private void ClearBookingsFields()
         {
             tbBookingsId.Clear();
-            //cbBookingsUserId.Clear();
+            cbBookingsUserId.SelectedValue = "";
             tbBookingsParkingId.Clear();
             dpStartTime.Text = "";
             dpEndTime.Text = "";
