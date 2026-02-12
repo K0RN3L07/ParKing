@@ -13,6 +13,10 @@ function getRegister(req, res) {
     res.render('register', { success: true, msg: null });
 }
 
+function getForgotPassword(req, res) {
+    res.render('forgotPassword', { success: true, msg: null });
+}
+
 async function registerUser(req, res) {
     try {
         const { name, email, phone_num, password } = req.body;
@@ -142,6 +146,7 @@ module.exports = {
     getIndex,
     getLogin,
     getRegister,
+    getForgotPassword,
     registerUser,
     loginUser,
     logoutUser

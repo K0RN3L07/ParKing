@@ -125,6 +125,11 @@ input:-webkit-autofill:active {
     gap: 10px;
 }
 
+.forget {
+    color: var(--primary-text-color);
+    text-align: center;
+    margin-top: 5px;
+}
 
 #editPasswordForm {
     padding: 0 20px;
