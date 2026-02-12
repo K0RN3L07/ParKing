@@ -14,7 +14,7 @@ Use Node.js v18.20.5 and npm 10.8.2 when running the commands.
 
 After pulling the latest changes, install dependencies:
 
-📁 **Make sure your root folder is ****`ParKing/main`**
+📁 **Make sure your root folder is `ParKing/main`**
 
 ```bash
 npm update
@@ -22,7 +22,7 @@ npm run setup
 npm run dotenv
 ```
 
-❗ **Make sure you fill the ****`.env`**** file in the root folder**
+❗ **Make sure you fill the `.env` file in the root folder**
 
 ---
 
