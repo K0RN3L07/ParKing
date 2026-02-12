@@ -31,8 +31,7 @@ npm run dotenv
 Before starting the server, you must import the database structure.
 
 1. Open your database manager (e.g., phpMyAdmin, MySQL Workbench).
-2. Create a new database (`parking`).
-3. Import the SQL file located at:
+2. Import the SQL file located at:
 
 ```
 main/config/ParKing.sql
