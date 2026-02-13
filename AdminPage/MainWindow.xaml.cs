@@ -68,21 +68,19 @@ namespace AdminPage
         private bool LoadUsersData()
         {
             userTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM users").DefaultView;
-            
+
             if (userTable.ItemsSource != null) { return true; } else { return false; }
         }
-        
+
         private bool LoadMessagesData()
         {
             messagesTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM messages").DefaultView;
-            
+
             if (messagesTable.ItemsSource != null) { return true; } else { return false; }
         }
 
         private bool LoadBookingsData()
         {
-            bookingsTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM bookings").DefaultView;
-
             DataTable userData = DatabaseHelper.GetData("SELECT users.id, users.name FROM users");
 
             foreach (DataRow row in userData.Rows)
@@ -98,6 +96,8 @@ namespace AdminPage
                 }
 
             }
+
+            bookingsTable.ItemsSource = DatabaseHelper.GetData("SELECT * FROM bookings").DefaultView;
 
             if (bookingsTable.ItemsSource != null) { return true; } else { return false; }
         }
@@ -178,8 +178,32 @@ namespace AdminPage
         {
             if (!string.IsNullOrWhiteSpace(cbBookingsUserId.Text) && !string.IsNullOrWhiteSpace(tbBookingsParkingId.Text) && !string.IsNullOrWhiteSpace(dpStartTime.Text) && !string.IsNullOrWhiteSpace(dpEndTime.Text) && !string.IsNullOrWhiteSpace(tbPlateNum.Text))
             {
-                string query = $"INSERT INTO bookings (user_id, parking_space_id, start_time, end_time, payment_status, plate_num) VALUES ('{cbBookingsUserId.Text}', '{tbBookingsParkingId.Text}', '{dpStartTime.Text}', '{dpEndTime.Text}', 'fizetve', '{tbPlateNum.Text.ToUpper()}')";
+                string query = $"INSERT INTO bookings (user_id, parking_space_id, start_time, end_time, payment_status, plate_num) VALUES ('{cbBookingsUserId.Text}', '{tbBookingsParkingId.Text}', '{dpStartTime.Value?.ToString("yyyy-MM-dd HH:mm:ss")}', '{dpEndTime.Value?.ToString("yyyy-MM-dd HH:mm:ss")}', 'fizetve', '{tbPlateNum.Text.ToUpper()}')";
                 DatabaseHelper.ExecuteQuery(query);
+
+                DataTable parkingSpaceData = DatabaseHelper.GetData($"SELECT price_per_hour FROM parking_spaces WHERE id='{tbId.Text}'");
+                foreach (DataRow row in parkingSpaceData.Rows)
+                {
+                    TimeSpan? diff = dpEndTime.Value - dpStartTime.Value;
+
+                    if (diff.HasValue)
+                    {
+                        int hours = (int)Math.Ceiling(diff.Value.TotalHours);
+                        object priceObj = row["price_per_hour"];
+                        int pricePerHour = 0;
+
+                        if (priceObj != null && int.TryParse(priceObj.ToString(), out int temp))
+                        {
+                            pricePerHour = temp;
+                        }
+
+                        int price = pricePerHour * hours;
+                        string updatePriceQuery = $"UPDATE bookings SET total_price='{price}' ORDER BY id DESC LIMIT 1;";
+                        DatabaseHelper.ExecuteQuery(updatePriceQuery);
+                    }
+
+                }
+
                 LoadBookingsData();
                 ClearBookingsFields();
             }
@@ -301,7 +325,7 @@ namespace AdminPage
             int id = int.Parse(tbBookingsId.Text);
             int user_id = string.IsNullOrWhiteSpace(cbBookingsUserId.Text) ? 0 : int.Parse(cbBookingsUserId.Text);
             int parking_id = string.IsNullOrWhiteSpace(tbBookingsParkingId.Text) ? 0 : int.Parse(tbBookingsParkingId.Text);
-            string start_time= dpStartTime.Text;
+            string start_time = dpStartTime.Text;
             string end_time = dpEndTime.Text;
             string plate_num = tbPlateNum.Text.ToUpper();
 
@@ -325,7 +349,7 @@ namespace AdminPage
             tbPhoneNum.Clear();
             tbPassword.Clear();
         }
-        
+
         private void ClearBookingsFields()
         {
             tbBookingsId.Clear();
@@ -340,6 +364,11 @@ namespace AdminPage
         {
             ClearUsersFields();
             ClearBookingsFields();
+        }
+
+        private void cbBookingsUserId_Selected(object sender, RoutedEventArgs e)
+        {
+            tbId.Text = cbBookingsUserId?.SelectedValue?.ToString()?.Split(',')[0] ?? string.Empty;
         }
     }
 }

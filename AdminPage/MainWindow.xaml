@@ -471,37 +471,83 @@
                         Grid.Row="0"
                         VerticalAlignment="Center"
                         Orientation="Vertical">
-                        <!-- First line -->
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <!--  First line  -->
+                        <StackPanel Margin="0,0,0,5" Orientation="Horizontal">
                             <Label Content="User ID:" />
-                            <ComboBox x:Name="cbBookingsUserId" Width="149" Height="30" VerticalContentAlignment="Center" />
+                            <ComboBox
+                                x:Name="cbBookingsUserId"
+                                Width="149"
+                                Height="30"
+                                VerticalContentAlignment="Center"
+                                SelectionChanged="cbBookingsUserId_Selected" />
 
-                            <Label Width="77" Height="30" Content="Parking ID:" />
-                            <TextBox x:Name="tbBookingsParkingId" Width="35" Height="30" VerticalContentAlignment="Center" />
+                            <Label
+                                Width="77"
+                                Height="30"
+                                Content="Parking ID:" />
+                            <TextBox
+                                x:Name="tbBookingsParkingId"
+                                Width="35"
+                                Height="30"
+                                VerticalContentAlignment="Center" />
 
-                            <Label Width="124" Height="30" Content="Jármű rendszáma:" />
-                            <TextBox x:Name="tbPlateNum" Width="120" Height="30" VerticalContentAlignment="Center" />
+                            <Label
+                                Width="124"
+                                Height="30"
+                                Content="Jármű rendszáma:" />
+                            <TextBox
+                                x:Name="tbPlateNum"
+                                Width="120"
+                                Height="30"
+                                VerticalContentAlignment="Center" />
                         </StackPanel>
 
-                        <!-- Second line -->
+                        <!--  Second line  -->
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="118" Height="30" Content="Foglalás kezdete:" />
-                            <DatePicker x:Name="dpStartTime" Width="45" Height="35" BorderThickness="0" FirstDayOfWeek="Monday" Style="{StaticResource StyledDatePicker}" />
+                            <Label
+                                Width="118"
+                                Height="30"
+                                Content="Foglalás kezdete:" />
+                            <xctk:DateTimePicker
+                                Name="dpStartTime"
+                                Format="Custom"
+                                FormatString="yyyy-MM-dd HH:mm:ss"
+                                Value="{Binding SelectedDateTime, Mode=TwoWay}" />
 
-                            <Label Width="118" Height="30" Content="Foglalás kezdete:" />
-                            <xctk:TimePicker x:Name="tpStartTime" Width="70" Height="30" Margin="5,0,0,0" Format="Custom" FormatString="HH:mm" />
-                            
-                            <Label Width="99" Height="30" Content="Foglalás vége:" />
-                            <DatePicker x:Name="dpEndTime" Width="45" Height="35" BorderThickness="0" FirstDayOfWeek="Monday" Style="{StaticResource StyledDatePicker}" />
+                            <Label
+                                Width="99"
+                                Height="30"
+                                Content="Foglalás vége:" />
+                            <xctk:DateTimePicker
+                                Name="dpEndTime"
+                                Format="Custom"
+                                FormatString="yyyy-MM-dd HH:mm:ss"
+                                Value="{Binding SelectedDateTime, Mode=TwoWay}" />
 
-                            <Label Width="99" Height="30" Content="Foglalás vége:" />
-                            <xctk:TimePicker x:Name="tpEndTime" Width="70" Height="30" Margin="5,0,0,0" Format="Custom" FormatString="HH:mm" />
+                            <Button
+                                Width="35"
+                                Margin="10,0,0,0"
+                                Click="ClearButton_Click"
+                                Content="X" />
+                            <Button
+                                Width="85"
+                                Margin="10,0,0,0"
+                                Click="AddBooking_Click"
+                                Content="Hozzáad" />
+                            <Button
+                                Width="85"
+                                Margin="10,0,0,0"
+                                Click="UpdateBooking_Click"
+                                Content="Módosítás" />
 
-                            <Button Width="35" Margin="10,0,0,0" Click="ClearButton_Click" Content="X" />
-                            <Button Width="85" Margin="10,0,0,0" Click="AddBooking_Click" Content="Hozzáad" />
-                            <Button Width="85" Margin="10,0,0,0" Click="UpdateBooking_Click" Content="Módosítás" />
-
-                            <TextBox x:Name="tbBookingsId" Width="35" Height="30" VerticalContentAlignment="Center" Cursor="No" IsEnabled="False" Opacity="0" />
+                            <TextBox
+                                x:Name="tbBookingsId"
+                                Width="35"
+                                Height="30"
+                                VerticalContentAlignment="Center"
+                                Cursor="No"
+                                IsEnabled="False"
+                                Opacity="0" />
                         </StackPanel>
                     </StackPanel>
 
