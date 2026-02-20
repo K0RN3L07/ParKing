@@ -530,6 +530,11 @@ nav {
     color: #94a3b8;
 }
 
+/* Forgot password subtitle */
+#subtitle {
+    text-align: center;
+}
+
 /* #endregion */
 
 /* #region Responsivity */
