@@ -113,7 +113,6 @@ if (navbar) {
             dropdownToggled = false;
             dropdownIcon.style.rotate = "0deg";
             dropdownContainer.style.display = "none";
-            console.log("asdad")
         }
     });
 }

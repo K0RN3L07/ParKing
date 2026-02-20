@@ -62,11 +62,28 @@ function checkCorrectDateInterval() {
     }
 }
 
+function combine(date, time) {
+  return new Date(`${date}T${time}`);
+}
+
+function areAtLeast10MinutesApartSameDay(date1, time1, date2, time2) {
+  const d1 = combine(date1, time1);
+  const d2 = combine(date2, time2);
+
+  const sameDay =
+    d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate();
+
+  if (!sameDay) return true;
+
+  return Math.abs(d2 - d1) >= 10 * 60 * 1000;
+}
+
 function isMoreThanOneYearAway() {
     let yearPlusOne = (parseInt(getCurrentDate().split('-')[0]) + 1).toString() + "-" + getCurrentDate().split('-')[1].toString() + "-" + getCurrentDate().split("-")[2].toString();
     return getAllDates()[2] > yearPlusOne;
 }
-
 
 
 radioArray.forEach(radio => {
@@ -74,29 +91,34 @@ radioArray.forEach(radio => {
 
         if (checkIfDatesAreSet()) {
             if (!checkCorrectDateInterval()) {
-                new CreatePopup("Helytelen időintervallum!", false)
+                new CreatePopup("Helytelen időintervallum!", false);
                 radio.checked = false;
-                resetValues()
+                resetValues();
             }
             else {
-                if (isMoreThanOneYearAway(getCurrentDate(), getAllDates()[2])){
-                    new CreatePopup("Nem lehet több mint egy évvel előre foglalni!", false)
+                if (isMoreThanOneYearAway(getCurrentDate(), getAllDates()[2])) {
+                    new CreatePopup("Nem lehet több mint egy évvel előre foglalni!", false);
                     radio.checked = false;
-                    resetValues()
+                    resetValues();
                 }
-                else{
-                    
+                else if (!areAtLeast10MinutesApartSameDay(getAllDates()[0], getAllDates()[1], getAllDates()[2], getAllDates()[3])) {
+                    new CreatePopup("A foglalás időtartama minimum 10 perc!", false);
+                    radio.checked = false;
+                    resetValues();
+                }
+                else {
+
                     if (radio.checked) {
                         deleteSelection.classList.add("visible");
                     }
-    
+
                     else {
                         if (deleteSelection.classList.contains("visible")) {
                             deleteSelection.classList.remove("visible");
                         }
                     }
-    
-    
+
+
                     // Update placeholder
                     if (radio.checked) {
                         selectedSlot = radio.id;
@@ -123,7 +145,7 @@ let priceField = document.getElementById("price");
 let typeField = document.getElementById("type");
 let totalCost = document.getElementById("totalCost");
 
-function resetValues(){
+function resetValues() {
     radioArray.forEach(radio => {
         radio.checked = false;
     });
