@@ -99,17 +99,24 @@ function toggleHamburgerMenu() {
 }
 
 // Closing it on resize
-window.addEventListener("resize", () => {
-    if (window.innerWidth > 690) {
-        hamburgerToggled = false;
-        hamburgerBtn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 -960 960 960' width='48px' fill='var(--base-color)'><path d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/></svg>";
-        itemsVertical[0].style.transform = "translateX(100%)";
 
-        dropdownToggled = false;
-        dropdownIcon.style.rotate = "0deg";
-        dropdownContainer.style.display = "none";
-    }
-});
+const navbar = document.getElementById("navbar");
+
+if (navbar) {
+    // Run only when navbar is included in ejs
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 690) {
+            hamburgerToggled = false;
+            hamburgerBtn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 -960 960 960' width='48px' fill='var(--base-color)'><path d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/></svg>";
+            itemsVertical[0].style.transform = "translateX(100%)";
+
+            dropdownToggled = false;
+            dropdownIcon.style.rotate = "0deg";
+            dropdownContainer.style.display = "none";
+            console.log("asdad")
+        }
+    });
+}
 
 //#endregion
 
