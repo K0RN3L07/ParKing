@@ -21,9 +21,7 @@ describe('API tests', () => {
         jest.clearAllMocks();
     });
 
-    // ----------------------
     // REGISTER
-    // ----------------------
     describe('POST /users/register', () => {
 
         test('should register a new user successfully', async () => {
@@ -84,9 +82,7 @@ describe('API tests', () => {
         });
     });
 
-    // ----------------------
     // LOGIN
-    // ----------------------
     describe('POST /users/login', () => {
         test('should login successfully', async () => {
             const fakeUser = {
@@ -151,9 +147,7 @@ describe('API tests', () => {
         });
     });
 
-    // ----------------------
-    // GET routes (optional)
-    // ----------------------
+    // GET routes
     describe('GET routes', () => {
         test('GET / should render mainpage', async () => {
             const res = await request(app).get('/');

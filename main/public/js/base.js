@@ -262,7 +262,6 @@ function createConfirmationPopup(msg) {
         cancelButton.className = "btn cancelButton";
         cancelButton.innerHTML = "Mégse";
 
-        // ✔ Button handlers
         yesButton.addEventListener("click", () => {
             cleanup();
             resolve(true);
@@ -304,7 +303,7 @@ function createOKPopup(msg) {
         yesButton.className = "btn yesButton";
         yesButton.innerHTML = "Ok"
 
-        // ✔ Button handlers
+
         yesButton.addEventListener("click", () => {
             cleanup();
             resolve(true);

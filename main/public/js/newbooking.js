@@ -211,7 +211,7 @@ async function getParkingSpaceTypeAndPrice(parking_slot) {
 function startedHoursBetween(startDate, startTime, endDate, endTime) {
     const start = new Date(`${startDate}T${startTime}`);
     const end = new Date(`${endDate}T${endTime}`);
-    const msDiff = end - start; // difference in milliseconds
+    const msDiff = end - start;
     const hours = msDiff / (1000 * 60 * 60);
     return Math.ceil(hours);
 }
