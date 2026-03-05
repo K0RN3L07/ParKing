@@ -11,12 +11,13 @@
     <title>ParKing - Adminfelület</title>
 </head>
 
-<body class="container-fluid bg-dark text-light">
+<body class="container-fluid bg-dark text-light position-relative">
     <h1 class="text-center h1">ParKing Adminfelület</h1>
 
-    <i class="bi bi-arrow-clockwise fs-3 position-absolute" style="top: 10px;right: 10px;"></i>
+    <i title="Újratöltés" class="bi bi-arrow-clockwise fs-3 position-absolute" id="refreshButton"
+        style="top: 5px;right: 10px;cursor: pointer;"></i>
 
-    <table class="table table-bordered table-dark">
+    <table class="table table-striped table-bordered table-dark table-hover text-center mx-auto mt-5" style="max-width: 1200px;">
         <thead>
             <tr>
                 <th class="text-center">ID</th>
