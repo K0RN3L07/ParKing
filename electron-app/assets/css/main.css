@@ -1,0 +1,12 @@
+body {
+    padding: 0 !important;
+    overflow-x: hidden;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    background-color: gray;
+}

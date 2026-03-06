@@ -3,7 +3,7 @@ const path = require('node:path');
 const ejs = require('ejs');
 const fs = require('fs');
 
-const mainController = require('../controllers/mainController');
+const userController = require('../controllers/userController');
 
 function createWindow() {
 
@@ -30,7 +30,7 @@ function createWindow() {
   const finalHtml = ejs.render(
     fs.readFileSync(layout, "utf8"),
     {
-      title: "Home",
+      title: "ParKing - Adminfelület",
       body: pageHtml
     }
   );
@@ -45,7 +45,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
 
-  ipcMain.handle('getUsers', mainController.getUsers);
+  ipcMain.handle('getUsers', userController.getUsers);
 
   createWindow();
 
