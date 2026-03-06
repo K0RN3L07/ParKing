@@ -13,8 +13,7 @@
     "electron": "^40.7.0"
   },
   "dependencies": {
-    "bootstrap": "^5.3.8",
-    "bootstrap-icons": "^1.13.1",
+    "ejs": "^5.0.1",
     "mysql2": "^3.18.2"
   }
 }

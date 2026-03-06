@@ -1,8 +1,12 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
+const ejs = require('ejs');
+const fs = require('fs');
+
 const mainController = require('../controllers/mainController');
 
 function createWindow() {
+
   const win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -15,7 +19,27 @@ function createWindow() {
     },
   });
 
-  win.loadFile(path.join(__dirname, '..', 'renderer', 'index.html')),
+  const page = path.join(__dirname, '..', 'renderer', 'views', 'index.ejs');
+  const layout = path.join(__dirname, '..', 'renderer', 'views', 'layout.ejs');
+
+  const pageHtml = ejs.render(
+    fs.readFileSync(page, "utf8"),
+    {}
+  );
+
+  const finalHtml = ejs.render(
+    fs.readFileSync(layout, "utf8"),
+    {
+      title: "Home",
+      body: pageHtml
+    }
+  );
+
+  // win.loadURL("data:text/html;charset=utf-8," + encodeURIComponent(finalHtml));
+  const tempHtmlPath = path.join(__dirname, '..', 'renderer', 'index.html');
+  fs.writeFileSync(tempHtmlPath, finalHtml);
+  win.loadFile(tempHtmlPath);
+
   win.maximize();
 }
 
@@ -24,6 +48,7 @@ app.whenReady().then(() => {
   ipcMain.handle('getUsers', mainController.getUsers);
 
   createWindow();
+
 });
 
 app.on('window-all-closed', () => {
