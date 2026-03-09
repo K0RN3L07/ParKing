@@ -211,12 +211,12 @@ form.addEventListener("submit", async function (e) {
 
     //#region Password Regex
     if (!uppercaseRegex.test(password.value)) {
-        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 nagybetűs karakter!", false);
+        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 nagybetűs karaktert!", false);
         return;
     }
 
     if (!lowercaseRegex.test(password.value)) {
-        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 kisbetűs karakter!", false);
+        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 kisbetűs karaktert!", false);
         return;
     }
 
@@ -226,7 +226,7 @@ form.addEventListener("submit", async function (e) {
     }
 
     if (!specialCharRegex.test(password.value)) {
-        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 speciális karakter!", false);
+        new CreatePopup("A jelszónak tartalmaznia kell legalább 1 speciális karaktert!", false);
         return;
     }
 
