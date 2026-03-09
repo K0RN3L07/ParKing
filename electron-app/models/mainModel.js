@@ -2,7 +2,7 @@ const db = require("../config/db");
 
 function getUserCount() {
     return new Promise((resolve, reject) => {
-        db.query("SELECT COUNT(id) FROM users",
+        db.query("SELECT COUNT(id) AS num FROM users",
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result);

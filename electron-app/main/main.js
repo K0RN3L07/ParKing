@@ -3,7 +3,9 @@ const path = require('node:path');
 const ejs = require('ejs');
 const fs = require('fs');
 
+const mainController = require('../controllers/mainController');
 const userController = require('../controllers/userController');
+const bookingController = require('../controllers/bookingController');
 
 function createWindow() {
 
@@ -45,7 +47,9 @@ function createWindow() {
 
 app.whenReady().then(() => {
 
+  ipcMain.handle('getUserCount', mainController.getUserCount);
   ipcMain.handle('getUsers', userController.getUsers);
+  ipcMain.handle('getAllBookings', bookingController.getAllBookings);
 
   createWindow();
 
