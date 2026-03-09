@@ -1,6 +1,7 @@
 import { loadUserCount } from './mainTab.js'; // relative to renderer.js
 import { loadUsers } from './usersTab.js';
 import { loadAllBookings } from './bookingsTab.js';
+import { loadAllParkingSpaces } from './parkingSpaces.js';
 
 function removeBgFromNavLinks() {
     const links = document.querySelectorAll(".nav-link");
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainTab = document.getElementById("mainTab");
     const usersTab = document.getElementById("usersTab");
     const bookingsTab = document.getElementById("bookingsTab");
+    const parkingSpacesTab = document.getElementById("parkingSpacesTab");
     const refreshButton = document.getElementById("refreshButton");
 
     mainTab.addEventListener("click", loadMainTab);
@@ -53,6 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
         loadAllBookings();
     })
 
+    parkingSpacesTab.addEventListener("click", async () => {
+        const templateHtml = await fetch("./views/parkingSpaces.ejs").then(r => r.text());
+        mainContent.innerHTML = templateHtml;
+
+        removeBgFromNavLinks();
+        parkingSpacesTab.classList.add("bg-primary");
+
+        loadAllParkingSpaces();
+    })
+
+    // Reload app
     refreshButton.addEventListener("click", () => {
         window.location.reload();
     });
