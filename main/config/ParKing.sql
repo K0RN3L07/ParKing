@@ -161,3 +161,113 @@ INSERT INTO `parking_spaces` (`floor_num`, `parking_space_num`, `type`, `price_p
 (5, 18, 'Elektromos', 600),
 (5, 19, 'Mozgássérült', 300),
 (5, 20, 'Mozgássérült', 300);
+
+
+DELIMITER $$
+
+CREATE PROCEDURE teszt_adatok_feltoltese()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    DECLARE j INT;
+    DECLARE rand_space INT;
+    DECLARE start_t DATETIME;
+    DECLARE end_t DATETIME;
+    DECLARE duration_minutes INT;
+    DECLARE status_val VARCHAR(20);
+    DECLARE price_per_hour_val INT;
+    DECLARE hours_to_pay INT;
+    DECLARE total_price_val INT;
+
+    -- USERS
+    WHILE i <= 20 DO
+        INSERT INTO users (name, email, phone_num, password)
+        VALUES (
+            CONCAT('Test User ', i),
+            CONCAT('user', i, '@example.com'),
+            CONCAT('363000000', LPAD(i,2,'0')),
+            'hashedpassword'
+        );
+        SET i = i + 1;
+    END WHILE;
+
+    -- MESSAGES
+    SET i = 1;
+    WHILE i <= 20 DO
+        INSERT INTO messages (user_id, message)
+        VALUES (
+            FLOOR(1 + RAND()*20),
+            CONCAT('Teszt üzenet ', i)
+        );
+        SET i = i + 1;
+    END WHILE;
+
+    -- BOOKINGS
+    SET i = 1;
+
+    WHILE i <= 20 DO
+        SET j = 1;
+
+        WHILE j <= 5 DO
+
+            SET rand_space = FLOOR(1 + RAND()*100);
+
+            -- Start time ±10 days
+            SET start_t = NOW() + INTERVAL FLOOR(RAND()*21 - 10) DAY;
+
+            -- Duration between 10 minutes and 6 hours
+            SET duration_minutes = FLOOR(10 + RAND()*350);
+
+            SET end_t = start_t + INTERVAL duration_minutes MINUTE;
+
+            -- STATUS calculation
+            IF NOW() BETWEEN start_t AND end_t THEN
+                SET status_val = 'Aktív';
+            ELSEIF end_t < NOW() THEN
+                SET status_val = 'Lejárt';
+            ELSE
+                SET status_val = 'Későbbi';
+            END IF;
+
+            -- Get price
+            SELECT price_per_hour
+            INTO price_per_hour_val
+            FROM parking_spaces
+            WHERE id = rand_space;
+
+            -- Every started hour counts
+            SET hours_to_pay = CEIL(duration_minutes / 60);
+
+            SET total_price_val = hours_to_pay * price_per_hour_val;
+
+            INSERT INTO bookings (
+                user_id,
+                parking_space_id,
+                start_time,
+                end_time,
+                parking_status,
+                total_price,
+                payment_status,
+                plate_num
+            )
+            VALUES (
+                i,
+                rand_space,
+                start_t,
+                end_t,
+                status_val,
+                total_price_val,
+                'fizetve',
+                CONCAT('ABC', LPAD(i*10+j,3,'0'))
+            );
+
+            SET j = j + 1;
+
+        END WHILE;
+
+        SET i = i + 1;
+
+    END WHILE;
+
+END$$
+
+DELIMITER ;
