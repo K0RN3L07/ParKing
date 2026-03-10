@@ -34,7 +34,7 @@ function createWindow() {
   const finalHtml = ejs.render(
     fs.readFileSync(layout, "utf8"),
     {
-      title: "ParKing - Adminfelület",
+      title: "ParKing | Adminfelület",
       body: pageHtml
     }
   );
