@@ -5,4 +5,5 @@ contextBridge.exposeInMainWorld("api", {
     getUsers: () => ipcRenderer.invoke("getUsers"),
     getAllBookings: () => ipcRenderer.invoke("getAllBookings"),
     getAllParkingSpaces: () => ipcRenderer.invoke("getAllParkingSpaces"),
+    getAllMessages: () => ipcRenderer.invoke("getAllMessages"),
 });

@@ -7,6 +7,7 @@ const mainController = require('../controllers/mainController');
 const userController = require('../controllers/userController');
 const bookingController = require('../controllers/bookingController');
 const parkingSpacesController = require('../controllers/parkingSpacesController');
+const messagesController = require('../controllers/messagesController');
 
 function createWindow() {
 
@@ -52,6 +53,7 @@ app.whenReady().then(() => {
   ipcMain.handle('getUsers', userController.getUsers);
   ipcMain.handle('getAllBookings', bookingController.getAllBookings);
   ipcMain.handle('getAllParkingSpaces', parkingSpacesController.getAllParkingSpaces);
+  ipcMain.handle('getAllMessages', messagesController.getAllMessages);
 
   createWindow();
 
