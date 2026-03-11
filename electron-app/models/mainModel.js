@@ -35,7 +35,7 @@ function getAllBookingPrices() {
 // Line Chart
 function getBookingsPerDay() {
     return new Promise((resolve, reject) => {
-        db.query("SELECT DATE(start_time) AS day, COUNT(*) AS bookings FROM bookings GROUP BY day ORDER BY day;",
+        db.query("SELECT DATE(start_time) AS day, COUNT(*) AS booking_count FROM bookings GROUP BY day ORDER BY day;",
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result);
@@ -47,7 +47,7 @@ function getBookingsPerDay() {
 // Bar Chart
 function getPeakParkingHours() {
     return new Promise((resolve, reject) => {
-        db.query("SELECT HOUR(start_time) AS hour, COUNT(*) AS bookings FROM bookings GROUP BY hour ORDER BY hour;",
+        db.query("SELECT HOUR(start_time) AS hour, COUNT(*) AS hour_count FROM bookings GROUP BY hour ORDER BY hour;",
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result);

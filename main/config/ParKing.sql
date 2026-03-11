@@ -212,7 +212,10 @@ BEGIN
             SET rand_space = FLOOR(1 + RAND()*100);
 
             -- Start time within ±10 days
-            SET start_t = NOW() + INTERVAL FLOOR(RAND()*21 - 10) DAY;
+            SET start_t = NOW()
+              + INTERVAL FLOOR(RAND()*21 - 10) DAY
+              + INTERVAL FLOOR(RAND()*24) HOUR
+              + INTERVAL FLOOR(RAND()*60) MINUTE;
 
             -- Duration: minimum 10 minutes, up to 24 hours
             SET duration_minutes = FLOOR(10 + RAND()*1430);

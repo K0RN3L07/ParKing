@@ -4,8 +4,8 @@ export async function loadMainTabFunctions() {
         // const bookingCount = await window.api.getBookingCount();
         // const allBookingPrices = await window.api.getAllBookingPrices();
 
-        // const bookingsPerDay = await window.api.getBookingsPerDay();
-        // const peakParkingHours = await window.api.getPeakParkingHours();
+        const bookingsPerDay = await window.api.getBookingsPerDay();
+        const peakParkingHours = await window.api.getPeakParkingHours();
         // const mostUsedParkingSpaces = await window.api.getMostUsedParkingSpaces();
         // const revenueOverTime = await window.api.getgetRevenueOverTime();
         // const bookingsByStatus = await window.api.getgetBookingsByStatus();
@@ -21,27 +21,63 @@ export async function loadMainTabFunctions() {
         });
 
         // Bookings per Day (line)
+        let dayArray = [];
+        let bookingCountArray = [];
+        bookingsPerDay.forEach(stat => {
+            const date = new Date(stat.day);
+            const date_formatted = date.toLocaleString("hu-HU", {
+                year: "numeric", month: "2-digit", day: "2-digit"
+            });
+            dayArray.push(date_formatted);
+            bookingCountArray.push(stat.booking_count);
+        });
         new Chart(document.getElementById("chartBookingsPerDay"), {
             type: "line",
             data: {
-                labels: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+                labels: dayArray,
                 datasets: [{
-                    label: "Bookings",
-                    data: [5, 7, 3, 10, 6],
+                    label: "Foglalás",
+                    data: bookingCountArray,
                     borderColor: "#0d6efd",
                     tension: 0.3
                 }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function (value) {
+                                const label = this.getLabelForValue(value);
+                                const day = new Date(label).getDate();
+                                return day % 2 === 1 ? label : '';
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 10
+                    }
+                }
+            },
+            ticks: {
+                autoSkip: false
             }
         });
 
         // Peak Hours (bar)
+        let hoursArray = [];
+        let hourCountArray = [];
+        peakParkingHours.forEach(stat => {
+            hoursArray.push(stat.hour);
+            hourCountArray.push(stat.hour_count);
+        });
         new Chart(document.getElementById("chartPeakHours"), {
             type: "bar",
             data: {
-                labels: ["8", "9", "10", "11", "12", "13"],
+                labels: hoursArray,
                 datasets: [{
-                    label: "Bookings",
-                    data: [3, 9, 12, 7, 5, 4],
+                    label: "Foglalás",
+                    data: hourCountArray,
                     backgroundColor: "#198754"
                 }]
             }
