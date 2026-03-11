@@ -59,7 +59,7 @@ export async function loadMainTabFunctions() {
                     },
                     y: {
                         beginAtZero: true,
-                        max: 10
+                        max: 12
                     }
                 }
             },
