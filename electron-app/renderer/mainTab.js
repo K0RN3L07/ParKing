@@ -167,8 +167,23 @@ export async function loadMainTabFunctions() {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false // <-- important for resizing
-            }
+                maintainAspectRatio: false, // important for resizing
+                plugins: {
+                    datalabels: {
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: (value, context) => {
+                            let sum = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                            let percentage = (value / sum * 100).toFixed(1) + '%';
+                            return percentage;
+                        }
+                    }
+                }
+            },
+            plugins: [ChartDataLabels] // enable the datalabels plugin
         });
         //#endregion
     } catch (err) {
