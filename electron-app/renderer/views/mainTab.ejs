@@ -1,4 +1,53 @@
 <h1>Kezdőlap</h1>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div id="statsCarousel" class="carousel slide">
 
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <div class="container text-center">
+                <h4>Bookings per Day</h4>
+                <canvas id="chartBookingsPerDay" height="100"></canvas>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="container text-center">
+                <h4>Peak Parking Hours</h4>
+                <canvas id="chartPeakHours" height="100"></canvas>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="container text-center">
+                <h4>Most Used Parking Spaces</h4>
+                <canvas id="chartSpaces" height="100"></canvas>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="container text-center">
+                <h4>Revenue Over Time</h4>
+                <canvas id="chartRevenue" height="100"></canvas>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="container text-center">
+                <h4>Bookings by Status</h4>
+                <canvas id="chartStatus" height="100" width="100"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#statsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#statsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+
+</div>

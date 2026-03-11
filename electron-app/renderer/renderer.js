@@ -1,4 +1,4 @@
-import { loadUserCount } from './mainTab.js'; // relative to renderer.js
+import { loadMainTabFunctions } from './mainTab.js'; // relative to renderer.js
 import { loadUsers } from './usersTab.js';
 import { loadAllBookings } from './bookingsTab.js';
 import { loadAllParkingSpaces } from './parkingSpaces.js';
@@ -22,7 +22,7 @@ async function loadMainTab() {
     mainTab.classList.add("bg-primary");
 
     // Now call the loadUsers function from users.js
-    loadUserCount();
+    loadMainTabFunctions();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

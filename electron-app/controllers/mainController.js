@@ -20,16 +20,6 @@ async function getBookingCount() {
         }
 }
 
-async function getActiveBookingCount() {
-    try {
-            const count = await mainModel.getActiveBookingCount();
-            return count;
-        } catch (error) {
-            console.error("Error getting active booking count:", error);
-            return [];
-        }
-}
-
 async function getAllBookingPrices() {
     try {
             const prices = await mainModel.getAllBookingPrices();
@@ -40,9 +30,71 @@ async function getAllBookingPrices() {
         }
 }
 
+// Statistic for charts
+
+// Line Chart
+async function getBookingsPerDay() {
+    try {
+            const data = await mainModel.getBookingsPerDay();
+            return data;
+        } catch (error) {
+            console.error("Error getting bookings per day:", error);
+            return [];
+        }
+}
+
+// Bar Chart
+async function getPeakParkingHours() {
+    try {
+            const data = await mainModel.getPeakParkingHours();
+            return data;
+        } catch (error) {
+            console.error("Error getting peak parking hours:", error);
+            return [];
+        }
+}
+
+// Bar Chart
+async function getMostUsedParkingSpaces() {
+    try {
+            const data = await mainModel.getMostUsedParkingSpaces();
+            return data;
+        } catch (error) {
+            console.error("Error getting most used parking spaces:", error);
+            return [];
+        }
+}
+
+// Line Chart
+async function getRevenueOverTime() {
+    try {
+            const count = await mainModel.getRevenueOverTime();
+            return count;
+        } catch (error) {
+            console.error("Error getting revenue over time:", error);
+            return [];
+        }
+}
+
+// Pie Chart
+async function getBookingsByStatus() {
+    try {
+            const count = await mainModel.getBookingsByStatus();
+            return count;
+        } catch (error) {
+            console.error("Error getting active booking count:", error);
+            return [];
+        }
+}
+
 module.exports = {
     getUserCount,
     getBookingCount,
-    getActiveBookingCount,
-    getAllBookingPrices
+    getAllBookingPrices,
+
+    getBookingsPerDay,
+    getPeakParkingHours,
+    getMostUsedParkingSpaces,
+    getRevenueOverTime,
+    getBookingsByStatus,
 }

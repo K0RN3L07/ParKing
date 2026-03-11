@@ -17,7 +17,7 @@ export async function loadAllMessages() {
         row.innerHTML = `
                 <td>${message.id}</td>
                 <td>${message.name}</td>
-                <td>${message.message}</td>
+                <td class='text-truncate' style='max-width:100px;'>${message.message}</td>
                 <td>${formattedDate}</td>
                 <td class='text-center'><button class='btn btn-primary'><i class="bi bi-pencil-fill"></i></button></td>
                 <td class='text-center'><button class='btn btn-danger'><i class="bi bi-trash3-fill"></i></button></td>

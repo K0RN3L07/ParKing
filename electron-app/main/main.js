@@ -50,9 +50,22 @@ function createWindow() {
 app.whenReady().then(() => {
 
   ipcMain.handle('getUserCount', mainController.getUserCount);
+  ipcMain.handle('getBookingCount', mainController.getBookingCount);
+  ipcMain.handle('getAllBookingPrices', mainController.getAllBookingPrices);
+
+  // Statistic for charts
+  ipcMain.handle('getBookingsPerDay', mainController.getBookingsPerDay);
+  ipcMain.handle('getPeakParkingHours', mainController.getPeakParkingHours);
+  ipcMain.handle('getMostUsedParkingSpaces', mainController.getMostUsedParkingSpaces);
+  ipcMain.handle('getRevenueOverTime', mainController.getRevenueOverTime);
+  ipcMain.handle('getBookingsByStatus', mainController.getBookingsByStatus);
+
   ipcMain.handle('getUsers', userController.getUsers);
+
   ipcMain.handle('getAllBookings', bookingController.getAllBookings);
+
   ipcMain.handle('getAllParkingSpaces', parkingSpacesController.getAllParkingSpaces);
+  
   ipcMain.handle('getAllMessages', messagesController.getAllMessages);
 
   createWindow();
