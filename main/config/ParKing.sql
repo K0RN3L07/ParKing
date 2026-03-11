@@ -211,13 +211,16 @@ BEGIN
 
             SET rand_space = FLOOR(1 + RAND()*100);
 
-            -- Start time ±10 days
+            -- Start time within ±10 days
             SET start_t = NOW() + INTERVAL FLOOR(RAND()*21 - 10) DAY;
 
-            -- Duration between 10 minutes and 6 hours
-            SET duration_minutes = FLOOR(10 + RAND()*350);
+            -- Duration: minimum 10 minutes, up to 24 hours
+            SET duration_minutes = FLOOR(10 + RAND()*1430);
 
-            SET end_t = start_t + INTERVAL duration_minutes MINUTE;
+            -- End time: +0–7 days + duration minutes
+            SET end_t = start_t
+                        + INTERVAL FLOOR(RAND()*7) DAY
+                        + INTERVAL duration_minutes MINUTE;
 
             -- STATUS calculation
             IF NOW() BETWEEN start_t AND end_t THEN
@@ -235,7 +238,7 @@ BEGIN
             WHERE id = rand_space;
 
             -- Every started hour counts
-            SET hours_to_pay = CEIL(duration_minutes / 60);
+            SET hours_to_pay = CEIL(TIMESTAMPDIFF(MINUTE, start_t, end_t) / 60);
 
             SET total_price_val = hours_to_pay * price_per_hour_val;
 
