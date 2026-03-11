@@ -1,6 +1,6 @@
 <h1>Kezdőlap</h1>
 
-<div id="statsCarousel" class="carousel slide">
+<div id="statsCarousel" class="carousel slide"  data-bs-ride="carousel" data-bs-interval="5000">
 
     <div class="carousel-inner">
 
@@ -20,21 +20,21 @@
 
         <div class="carousel-item">
             <div class="container text-center">
-                <h4>Most Used Parking Spaces</h4>
+                <h4>Leggyakrabban foglalt parkolóhelyek</h4>
                 <canvas id="chartSpaces" height="100"></canvas>
             </div>
         </div>
 
         <div class="carousel-item">
             <div class="container text-center">
-                <h4>Revenue Over Time</h4>
+                <h4>Napi bevétel</h4>
                 <canvas id="chartRevenue" height="100"></canvas>
             </div>
         </div>
 
         <div class="carousel-item">
             <div class="container text-center">
-                <h4>Bookings by Status</h4>
+                <h4>Foglalások állapotonként</h4>
                 <div style="width: 500px; height: 450px;" class="mx-auto">
                     <canvas id="chartStatus"></canvas>
                 </div>

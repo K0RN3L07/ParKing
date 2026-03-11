@@ -59,7 +59,7 @@ function getPeakParkingHours() {
 // Bar Chart
 function getMostUsedParkingSpaces() {
     return new Promise((resolve, reject) => {
-        db.query("SELECT parking_space_id, COUNT(*) AS usage_count FROM bookings GROUP BY parking_space_id ORDER BY usage_count DESC LIMIT 10;",
+        db.query("SELECT CONCAT(parking_spaces.floor_num, ' emelet, ', parking_spaces.parking_space_num, '. hely') AS parking_slot, COUNT(*) AS usage_count FROM bookings INNER JOIN parking_spaces ON parking_spaces.id = bookings.parking_space_id GROUP BY parking_space_id ORDER BY usage_count DESC LIMIT 10;",
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result);
@@ -83,7 +83,7 @@ function getRevenueOverTime() {
 // Pie Chart
 function getBookingsByStatus() {
     return new Promise((resolve, reject) => {
-        db.query("SELECT parking_status, COUNT(*) AS total FROM bookings GROUP BY parking_status;",
+        db.query("SELECT parking_status, COUNT(*) AS count FROM bookings GROUP BY parking_status;",
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result);

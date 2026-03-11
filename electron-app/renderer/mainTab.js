@@ -6,11 +6,15 @@ export async function loadMainTabFunctions() {
 
         const bookingsPerDay = await window.api.getBookingsPerDay();
         const peakParkingHours = await window.api.getPeakParkingHours();
-        // const mostUsedParkingSpaces = await window.api.getMostUsedParkingSpaces();
-        // const revenueOverTime = await window.api.getgetRevenueOverTime();
-        // const bookingsByStatus = await window.api.getgetBookingsByStatus();
+        const mostUsedParkingSpaces = await window.api.getMostUsedParkingSpaces();
+        const revenueOverTime = await window.api.getRevenueOverTime();
+        const bookingsByStatus = await window.api.getBookingsByStatus();
 
         const carousel = document.querySelector('#statsCarousel');
+        const cyclingCarausel = new bootstrap.Carousel(carousel, {
+            interval: 5000,  // cycle every 3 seconds
+            ride: 'carousel' // start automatically
+        });
 
         carousel.addEventListener('slid.bs.carousel', function (e) {
             const chartId = e.relatedTarget.querySelector("canvas")?.id;
@@ -20,7 +24,7 @@ export async function loadMainTabFunctions() {
             }
         });
 
-        // Bookings per Day (line)
+        // #region Bookings Per Day (line)
         let dayArray = [];
         let bookingCountArray = [];
         bookingsPerDay.forEach(stat => {
@@ -63,8 +67,9 @@ export async function loadMainTabFunctions() {
                 autoSkip: false
             }
         });
+        //#endregion
 
-        // Peak Hours (bar)
+        // #region Peak Hours (bar)
         let hoursArray = [];
         let hourCountArray = [];
         peakParkingHours.forEach(stat => {
@@ -82,41 +87,82 @@ export async function loadMainTabFunctions() {
                 }]
             }
         });
+        //#endregion
 
-        // Most Used Spaces
+        // #region Most Used Spaces (bar)
+        let parkingSlotArray = [];
+        let parkingCountArray = [];
+        mostUsedParkingSpaces.forEach(stat => {
+            parkingSlotArray.push(stat.parking_slot);
+            parkingCountArray.push(stat.usage_count);
+        });
         new Chart(document.getElementById("chartSpaces"), {
             type: "bar",
             data: {
-                labels: ["12", "25", "33", "41", "18"],
+                labels: parkingSlotArray,
                 datasets: [{
-                    label: "Usage",
-                    data: [20, 18, 15, 13, 10],
+                    label: "Alkalom",
+                    data: parkingCountArray,
                     backgroundColor: "#ffc107"
                 }]
             }
         });
+        //#endregion
 
-        // Revenue
+        // #region Revenue (line)
+        let dayArray2 = [];
+        let revenueArray = [];
+        revenueOverTime.forEach(stat => {
+            const date = new Date(stat.day);
+            const date_formatted = date.toLocaleString("hu-HU", {
+                year: "numeric", month: "2-digit", day: "2-digit"
+            });
+            dayArray2.push(date_formatted);
+            revenueArray.push(stat.revenue);
+        });
         new Chart(document.getElementById("chartRevenue"), {
             type: "line",
             data: {
-                labels: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+                labels: dayArray2,
                 datasets: [{
-                    label: "Revenue",
-                    data: [2000, 3400, 2700, 4200, 3100],
+                    label: "Bevétel (Ft)",
+                    data: revenueArray,
                     borderColor: "#dc3545"
                 }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function (value) {
+                                const label = this.getLabelForValue(value);
+                                const day = new Date(label).getDate();
+                                return day % 2 === 1 ? label : '';
+                            }
+                        }
+                    }
+                }
+            },
+            ticks: {
+                autoSkip: false
             }
         });
+        //#endregion
 
-        // Booking Status
+        // #region Booking Status
+        let statusArray = [];
+        let statusCountArray = [];
+        bookingsByStatus.forEach(stat => {
+            statusArray.push(stat.parking_status);
+            statusCountArray.push(stat.count);
+        });
         new Chart(document.getElementById("chartStatus"), {
             type: "pie",
             data: {
-                labels: ["Aktív", "Lejárt", "Későbbi"],
+                labels: statusArray,
                 datasets: [{
-                    data: [10, 25, 15],
-                    backgroundColor: ["#198754", "#dc3545", "#0d6efd"]
+                    data: statusCountArray,
+                    backgroundColor: ["#198754", "#0d6efd", "#dc3545"]
                 }]
             },
             options: {
@@ -124,6 +170,7 @@ export async function loadMainTabFunctions() {
                 maintainAspectRatio: false // <-- important for resizing
             }
         });
+        //#endregion
     } catch (err) {
         console.log("Error getting mainTab functions: ", err)
     }
