@@ -40,6 +40,17 @@ function getTodaysRevenue() {
     });
 }
 
+function getAverageBookingTime() {
+    return new Promise((resolve, reject) => {
+        db.query("SELECT AVG(TIMESTAMPDIFF(HOUR, start_time, end_time)) AS avg_time FROM bookings;",
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result);
+            }
+        )
+    })
+}
+
 // Statistic for charts
 
 // Line Chart
@@ -107,6 +118,7 @@ module.exports = {
     getActiveBookingCount,
     getAllBookingPrices,
     getTodaysRevenue,
+    getAverageBookingTime,
 
     getBookingsPerDay,
     getPeakParkingHours,

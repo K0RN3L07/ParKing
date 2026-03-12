@@ -5,6 +5,7 @@ contextBridge.exposeInMainWorld("api", {
     getActiveBookingCount: () => ipcRenderer.invoke("getActiveBookingCount"),
     getAllBookingPrices: () => ipcRenderer.invoke("getAllBookingPrices"),
     getTodaysRevenue: () => ipcRenderer.invoke("getTodaysRevenue"),
+    getAverageBookingTime: () => ipcRenderer.invoke("getAverageBookingTime"),
     
     getBookingsPerDay: () => ipcRenderer.invoke("getBookingsPerDay"),
     getPeakParkingHours: () => ipcRenderer.invoke("getPeakParkingHours"),

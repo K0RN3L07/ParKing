@@ -209,7 +209,12 @@ BEGIN
 
         WHILE j <= 5 DO
 
-            SET rand_space = FLOOR(1 + RAND()*100);
+            -- Select random existing parking space and its price
+            SELECT id, price_per_hour
+            INTO rand_space, price_per_hour_val
+            FROM parking_spaces
+            ORDER BY RAND()
+            LIMIT 1;
 
             -- Start time within ±10 days
             SET start_t = NOW()
@@ -233,12 +238,6 @@ BEGIN
             ELSE
                 SET status_val = 'Későbbi';
             END IF;
-
-            -- Get price
-            SELECT price_per_hour
-            INTO price_per_hour_val
-            FROM parking_spaces
-            WHERE id = rand_space;
 
             -- Every started hour counts
             SET hours_to_pay = CEIL(TIMESTAMPDIFF(MINUTE, start_t, end_t) / 60);
@@ -275,5 +274,18 @@ BEGIN
     END WHILE;
 
 END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE tabla_adatok_torlese()
+BEGIN
+	SET FOREIGN_KEY_CHECKS = 0;
+	TRUNCATE TABLE users;
+    TRUNCATE TABLE bookings;
+    TRUNCATE TABLE messages;
+    SET FOREIGN_KEY_CHECKS = 1;
+END $$
 
 DELIMITER ;

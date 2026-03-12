@@ -10,6 +10,7 @@ export async function loadMainTabFunctions() {
         const activeBookingCount = await window.api.getActiveBookingCount();
         // const allBookingPrices = await window.api.getAllBookingPrices();
         const todaysRevenue = await window.api.getTodaysRevenue();
+        const averageBookingTime = await window.api.getAverageBookingTime();
 
         const carousel = document.querySelector('#statsCarousel');
         const cyclingCarausel = new bootstrap.Carousel(carousel, {
@@ -195,7 +196,7 @@ export async function loadMainTabFunctions() {
         const freeCount = document.getElementById("freeCount");
 
         const maxParkingSpots = 100;
-        const occupiedPercentage = (parseInt(activeBookingCount[0].db) / maxParkingSpots) * 100;
+        const occupiedPercentage = Math.floor((parseInt(activeBookingCount[0].db) / maxParkingSpots) * 100);
 
         percentageText.innerHTML = `${occupiedPercentage}%`;
 
@@ -208,6 +209,9 @@ export async function loadMainTabFunctions() {
 
         const todayRevenue = document.getElementById("todayRevenue");
         todayRevenue.innerHTML = `${new Intl.NumberFormat().format(todaysRevenue[0].revenue)} Ft`;
+
+        const averageBookingTimeText = document.getElementById("averageBookingTime");
+        averageBookingTimeText.innerHTML = `${Math.floor(averageBookingTime[0].avg_time / 24)} nap ${Math.floor(averageBookingTime[0].avg_time % 24)} óra`;
 
     } catch (err) {
         console.log("Error getting mainTab functions: ", err)

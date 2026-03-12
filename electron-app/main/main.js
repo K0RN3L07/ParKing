@@ -53,6 +53,7 @@ app.whenReady().then(() => {
   ipcMain.handle('getActiveBookingCount', mainController.getActiveBookingCount);
   ipcMain.handle('getAllBookingPrices', mainController.getAllBookingPrices);
   ipcMain.handle('getTodaysRevenue', mainController.getTodaysRevenue);
+  ipcMain.handle('getAverageBookingTime', mainController.getAverageBookingTime);
 
   // Statistic for charts
   ipcMain.handle('getBookingsPerDay', mainController.getBookingsPerDay);

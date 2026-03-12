@@ -40,6 +40,16 @@ async function getTodaysRevenue() {
         }
 }
 
+async function getAverageBookingTime() {
+    try {
+            const avg = await mainModel.getAverageBookingTime();
+            return avg;
+        } catch (error) {
+            console.error("Error getting average booking time:", error);
+            return [];
+        }
+}
+
 // Statistic for charts
 
 // Line Chart
@@ -102,6 +112,7 @@ module.exports = {
     getActiveBookingCount,
     getAllBookingPrices,
     getTodaysRevenue,
+    getAverageBookingTime,
 
     getBookingsPerDay,
     getPeakParkingHours,
