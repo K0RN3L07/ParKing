@@ -50,8 +50,9 @@ function createWindow() {
 app.whenReady().then(() => {
 
   ipcMain.handle('getUserCount', mainController.getUserCount);
-  ipcMain.handle('getBookingCount', mainController.getBookingCount);
+  ipcMain.handle('getActiveBookingCount', mainController.getActiveBookingCount);
   ipcMain.handle('getAllBookingPrices', mainController.getAllBookingPrices);
+  ipcMain.handle('getTodaysRevenue', mainController.getTodaysRevenue);
 
   // Statistic for charts
   ipcMain.handle('getBookingsPerDay', mainController.getBookingsPerDay);

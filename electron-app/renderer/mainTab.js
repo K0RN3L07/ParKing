@@ -1,14 +1,15 @@
 export async function loadMainTabFunctions() {
     try {
-        // const userCount = await window.api.getUserCount();
-        // const bookingCount = await window.api.getBookingCount();
-        // const allBookingPrices = await window.api.getAllBookingPrices();
-
         const bookingsPerDay = await window.api.getBookingsPerDay();
         const peakParkingHours = await window.api.getPeakParkingHours();
         const mostUsedParkingSpaces = await window.api.getMostUsedParkingSpaces();
         const revenueOverTime = await window.api.getRevenueOverTime();
         const bookingsByStatus = await window.api.getBookingsByStatus();
+
+        // const userCount = await window.api.getUserCount();
+        const activeBookingCount = await window.api.getActiveBookingCount();
+        // const allBookingPrices = await window.api.getAllBookingPrices();
+        const todaysRevenue = await window.api.getTodaysRevenue();
 
         const carousel = document.querySelector('#statsCarousel');
         const cyclingCarausel = new bootstrap.Carousel(carousel, {
@@ -186,7 +187,30 @@ export async function loadMainTabFunctions() {
             plugins: [ChartDataLabels] // enable the datalabels plugin
         });
         //#endregion
+    
+        //#region Occupancy Percentage
+        const percentageText = document.getElementById("percentageText");
+        const occopancyProgressBar = document.getElementById("occopancyProgressBar");
+        const occupiedCount = document.getElementById("occupiedCount");
+        const freeCount = document.getElementById("freeCount");
+
+        const maxParkingSpots = 100;
+        const occupiedPercentage = (parseInt(activeBookingCount[0].db) / maxParkingSpots) * 100;
+
+        percentageText.innerHTML = `${occupiedPercentage}%`;
+
+        occopancyProgressBar.style.width = percentageText.innerHTML;
+        occopancyProgressBar.setAttribute("aria-valuenow", occupiedPercentage);
+
+        occupiedCount.innerHTML = `${activeBookingCount[0].db} hely foglalt`;
+        freeCount.innerHTML = `${maxParkingSpots - activeBookingCount[0].db} hely szabad`;
+        //#endregion
+
+        const todayRevenue = document.getElementById("todayRevenue");
+        todayRevenue.innerHTML = `${new Intl.NumberFormat().format(todaysRevenue[0].revenue)} Ft`;
+
     } catch (err) {
         console.log("Error getting mainTab functions: ", err)
     }
 }
+

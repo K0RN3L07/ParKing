@@ -10,9 +10,9 @@ async function getUserCount() {
         }
 }
 
-async function getBookingCount() {
+async function getActiveBookingCount() {
     try {
-            const count = await mainModel.getBookingCount();
+            const count = await mainModel.getActiveBookingCount();
             return count;
         } catch (error) {
             console.error("Error getting all booking count:", error);
@@ -26,6 +26,16 @@ async function getAllBookingPrices() {
             return prices;
         } catch (error) {
             console.error("Error getting total booking price:", error);
+            return [];
+        }
+}
+
+async function getTodaysRevenue() {
+    try {
+            const revenue = await mainModel.getTodaysRevenue();
+            return revenue;
+        } catch (error) {
+            console.error("Error getting today's total revenue:", error);
             return [];
         }
 }
@@ -89,8 +99,9 @@ async function getBookingsByStatus() {
 
 module.exports = {
     getUserCount,
-    getBookingCount,
+    getActiveBookingCount,
     getAllBookingPrices,
+    getTodaysRevenue,
 
     getBookingsPerDay,
     getPeakParkingHours,

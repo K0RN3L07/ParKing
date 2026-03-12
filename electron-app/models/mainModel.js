@@ -10,9 +10,9 @@ function getUserCount() {
     });
 }
 
-function getBookingCount() {
+function getActiveBookingCount() {
     return new Promise((resolve, reject) => {
-        db.query("SELECT COUNT(id) FROM bookings",
+        db.query("SELECT COUNT(id) AS db FROM bookings WHERE parking_status='Aktív'",
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result);
@@ -23,6 +23,16 @@ function getBookingCount() {
 function getAllBookingPrices() {
     return new Promise((resolve, reject) => {
         db.query("SELECT SUM(total_price) FROM bookings",
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result);
+            });
+    });
+}
+
+function getTodaysRevenue() {
+    return new Promise((resolve, reject) => {
+        db.query("SELECT SUM(bookings.total_price) AS revenue FROM bookings WHERE DATE(bookings.start_time) = CURRENT_DATE GROUP BY DATE(bookings.start_time);",
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result);
@@ -94,8 +104,9 @@ function getBookingsByStatus() {
 
 module.exports = {
     getUserCount,
-    getBookingCount,
+    getActiveBookingCount,
     getAllBookingPrices,
+    getTodaysRevenue,
 
     getBookingsPerDay,
     getPeakParkingHours,

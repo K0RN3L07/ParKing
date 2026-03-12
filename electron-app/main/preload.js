@@ -2,8 +2,9 @@ const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
     getUserCount: () => ipcRenderer.invoke("getUserCount"),
-    getBookingCount: () => ipcRenderer.invoke("getBookingCount"),
+    getActiveBookingCount: () => ipcRenderer.invoke("getActiveBookingCount"),
     getAllBookingPrices: () => ipcRenderer.invoke("getAllBookingPrices"),
+    getTodaysRevenue: () => ipcRenderer.invoke("getTodaysRevenue"),
     
     getBookingsPerDay: () => ipcRenderer.invoke("getBookingsPerDay"),
     getPeakParkingHours: () => ipcRenderer.invoke("getPeakParkingHours"),

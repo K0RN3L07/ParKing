@@ -1,6 +1,6 @@
 <h1>Kezdőlap</h1>
 
-<div id="statsCarousel" class="carousel slide"  data-bs-ride="carousel" data-bs-interval="5000">
+<div id="statsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
 
     <div class="carousel-inner">
 
@@ -52,4 +52,57 @@
         <span class="carousel-control-next-icon"></span>
     </button>
 
+</div>
+
+<div class="container row mt-5 mx-auto d-flex justify-content-center gap-2">
+    <div class="card shadow-sm col-4" style="max-width: 300px;" data-bs-theme="dark">
+        <div class="card-body p-3 d-flex flex-column justify-content-between">
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="fw-semibold text-light"><i class="bi bi-car-front-fill me-2"></i>Jelenlegi foglaltsági
+                    szint</span>
+                <span class="text-secondary small" id="percentageText"></span>
+            </div>
+
+            <div class="progress" style="height:6px;">
+                <div class="progress-bar bg-success" id="occopancyProgressBar" role="progressbar" style="width: 74%"
+                    aria-valuenow="74" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between small text-secondary mt-2">
+                <span id="occupiedCount"></span>
+                <span id="freeCount"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card shadow-sm col-4" style="max-width: 300px;" data-bs-theme="dark">
+        <div class="card-body p-3">
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="fw-semibold text-light">
+                    <i class="bi bi-currency-dollar me-1"></i>
+                    Mai bevétel
+                </span>
+                <span class="text-secondary small">Ma</span>
+            </div>
+
+            <div class="fs-3 fw-bold text-success" id="todayRevenue"></div>
+
+            <div class="small text-secondary mt-2">
+                Összes mai foglalás bevétele
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card shadow-sm col-4 p-3 d-flex flex-column justify-content-between" data-bs-theme="dark" style="max-width: 300px;">
+        <div class="fw-semibold mb-1">
+            <i class="bi bi-clock-history me-1"></i> Átlagos foglalási idő
+        </div>
+        <div class="fs-3 text-warning">1 óra 35 perc</div>
+        <div class="small text-secondary">Az átlagos parkolási idő</div>
+    </div>
 </div>
