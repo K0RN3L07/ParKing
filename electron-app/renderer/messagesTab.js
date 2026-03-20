@@ -19,8 +19,10 @@ export async function loadAllMessages() {
                 <td>${message.name}</td>
                 <td class='text-truncate' style='max-width:100px;'>${message.message}</td>
                 <td>${formattedDate}</td>
-                <td class='text-center'><button class='btn btn-primary'><i class="bi bi-pencil-fill"></i></button></td>
-                <td class='text-center'><button class='btn btn-danger'><i class="bi bi-trash3-fill"></i></button></td>
+                <td class='text-center'>
+                    <button class="btn btn-md btn-dark me-2 text-primary accept-btn"><i class="bi bi-pencil-fill"></i></button>
+                    <button class="btn btn-md btn-dark text-danger decline-btn"><i class="bi bi-trash3-fill"></i></button>
+                </td>
             `;
         table.appendChild(row);
     });

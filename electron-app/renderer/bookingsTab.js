@@ -36,8 +36,10 @@ export async function loadAllBookings() {
                 <td>${booking.payment_status}</td>
                 <td>${booking.total_price}Ft</td>
                 <td>${formattedDate}</td>
-                <td class='text-center'><button class='btn btn-primary'><i class="bi bi-pencil-fill"></i></button></td>
-                <td class='text-center'><button class='btn btn-danger'><i class="bi bi-trash3-fill"></i></button></td>
+                <td class='text-center' style='min-width:115px'>
+                    <button class="btn btn-md btn-dark me-2 text-primary accept-btn"><i class="bi bi-pencil-fill"></i></button>
+                    <button class="btn btn-md btn-dark text-danger decline-btn"><i class="bi bi-trash3-fill"></i></button>
+                </td>
             `;
         table.appendChild(row);
     });
