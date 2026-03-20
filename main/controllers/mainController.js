@@ -61,8 +61,6 @@ async function registerUser(req, res) {
             msg: "Sikeres regisztráció!",
             success: true
         });
-        // ha inkább redirect kell:
-        // return res.redirect('/login');
 
     } catch (err) {
         console.error(err);
@@ -111,8 +109,6 @@ async function loginUser(req, res) {
             msg: "Sikeres bejelentkezés!",
             success: true
         });
-        // vagy:
-        // return res.redirect('/');
 
     } catch (err) {
         console.error(err);
@@ -137,8 +133,6 @@ async function logoutUser(req, res) {
             msg: "Sikeres kijelentkezés!",
             success: true
         });
-        // vagy:
-        // res.redirect('/');
     });
 }
 
