@@ -1,2 +1,2 @@
-logo: AI generált
 banner: unsplash.com - Kenny Eliason
+minden egyéb: AI generált
