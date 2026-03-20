@@ -15,7 +15,7 @@ const mainContent = document.getElementById("mainContent");
 
 async function loadMainTab() {
     // Inject EJS HTML as plain HTML (template)
-    const templateHtml = await fetch('./views/mainTab.ejs').then(r => r.text());
+    const templateHtml = await fetch('./views/mainTab.html').then(r => r.text());
     mainContent.innerHTML = templateHtml;
 
     removeBgFromNavLinks();
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mainTab.addEventListener("click", loadMainTab);
 
     usersTab.addEventListener('click', async () => {
-        const templateHtml = await fetch('./views/usersTab.ejs').then(r => r.text());
+        const templateHtml = await fetch('./views/usersTab.html').then(r => r.text());
         mainContent.innerHTML = templateHtml;
 
         removeBgFromNavLinks();
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     bookingsTab.addEventListener("click", async () => {
-        const templateHtml = await fetch('./views/bookingsTab.ejs').then(r => r.text());
+        const templateHtml = await fetch('./views/bookingsTab.html').then(r => r.text());
         mainContent.innerHTML = templateHtml;
 
         removeBgFromNavLinks();
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     parkingSpacesTab.addEventListener("click", async () => {
-        const templateHtml = await fetch("./views/parkingSpacesTab.ejs").then(r => r.text());
+        const templateHtml = await fetch("./views/parkingSpacesTab.html").then(r => r.text());
         mainContent.innerHTML = templateHtml;
 
         removeBgFromNavLinks();
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     messagesTab.addEventListener("click", async () => {
-        const templateHtml = await fetch("./views/messagesTab.ejs").then(r => r.text());
+        const templateHtml = await fetch("./views/messagesTab.html").then(r => r.text());
         mainContent.innerHTML = templateHtml;
 
         removeBgFromNavLinks();
