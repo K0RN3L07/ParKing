@@ -37,10 +37,58 @@ export async function loadAllBookings() {
                 <td>${booking.total_price}Ft</td>
                 <td>${formattedDate}</td>
                 <td class='text-center' style='min-width:115px'>
-                    <button class="btn btn-md btn-dark me-2 text-primary accept-btn"><i class="bi bi-pencil-fill"></i></button>
-                    <button class="btn btn-md btn-dark text-danger decline-btn"><i class="bi bi-trash3-fill"></i></button>
+                    <button class="btn btn-md btn-dark me-2 text-primary"><i class="bi bi-pencil-fill"></i></button>
+                    <button class="btn btn-md btn-dark text-danger popover-btn"><i class="bi bi-trash3-fill"></i></button>
                 </td>
             `;
         table.appendChild(row);
     });
+
+    document.querySelectorAll('.popover-btn').forEach(btn => {
+        new bootstrap.Popover(btn, {
+            html: true,
+            sanitize: false,
+            trigger: 'click',
+            placement: 'right',
+            customClass: 'popover-dark',
+            content: `
+      <div class='text-light'>
+        <p class='h6 
+    '>Biztosan törli?</p>
+        <button class="btn btn-sm btn-success me-2 text-light accept-btn">Igen</button>
+        <button class="btn btn-sm btn-danger text-light decline-btn">Mégsem</button>
+      </div>
+    `
+        });
+
+        // one popover at a time
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.popover-btn').forEach(otherBtn => {
+                if (otherBtn !== btn) {
+                    const instance = bootstrap.Popover.getInstance(otherBtn);
+                    if (instance) instance.hide();
+                }
+            });
+        });
+
+        // close when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.popover') && !e.target.closest('.popover-btn')) {
+                document.querySelectorAll('.popover-btn').forEach(btn => {
+                    const instance = bootstrap.Popover.getInstance(btn);
+                    if (instance) instance.hide();
+                });
+            }
+        });
+    });
 }
+
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('accept-btn')) {
+        alert('Accepted!');
+    }
+
+    if (e.target.classList.contains('decline-btn')) {
+        alert('Declined!');
+    }
+});

@@ -29,3 +29,16 @@ body {
     border: 3px solid transparent;
     background-clip: padding-box;
 }
+
+.popover-dark {
+    background-color: #1a1d20;
+    border: 1px solid #444;
+}
+
+.popover-dark .popover-arrow::before {
+    border-right-color: #1a1d20 !important;
+}
+
+.popover-dark .popover-arrow::after {
+    border-right-color: #1a1d20 !important;
+}
