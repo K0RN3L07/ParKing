@@ -71,20 +71,21 @@ export async function loadUsers() {
             const acceptBtn = popover.querySelector('.accept-btn-user');
             const declineBtn = popover.querySelector('.decline-btn-user');
 
-            acceptBtn?.addEventListener('click', () => {
+            acceptBtn?.addEventListener('click', async () => {
                 const id = deleteBtn.dataset.id;
-                console.log("Accepted delete user with ID:", id);
+                // console.log("Accepted delete user with ID:", id);
 
                 // Close popover
                 const instance = bootstrap.Popover.getInstance(deleteBtn);
                 if (instance) instance.hide();
 
-                // Optional: call IPC to delete user in database
-                window.api.deleteUser(parseInt(id));
+                // call IPC to delete user in database
+                await window.api.deleteUser(parseInt(id));
+
+                await loadUsers();
             });
 
             declineBtn?.addEventListener('click', () => {
-                alert("Declined!");
                 const instance = bootstrap.Popover.getInstance(deleteBtn);
                 if (instance) instance.hide();
             });

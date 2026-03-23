@@ -20,7 +20,6 @@ function deleteBooking(id) {
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result);
-                console.log(result)
             }
         )
     });

@@ -81,20 +81,21 @@ export async function loadAllBookings() {
             const acceptBtn = popover.querySelector('.accept-btn-booking');
             const declineBtn = popover.querySelector('.decline-btn-booking');
 
-            acceptBtn?.addEventListener('click', () => {
+            acceptBtn?.addEventListener('click', async () => {
                 const id = deleteBtn.dataset.id;
-                console.log("Accepted delete booking with ID:", id);
+                // console.log("Accepted delete booking with ID:", id);
 
                 // Close popover
                 const instance = bootstrap.Popover.getInstance(deleteBtn);
                 if (instance) instance.hide();
 
                 // Optional: call IPC to delete booking in database
-                window.api.deleteBooking(id);
+                await window.api.deleteBooking(id);
+
+                await loadAllBookings();
             });
 
             declineBtn?.addEventListener('click', () => {
-                alert("Declined!");
                 const instance = bootstrap.Popover.getInstance(deleteBtn);
                 if (instance) instance.hide();
             });

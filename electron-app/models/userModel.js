@@ -11,14 +11,12 @@ function getAllUsers() {
 }
 
 function deleteUser(id) {
-    console.log(id)
     return new Promise((resolve, reject) => {
         db.query("DELETE FROM users WHERE id = ?",
             [id],
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result);
-                console.log(result)
             }
         )
     });

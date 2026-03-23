@@ -12,7 +12,7 @@ async function getAllBookings() {
 
 async function deleteBooking(id) {
     try {
-        const bookings = await bookingModel.deleteBooking();
+        const bookings = await bookingModel.deleteBooking(id);
         return bookings;
     } catch (error) {
         console.error(`Error deleting booking ${id}: ${error}`);

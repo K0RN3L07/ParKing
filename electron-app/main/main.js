@@ -52,10 +52,14 @@ app.whenReady().then(() => {
   ipcMain.handle('getBookingsByStatus', mainController.getBookingsByStatus);
 
   ipcMain.handle('getUsers', userController.getUsers);
-  ipcMain.handle('deleteUser', userController.deleteUser);
+  ipcMain.handle('deleteUser', async (event, id) => {
+    return await userController.deleteUser(id);
+  });
 
   ipcMain.handle('getAllBookings', bookingController.getAllBookings);
-  ipcMain.handle('deleteBooking', bookingController.deleteBooking);
+  ipcMain.handle('deleteBooking', async (event, id) => {
+    return await bookingController.deleteBooking(id);
+  });
 
   ipcMain.handle('getAllParkingSpaces', parkingSpacesController.getAllParkingSpaces);
 
