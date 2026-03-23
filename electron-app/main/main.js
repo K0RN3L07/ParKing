@@ -52,8 +52,10 @@ app.whenReady().then(() => {
   ipcMain.handle('getBookingsByStatus', mainController.getBookingsByStatus);
 
   ipcMain.handle('getUsers', userController.getUsers);
+  ipcMain.handle('deleteUser', userController.deleteUser);
 
   ipcMain.handle('getAllBookings', bookingController.getAllBookings);
+  ipcMain.handle('deleteBooking', bookingController.deleteBooking);
 
   ipcMain.handle('getAllParkingSpaces', parkingSpacesController.getAllParkingSpaces);
 

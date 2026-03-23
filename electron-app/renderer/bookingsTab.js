@@ -90,7 +90,7 @@ export async function loadAllBookings() {
                 if (instance) instance.hide();
 
                 // Optional: call IPC to delete booking in database
-                // window.api.deleteBooking(id);
+                window.api.deleteBooking(id);
             });
 
             declineBtn?.addEventListener('click', () => {

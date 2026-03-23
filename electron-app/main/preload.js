@@ -14,8 +14,10 @@ contextBridge.exposeInMainWorld("api", {
     getBookingsByStatus: () => ipcRenderer.invoke("getBookingsByStatus"),
 
     getUsers: () => ipcRenderer.invoke("getUsers"),
+    deleteUser: () => ipcRenderer.invoke("deleteUser"),
 
     getAllBookings: () => ipcRenderer.invoke("getAllBookings"),
+    deleteBooking: () => ipcRenderer.invoke("deleteBooking"),
 
     getAllParkingSpaces: () => ipcRenderer.invoke("getAllParkingSpaces"),
 

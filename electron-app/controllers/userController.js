@@ -10,6 +10,17 @@ async function getUsers() {
     }
 }
 
+async function deleteUser(id) {
+    try {
+        const users = await userModel.deleteUser(id);
+        return users;
+    } catch (error) {
+        console.error(`Error deleting user ${id}: ${error}`);
+        return [];
+    }
+}
+
 module.exports = {
-    getUsers
+    getUsers,
+    deleteUser
 };

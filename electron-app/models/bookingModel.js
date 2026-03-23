@@ -13,6 +13,20 @@ function getAllBookings() {
     });
 }
 
+function deleteBooking(id) {
+    return new Promise((resolve, reject) => {
+        db.query("DELETE FROM bookings WHERE id = ?",
+            [id],
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result);
+                console.log(result)
+            }
+        )
+    });
+}
+
 module.exports = {
-    getAllBookings
+    getAllBookings,
+    deleteBooking
 }

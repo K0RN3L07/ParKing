@@ -80,7 +80,7 @@ export async function loadUsers() {
                 if (instance) instance.hide();
 
                 // Optional: call IPC to delete user in database
-                // window.api.deleteUser(id);
+                window.api.deleteUser(parseInt(id));
             });
 
             declineBtn?.addEventListener('click', () => {
