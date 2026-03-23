@@ -24,6 +24,16 @@ function createWindow() {
   win.loadFile(path.join(__dirname, "..", "renderer", "index.html"));
 
   win.maximize();
+
+  // Enable DevTools
+  win.webContents.on('before-input-event', (event, input) => {
+    if (
+      input.key === 'F12' ||
+      (input.control && input.shift && input.key.toLowerCase() === 'i')
+    ) {
+      win.webContents.toggleDevTools();
+    }
+  });
 }
 
 app.whenReady().then(() => {
@@ -46,7 +56,7 @@ app.whenReady().then(() => {
   ipcMain.handle('getAllBookings', bookingController.getAllBookings);
 
   ipcMain.handle('getAllParkingSpaces', parkingSpacesController.getAllParkingSpaces);
-  
+
   ipcMain.handle('getAllMessages', messagesController.getAllMessages);
 
   createWindow();
