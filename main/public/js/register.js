@@ -44,7 +44,7 @@ email.addEventListener("focusout", () => {
 
 const phoneNum = document.getElementById("phoneNum");
 const phoneNumLabel = document.getElementById("phoneNumLabel");
-phoneNum.value="";
+phoneNum.value = "";
 
 
 phoneNum.addEventListener("focusin", () => {
@@ -253,7 +253,7 @@ form.addEventListener("submit", async function (e) {
     if (!aszf) {
         new CreatePopup("El kell fogadnia az ÁSZF-et és az Adatkezelési Szabályzatot!", false);
         return;
-    }    
+    }
 
     const data = {
         name: fullname.value,

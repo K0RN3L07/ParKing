@@ -49,7 +49,7 @@ async function registerUser(req, res) {
                     });
                 }
             }
-            else{
+            else {
                 return res.status(400).json({
                     msg: String(err),
                     success: false

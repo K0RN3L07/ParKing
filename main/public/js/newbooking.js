@@ -63,21 +63,21 @@ function checkCorrectDateInterval() {
 }
 
 function combine(date, time) {
-  return new Date(`${date}T${time}`);
+    return new Date(`${date}T${time}`);
 }
 
 function areAtLeast10MinutesApartSameDay(date1, time1, date2, time2) {
-  const d1 = combine(date1, time1);
-  const d2 = combine(date2, time2);
+    const d1 = combine(date1, time1);
+    const d2 = combine(date2, time2);
 
-  const sameDay =
-    d1.getFullYear() === d2.getFullYear() &&
-    d1.getMonth() === d2.getMonth() &&
-    d1.getDate() === d2.getDate();
+    const sameDay =
+        d1.getFullYear() === d2.getFullYear() &&
+        d1.getMonth() === d2.getMonth() &&
+        d1.getDate() === d2.getDate();
 
-  if (!sameDay) return true;
+    if (!sameDay) return true;
 
-  return Math.abs(d2 - d1) >= 10 * 60 * 1000;
+    return Math.abs(d2 - d1) >= 10 * 60 * 1000;
 }
 
 function isMoreThanOneYearAway() {
@@ -317,7 +317,6 @@ document.querySelectorAll('.circle').forEach(circle => {
                 for (let i = 0; i < data.reservedSpots.length; i++) {
                     slots[data.reservedSpots[i]["parking_space_num"] - 1].classList.add("reserved");
                 }
-
 
             } catch (err) {
                 console.log("Fetch error:", err);
