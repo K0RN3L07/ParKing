@@ -64,6 +64,9 @@ app.whenReady().then(() => {
   ipcMain.handle('getAllParkingSpaces', parkingSpacesController.getAllParkingSpaces);
 
   ipcMain.handle('getAllMessages', messagesController.getAllMessages);
+  ipcMain.handle('deleteMessage', async (event, id) => {
+    return await messagesController.deleteMessage(id);
+  });
 
   createWindow();
 

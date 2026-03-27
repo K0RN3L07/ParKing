@@ -11,6 +11,19 @@ function getAllMessages() {
     })
 }
 
+function deleteMessage(id) {
+    return new Promise((resolve, reject) => {
+        db.query("DELETE FROM messages WHERE id = ?",
+            [id],
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result);
+            }
+        )
+    });
+}
+
 module.exports = {
-    getAllMessages
+    getAllMessages,
+    deleteMessage
 }

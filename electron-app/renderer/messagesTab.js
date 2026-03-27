@@ -64,20 +64,20 @@ export async function loadAllMessages() {
             const acceptBtn = popover.querySelector('.accept-btn-message');
             const declineBtn = popover.querySelector('.decline-btn-message');
 
-            acceptBtn?.addEventListener('click', () => {
-                const id = deleteBtn.dataset.id;
-                console.log("Accepted delete message with ID:", id);
+            acceptBtn?.addEventListener('click', async (e) => {
+                const id = e.currentTarget.dataset.id;
 
                 // Close popover
                 const instance = bootstrap.Popover.getInstance(deleteBtn);
                 if (instance) instance.hide();
 
                 // Optional: call IPC to delete message in database
-                // window.api.deleteMessage(id);
+                await window.api.deleteMessage(parseInt(id));
+
+                await loadAllMessages();
             });
 
             declineBtn?.addEventListener('click', () => {
-                alert("Declined!");
                 const instance = bootstrap.Popover.getInstance(deleteBtn);
                 if (instance) instance.hide();
             });

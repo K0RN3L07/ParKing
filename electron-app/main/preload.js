@@ -22,4 +22,5 @@ contextBridge.exposeInMainWorld("api", {
     getAllParkingSpaces: () => ipcRenderer.invoke("getAllParkingSpaces"),
 
     getAllMessages: () => ipcRenderer.invoke("getAllMessages"),
+    deleteMessage: (id) => ipcRenderer.invoke("deleteMessage", id),
 });

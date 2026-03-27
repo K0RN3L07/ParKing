@@ -11,6 +11,17 @@ async function getAllMessages() {
     }
 }
 
+async function deleteMessage(id) {
+    try {
+        const messages = await messagesModel.deleteMessage(id);
+        return messages;
+    } catch (error) {
+        console.error(`Error deleting message ${id}: ${error}`);
+        return [];
+    }
+}
+
 module.exports = {
-    getAllMessages
+    getAllMessages,
+    deleteMessage
 }
