@@ -4,7 +4,6 @@ const Main = require('../models/mainModel');
 
 async function getEditProfile(req, res) {
     try {
-        // If you still want to render the page, you can return a success message optionally
         res.render('editProfile', {
             user: req.session.user || null
         });
