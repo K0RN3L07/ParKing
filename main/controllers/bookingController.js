@@ -7,7 +7,12 @@ async function getNewBooking(req, res) {
         });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ msg: "Hiba a foglalás oldal betöltésekor", success: false });
+        res.status(500).json(
+            { 
+                msg: "Hiba a foglalás oldal betöltésekor",
+                success: false 
+            }
+        );
     }
 }
 
@@ -26,7 +31,6 @@ async function getMyBookings(req, res) {
             data[i]["parking_status"] = statuses[i]["parking_status"];
         }
         
-        // Optionally render page, still could use JSON for popup
         res.render("myBookings", { bookings: data, user: req.session.user || null });
     } catch (err) {
         console.error(err);
