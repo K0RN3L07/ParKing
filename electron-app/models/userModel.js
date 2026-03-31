@@ -22,7 +22,20 @@ function deleteUser(id) {
     });
 }
 
+function editUser(id, name, email, phone_num, password) {
+    return new Promise ((resolve, reject) => {
+        db.query("UPDATE users SET name=?, email=?, phone_num=?, password=? WHERE id=?",
+            [name, email, phone_num, password, id],
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result)
+            }
+        )
+    });
+}
+
 module.exports = {
     getAllUsers,
-    deleteUser
+    deleteUser,
+    editUser
 }

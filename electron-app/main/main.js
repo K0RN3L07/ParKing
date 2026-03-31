@@ -51,25 +51,31 @@ app.whenReady().then(() => {
   ipcMain.handle('getRevenueOverTime', mainController.getRevenueOverTime);
   ipcMain.handle('getBookingsByStatus', mainController.getBookingsByStatus);
 
+  // Users page
   ipcMain.handle('getUsers', userController.getUsers);
   ipcMain.handle('deleteUser', async (event, id) => {
     return await userController.deleteUser(id);
   });
+  ipcMain.handle('editUser', async (event, id, name, email, phone_num, password) => {
+    return await userController.editUser(id, name, email, phone_num, password);
+  });
 
+  // Bookings page
   ipcMain.handle('getAllBookings', bookingController.getAllBookings);
   ipcMain.handle('deleteBooking', async (event, id) => {
     return await bookingController.deleteBooking(id);
   });
 
+  // Parking Spaces page
   ipcMain.handle('getAllParkingSpaces', parkingSpacesController.getAllParkingSpaces);
 
+  // Messages page
   ipcMain.handle('getAllMessages', messagesController.getAllMessages);
   ipcMain.handle('deleteMessage', async (event, id) => {
     return await messagesController.deleteMessage(id);
   });
 
   createWindow();
-
 });
 
 app.on('window-all-closed', () => {

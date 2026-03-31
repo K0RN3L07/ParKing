@@ -20,7 +20,18 @@ async function deleteUser(id) {
     }
 }
 
+async function editUser(id, name, email, phone_num, password) {
+    try {
+        const users = await userModel.editUser(id, name, email, phone_num, password);
+        return users;
+    } catch (error) {
+        console.log(`Error editing user ${id}: ${error}`);
+        return [];
+    }
+}
+
 module.exports = {
     getUsers,
-    deleteUser
+    deleteUser,
+    editUser
 };

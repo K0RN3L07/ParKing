@@ -23,7 +23,7 @@ export async function loadUsers() {
             <td class='text-truncate' style='max-width:100px;'>${user.password}</td>
             <td>${formattedDate}</td>
             <td class='text-center' style='min-width:115px'>
-                <button class="btn btn-md btn-dark me-2 text-primary">
+                <button class="btn btn-md btn-dark me-2 text-primary edit-btn" data-id="${user.id}">
                     <i class="bi bi-pencil-fill"></i>
                 </button>
                 <button class="btn btn-md btn-dark text-danger popover-btn" data-id="${user.id}">
@@ -33,6 +33,7 @@ export async function loadUsers() {
         `;
         table.appendChild(row);
 
+        //#region Delete
         // Select delete button
         const deleteBtn = row.querySelector('.popover-btn');
 
@@ -90,9 +91,59 @@ export async function loadUsers() {
                 if (instance) instance.hide();
             });
         });
+        //#endregion
+
     });
 
-    // Close popovers when clicking outside
+    const modalEl = document.getElementById('editUserModal');
+    const modal = new bootstrap.Modal(modalEl);
+
+    let currentUserId = null;
+
+    // Open Modal
+    table.addEventListener('click', (e) => {
+        const editBtn = e.target.closest('.edit-btn');
+        if (!editBtn) return;
+
+        const id = editBtn.dataset.id;
+
+        const user = users.find(u => u.id == id);
+        if (!user) return;
+
+        currentUserId = id;
+
+        // Fill inputs
+        document.getElementById('name').value = user.name;
+        document.getElementById('emailAddress').value = user.email;
+        document.getElementById('phoneNum').value = user.phone_num;
+
+        document.getElementById('password').value = "";
+
+        modal.show();
+    });
+
+
+    document.getElementById("saveChangesBtn").addEventListener("click", async () => {
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('emailAddress').value;
+        const phone = document.getElementById('phoneNum').value;
+        const password = document.getElementById('password').value;
+
+        await window.api.editUser(
+            parseInt(currentUserId),
+            name,
+            email,
+            phone,
+            password
+        );
+
+        modal.hide();
+
+        await loadUsers();
+    });
+
+    // Close popover when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.popover') && !e.target.closest('.popover-btn')) {
             document.querySelectorAll('.popover-btn').forEach(btn => {

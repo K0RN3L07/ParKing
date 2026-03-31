@@ -17,3 +17,39 @@
         <tbody id="userTable"></tbody>
     </table>
 </div>
+
+<div class="modal fade" id="editUserModal" tabindex="-1" data-bs-theme="dark">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Felhasználó Szerkesztése</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Bezárás"></button>
+            </div>
+            <div class="modal-body">
+                <div class="my-2">
+                    <label for="name" class="form-label">Név:</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+
+                <div class="my-2">
+                    <label for="emailAddress" class="form-label">Email cím:</label>
+                    <input type="email" class="form-control" id="emailAddress">
+                </div>
+
+                <div class="my-2">
+                    <label for="phoneNum" class="form-label">Telefonszám:</label>
+                    <input type="text" class="form-control" id="phoneNum">
+                </div>
+
+                <div class="my-2">
+                    <label for="password" class="form-label">Jelszó:</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Mégsem</button>
+                <button type="button" class="btn btn-success" id="saveChangesBtn">Változtatások mentése</button>
+            </div>
+        </div>
+    </div>
+</div>

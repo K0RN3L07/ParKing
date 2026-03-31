@@ -15,6 +15,7 @@ contextBridge.exposeInMainWorld("api", {
 
     getUsers: () => ipcRenderer.invoke("getUsers"),
     deleteUser: (id) => ipcRenderer.invoke("deleteUser", id),
+    editUser: (id, name, email, phone_num, password) => ipcRenderer.invoke("editUser", id, name, email, phone_num, password),
 
     getAllBookings: () => ipcRenderer.invoke("getAllBookings"),
     deleteBooking: (id) => ipcRenderer.invoke("deleteBooking", id),

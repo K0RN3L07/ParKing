@@ -3,6 +3,13 @@ body {
     overflow: hidden;
 }
 
+/* Top Bar */
+nav {
+    background-color: #222;
+    border-bottom: 2px solid dodgerblue;
+}
+
+/* Aside Navigation */
 .nav-link {
     cursor: pointer;
 }
@@ -11,6 +18,12 @@ body {
     background-color: gray;
 }
 
+/* MainTab Carausel */
+.carousel-control-next, .carousel-control-prev {
+    width: fit-content;
+}
+
+/* Table Scrollbar */
 #table-container::-webkit-scrollbar {
     width: 12px;
     padding: 1px;
@@ -30,6 +43,7 @@ body {
     background-clip: padding-box;
 }
 
+/* Popover Darkmode */
 .popover-dark {
     background-color: #1a1d20;
     border: 1px solid #444;
@@ -42,3 +56,5 @@ body {
 .popover-dark .popover-arrow::after {
     border-right-color: #1a1d20 !important;
 }
+
+/* Editing Modals */
