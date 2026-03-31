@@ -96,7 +96,7 @@ export async function loadUsers() {
     });
 
     const modalEl = document.getElementById('editUserModal');
-    const modal = new bootstrap.Modal(modalEl);
+    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
 
     let currentUserId = null;
 
