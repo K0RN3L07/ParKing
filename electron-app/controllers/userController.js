@@ -1,4 +1,5 @@
 const userModel = require("../models/userModel");
+const bcrypt = require("bcrypt");
 
 async function getUsers() {
     try {
@@ -22,7 +23,10 @@ async function deleteUser(id) {
 
 async function editUser(id, name, email, phone_num, password) {
     try {
-        const users = await userModel.editUser(id, name, email, phone_num, password);
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        const users = await userModel.editUser(id, name, email, phone_num, hashedPassword);
         return users;
     } catch (error) {
         console.log(`Error editing user ${id}: ${error}`);
