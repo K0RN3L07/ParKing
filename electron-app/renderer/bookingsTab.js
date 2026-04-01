@@ -37,7 +37,7 @@ export async function loadAllBookings() {
                 <td>${booking.total_price}Ft</td>
                 <td>${formattedDate}</td>
                 <td class='text-center' style='min-width:115px'>
-                    <button class="btn btn-md btn-dark me-2 text-primary edit-btn" data-id="${booking.id}"><i class="bi bi-pencil-fill"></i></button>
+                    <button class="btn btn-md btn-dark me-2 text-primary edit-btn" data-id="${booking.id}" data-parking-id="${booking.parking_space_id}"><i class="bi bi-pencil-fill"></i></button>
                     <button class="btn btn-md btn-dark text-danger popover-btn" data-id="${booking.id}"><i class="bi bi-trash3-fill"></i></button>
                 </td>
             `;
@@ -104,10 +104,11 @@ export async function loadAllBookings() {
         //#endregion
     });
 
-    const modalEl = document.getElementById('editBookkingModal');
+    const modalEl = document.getElementById('editBookingModal');
     const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
 
-    let currentUserId = null;
+    let currentBookingId = null;
+    let currentParkingId = null;
 
     // Open Modal
     table.addEventListener('click', (e) => {
@@ -115,42 +116,43 @@ export async function loadAllBookings() {
         if (!editBtn) return;
 
         const id = editBtn.dataset.id;
+        const parkingId = editBtn.dataset.parkingId;
 
-        const user = users.find(u => u.id == id);
-        if (!user) return;
+        const booking = bookings.find(b => b.id == id);
+        if (!booking) return;
 
-        currentUserId = id;
+        currentBookingId = id;
+        currentParkingId = parkingId;
 
         // Fill inputs
-        document.getElementById('plateNum').value = bookings.plate_num;
-        document.getElementById('floorNum').value = bookings.floor_num;
-        document.getElementById('parkingSpaceNum').value = bookings.parking_space_num;
-        document.getElementById('startDate').value = bookings.start_time;
-        document.getElementById('endDate').value = bookings.end_time;
+        document.getElementById('plateNum').value = booking.plate_num;
+        document.getElementById('floorNum').value = booking.floor_num;
+        document.getElementById('parkingSpaceNum').value = booking.parking_space_num;
 
         modal.show();
     });
 
 
-    // document.getElementById("saveChangesBtn").addEventListener("click", async () => {
+    document.getElementById("saveChangesBtn").addEventListener("click", async () => {
 
-    //     const name = document.getElementById('name').value;
-    //     const email = document.getElementById('emailAddress').value;
-    //     const phone = document.getElementById('phoneNum').value;
-    //     const password = document.getElementById('password').value;
+        const plateNum = document.getElementById('plateNum').value;
+        const floorNum = document.getElementById('floorNum').value;
+        const parkingSpaceNum = document.getElementById('parkingSpaceNum').value;
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+        
+        await window.api.editBooking(
+            parseInt(currentBookingId),
+            plateNum,
+            startDate,
+            endDate,
+            currentParkingId
+        );
 
-    //     await window.api.editUser(
-    //         parseInt(currentUserId),
-    //         name,
-    //         email,
-    //         phone,
-    //         password
-    //     );
+        modal.hide();
 
-    //     modal.hide();
-
-    //     await loadUsers();
-    // });
+        await loadAllBookings();
+    });
 
     // Close popovers when clicking outside
     document.addEventListener('click', (e) => {

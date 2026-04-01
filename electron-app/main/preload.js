@@ -19,6 +19,7 @@ contextBridge.exposeInMainWorld("api", {
 
     getAllBookings: () => ipcRenderer.invoke("getAllBookings"),
     deleteBooking: (id) => ipcRenderer.invoke("deleteBooking", id),
+    editBooking: (id, plate_num, start_time, end_time, parking_space_id) => ipcRenderer.invoke("editBooking", id, plate_num, start_time, end_time, parking_space_id),
 
     getAllParkingSpaces: () => ipcRenderer.invoke("getAllParkingSpaces"),
 

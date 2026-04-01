@@ -65,6 +65,9 @@ app.whenReady().then(() => {
   ipcMain.handle('deleteBooking', async (event, id) => {
     return await bookingController.deleteBooking(id);
   });
+  ipcMain.handle('editBooking', async (event, id, plate_num, start_time, end_time, parking_space_id) => {
+    return await bookingController.editBooking(id, plate_num, start_time, end_time, parking_space_id);
+  });
 
   // Parking Spaces page
   ipcMain.handle('getAllParkingSpaces', parkingSpacesController.getAllParkingSpaces);

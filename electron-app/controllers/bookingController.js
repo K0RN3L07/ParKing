@@ -20,7 +20,18 @@ async function deleteBooking(id) {
     }
 }
 
+async function editBooking(id, plate_num, start_time, end_time, parking_space_id) {
+    try {
+        const bookings = await bookingModel.editBooking(id, plate_num, start_time, end_time, parking_space_id);
+        return bookings;
+    } catch (error) {
+        console.log(`Error editing booking ${id}: ${error}`);
+        return [];
+    }
+}
+
 module.exports = {
     getAllBookings,
-    deleteBooking
+    deleteBooking,
+    editBooking
 }
