@@ -20,3 +20,46 @@
         <tbody id="bookingsTable"></tbody>
     </table>
 </div>
+
+<div class="modal fade" id="editBookingModal" tabindex="-1" data-bs-theme="dark">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Foglalás Szerkesztése</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Bezárás"></button>
+            </div>
+            <div class="modal-body">
+                <div class="my-2">
+                    <label for="plateNum" class="form-label">Rendszám:</label>
+                    <input type="text" class="form-control" id="plateNum">
+                </div>
+
+                <div class="my-2 row">
+                    <div class="col">
+                        <label for="floorNum" class="form-label">Emelet:</label>
+                        <input type="number" class="form-control" id="floorNum">
+                    </div>
+                    <div class="col">
+                        <label for="parkingSpaceNum" class="form-label">Parkoló:</label>
+                        <input type="number" class="form-control" id="parkingSpaceNum">
+                    </div>
+                </div>
+
+                <div class="my-2">
+                    <label for="startDate" class="form-label">Kezdő dátum:</label>
+                    <input type="datetime-local" class="form-control" id="startDate">
+                </div>
+                
+                <div class="my-2">
+                    <label for="endDate" class="form-label">Végdátum:</label>
+                    <input type="datetime-local" class="form-control" id="endDate">
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Mégsem</button>
+                <button type="button" class="btn btn-success" id="saveChangesBtn">Változtatások mentése</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,6 @@ export async function loadAllMessages() {
                 <td class='text-truncate' style='max-width:100px;'>${message.message}</td>
                 <td>${formattedDate}</td>
                 <td class='text-center' style='min-width:115px'>
-                    <button class="btn btn-md btn-dark me-2 text-primary"><i class="bi bi-pencil-fill"></i></button>
                     <button class="btn btn-md btn-dark text-danger popover-btn" data-id="${message.id}"><i class="bi bi-trash3-fill"></i></button>
                 </td>
             `;
