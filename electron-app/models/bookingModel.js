@@ -25,10 +25,36 @@ function deleteBooking(id) {
     });
 }
 
-function editBooking(id, plate_num, start_time, end_time, parking_space_id) {
+function getPricePerHourByParkingSpaceId(parking_space_id) {
+    return new Promise((resolve, reject) => {
+        db.query(
+            `SELECT price_per_hour FROM parking_spaces WHERE id = ?`,
+            [parking_space_id],
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result[0]);
+            }
+        );
+    });
+}
+
+function getParkingSpaceId(floor_num, parking_space_num) {
+    return new Promise((resolve, reject) => {
+        db.query(
+            "SELECT id FROM parking_spaces WHERE floor_num = ? AND parking_space_num = ?",
+            [floor_num, parking_space_num],
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result[0]);
+            }
+        );
+    });
+}
+
+function editBooking(id, plate_num, start_time, end_time, total_price, parking_space_id) {
     return new Promise ((resolve, reject) => {
-        db.query("UPDATE bookings SET plate_num=?, start_time=?, end_time=?, parking_status='Várakoztatva', total_price=0, parking_space_id=? WHERE id=?",
-            [plate_num, start_time, end_time, parking_space_id, id],
+        db.query("UPDATE bookings SET plate_num=?, start_time=?, end_time=?, parking_status='Várakoztatva', total_price=?, parking_space_id=? WHERE id=?",
+            [plate_num, start_time, end_time, total_price, parking_space_id, id],
             (err, result) => {
                 if (err) return reject(err);
                 resolve(result)
@@ -40,5 +66,7 @@ function editBooking(id, plate_num, start_time, end_time, parking_space_id) {
 module.exports = {
     getAllBookings,
     deleteBooking,
+    getPricePerHourByParkingSpaceId,
+    getParkingSpaceId,
     editBooking
 }

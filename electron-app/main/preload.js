@@ -6,7 +6,7 @@ contextBridge.exposeInMainWorld("api", {
     getAllBookingPrices: () => ipcRenderer.invoke("getAllBookingPrices"),
     getTodaysRevenue: () => ipcRenderer.invoke("getTodaysRevenue"),
     getAverageBookingTime: () => ipcRenderer.invoke("getAverageBookingTime"),
-    
+
     getBookingsPerDay: () => ipcRenderer.invoke("getBookingsPerDay"),
     getPeakParkingHours: () => ipcRenderer.invoke("getPeakParkingHours"),
     getMostUsedParkingSpaces: () => ipcRenderer.invoke("getMostUsedParkingSpaces"),
@@ -19,7 +19,8 @@ contextBridge.exposeInMainWorld("api", {
 
     getAllBookings: () => ipcRenderer.invoke("getAllBookings"),
     deleteBooking: (id) => ipcRenderer.invoke("deleteBooking", id),
-    editBooking: (id, plate_num, start_time, end_time, parking_space_id) => ipcRenderer.invoke("editBooking", id, plate_num, start_time, end_time, parking_space_id),
+    getParkingSpaceId: (floor, space) => ipcRenderer.invoke("getParkingSpaceId", floor, space),
+    editBooking: (id, plate_num, start_time, end_time, total_price, parking_space_id) => ipcRenderer.invoke("editBooking", id, plate_num, start_time, end_time, total_price, parking_space_id),
 
     getAllParkingSpaces: () => ipcRenderer.invoke("getAllParkingSpaces"),
 

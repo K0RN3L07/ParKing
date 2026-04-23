@@ -283,7 +283,7 @@ levels.forEach(level => {
     });
 });
 
-// Remove Reserved Spaces When Chaning Floor
+// Remove Reserved Spaces When Changing Floor
 let slots = document.querySelectorAll(".slot");
 function removeReserved() {
     slots.forEach(item => {

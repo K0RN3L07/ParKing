@@ -136,17 +136,26 @@ export async function loadAllBookings() {
     document.getElementById("saveChangesBtn").addEventListener("click", async () => {
 
         const plateNum = document.getElementById('plateNum').value;
-        const floorNum = document.getElementById('floorNum').value;
-        const parkingSpaceNum = document.getElementById('parkingSpaceNum').value;
         const startDate = document.getElementById('startDate').value;
         const endDate = document.getElementById('endDate').value;
-        
+        const floorNum = document.getElementById('floorNum').value;
+        const parkingSpaceNum = document.getElementById('parkingSpaceNum').value;
+
+        const parkingResult = await window.api.getParkingSpaceId(floorNum, parkingSpaceNum);
+
+        if (!parkingResult) {
+            alert("Nincs ilyen parkolóhely!");
+            return;
+        }
+
+        const newParkingId = parkingResult.id;
+
         await window.api.editBooking(
             parseInt(currentBookingId),
             plateNum,
             startDate,
             endDate,
-            currentParkingId
+            newParkingId
         );
 
         modal.hide();
