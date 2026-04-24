@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdminPage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edeeb3d0a2c05c16c82ce57c3c7fff10be6360a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+911efd1e65e0e8de066b400e2917caf0593811c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdminPage")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdminPage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
